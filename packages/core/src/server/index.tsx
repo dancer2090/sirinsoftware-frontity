@@ -28,7 +28,8 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
 
   // Serve static files.
   app.use(mount("/static", serve("./build/static")));
-
+  app.use(mount("/wp-content/uploads", serve("../admin.sirinsoftware.com/wp-content/uploads")));
+  // https://admin.sirinsoftware.com/wp-content/uploads/2020/04/2020-04-01-16-45-28.jpg
   // Default robots.txt.
   app.use(
     get("/robots.txt", (ctx) => {
