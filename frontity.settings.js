@@ -1,9 +1,13 @@
+import { config } from "dotenv";
+config();
+
 const settings = {
   "name": "sirinsoftware-frontity",
   "state": {
     "frontity": {
-      "url": "https://test.frontity.io",
-      "title": "Test Frontity Blog",
+      "adminUrl": process.env.ADMIN_URL,
+      "url": process.env.SITE_URL,
+      "title": "Sirinsoftware",
       "description": "WordPress installation for Frontity development"
     }
   },
@@ -45,7 +49,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://admin.sirinsoftware.com/wp-json"
+          "api": process.env.WP_API,
         }
       }
     },
