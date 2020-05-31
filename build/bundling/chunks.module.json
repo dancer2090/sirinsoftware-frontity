@@ -1,0 +1,81 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.43.0",
+  "hash": "f4502166618b8d2ad6e6",
+  "publicPath": "/static/",
+  "outputPath": "/home/ivan/www/sirinsoftware-frontity/build/static",
+  "assetsByChunkName": {
+    "list": "list.module.js",
+    "sirinsoftware-frontity": "sirinsoftware-frontity.module.js"
+  },
+  "assets": [
+    {
+      "name": "list.module.js",
+      "size": 47713,
+      "chunks": [
+        "list"
+      ],
+      "chunkNames": [
+        "list"
+      ],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "sirinsoftware-frontity.module.js",
+      "size": 5000103,
+      "chunks": [
+        "sirinsoftware-frontity"
+      ],
+      "chunkNames": [
+        "sirinsoftware-frontity"
+      ],
+      "info": {},
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "sirinsoftware-frontity": {
+      "chunks": [
+        "sirinsoftware-frontity"
+      ],
+      "assets": [
+        "sirinsoftware-frontity.module.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "sirinsoftware-frontity": {
+      "chunks": [
+        "sirinsoftware-frontity"
+      ],
+      "assets": [
+        "sirinsoftware-frontity.module.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "list": {
+      "chunks": [
+        "list"
+      ],
+      "assets": [
+        "list.module.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 5,
+      "debug": false
+    }
+  },
+  "children": []
+}
