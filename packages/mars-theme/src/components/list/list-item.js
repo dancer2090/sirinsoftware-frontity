@@ -12,6 +12,7 @@ import FeaturedMedia from "../featured-media";
  * - FeaturedMedia: the featured image/video of the post
  */
 const Item = ({ state, item }) => {
+  console.log(state);
   const author = state.source.author[item.author];
   const date = new Date(item.date);
 
