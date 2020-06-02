@@ -1,0 +1,15 @@
+webpackHotUpdate("sirinsoftware-frontity",{
+
+/***/ "./packages/mars-theme/src/components/header/styles.js":
+/*!*************************************************************!*\
+  !*** ./packages/mars-theme/src/components/header/styles.js ***!
+  \*************************************************************/
+/*! exports provided: HeadBlock */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HeadBlock\", function() { return HeadBlock; });\n/* harmony import */ var _emotion_styled_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/styled-base */ \"./node_modules/@emotion/styled-base/dist/styled-base.browser.esm.js\");\n/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/core */ \"./node_modules/@emotion/core/dist/core.browser.esm.js\");\nfunction _EMOTION_STRINGIFIED_CSS_ERROR__(){return\"You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop).\";}var HeadBlock=Object(_emotion_styled_base__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"div\",{target:\"e1sdr4470\",label:\"HeadBlock\"})( false?undefined:{name:\"rq2lqh\",styles:\"padding-top:185px;\",map:\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkQ6XFxQcm9qZWN0c1xcc2lyaW5zb2Z0d2FyZS1mcm9udGl0eVxccGFja2FnZXNcXG1hcnMtdGhlbWVcXHNyY1xcY29tcG9uZW50c1xcaGVhZGVyXFxzdHlsZXMuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRW9DIiwiZmlsZSI6IkQ6XFxQcm9qZWN0c1xcc2lyaW5zb2Z0d2FyZS1mcm9udGl0eVxccGFja2FnZXNcXG1hcnMtdGhlbWVcXHNyY1xcY29tcG9uZW50c1xcaGVhZGVyXFxzdHlsZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge3N0eWxlZCxjc3Msa2V5ZnJhbWVzfSBmcm9tICdmcm9udGl0eSc7XHJcblxyXG5leHBvcnQgY29uc3QgSGVhZEJsb2NrID0gc3R5bGVkLmRpdiBgXHJcbiAgcGFkZGluZy10b3A6MTg1cHg7XHJcbmA7Il19 */\",toString:_EMOTION_STRINGIFIED_CSS_ERROR__});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWNrYWdlcy9tYXJzLXRoZW1lL3NyYy9jb21wb25lbnRzL2hlYWRlci9zdHlsZXMuanM/OGMyNCJdLCJuYW1lcyI6WyJIZWFkQmxvY2siXSwibWFwcGluZ3MiOiI7Ozs7cVJBRU8sR0FBTUEsVUFBUyx5ekJBQWYiLCJmaWxlIjoiLi9wYWNrYWdlcy9tYXJzLXRoZW1lL3NyYy9jb21wb25lbnRzL2hlYWRlci9zdHlsZXMuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge3N0eWxlZCxjc3Msa2V5ZnJhbWVzfSBmcm9tICdmcm9udGl0eSc7XHJcblxyXG5leHBvcnQgY29uc3QgSGVhZEJsb2NrID0gc3R5bGVkLmRpdiBgXHJcbiAgcGFkZGluZy10b3A6MTg1cHg7XHJcbmA7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./packages/mars-theme/src/components/header/styles.js\n");
+
+/***/ })
+
+})

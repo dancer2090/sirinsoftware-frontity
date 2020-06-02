@@ -49,7 +49,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": process.env.WP_API,
+          "api": "https://admin.sirinsoftware.com/wp-json"
         }
       }
     },
