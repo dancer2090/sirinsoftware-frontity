@@ -5,7 +5,7 @@ import { Container, Wrapper, ArticleLeft, Posts, PostTitle, PostItem,
 import Button from './button';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
-import Image from './static/image.jpg';
+import Image from '../../../../img/image.jpg';
 
 const Article = () => (
     <>
