@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, styled, decode } from "frontity";
-import Item from "./list-item";
+import Item from "./listItem";
 import Pagination from "./pagination";
 
 const List = ({ state }) => {
@@ -42,6 +42,9 @@ const Container = styled.section`
   margin: 0;
   padding: 24px;
   list-style: none;
+  display: flex;
+  justify-content:space-around;
+  flex-wrap: wrap;
 `;
 
 const Header = styled.h3`

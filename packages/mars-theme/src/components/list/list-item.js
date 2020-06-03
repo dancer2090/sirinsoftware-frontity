@@ -2,7 +2,6 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
 import FeaturedMedia from "../featured-media";
-
 /**
  * Item Component
  *
@@ -12,7 +11,6 @@ import FeaturedMedia from "../featured-media";
  * - FeaturedMedia: the featured image/video of the post
  */
 const Item = ({ state, item }) => {
-  console.log(state);
   const author = state.source.author[item.author];
   const date = new Date(item.date);
 
@@ -56,14 +54,7 @@ const Item = ({ state, item }) => {
 // Connect the Item to gain access to `state` as a prop
 export default connect(Item);
 
-const Title = styled.h1`
-  font-size: 2rem;
-  color: rgba(12, 17, 43);
-  margin: 0;
-  padding-top: 24px;
-  padding-bottom: 8px;
-  box-sizing: border-box;
-`;
+
 
 const AuthorName = styled.span`
   color: rgba(12, 17, 43, 0.9);
