@@ -2,12 +2,15 @@ import React from "react";
 import {connect,styled} from "frontity";
 import group_menu from '../header/img/group_menu.svg';
 import logo from '../header/img/logo.svg';
+import Button from '../button/Button';
 
 import {
     HeadBlock,
     Header,
     Mobilemenu,
     Logo,
+    MobileButton,
+    GetButton,
 } from './styles';
 
 const header = ({}) => {
@@ -37,21 +40,29 @@ const header = ({}) => {
             <li>
                 <a href = {'#'}> <span> SERVICES </span></a>
                 <ul className = 'sub-menu'>
-                <li><a href = {'#'}> RD Center </a></li>
-                <li><a href = {'#'}> IT Staff \n Augmentation </a></li>
+                <li><a href = {'#'}> R&D Center</a></li>
+                <li><a href = {'#'}> IT Staff <br/> Augmentation </a></li>
                 </ul>
             </li>
             <li>
                 <a href = {'#'}> CASE STUDIES </a>
                 <ul className = 'sub-menu'>
-                <li><a href = {'#'}> Linux, Embedded \n And Iot </a></li>
-                <li><a href = {'#'}> IT Staff \n Augmentation </a></li>
+                <li><a href = {'#'}> Linux, Embedded <br/> And Iot </a></li>
+                <li><a href = {'#'}> IT Staff <br/> Augmentation </a></li>
                 </ul>
             </li>
                 <li><a href = {'#'}> CAREERS </a></li>
                 <li><a href = {'#'}> BLOG </a></li>
             <li><a href = {'#'}> CONTACT US </a></li>
         </ul>
+        <MobileButton>
+            <a href={"#"}>GET A FREE QUOTE</a>
+        </MobileButton>
+        <GetButton>
+            <Button>
+                <a href={"#"}>GET A FREE QUOTE</a>
+            </Button>
+        </GetButton>
 </Header>
 </HeadBlock>
 

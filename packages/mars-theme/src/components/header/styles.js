@@ -57,6 +57,32 @@ a{
         display: none;
         position: absolute;
     }
+    .menu li:hover ul {
+            display: block;
+        }
+        .menu li:hover li {
+            display: block;
+            text-transform: capitalize;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            line-height: 27px;
+            font-size: 15px;
+            color: #77716d;
+            font-weight: 400;
+        }
+    .sub-menu li {
+        margin: 10px 10px 0px 10px;
+    }
+    .sub-menu {
+        display: none;
+        position: absolute;
+        margin-left: -10px;
+        width: 157 px;
+        background: #fff;
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, .25);
+        z-index: 5;
+        text-align: left;
+    }
 
 `;
 
@@ -81,6 +107,22 @@ export const Logo = styled.div `
     }
 @media(max-width: 320px) {
             margin-left: 10px;
+}
+`;
+
+export const MobileButton = styled.div `
+@media(min-width: 700px) {
+        display: none;
+}
+
+
+
+`;
+export const GetButton = styled.div `
+    width: 180px;
+    height: 40px;
+@media(max-width: 699px) {
+        display: none;
 }
 `;
 
