@@ -1,10 +1,11 @@
-import React from "react";
-import {connect,styled} from "frontity";
+import React from 'react';
+import {connect,styled} from 'frontity';
 import group_menu from '../header/img/group_menu.svg';
 import logo from '../header/img/logo.svg';
 import Button from '../button/Button';
 
 import {
+    FullHead,
     HeadBlock,
     Header,
     Mobilemenu,
@@ -53,7 +54,7 @@ const header = ({}) => {
             </li>
                 <li><a href = {'#'}> CAREERS </a></li>
                 <li><a href = {'#'}> BLOG </a></li>
-            <li><a href = {'#'}> CONTACT US </a></li>
+                <li><a href = {'#'}> CONTACT US </a></li>
         </ul>
         <MobileButton>
             <a href={"#"}>GET A FREE QUOTE</a>
@@ -65,7 +66,6 @@ const header = ({}) => {
         </GetButton>
 </Header>
 </HeadBlock>
-
     );
         } 
 export default connect(header);

@@ -30,16 +30,21 @@ export const Header = styled.div `
       text-decoration: none;
       color: #222222 !important;
        font-weight: 500;
-}
+    }
 
-a{
+    a {
     text-decoration: none;
     color: #FFFFFF;
-  }
-  li {
+    }
+    li {
       list-style-type: none;
-  }
-.menu li{
+        }
+    .menu {
+        @media(max-width: 1100px) {
+            display: none;
+        }
+    }
+    .menu li{
     margin-left: 28px;
     font-style: normal;
     font-weight: 400;
@@ -71,7 +76,10 @@ a{
             font-weight: 400;
         }
     .sub-menu li {
-        margin: 10px 10px 0px 10px;
+        margin-left:-30px;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 5px;
     }
     .sub-menu {
         display: none;
@@ -109,15 +117,29 @@ export const Logo = styled.div `
             margin-left: 10px;
 }
 `;
+export const Submenu = styled.div `
+margin: 10px 10px 0px 10px;
+`;
 
 export const MobileButton = styled.div `
-@media(min-width: 700px) {
-        display: none;
+a {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #FF8D23;
+    text-decoration: none;
+    @media(min-width: 700px) {
+            display: none;
+    }
 }
-
-
-
 `;
+
 export const GetButton = styled.div `
     width: 180px;
     height: 40px;
