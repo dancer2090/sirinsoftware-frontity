@@ -3,7 +3,7 @@ import { styled } from 'frontity';
 export const  AllCategoriesContainer = styled.div`
     position: absolute;
     top: 0;
-    right:0;
+    right:1rem;
     z-index: 2;
 `;
 export const AllCategoriesHeader = styled.div`

@@ -33,9 +33,12 @@ export const ArtDate = styled.div`
     right:1.6rem;
     color: #FFFFFF;
 `; 
-export const ReadBtn = styled.button`
+export const BtnRead = styled.button`
     width:100%;
-    background: linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%);
+    background: ${ (props) => ( 
+        props.clRead == 'yellow' ?
+         'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)' :
+          'linear-gradient(279.98deg, green 3.6%, green 97.69%)') }; 
 `;
 export const  Title = styled.h1`
     position: absolute;

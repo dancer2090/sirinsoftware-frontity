@@ -2,7 +2,7 @@
 import { connect } from "frontity";
 
 import { ArtContainer, Article, Title,
-        ArtCategory, ArtDate, ReadBtn, ImgContainer } from "./styles"
+        ArtCategory, ArtDate, BtnRead, ImgContainer } from "./styles"
 
 /**
  * Item Component
@@ -12,11 +12,16 @@ import { ArtContainer, Article, Title,
  * - Author: name of author and published date
  * - FeaturedMedia: the featured image/video of the post
  */
-const Item = ({ state, item }) => {
+const Item = ({ state, item, index }) => {
+  const n=Math.floor(index/2);
+  let clRead;
+  if ( (n%2 ===0 && index === 2*n+1) || (n%2 && index%2 === 0) ) {
+    clRead = 'green';
+  } else clRead = 'yellow';
   
   const author = state.source.author[item.author];
   const date = new Date(item.date);
-  console.log(state.source);
+  //console.log(state.source);
   //console.log(item);
   //const category = state.source.category[].name
 
@@ -29,7 +34,7 @@ const Item = ({ state, item }) => {
         <ArtCategory>Category</ArtCategory>
         <ArtDate>Date</ArtDate>
         <Title>This is Title</Title>
-        <ReadBtn onClick={()=>{console.log('click on button')}}>Read</ReadBtn>
+        <BtnRead onClick={()=>{console.log('click on button')}} clRead = {clRead}>Read</BtnRead>
       </ArtContainer>
     </Article>
   );
