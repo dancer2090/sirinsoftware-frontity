@@ -2,9 +2,9 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "f4502166618b8d2ad6e6",
+  "hash": "3c5130fe1a2c2f177540",
   "publicPath": "/static/",
-  "outputPath": "/home/ivan/www/sirinsoftware-frontity/build/static",
+  "outputPath": "D:\\withIvan\\sirinsoftware-frontity\\build\\static",
   "assetsByChunkName": {
     "list": "list.module.js",
     "sirinsoftware-frontity": "sirinsoftware-frontity.module.js"
@@ -12,7 +12,7 @@
   "assets": [
     {
       "name": "list.module.js",
-      "size": 47713,
+      "size": 47809,
       "chunks": [
         "list"
       ],
@@ -24,7 +24,7 @@
     },
     {
       "name": "sirinsoftware-frontity.module.js",
-      "size": 5000103,
+      "size": 5000396,
       "chunks": [
         "sirinsoftware-frontity"
       ],
