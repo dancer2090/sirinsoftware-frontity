@@ -6,7 +6,6 @@ export const Article = styled.article`
 `;
 export const ArtContainer = styled.div`
   position: relative;
-  padding: 15px 5px;
 `; 
 
 export const ArtCategory = styled.div`
