@@ -16,7 +16,7 @@ export const Article = styled.article`
     @media (max-width: 767px) {
       flex: 1 1 98%;
       padding: 10px 0;
-      &button {
+      && button {
         background: ${ (props) => ( 
           props.isOdd ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)' :
             'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)' )
@@ -30,7 +30,7 @@ export const ArtContainer = styled.div`
 
 export const ImgContainer = styled.div`
   width:100%;
-  height:470px;
+  max-height:470px;
   overflow: hidden;
   display:flex;
   justify-content:center;
@@ -38,8 +38,12 @@ export const ImgContainer = styled.div`
     width:100%;
     height:100%;
   }
+ 
   @media (max-width: 767px) {
-    height:254px;
+    max-height:354px;
+  }
+  @media (max-width: 520px) {
+    max-height:254px;
   }
 `;
 
