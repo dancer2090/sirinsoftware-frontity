@@ -39,16 +39,19 @@ const List = ({ state }) => {
 export default connect(List);
 
 const Container = styled.section`
-  width: 800px;
+  width: 960px;
   margin: 0;
+  margin-top: 30px;
   padding: 1rem;
   padding-top: 1.75rem;
   list-style: none;
   display: flex;
-  justify-content:space-around;
+  justify-content:space-between;
   flex-wrap: wrap;
   position: relative;
- 
+  @media (max-width: 767px) {
+    margin-top: 60px;
+  }
 `;
 
 const Header = styled.h3`

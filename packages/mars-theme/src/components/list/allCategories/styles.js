@@ -4,7 +4,11 @@ export const  AllCategoriesContainer = styled.div`
     position: absolute;
     top: 0;
     right:1rem;
-    z-index: 2;
+    z-index: 1;
+    @media (max-width: 767px) {
+        left:1rem;
+        top:-30px;
+    }
 `;
 export const AllCategoriesHeader = styled.div`
     background: linear-gradient(273.94deg, #3FA54A 3.6%, #216628 97.69%);
@@ -21,13 +25,18 @@ export const AllCategoriesHeader = styled.div`
     ::after {
         cursor: pointer;
         display:inline-block;
-        margin-left: 1rem;
+        margin-left:1rem;
         content: '';
         width: 8px;
         height: 8px;
         border-left: 2px solid  #FFFFFF;
         border-top: 2px solid  #FFFFFF;
         transform: rotate(${ (props) => ( props.isOpen ? '45deg' : '-135deg') });
+        @media (max-width: 767px) {
+            position:absolute;
+            right:5%;
+            transform: rotate(${ (props) => ( props.isOpen ? '45deg' : '-135deg') });
+        }
         
     }
 `;

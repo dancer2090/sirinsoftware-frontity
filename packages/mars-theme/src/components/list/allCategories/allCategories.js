@@ -15,7 +15,7 @@ class AllCategories extends React.Component {
                         {id:2, title: 'NEWS'},
                         {id:3, title:'SERVICES'},
                         {id:4, title:'TECHNOLOGY'}],
-            isOpen:true
+            isOpen:false
         };
     }
     
