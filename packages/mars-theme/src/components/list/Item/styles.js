@@ -5,6 +5,9 @@ import Link from '../../link';
 
 export const Article = styled.article`
     flex: 1 1 50%;
+     @media (max-width: 768px) {
+      flex: 1 1 100%;
+    }
 `;
 export const ArtContainer = styled.div`
   position: relative;
@@ -36,9 +39,9 @@ export const ArtDate = styled.div`
 export const BtnRead = styled.button`
     width:100%;
     background: ${ (props) => ( 
-        props.clRead == 'yellow' ?
-         'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)' :
-          'linear-gradient(279.98deg, green 3.6%, green 97.69%)') }; 
+        props.isClGreen ? 'linear-gradient(279.98deg, green 3.6%, green 97.69%)' :
+          'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)'
+    )}; 
 `;
 export const  Title = styled.h1`
     position: absolute;

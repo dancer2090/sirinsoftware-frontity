@@ -14,10 +14,10 @@ import { ArtContainer, Article, Title,
  */
 const Item = ({ state, item, index }) => {
   const n=Math.floor(index/2);
-  let clRead;
+  let isClGreen;
   if ( (n%2 ===0 && index === 2*n+1) || (n%2 && index%2 === 0) ) {
-    clRead = 'green';
-  } else clRead = 'yellow';
+    isClGreen = true;
+  } else isClGreen = false;
   
   const author = state.source.author[item.author];
   const date = new Date(item.date);
@@ -34,7 +34,7 @@ const Item = ({ state, item, index }) => {
         <ArtCategory>Category</ArtCategory>
         <ArtDate>Date</ArtDate>
         <Title>This is Title</Title>
-        <BtnRead onClick={()=>{console.log('click on button')}} clRead = {clRead}>Read</BtnRead>
+        <BtnRead onClick={()=>{console.log('click on button')}} isClGreen = {isClGreen}>Read</BtnRead>
       </ArtContainer>
     </Article>
   );
