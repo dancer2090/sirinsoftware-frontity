@@ -1,0 +1,14 @@
+webpackHotUpdate("list",{
+
+/***/ "./packages/mars-theme/src/components/list/Item/styles.js":
+/*!****************************************************************!*\
+  !*** ./packages/mars-theme/src/components/list/Item/styles.js ***!
+  \****************************************************************/
+/*! exports provided: Article, ArtContainer, ImgContainer, ArtCategory, ArtDate, ReadBtn, Title, Excerpt, AuthorName, PublishDate, StyledLink */
+/***/ (function(module, exports) {
+
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nSyntaxError: D:\\\\withIvan\\\\sirinsoftware-frontity\\\\packages\\\\mars-theme\\\\src\\\\components\\\\list\\\\Item\\\\styles.js: Unexpected token (4:16)\\n\\n  2 | import Link from '../../link';\\n  3 | \\n> 4 | const CL_TEXT = #FFFFFF;\\n    |                 ^\\n  5 | \\n  6 | export const Article = styled.article`\\n  7 |     flex: 1 1 50%;\\n    at Object._raise (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\error.js:60:45)\\n    at Object.raiseWithData (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\error.js:55:17)\\n    at Object.raise (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\error.js:39:17)\\n    at Object.unexpected (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\util.js:149:16)\\n    at Object.parseExprAtom (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\expression.js:1167:24)\\n    at Object.parseExprAtom (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\plugins\\\\jsx\\\\index.js:532:22)\\n    at Object.parseExprSubscripts (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\expression.js:541:23)\\n    at Object.parseMaybeUnary (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\expression.js:521:21)\\n    at Object.parseExprOps (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\expression.js:312:23)\\n    at Object.parseMaybeConditional (D:\\\\withIvan\\\\sirinsoftware-frontity\\\\node_modules\\\\@babel\\\\parser\\\\src\\\\parser\\\\expression.js:264:23)\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuL3BhY2thZ2VzL21hcnMtdGhlbWUvc3JjL2NvbXBvbmVudHMvbGlzdC9JdGVtL3N0eWxlcy5qcy5qcyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./packages/mars-theme/src/components/list/Item/styles.js\n");
+
+/***/ })
+
+})
