@@ -1,7 +1,8 @@
 import React from "react";
 import { connect, styled, decode } from "frontity";
-import Item from "./list-item";
+import Item from "./listItem";
 import Pagination from "./pagination";
+import AllCAtegories from './allCategories'
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -23,7 +24,7 @@ const List = ({ state }) => {
           Author: <b>{decode(state.source.author[data.id].name)}</b>
         </Header>
       )}
-
+      <AllCAtegories />
       {/* Iterate over the items of the list. */}
       {data.items.map(({ type, id }) => {
         const item = state.source[type][id];
@@ -40,8 +41,13 @@ export default connect(List);
 const Container = styled.section`
   width: 800px;
   margin: 0;
-  padding: 24px;
+  padding: 1rem;
+  padding-top: 1.75rem;
   list-style: none;
+  display: flex;
+  justify-content:space-around;
+  flex-wrap: wrap;
+  position: relative;
 `;
 
 const Header = styled.h3`
