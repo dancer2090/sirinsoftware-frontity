@@ -39,10 +39,10 @@ export const ImgContainer = styled.div`
     height:100%;
   }
  
-  @media (max-width: 767px) {
-    max-height:354px;
+  @media (max-width: 600px) {
+    max-height:400px;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 450px) {
     max-height:254px;
   }
 `;
