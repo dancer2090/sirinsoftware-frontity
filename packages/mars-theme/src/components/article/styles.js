@@ -12,7 +12,7 @@ const BigFrame = styled.div`
     font-size: 44px;
     line-height: 30px;
     color: #FFFFFF;
-    background-image: url(${props => props.image});
+    background-image: url(${(props) => props.image});
     background-size: cover;
 
     @media screen and (max-width: 991px) {
@@ -167,15 +167,15 @@ const SocialList = styled(Socials)`
 
 
 export {
-    Container,
-    Wrapper,
-    ArticleLeft,
-    Posts,
-    PostTitle,
-    PostItem,
-    ArticleLeftHeader,
-    Date,
-    ArticleContent,
-    SocialList,
-    BigFrame
+  Container,
+  Wrapper,
+  ArticleLeft,
+  Posts,
+  PostTitle,
+  PostItem,
+  ArticleLeftHeader,
+  Date,
+  ArticleContent,
+  SocialList,
+  BigFrame,
 };

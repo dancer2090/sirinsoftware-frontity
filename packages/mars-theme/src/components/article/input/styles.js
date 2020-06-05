@@ -22,5 +22,5 @@ const Field = styled.input`
 `;
 
 export {
-    Field
-}
+  Field
+};

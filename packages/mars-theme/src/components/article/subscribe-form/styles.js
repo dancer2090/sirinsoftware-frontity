@@ -73,9 +73,9 @@ const Input = styled(Field)`
 `;
 
 export {
-    Form,
-    Title,
-    SubmitButton,
-    Description,
-    Input
-}
+  Form,
+  Title,
+  SubmitButton,
+  Description,
+  Input,
+};

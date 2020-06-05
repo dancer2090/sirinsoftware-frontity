@@ -66,10 +66,10 @@ const Button = styled(ButtonTempalate)`
 `;
 
 export {
-    Container,
-    Title,
-    Form,
-    Input,
-    TextArea,
-    Button
-}
+  Container,
+  Title,
+  Form,
+  Input,
+  TextArea,
+  Button,
+};

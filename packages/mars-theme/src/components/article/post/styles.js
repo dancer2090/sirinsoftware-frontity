@@ -44,7 +44,7 @@ const Link = styled.a`
 `;
 
 export {
-    Container,
-    Name,
-    Link
+  Container,
+  Name,
+  Link,
 };
