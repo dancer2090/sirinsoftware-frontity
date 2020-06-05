@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { connect, styled } from "frontity";
+import { connect } from "frontity";
 import Link from "../link";
+import { PaginationContainer, Text } from './styles';
 
 /**
  * Pagination Component
@@ -20,7 +21,7 @@ const Pagination = ({ state, actions }) => {
   }, []);
 
   return (
-    <div>
+    <PaginationContainer>
       {/* If there's a next page, render this link */}
       {next && (
         <Link link={next}>
@@ -36,7 +37,7 @@ const Pagination = ({ state, actions }) => {
           <Text>Newer posts →</Text>
         </Link>
       )}
-    </div>
+    </PaginationContainer>
   );
 };
 
@@ -46,7 +47,24 @@ const Pagination = ({ state, actions }) => {
  */
 export default connect(Pagination);
 
-const Text = styled.em`
-  display: inline-block;
-  margin-top: 16px;
-`;
+// const PaginationContainer = styled.div`
+//   margin-top: 2.68rem;
+//   width:100%;
+//   display: flex;
+//   justify-content: center;
+// `;
+// const Text = styled.em`
+  
+//   font-family: Montserrat;
+//   font-style: normal;
+//   font-weight: 800;
+//   font-size: 1rem;
+//   line-height: 1.375rem;
+//   text-align: center;
+//   text-transform: uppercase;
+//   color: #FFAD39;
+//   @media (max-width: 767px) {
+//     font-size: 1.5rem;
+//     line-height:1.375rem
+//   }
+// `;

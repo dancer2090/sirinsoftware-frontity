@@ -2,7 +2,8 @@ import React from "react";
 import { connect, styled, decode } from "frontity";
 import Item from "./Item/index.js";
 import Pagination from "./pagination";
-import AllCAtegories from './allCategories'
+import AllCAtegories from './allCategories';
+import { Container, Header } from './styles';
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -38,24 +39,24 @@ const List = ({ state }) => {
 
 export default connect(List);
 
-const Container = styled.section`
-  width: 960px;
-  margin: 0;
-  margin-top: 30px;
-  padding: 1rem;
-  padding-top: 1.75rem;
-  list-style: none;
-  display: flex;
-  justify-content:space-between;
-  flex-wrap: wrap;
-  position: relative;
-  @media (max-width: 767px) {
-    margin-top: 60px;
-  }
-`;
+// const Container = styled.section`
+//   width: 960px;
+//   margin: 0;
+//   margin-top: 30px;
+//   padding: 1rem;
+//   padding-top: 1.75rem;
+//   list-style: none;
+//   display: flex;
+//   justify-content:space-between;
+//   flex-wrap: wrap;
+//   position: relative;
+//   @media (max-width: 767px) {
+//     margin-top: 60px;
+//   }
+// `;
 
-const Header = styled.h3`
-  font-weight: 300;
-  text-transform: capitalize;
-  color: rgba(12, 17, 43, 0.9);
-`;
+// const Header = styled.h3`
+//   font-weight: 300;
+//   text-transform: capitalize;
+//   color: rgba(12, 17, 43, 0.9);
+// `;
