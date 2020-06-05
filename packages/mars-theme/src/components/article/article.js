@@ -11,6 +11,7 @@ import {
   ArticleContent,
   SocialList,
   BigFrame,
+  WrapperPage
 } from './styles';
 import Button from './button';
 import SubscribeForm from './subscribe-form/subscribe-form';
@@ -18,7 +19,7 @@ import CommentsForm from './comments-form';
 import Image from '../../../img/image.jpg';
 
 const Article = () => (
-  <>
+  <WrapperPage>
     <BigFrame image={Image}>
       <Container>NB-IoT – a Novel IoT Standard</Container>
     </BigFrame>
@@ -79,7 +80,7 @@ const Article = () => (
         </Posts>
       </Wrapper>
     </Container>
-  </>
+  </WrapperPage>
 );
 
 export default Article;

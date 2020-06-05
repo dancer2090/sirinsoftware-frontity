@@ -2,6 +2,10 @@ import { styled } from 'frontity';
 import Post from './post';
 import Socials from './social-list';
 
+const WrapperPage = styled.div`
+    width: 100%;
+`;
+
 const BigFrame = styled.div`
     width: 100%;
     height: 400px;
@@ -178,4 +182,5 @@ export {
   ArticleContent,
   SocialList,
   BigFrame,
+  WrapperPage,
 };
