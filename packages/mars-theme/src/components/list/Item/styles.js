@@ -1,5 +1,4 @@
 import { styled } from 'frontity';
-import Link from '../../link';
 
 const CL_TEXT = '#FFFFFF';
 
@@ -34,13 +33,21 @@ export const ImgContainer = styled.div`
   overflow: hidden;
   display:flex;
   justify-content:center;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+  position:relative;
+  ::after {
+    position:absolute;
+    content:'';
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.5);
+  }
   img {
     width:100%;
     height:100%;
-  }
- 
-  @media (max-width: 600px) {
-    max-height:400px;
+  } 
+  @media (max-width: 767px) {
+    max-height:500px;
   }
   @media (max-width: 450px) {
     max-height:254px;
@@ -84,6 +91,7 @@ export const BtnRead = styled.button`
     font-size: 1rem;
     line-height: 1.375rem;
     color: ${CL_TEXT};
+    text-transform: uppercase;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
 `;
 export const  Title = styled.h1`
