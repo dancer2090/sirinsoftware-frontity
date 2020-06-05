@@ -42,7 +42,7 @@ export const ImgContainer = styled.div`
   @media (max-width: 767px) {
     max-height:354px;
   }
-  @media (max-width: 520px) {
+  @media (max-width: 480px) {
     max-height:254px;
   }
 `;
