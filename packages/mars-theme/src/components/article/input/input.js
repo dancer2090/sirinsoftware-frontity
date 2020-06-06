@@ -6,6 +6,7 @@ const Input = (props) => {
   return (
     <Field
       type={type}
+      autoComplete="off"
       className={className}
       {...props}
     />

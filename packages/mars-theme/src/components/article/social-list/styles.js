@@ -42,6 +42,22 @@ const SocialItem = styled.a`
                 return "#fff";
         }
     }};
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        background-color: ${props => {
+            switch(props.name) {
+                case "facebook":
+                    return "#243c96";
+                case "linkedin":
+                    return "#006396";
+                case "twitter":
+                    return "#2287c7";
+                default:
+                    return "#fff";
+            }
+        }};
+    }
 `;
 
 const CopyBlock = styled.div`  
@@ -60,6 +76,11 @@ const CopyButton = styled.button`
     align-items: center;
     border: none;
     background-color: transparent;
+    outline: none;
+
+    &:active {
+        outline: none;
+    }
 `;
 
 const CopyLink = styled.span`
@@ -88,6 +109,13 @@ const CopyNotification = styled.span`
     position: absolute;
     left: calc(100% + 5px);
     top: -40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
 `;
 
 const SocialIcon = styled(SvgSprite)`

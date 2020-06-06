@@ -3,7 +3,7 @@ import { Container, Name, Link } from './styles';
 
 const Post = ({ className, children, href = '#' }) => (
   <Container className={className}>
-    <Name>
+    <Name href={href}>
       { children }
     </Name>
     <Link href={href}>

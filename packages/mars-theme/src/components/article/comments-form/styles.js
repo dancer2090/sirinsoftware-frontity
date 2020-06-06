@@ -33,7 +33,10 @@ const Form = styled.form`
 
 const Input = styled(TextField)`
     width: calc(50% - 10px);
-
+    padding: 7px 19px;
+    font-size: 14px;
+    line-height: 22px;
+    
     @media screen and (max-width: 767px) {
         width: 100%;
         margin-bottom: 10px;
@@ -49,6 +52,10 @@ const TextArea = styled.textarea`
     outline: none;
     margin-top: 20px;
     margin-bottom: 21px;
+    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 22px;
+    font-family: 'Open Sans';
 
     @media screen and (max-width: 767px) {
         margin-top: 0;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "frontity";
 import {
   Container,
   Wrapper,
@@ -7,80 +8,69 @@ import {
   PostTitle,
   PostItem,
   ArticleLeftHeader,
-  Date,
+  DateBlock,
   ArticleContent,
   SocialList,
   BigFrame,
-  WrapperPage
+  WrapperPage,
+  BusinessButton,
+  PostList
 } from './styles';
-import Button from './button';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
 import Image from '../../../img/image.jpg';
 
-const Article = () => (
-  <WrapperPage>
-    <BigFrame image={Image}>
-      <Container>NB-IoT – a Novel IoT Standard</Container>
-    </BigFrame>
-    <Container>
-      <Wrapper>
-        <ArticleLeft>
-          <ArticleLeftHeader>
-            <Button size="large">Business</Button>
-            <Date>APRIL.01.2020</Date>
-          </ArticleLeftHeader>
-          <ArticleContent>
-            <p>
-              The client works towards a safer future by
-              manufacturing reliable, affordable, and easy-to-install wireless
-              infrastructure for buildings. A multinational corporation based out of New York City, the company’s Tactical Series line of products operates at the nexus of two-way radio and fire-alarm systems, speaking the language of both. The company is FDNY ARCS B-03 certified, providing unmatched experience at getting installations for US FD by UL and FCC.
-            </p>
-            <p>
-              The company has a wide resellers network: Siemens Building Technologies, New York Fire Detection Inc, National Fire Products Inc, etc.
-            </p>
-            <h2>
-              AREAS WHERE SENSORS ARE USED
-            </h2>
-            <p>
-              The client works towards a safer future by manufacturing reliable, affordable, and easy-to-install wireless infrastructure for buildings. A multinational corporation based out of New York City, the company’s Tactical Series line of products operates at the nexus of two-way radio and fire-alarm systems, speaking the language of both. The company is FDNY ARCS B-03 certified, providing unmatched experience at getting installations for US FD by UL and FCC.
-            </p>
-            <p>
-              The company has a wide resellers network: Siemens Building Technologies, New York Fire Detection Inc, National Fire Products Inc, etc.
-            </p>
-            <h2>
-              AREAS WHERE SENSORS ARE USED
-            </h2>
-            <p>
-              The client works towards a safer future by manufacturing reliable, affordable, and easy-to-install wireless infrastructure for buildings. A multinational corporation based out of New York City, the company’s Tactical Series line of products operates at the nexus of two-way radio and fire-alarm systems, speaking the language of both. The company is FDNY ARCS B-03 certified, providing unmatched experience at getting installations for US FD by UL and FCC.
-            </p>
-            <p>
-              The company has a wide resellers network: Siemens Building Technologies, New York Fire Detection Inc, National Fire Products Inc, etc.
-            </p>
-          </ArticleContent>
-          <SocialList />
-          <CommentsForm />
-        </ArticleLeft>
-        <Posts>
-          <PostTitle>
-            Related posts
-          </PostTitle>
-          <PostItem>
-            Main reasons to invest in IoT
-          </PostItem>
-          <PostItem>
-            ARM SoC for server
-            {' '}
-            <br />
-            {' '}
-            applications
-          </PostItem>
+const Article = ({ state, libraries }) => {
+  // Get information about the current URL.
+  const data = state.source.get(state.router.link);
+  // Get the data of the post.
+  const post = state.source[data.type][data.id];
+  // Get a human readable date.
+  const date = new Date(post.date);
+  // Get the html2react component.
+  const Html2React = libraries.html2react.Component;
 
-          <SubscribeForm />
-        </Posts>
-      </Wrapper>
-    </Container>
-  </WrapperPage>
-);
-
-export default Article;
+  return (
+    <WrapperPage>
+      <BigFrame image={Image}>
+        <Container>
+          <h1>NB-IoT – a Novel IoT Standard</h1>
+        </Container>
+      </BigFrame>
+      <Container>
+        <Wrapper>
+          <ArticleLeft>
+            <ArticleLeftHeader>
+              <BusinessButton size="large">Business</BusinessButton>
+              <DateBlock>{ date.toDateString() }</DateBlock>
+            </ArticleLeftHeader>
+            <ArticleContent>
+              <Html2React html={post.content.rendered} />
+            </ArticleContent>
+            <SocialList />
+            <CommentsForm />
+          </ArticleLeft>
+          <Posts>
+            <PostTitle>
+              Related posts
+            </PostTitle>
+            <PostList>
+              <PostItem>
+                Main reasons to invest in IoT
+              </PostItem>
+              <PostItem>
+                ARM SoC for server
+                {' '}
+                <br />
+                {' '}
+                applications
+              </PostItem>
+            </PostList>
+            <SubscribeForm />
+          </Posts>
+        </Wrapper>
+      </Container>
+    </WrapperPage>
+  )
+}
+export default connect(Article);

@@ -1,39 +1,56 @@
 import { styled } from 'frontity';
 import Post from './post';
 import Socials from './social-list';
+import Button from "./button";
 
 const WrapperPage = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
     width: 100%;
+    background-color: white;
+
+    * {
+        box-sizing: border-box;
+    }
 `;
 
 const BigFrame = styled.div`
     width: 100%;
     height: 400px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
-    font-weight: bold;
-    font-size: 44px;
-    line-height: 30px;
-    color: #FFFFFF;
     background-image: url(${(props) => props.image});
     background-size: cover;
 
+    h1 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 44px;
+        line-height: 30px;
+        color: #FFFFFF;
+    }
+
     @media screen and (max-width: 991px) {
-        height: 350px;
-        font-size: 36px;
         margin-bottom: 80px;
+        height: 350px;
+
+        h1 {
+            font-size: 36px;
+        }
     }
 
     @media screen and (max-width: 767px) {
         height: 250px;
-        font-size: 24px;
         margin-bottom: 30px;
+
+        h1 {
+            font-size: 24px;
+        }
     }
 `;
 
 const Container = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
     font-family: 'Montserrat', sans-serif;
     max-width: 960px;
     width: 100%;
@@ -53,7 +70,15 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 150px;
+
+    @media screen and (max-width: 991px) {
+        margin-bottom: 102px;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 80px;
+    }
 `;
 
 const ArticleLeft = styled.div`
@@ -81,6 +106,7 @@ const ArticleContent = styled.div`
 
     p {
         margin-bottom: 15px;
+        font-family: 'Open Sans', sans-serif;
     }
 
     h2 {
@@ -139,12 +165,24 @@ const PostTitle = styled.h2`
     }
 `;
 
+const PostList = styled.div`
+    display: block;
+`;
+
 const PostItem = styled(Post)`
     margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 50px;
+    }
 
     @media screen and (max-width: 767px) {
-        margin-bottom: 0;
+        margin-bottom: 5px;
+
+        &:last-child {
+            margin-bottom: 41px;
+        }
     }
+
 `;
 
 const ArticleLeftHeader = styled.div`
@@ -154,7 +192,7 @@ const ArticleLeftHeader = styled.div`
     margin-bottom: 35px;
 `;
 
-const Date = styled.time`
+const DateBlock = styled.time`
     font-size: 14px;
     line-height: 30px;
     letter-spacing: 0.01em;
@@ -169,6 +207,9 @@ const SocialList = styled(Socials)`
     }
 `;
 
+const BusinessButton = styled(Button)`
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+`;
 
 export {
   Container,
@@ -178,9 +219,11 @@ export {
   PostTitle,
   PostItem,
   ArticleLeftHeader,
-  Date,
+  DateBlock,
   ArticleContent,
   SocialList,
   BigFrame,
   WrapperPage,
+  BusinessButton,
+  PostList
 };

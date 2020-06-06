@@ -9,6 +9,9 @@ const Field = styled.input`
     padding: 0 8px;
     box-sizing: border-box;
     border: none;
+    font-family: 'Open Sans';
+    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all .3s ease-in-out;
     &::placeholder {
         font-size: 14px;
         line-height: 22px;
@@ -18,6 +21,7 @@ const Field = styled.input`
     &:focus {
         border: none;
         outline: none;
+        box-shadow: none;
     }
 `;
 

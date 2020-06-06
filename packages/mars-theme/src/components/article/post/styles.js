@@ -19,13 +19,18 @@ const Container = styled.div`
     }
 `;
 
-const Name = styled.span`
+const Name = styled.a`
     display: block;
     font-size: 14px;
     line-height: 18px;
     text-transform: uppercase;
     color: #000000;
+    transition: all .3s ease-in-out;
 
+    &:hover {
+        color: #252525;
+    }
+    
     @media screen and (max-width: 991px) {
         font-size: 12px;
         line-height: 18px;
@@ -41,6 +46,11 @@ const Link = styled.a`
     font-weight: 800;
     font-size: 14px;
     line-height: 22px;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        color: #c75e11;
+    }
 `;
 
 export {
