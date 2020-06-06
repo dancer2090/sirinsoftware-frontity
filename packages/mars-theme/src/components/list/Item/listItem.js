@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { connect } from 'frontity';
 import {
   ArtContainer, Article, Title,
@@ -32,7 +32,7 @@ const Item = ({ state, item, index }) => {
   const monthDay = (date.getDate() < 10) ? (`0${date.getDate()}`) : date.getDate();
   const strDate = `${months[date.getMonth()]}.${monthDay}.${date.getFullYear()}`;
   const title = item.title.rendered;
-  
+
   return (
     <Article isOdd={isOdd}>
       <ArtContainer>

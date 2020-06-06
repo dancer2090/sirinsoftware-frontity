@@ -20,18 +20,19 @@ class AllCategories extends React.Component {
   }
 
   render() {
+    const { categories, isOpen } = this.state;
     return (
       <AllCategoriesContainer>
         <AllCategoriesHeader
-          onClick={() => {
-            this.setState((state) => ({ isOpen: !state.isOpen }));
+          oonClick={() => {
+            this.setState(({ state }) => ({ isOpen: !state.isOpen }));
           }}
-          isOpen={this.state.isOpen}
+          isOpen={isOpen}
         >
           ALL CATEGORIES
         </AllCategoriesHeader>
-        <AllCategoriesContent isOpen={this.state.isOpen}>
-          {this.state.categories.map(({ id, title }) => (
+        <AllCategoriesContent isOpen={isOpen}>
+          {categories.map(({ id, title }) => (
             <AllCategoriesItem key={id}>
               {title}
             </AllCategoriesItem>
