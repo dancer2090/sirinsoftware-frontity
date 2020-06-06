@@ -1,2 +1,3 @@
-import Item from './listItem.js';
+import Item from './listItem';
+
 export default Item;

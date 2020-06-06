@@ -1,4 +1,4 @@
-import { styled } from "frontity";
+import { styled } from 'frontity';
 
 export const PaginationContainer = styled.div`
   margin-top: 2.68rem;

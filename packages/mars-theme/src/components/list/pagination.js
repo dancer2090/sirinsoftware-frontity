@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { connect } from "frontity";
-import Link from "../link";
+import React, { useEffect } from 'react';
+import { connect } from 'frontity';
+import Link from '../link';
 import { PaginationContainer, Text } from './styles';
 
 /**
@@ -29,7 +29,7 @@ const Pagination = ({ state, actions }) => {
         </Link>
       )}
 
-      {previous && next && " - "}
+      {previous && next && ' - '}
 
       {/* If there's a previous page, render this link */}
       {previous && (
@@ -54,7 +54,7 @@ export default connect(Pagination);
 //   justify-content: center;
 // `;
 // const Text = styled.em`
-  
+
 //   font-family: Montserrat;
 //   font-style: normal;
 //   font-weight: 800;

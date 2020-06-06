@@ -11,21 +11,21 @@ const Text = styled.div`
 
 export const Article = styled.article`
     flex: 1 1 46%;
-    padding: ${(props) => (props.isOdd ? '5% 0 0px 10px' : '0px 10px 0px 0' )};
+    padding: ${(props) => (props.isOdd ? '5% 0 0px 10px' : '0px 10px 0px 0')};
     @media (max-width: 767px) {
       flex: 1 1 98%;
       padding: 10px 0;
       && button {
-        background: ${ (props) => ( 
-          props.isOdd ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)' :
-            'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)' )
-      }
+        background: ${(props) => (
+    props.isOdd ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
+      : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)')
+}
     }
     
 `;
 export const ArtContainer = styled.div`
   position: relative;
-`; 
+`;
 
 export const ImgContainer = styled.div`
   width:100%;
@@ -59,50 +59,50 @@ export const ImgContainer = styled.div`
 
 export const ArtCategory = styled(Text)`
     position: absolute;
-    top:${({isOdd}) => (isOdd ? '30px':'26px')};
-    left:${({isOdd, n}) => {
-      if (isOdd) return '30px';
-      if (n%2) return '29px'
-        else return '26px';
-    }};
+    top:${({ isOdd }) => (isOdd ? '30px' : '26px')};
+    left:${({ isOdd, n }) => {
+    if (isOdd) return '30px';
+    if (n % 2) return '29px';
+    return '26px';
+  }};
     font-size: 22px;
     line-height: 22px;
     text-transform: uppercase;
     @media (max-width: 1151px) {
-      font-size: ${({isClGreen}) => (isClGreen ? '20px':'18px')};
+      font-size: ${({ isClGreen }) => (isClGreen ? '20px' : '18px')};
     }
     @media (max-width: 767px) {
       font-size: 14px;
-      top:${({isOdd}) => (isOdd ? '16px':'15px')};
-      left:${({isOdd}) => (isOdd ? '19px':'22px')};
+      top:${({ isOdd }) => (isOdd ? '16px' : '15px')};
+      left:${({ isOdd }) => (isOdd ? '19px' : '22px')};
     }
 `;
 export const ArtDate = styled(Text)`
     position: absolute;
-    top:${({isOdd, n}) => {
-      if (isOdd) return '27px';
-      if (n%2) return '26px'
-        else return '25px';
-    }};
-    right:${({isOdd}) => (isOdd ? '30px':'29px')};
+    top:${({ isOdd, n }) => {
+    if (isOdd) return '27px';
+    if (n % 2) return '26px';
+    return '25px';
+  }};
+    right:${({ isOdd }) => (isOdd ? '30px' : '29px')};
     font-size: 14px;
     line-height: 30px;
     letter-spacing: 0.01em;
     @media (max-width: 767px) {
       font-size: 12px;
       top:10px;
-      right: :${({isOdd}) => (isOdd ? '19px':'20px')};
+      right: :${({ isOdd }) => (isOdd ? '19px' : '20px')};
     }
     
-`; 
+`;
 export const BtnRead = styled.button`
     width:100%;
     height:46px;
     border:none;
-    background: ${ (props) => ( 
-        props.isClGreen ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)' :
-          'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)'
-    )}; 
+    background: ${(props) => (
+    props.isClGreen ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
+      : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)'
+  )}; 
     font-family: Montserrat;
     font-style: normal;
     font-weight: 800;
@@ -112,15 +112,15 @@ export const BtnRead = styled.button`
     text-transform: uppercase;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
 `;
-export const  Title = styled.h1`
+export const Title = styled.h1`
     position: absolute;
     bottom: 33px;
-    left:${({isOdd}) => (isOdd ? '29px' : '31px')};
-    right: ${({isOdd, n}) => {
-      if (isOdd) return '109px';
-      if (n%2) return '75px'
-        else return '94px';
-    }};
+    left:${({ isOdd }) => (isOdd ? '29px' : '31px')};
+    right: ${({ isOdd, n }) => {
+    if (isOdd) return '109px';
+    if (n % 2) return '75px';
+    return '94px';
+  }};
     font-size: 30px;
     line-height: 30px;
     color: ${CL_TEXT};
@@ -130,13 +130,13 @@ export const  Title = styled.h1`
     @media (max-width: 1151px) {
       font-size: 24px;
       line-height: 26px;
+      left:20px;
+      bottom: 42px;
     }
-    @media (max-width: 500px) {
+    @media (max-width: 767px) {
       font-size: 18px;
       line-height: 20px;
-      bottom: 60px;
-      left:${({isOdd}) => (isOdd ? '20px' : '18px')};
-      bottom: ${({isOdd}) => (isOdd ? '20px' : '18px')};
+      left:${({ isOdd }) => (isOdd ? '20px' : '16px')};
+      bottom: 52px;
     }
 `;
-

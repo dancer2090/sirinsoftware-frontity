@@ -1,7 +1,7 @@
-import React from "react";
-import { connect,  decode } from "frontity";
-import Item from "./Item/index.js";
-import Pagination from "./pagination";
+import React from 'react';
+import { connect, decode } from 'frontity';
+import Item from './Item';
+import Pagination from './pagination';
 import AllCAtegories from './allCategories';
 import { Container, Header } from './styles';
 
@@ -14,7 +14,9 @@ const List = ({ state }) => {
       {/* If the list is a taxonomy, we render a title. */}
       {data.isTaxonomy && (
         <Header>
-          {data.taxonomy}:{" "}
+          {data.taxonomy}
+          :
+          {' '}
           <b>{decode(state.source[data.taxonomy][data.id].name)}</b>
         </Header>
       )}
@@ -22,7 +24,9 @@ const List = ({ state }) => {
       {/* If the list is for a specific author, we render a title. */}
       {data.isAuthor && (
         <Header>
-          Author: <b>{decode(state.source.author[data.id].name)}</b>
+          Author:
+          {' '}
+          <b>{decode(state.source.author[data.id].name)}</b>
         </Header>
       )}
       <AllCAtegories />
@@ -38,25 +42,3 @@ const List = ({ state }) => {
 };
 
 export default connect(List);
-
-// const Container = styled.section`
-//   width: 960px;
-//   margin: 0;
-//   margin-top: 30px;
-//   padding: 1rem;
-//   padding-top: 1.75rem;
-//   list-style: none;
-//   display: flex;
-//   justify-content:space-between;
-//   flex-wrap: wrap;
-//   position: relative;
-//   @media (max-width: 767px) {
-//     margin-top: 60px;
-//   }
-// `;
-
-// const Header = styled.h3`
-//   font-weight: 300;
-//   text-transform: capitalize;
-//   color: rgba(12, 17, 43, 0.9);
-// `;

@@ -1,6 +1,6 @@
 import { styled } from 'frontity';
 
-export const  AllCategoriesContainer = styled.div`
+export const AllCategoriesContainer = styled.div`
     position: absolute;
     top: 0;
     right:1rem;
@@ -31,11 +31,11 @@ export const AllCategoriesHeader = styled.div`
         height: 8px;
         border-left: 2px solid  #FFFFFF;
         border-top: 2px solid  #FFFFFF;
-        transform: rotate(${ (props) => ( props.isOpen ? '45deg' : '-135deg') });
+        transform: rotate(${(props) => (props.isOpen ? '45deg' : '-135deg')});
         @media (max-width: 767px) {
             position:absolute;
             right:5%;
-            transform: rotate(${ (props) => ( props.isOpen ? '45deg' : '-135deg') });
+            transform: rotate(${(props) => (props.isOpen ? '45deg' : '-135deg')});
         }
         
     }
@@ -44,7 +44,7 @@ export const AllCategoriesHeader = styled.div`
 export const AllCategoriesContent = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
-    display: ${ (props) => ( props.isOpen ? 'block': 'none') };
+    display: ${(props) => (props.isOpen ? 'block' : 'none')};
     padding: 1.125rem ;
     padding-bottom:0.5rem;
 `;
