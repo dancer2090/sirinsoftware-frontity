@@ -48,6 +48,9 @@ export const ImgContainer = styled.div`
   } 
   @media (max-width: 767px) {
     max-height:500px;
+    img {
+      margin-top: -15%;
+    }
   }
   @media (max-width: 450px) {
     max-height:254px;
@@ -56,24 +59,39 @@ export const ImgContainer = styled.div`
 
 export const ArtCategory = styled(Text)`
     position: absolute;
-    top:1.6rem;
-    left:1.6rem;
-    font-size: 1.375rem;
-    line-height: 1.375rem;
+    top:${({isOdd}) => (isOdd ? '30px':'26px')};
+    left:${({isOdd, n}) => {
+      if (isOdd) return '30px';
+      if (n%2) return '29px'
+        else return '26px';
+    }};
+    font-size: 22px;
+    line-height: 22px;
     text-transform: uppercase;
+    @media (max-width: 1151px) {
+      font-size: ${({isClGreen}) => (isClGreen ? '20px':'18px')};
+    }
     @media (max-width: 767px) {
-      font-size: 0.875rem;
+      font-size: 14px;
+      top:${({isOdd}) => (isOdd ? '16px':'15px')};
+      left:${({isOdd}) => (isOdd ? '19px':'22px')};
     }
 `;
 export const ArtDate = styled(Text)`
     position: absolute;
-    top:1.6rem;
-    right:1.6rem;
-    font-size:0.875rem;
-    line-height: 1.875rem;
+    top:${({isOdd, n}) => {
+      if (isOdd) return '27px';
+      if (n%2) return '26px'
+        else return '25px';
+    }};
+    right:${({isOdd}) => (isOdd ? '30px':'29px')};
+    font-size: 14px;
+    line-height: 30px;
     letter-spacing: 0.01em;
     @media (max-width: 767px) {
-      font-size: 0.75rem;
+      font-size: 12px;
+      top:10px;
+      right: :${({isOdd}) => (isOdd ? '19px':'20px')};
     }
     
 `; 
@@ -88,25 +106,37 @@ export const BtnRead = styled.button`
     font-family: Montserrat;
     font-style: normal;
     font-weight: 800;
-    font-size: 1rem;
-    line-height: 1.375rem;
+    font-size: 16px;
+    line-height: 22px;
     color: ${CL_TEXT};
     text-transform: uppercase;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
 `;
 export const  Title = styled.h1`
     position: absolute;
-    bottom:15%;
-    left:1.25rem;
-    font-size: 1.5rem;
-    line-height: 1.625rem;
+    bottom: 33px;
+    left:${({isOdd}) => (isOdd ? '29px' : '31px')};
+    right: ${({isOdd, n}) => {
+      if (isOdd) return '109px';
+      if (n%2) return '75px'
+        else return '94px';
+    }};
+    font-size: 30px;
+    line-height: 30px;
     color: ${CL_TEXT};
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    @media (max-width: 767px) {
-      font-size: 1.125rem;
-      line-height:1.25rem
+    @media (max-width: 1151px) {
+      font-size: 24px;
+      line-height: 26px;
+    }
+    @media (max-width: 500px) {
+      font-size: 18px;
+      line-height: 20px;
+      bottom: 60px;
+      left:${({isOdd}) => (isOdd ? '20px' : '18px')};
+      bottom: ${({isOdd}) => (isOdd ? '20px' : '18px')};
     }
 `;
 

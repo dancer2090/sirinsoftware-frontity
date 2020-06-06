@@ -44,9 +44,9 @@ const Item = ({ state, item, index }) => {
             alt={"Post in blog"}
            />
         </ImgContainer>
-        <ArtCategory>Category</ArtCategory>
-        <ArtDate>{strDate}</ArtDate>
-        <Title>{title}</Title>
+        <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>Category</ArtCategory>
+        <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>
+        <Title isOdd={isOdd} n={n}>{title}</Title>
         <BtnRead onClick={()=>{console.log('click on button')}} isClGreen = {isClGreen}>Read</BtnRead>
       </ArtContainer>
     </Article>

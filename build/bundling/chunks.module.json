@@ -2,17 +2,46 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "e6530484008c58054faf",
+  "hash": "0fadd1d29aff3c5af428",
   "publicPath": "/static/",
   "outputPath": "D:\\Slava\\WorkWithIvan\\sirinsoftware-frontity\\build\\static",
   "assetsByChunkName": {
-    "list": "list.module.js",
+    "list": [
+      "list.module.js",
+      "list.3de6a86d2ecbf2ea50f7.hot-update.js"
+    ],
     "sirinsoftware-frontity": "sirinsoftware-frontity.module.js"
   },
   "assets": [
     {
+      "name": "3de6a86d2ecbf2ea50f7.hot-update.json",
+      "size": 46,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "hotModuleReplacement": true,
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "list.3de6a86d2ecbf2ea50f7.hot-update.js",
+      "size": 59438,
+      "chunks": [
+        "list"
+      ],
+      "chunkNames": [
+        "list"
+      ],
+      "info": {
+        "hotModuleReplacement": true,
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
       "name": "list.module.js",
-      "size": 114579,
+      "size": 129608,
       "chunks": [
         "list"
       ],
@@ -64,7 +93,8 @@
         "list"
       ],
       "assets": [
-        "list.module.js"
+        "list.module.js",
+        "list.3de6a86d2ecbf2ea50f7.hot-update.js"
       ],
       "children": {},
       "childAssets": {}
