@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "a6f6f2228c0aadaf42c0",
+  "hash": "e6530484008c58054faf",
   "publicPath": "/static/",
   "outputPath": "D:\\Slava\\WorkWithIvan\\sirinsoftware-frontity\\build\\static",
   "assetsByChunkName": {
@@ -12,7 +12,7 @@
   "assets": [
     {
       "name": "list.module.js",
-      "size": 110323,
+      "size": 114579,
       "chunks": [
         "list"
       ],
