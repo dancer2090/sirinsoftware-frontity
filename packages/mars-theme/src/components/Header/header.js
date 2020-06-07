@@ -3,7 +3,7 @@ import { connect } from 'frontity';
 import groupMenu from '../../img/group_menu.svg';
 import logo from '../../img/logo.svg';
 import CrossImg from '../../img/cross.svg';
-import Button from '../button/Button';
+import Button from '../Button/Button';
 
 import {
   HeadBlock,

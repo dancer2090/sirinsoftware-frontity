@@ -1,9 +1,9 @@
 import { styled } from 'frontity';
 import Post from './post';
 import Socials from './social-list';
-import Button from "./button";
+import Button from './button';
 
-const WrapperPage = styled.div`
+export const WrapperPage = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
     width: 100%;
@@ -14,7 +14,7 @@ const WrapperPage = styled.div`
     }
 `;
 
-const BigFrame = styled.div`
+export const BigFrame = styled.div`
     width: 100%;
     height: 400px;
     margin-bottom: 50px;
@@ -50,7 +50,7 @@ const BigFrame = styled.div`
     }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
     font-family: 'Montserrat', sans-serif;
     max-width: 960px;
     width: 100%;
@@ -66,7 +66,7 @@ const Container = styled.div`
     }
 `;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
     }
 `;
 
-const ArticleLeft = styled.div`
+export const ArticleLeft = styled.div`
     flex-grow: 2;
     width: calc(100% - 360px);
     margin-right: 60px;
@@ -98,7 +98,7 @@ const ArticleLeft = styled.div`
     }
 `;
 
-const ArticleContent = styled.div`
+export const ArticleContent = styled.div`
     margin-bottom: 50px;
     font-size: 14px;
     line-height: 24px;
@@ -134,7 +134,7 @@ const ArticleContent = styled.div`
     }
 `;
 
-const Posts = styled.div`
+export const Posts = styled.div`
     display: block;
     width: 300px;
     min-width: 300px;
@@ -150,7 +150,7 @@ const Posts = styled.div`
     }
 `;
 
-const PostTitle = styled.h2`
+export const PostTitle = styled.h2`
     font-family: 'Montserrat';
     font-size: 18px;
     font-weight: normal;
@@ -165,11 +165,11 @@ const PostTitle = styled.h2`
     }
 `;
 
-const PostList = styled.div`
+export const PostList = styled.div`
     display: block;
 `;
 
-const PostItem = styled(Post)`
+export const PostItem = styled(Post)`
     margin-bottom: 10px;
     &:last-child {
         margin-bottom: 50px;
@@ -185,21 +185,21 @@ const PostItem = styled(Post)`
 
 `;
 
-const ArticleLeftHeader = styled.div`
+export const ArticleLeftHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 35px;
 `;
 
-const DateBlock = styled.time`
+export const DateBlock = styled.time`
     font-size: 14px;
     line-height: 30px;
     letter-spacing: 0.01em;
     color: #222222;
 `;
 
-const SocialList = styled(Socials)`
+export const SocialList = styled(Socials)`
     margin-bottom: 78px;
 
     @media screen and (max-width: 767px) {
@@ -207,23 +207,6 @@ const SocialList = styled(Socials)`
     }
 `;
 
-const BusinessButton = styled(Button)`
+export const BusinessButton = styled(Button)`
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
 `;
-
-export {
-  Container,
-  Wrapper,
-  ArticleLeft,
-  Posts,
-  PostTitle,
-  PostItem,
-  ArticleLeftHeader,
-  DateBlock,
-  ArticleContent,
-  SocialList,
-  BigFrame,
-  WrapperPage,
-  BusinessButton,
-  PostList
-};

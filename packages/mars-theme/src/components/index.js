@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Global, connect, styled, Head,
+  Global, connect, Head,
 } from 'frontity';
 import Switch from '@frontity/components/switch';
-import Header from './header/header';
+import Header from './Header';
 import List from './list';
-import Article from './article';
-import Loading from './loading';
+import Article from './Article';
+import Loader from './Loader';
 import Title from './title';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
@@ -41,7 +41,7 @@ const Theme = ({ state }) => {
       on the type of URL we are in. */}
       <Main>
         <Switch>
-          <Loading when={data.isFetching} />
+          <Loader when={data.isFetching} />
           <List when={data.isArchive} />
           <Article when={data.isPostType} />
           <PageError when={data.isError} />

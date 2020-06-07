@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 import { styled } from 'frontity';
 
-const Field = styled.input`
+export const Field = styled.input`
     width: 100%;
     height: 36px;
     font-size: 14px;
@@ -24,7 +25,3 @@ const Field = styled.input`
         box-shadow: none;
     }
 `;
-
-export {
-  Field
-};

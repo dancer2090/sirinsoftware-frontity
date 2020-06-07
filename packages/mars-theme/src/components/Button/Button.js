@@ -1,10 +1,8 @@
 import React from 'react';
-import { styled, css } from "frontity";
-import  {
-  SIZE_DESCTOP_LARGE,
+import { styled, css } from 'frontity';
+import {
   SIZE_DESCTOP_MEDIUM_2,
   SIZE_DESCTOP_MEDIUM_1,
-  SIZE_DESCTOP_SMALL,
   getPxSize,
 } from '../../const/responsive';
 
@@ -29,7 +27,7 @@ const StyledButton = styled.button`
    
   }
 
-  ${props => props.size === 'large' && css`
+  ${(props) => props.size === 'large' && css`
     
     @media (max-width: ${getPxSize(SIZE_DESCTOP_MEDIUM_2)}) {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from "frontity";
+import { connect } from 'frontity';
 import {
   Container,
   Wrapper,
@@ -14,7 +14,7 @@ import {
   BigFrame,
   WrapperPage,
   BusinessButton,
-  PostList
+  PostList,
 } from './styles';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
@@ -71,6 +71,6 @@ const Article = ({ state, libraries }) => {
         </Wrapper>
       </Container>
     </WrapperPage>
-  )
-}
+  );
+};
 export default connect(Article);

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { connect, styled } from "frontity";
-import Link from "./link";
-import List from "./list";
-import FeaturedMedia from "./featured-media";
+import React, { useEffect } from 'react';
+import { connect, styled } from 'frontity';
+import Link from './link';
+import List from './list';
+import FeaturedMedia from './featured-media';
 
 const Post = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -23,7 +23,7 @@ const Post = ({ state, actions, libraries }) => {
    * the home page, everything is ready and it loads instantly.
    */
   useEffect(() => {
-    actions.source.fetch("/");
+    actions.source.fetch('/');
     List.preload();
   }, []);
 
@@ -39,13 +39,17 @@ const Post = ({ state, actions, libraries }) => {
             {author && (
               <StyledLink link={author.link}>
                 <Author>
-                  By <b>{author.name}</b>
+                  By
+                  {' '}
+                  <b>{author.name}</b>
                 </Author>
               </StyledLink>
             )}
             <Fecha>
-              {" "}
-              on <b>{date.toDateString()}</b>
+              {' '}
+              on
+              {' '}
+              <b>{date.toDateString()}</b>
             </Fecha>
           </div>
         )}
