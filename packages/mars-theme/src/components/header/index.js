@@ -1,4 +1,4 @@
-simport Header from './header';
+import Header from './header';
 
 /**
  * Codesplit the list component so it's not included if the users
