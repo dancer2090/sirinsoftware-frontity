@@ -9,7 +9,7 @@ import Article from './article';
 import Loading from './loading';
 import Title from './title';
 import PageError from './page-error';
-import globalStyles from './globalStyles';
+import { Space, globalStyles, Main } from './globalStyles';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -34,9 +34,8 @@ const Theme = ({ state }) => {
       <Global styles={globalStyles} />
 
       {/* Add the header of the site. */}
-      <HeadContainer>
-        <Header />
-      </HeadContainer>
+      <Header />
+      <Space />
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
@@ -53,21 +52,3 @@ const Theme = ({ state }) => {
 };
 
 export default connect(Theme);
-
-
-const HeadContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #1f38c5;
-`;
-
-const Main = styled.div`
-  display: flex;
-  justify-content: center;
-  background-image: linear-gradient(
-    180deg,
-    rgba(66, 174, 228, 0.1),
-    rgba(66, 174, 228, 0)
-  );
-`;

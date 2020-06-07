@@ -1,6 +1,6 @@
-import { css } from 'frontity';
+import { css, styled } from 'frontity';
 
-const globalStyles = css`
+export const globalStyles = css`
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -20,4 +20,24 @@ const globalStyles = css`
   }
 `;
 
-export default globalStyles;
+export const Space = styled.div`
+  height: 76px;
+`;
+
+
+export const HeadContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1f38c5;
+`;
+
+export const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    180deg,
+    rgba(66, 174, 228, 0.1),
+    rgba(66, 174, 228, 0)
+  );
+`;

@@ -3,6 +3,7 @@ import { styled } from 'frontity';
 export const HeadBlock = styled.div`
   width: 100%;
   position: fixed;
+  z-index: 10;
 `;
 
 export const Header = styled.div`
