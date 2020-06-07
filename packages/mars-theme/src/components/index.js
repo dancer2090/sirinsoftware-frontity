@@ -1,7 +1,7 @@
 import React from "react";
 import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
-import Header from "./header";
+import Header from "./header/header";
 import List from "./list";
 import Article from "./article";
 import Loading from "./loading";
@@ -56,12 +56,22 @@ const globalStyles = css`
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
+  button {
+    font-weight: 800;
+    font-family: Montserrat, sans-serif;
+  }
+  input, textarea {
+    font-weight: 400;
+    font-family: Montserrat, sans-serif;
+  }
   a,
   a:visited {
     color: inherit;
     text-decoration: none;
   }
+
 `;
+
 
 const HeadContainer = styled.div`
   display: flex;
