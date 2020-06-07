@@ -1,11 +1,11 @@
-import {styled,css,keyframes} from 'frontity';
+import { styled } from 'frontity';
 
-export const HeadBlock = styled.div `
+export const HeadBlock = styled.div`
     width: 100%;
     position: fixed;
 `;
 
-export const Header = styled.div `
+export const Header = styled.div`
   padding-right: 50px;
   display: flex;
   align-items: center;
@@ -94,13 +94,13 @@ export const Header = styled.div `
 
 `;
 
-export const Mobilemenu = styled.div `
+export const Mobilemenu = styled.div`
 @media(min-width: 1100px) {
             display: none;
         }
 `;
 
-export const Logo = styled.div `
+export const Logo = styled.div`
     height: 36px;
     width: 170px;
     margin-left: 10px;
@@ -117,11 +117,11 @@ export const Logo = styled.div `
             margin-left: 10px;
 }
 `;
-export const Submenu = styled.div `
+export const Submenu = styled.div`
 margin: 10px 10px 0px 10px;
 `;
 
-export const MobileButton = styled.div `
+export const MobileButton = styled.div`
 a {
     font-family: Montserrat;
     font-style: normal;
@@ -140,7 +140,7 @@ a {
 }
 `;
 
-export const GetButton = styled.div `
+export const GetButton = styled.div`
     width: 180px;
     height: 40px;
 @media(max-width: 699px) {
@@ -148,7 +148,7 @@ export const GetButton = styled.div `
 }
 `;
 
-export const PopUpWindow = styled.div `
+export const PopUpWindow = styled.div`
     margin-top: 5px;
     display: flex;
     justify-content: space-around;
@@ -160,7 +160,7 @@ export const PopUpWindow = styled.div `
 
 `;
 
-export const MobileBody = styled.div `
+export const MobileBody = styled.div`
     margin-left: 20px;
     padding-right: 10px;
     width: 90%;
@@ -168,12 +168,12 @@ export const MobileBody = styled.div `
 
 `;
 
-export const MobileOption = styled.div `
+export const MobileOption = styled.div`
     text-align: center;
     height: 320px;     
 `;
 
-export const LogoBlock = styled.div `
+export const LogoBlock = styled.div`
     margin-top: 10px;
     margin-bottom: 11px;
     display: flex;
@@ -182,12 +182,12 @@ export const LogoBlock = styled.div `
 `;
 
 
-export const MobileLogo = styled.div `
+export const MobileLogo = styled.div`
     padding-left: 50px;
 
 `;
 
-export const MobileTopMenu = styled.div `
+export const MobileTopMenu = styled.div`
     padding:0;
     ul li a {
         text-decoration: none;
@@ -230,23 +230,20 @@ export const MobileTopMenu = styled.div `
     }
 `;
 
-export const MobileGetButton = styled.div `
+export const MobileGetButton = styled.div`
     text-align: center;
     padding-left: 40px;
 `;
 
-export const CrossBlock = styled.div `
+export const CrossBlock = styled.div`
     width: 10%;
     margin-top: 10px;
     margin-right: 10px;
 `;
 
-export const Cross = styled.div `
+export const Cross = styled.div`
     @media(min-width: 1100px) {
                 display: none;
             }
 
 `;
-
-
-
