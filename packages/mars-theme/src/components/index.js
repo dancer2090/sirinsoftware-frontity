@@ -3,7 +3,7 @@ import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
 import Header from "./header/header";
 import List from "./list";
-import Post from "./post";
+import Article from "./article";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
@@ -40,7 +40,7 @@ const Theme = ({ state }) => {
         <Switch>
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
-          <Post when={data.isPostType} />
+          <Article when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
       </Main>
