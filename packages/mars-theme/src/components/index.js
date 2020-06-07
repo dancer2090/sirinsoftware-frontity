@@ -1,12 +1,15 @@
-import React from "react";
-import { Global, css, connect, styled, Head } from "frontity";
-import Switch from "@frontity/components/switch";
-import Header from "./header/header";
-import List from "./list";
-import Article from "./article";
-import Loading from "./loading";
-import Title from "./title";
-import PageError from "./page-error";
+import React from 'react';
+import {
+  Global, connect, styled, Head,
+} from 'frontity';
+import Switch from '@frontity/components/switch';
+import Header from './header/header';
+import List from './list';
+import Article from './article';
+import Loading from './loading';
+import Title from './title';
+import PageError from './page-error';
+import globalStyles from './globalStyles';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -23,9 +26,10 @@ const Theme = ({ state }) => {
       <Head>
         <meta name="description" content={state.frontity.description} />
         <html lang="en" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
       </Head>
 
-      {/* Add some global styles for the whole site, like body or a's. 
+      {/* Add some global styles for the whole site, like body or a's.
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
       <Global styles={globalStyles} />
 
@@ -49,28 +53,6 @@ const Theme = ({ state }) => {
 };
 
 export default connect(Theme);
-
-const globalStyles = css`
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  button {
-    font-weight: 800;
-    font-family: Montserrat, sans-serif;
-  }
-  input, textarea {
-    font-weight: 400;
-    font-family: Montserrat, sans-serif;
-  }
-  a,
-  a:visited {
-    color: inherit;
-    text-decoration: none;
-  }
-
-`;
 
 
 const HeadContainer = styled.div`

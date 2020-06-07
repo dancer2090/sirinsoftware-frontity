@@ -18,7 +18,7 @@ import {
 } from './styles';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
-import Image from '../../../img/image.jpg';
+import Image from '../../img/image.jpg';
 
 const Article = ({ state, libraries }) => {
   // Get information about the current URL.

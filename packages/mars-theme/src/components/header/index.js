@@ -1,7 +1,7 @@
-import {loadable} from "frontity";
+simport Header from './header';
 
 /**
  * Codesplit the list component so it's not included if the users
  * load a post directly.
  */
-export default loadable(() => import("./header"));
+export default Header;

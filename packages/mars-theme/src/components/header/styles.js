@@ -1,8 +1,8 @@
 import { styled } from 'frontity';
 
 export const HeadBlock = styled.div`
-    width: 100%;
-    position: fixed;
+  width: 100%;
+  position: fixed;
 `;
 
 export const Header = styled.div`
