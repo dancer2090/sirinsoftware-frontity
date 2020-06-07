@@ -27,7 +27,7 @@ export const BigFrame = styled.div`
         margin: 0;
         font-weight: bold;
         font-size: 44px;
-        line-height: 30px;
+        line-height: 50px;
         color: #FFFFFF;
     }
 
@@ -37,6 +37,7 @@ export const BigFrame = styled.div`
 
         h1 {
             font-size: 36px;
+            line-height: 40px;
         }
     }
 
@@ -46,6 +47,7 @@ export const BigFrame = styled.div`
 
         h1 {
             font-size: 24px;
+            line-height: 30px;
         }
     }
 `;
@@ -120,6 +122,16 @@ export const ArticleContent = styled.div`
         margin-bottom: 14px;
     }
 
+    h3 {
+        font-size: 20px;
+        line-height: 32px;
+    }
+
+    h4 {
+        font-size: 16px;
+        line-height: 28px;
+    }
+
     @media screen and  (max-width: 767px) {
         line-height: 22px;
         font-size: 12px;
@@ -130,6 +142,16 @@ export const ArticleContent = styled.div`
             margin-bottom: 23px;
             font-size: 18px;
             line-height: 18px;
+        }
+
+        h3 {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        h4 {
+            font-size: 10px;
+            line-height: 14px;
         }
     }
 `;
