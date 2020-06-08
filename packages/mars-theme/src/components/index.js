@@ -8,9 +8,9 @@ import List from './list';
 import Article from './Article';
 import Loader from './Loader';
 import Title from './title';
+import Services from './Services';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
-
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
@@ -39,6 +39,8 @@ const Theme = ({ state }) => {
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
+      <Services />
+
       <Main>
         <Switch>
           <Loader when={data.isFetching} />

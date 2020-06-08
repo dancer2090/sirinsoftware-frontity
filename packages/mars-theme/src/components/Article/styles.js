@@ -5,7 +5,6 @@ import Button from './button';
 
 export const WrapperPage = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
     width: 100%;
     background-color: white;
 

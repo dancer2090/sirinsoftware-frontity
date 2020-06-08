@@ -1,6 +1,7 @@
 import { css, styled } from 'frontity';
 
 export const globalStyles = css`
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
