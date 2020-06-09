@@ -34,7 +34,7 @@ const Theme = ({ state }) => {
       <Global styles={globalStyles} />
 
       {/* Add the header of the site. */}
-      <Header />
+      {/* <Header /> */}
       <Space />
 
       {/* Add the main section. It renders a different component depending

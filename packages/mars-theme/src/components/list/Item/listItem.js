@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'frontity';
 import {
-  ArtContainer, Article, Title,
-  ArtCategory, ArtDate, BtnRead, ImgContainer,
+  ArtContainer,
+  Article,
+  Title,
+  ArtCategory,
+  ArtDate,
+  BtnRead,
+  ImgContainer,
 } from './styles';
-
+import Link from '../../link';
 import imgSrc from './img-src';
 /**
  * Item Component
@@ -14,7 +19,9 @@ import imgSrc from './img-src';
  * - Author: name of author and published date
  * - FeaturedMedia: the featured image/video of the post
  */
-const Item = ({ state, item, index }) => {
+const Item = ({ state, libraries, item, index }) => {
+  // Get the html2react component.
+  const Html2React = libraries.html2react.Component;
   const n = Math.floor(index / 2);
   const isOdd = (index === 1) ? true : index % 2 !== 0;
   const months = ['January', 'February', 'March',
@@ -45,8 +52,18 @@ const Item = ({ state, item, index }) => {
         </ImgContainer>
         <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>Category</ArtCategory>
         <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>
-        <Title isOdd={isOdd} n={n}>{title}</Title>
-        <BtnRead isClGreen={isClGreen}>Read</BtnRead>
+        <Link link="/">
+          <Title
+            isClGreen={isClGreen}
+            isOdd={isOdd}
+            n={n}
+          >
+            <Html2React html={title} />
+          </Title>
+        </Link>
+        <Link link="/">
+          <BtnRead isClGreen={isClGreen}>Read</BtnRead>
+        </Link>
       </ArtContainer>
     </Article>
   );
