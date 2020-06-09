@@ -19,9 +19,9 @@ export const Article = styled.article`
       padding: 10px 0;
       /* && button {
         background: ${(props) => (
-          props.isOdd ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
-          : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)')
-        } */
+    props.isOdd ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
+      : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)')
+} */
     }
 `;
 export const ArtContainer = styled.div`
@@ -100,10 +100,10 @@ export const BtnRead = styled.button`
     height:46px;
     border:none;
     background: ${(props) => (
-      props.isClGreen
+    props.isClGreen
       ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
       : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)'
-    )};
+  )};
     font-family: Montserrat;
     font-style: normal;
     font-weight: 800;
@@ -149,7 +149,7 @@ export const Title = styled.h2`
     font-weight: bold;
     transition: all 0.3s ease-in-out;
     &:hover {
-      color: ${props => !props.isClGreen ? CL_TEXT_HOVER2 : CL_TEXT_HOVER1};
+      color: ${(props) => (!props.isClGreen ? CL_TEXT_HOVER2 : CL_TEXT_HOVER1)};
     } 
 
     @media (max-width: 1151px) {

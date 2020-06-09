@@ -19,7 +19,9 @@ import imgSrc from './img-src';
  * - Author: name of author and published date
  * - FeaturedMedia: the featured image/video of the post
  */
-const Item = ({ state, libraries, item, index }) => {
+const Item = ({
+  libraries, item, index,
+}) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
   const n = Math.floor(index / 2);

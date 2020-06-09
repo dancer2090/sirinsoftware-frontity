@@ -24,7 +24,7 @@ const AllCategories = () => {
     setIsOpen(false);
     // go to the new url here;
   };
-  const category = categories.find(c => c.id === activeItem) || {};
+  const category = categories.find((c) => c.id === activeItem) || {};
   return (
     <AllCategoriesContainer>
       <AllCategoriesHeader
@@ -42,5 +42,5 @@ const AllCategories = () => {
       </AllCategoriesContent>
     </AllCategoriesContainer>
   );
-}
+};
 export default AllCategories;
