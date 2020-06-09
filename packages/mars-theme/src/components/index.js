@@ -10,6 +10,8 @@ import Loader from './Loader';
 import Title from './title';
 import Services from './Services';
 import PageError from './page-error';
+import PageNotFound from './404';
+
 import { Space, globalStyles, Main } from './globalStyles';
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -39,12 +41,13 @@ const Theme = ({ state }) => {
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
-      <Services />
-
+      
       <Main>
         <Switch>
           <Loader when={data.isFetching} />
           <List when={data.isArchive} />
+          <Services when={state.router.link === '/services/'} />
+          <PageNotFound when={state.router.link === 'not-found' } />
           <Article when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
