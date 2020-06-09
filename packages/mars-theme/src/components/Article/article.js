@@ -35,7 +35,7 @@ const Article = ({ state, libraries }) => {
       <BigFrame image={Image}>
         <Container>
           <h1>
-          <Html2React html={post.title.rendered} />
+            <Html2React html={post.title.rendered} />
           </h1>
         </Container>
       </BigFrame>

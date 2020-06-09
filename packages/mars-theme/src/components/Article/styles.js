@@ -196,6 +196,9 @@ export const PostItem = styled(Post)`
     &:last-child {
         margin-bottom: 50px;
     }
+    a:last-child {
+      text-align: right;
+    }
 
     @media screen and (max-width: 767px) {
         margin-bottom: 5px;
