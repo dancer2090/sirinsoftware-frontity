@@ -2,7 +2,7 @@ import React from 'react';
 import { connect, decode } from 'frontity';
 import Item from './Item';
 import Pagination from './pagination';
-import AllCAtegories from './allCategories';
+import AllCAtegories from './AllCategories';
 import { Container, Header } from './styles';
 
 const List = ({ state }) => {
