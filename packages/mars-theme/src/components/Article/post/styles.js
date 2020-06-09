@@ -37,24 +37,29 @@ const Name = styled.a`
     }
 `;
 
-const Link = styled.a`
+const LinkButton = styled.button`
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
     width: fit-content;
     margin-left: auto;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #F8710F;
     font-weight: 800;
     font-size: 14px;
     line-height: 22px;
     transition: all .3s ease-in-out;
+    color: #F8710F;
+    margin-left: auto;
+    outline: none;
 
     &:hover {
-        color: #c75e11;
+      color: #c75e11;
     }
 `;
 
 export {
   Container,
   Name,
-  Link,
+  LinkButton,
 };
