@@ -59,8 +59,8 @@ const Description = styled.div`
     padding: 0 5px;
 
     a {
-        color: #FFB03A;
-        margin-left: 3px;
+      color: #FFB03A;
+      margin-left: 3px;
     }
 
     @media screen and (max-width: 991px) {

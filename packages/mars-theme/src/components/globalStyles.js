@@ -15,7 +15,6 @@ export const globalStyles = css`
   }
   a,
   a:visited {
-    color: inherit;
     text-decoration: none;
   }
 `;
