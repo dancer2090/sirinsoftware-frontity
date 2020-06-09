@@ -12,11 +12,15 @@ import {
   CopyButton,
 } from './styles';
 
-const SocialList = ({ className }) => {
+const SocialList = ({ className, title = '' }) => {
   const [show, setShow] = useState(false);
-  const copyLink = () => {
-    setShow(true);
 
+  let href
+  const copyLink = () => {
+    href = location.href;
+    navigator.clipboard.writeText(href);
+
+    setShow(true);
     setTimeout(() => {
       setShow(false);
     }, 2000);
@@ -28,21 +32,21 @@ const SocialList = ({ className }) => {
         <SocialItem
           name="facebook"
           target="__blank"
-          href="https://www.facebook.com/sirinsoftware"
+          href={`https://www.facebook.com/sharer/sharer.php?u=${href}`}
         >
           <SocialIcon name="facebook" />
         </SocialItem>
         <SocialItem
           name="linkedin"
           target="__blank"
-          href="https://www.linkedin.com/company/sirinsoftware"
+          href={`https://www.linkedin.com/cws/share?url=${href}`}
         >
           <SocialIcon name="linkedin" />
         </SocialItem>
         <SocialItem
           name="twitter"
           target="__blank"
-          href="https://twitter.com/Sirin_Software"
+          href={`https://twitter.com/share?text=${title}&url=${href}`}
         >
           <SocialIcon name="twitter" />
         </SocialItem>

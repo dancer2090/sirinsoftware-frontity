@@ -21,8 +21,27 @@ export const AllCategoriesHeader = styled.div`
     letter-spacing: 0.02rem;
     text-transform: uppercase;
     color: #FFFFFF;
+    cursor: pointer;
     padding: 1.125rem 1.25rem;
-    ::after {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: rgba(0, 0, 0, 1);
+      pointer-events: none;
+      transition: all .3s ease-in-out;
+    }
+    &:hover {
+      &:before {
+        opacity: .1;
+      }
+    }
+    &:after {
         cursor: pointer;
         display:inline-block;
         margin-left:1rem;
@@ -31,13 +50,15 @@ export const AllCategoriesHeader = styled.div`
         height: 8px;
         border-left: 2px solid  #FFFFFF;
         border-top: 2px solid  #FFFFFF;
+        position: relative;
+        top: -2px;
+        transition: all 0.3s ease-in-out;
         transform: rotate(${(props) => (props.isOpen ? '45deg' : '-135deg')});
         @media (max-width: 767px) {
             position:absolute;
             right:5%;
             transform: rotate(${(props) => (props.isOpen ? '45deg' : '-135deg')});
         }
-        
     }
 `;
 

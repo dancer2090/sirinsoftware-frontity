@@ -1,114 +1,80 @@
 import { styled } from 'frontity';
-import {
-  PADDING_DESCTOP_MEDIUM_2,
-  PADDING_DESCTOP_MEDIUM_1,
-  PADDING_DESCTOP_SMALL,
-  PADDING_MOBILE,
-  SIZE_DESCTOP_MEDIUM_2,
-  SIZE_DESCTOP_MEDIUM_1,
-  SIZE_DESCTOP_SMALL,
-  SIZE_LAPTOP,
-  SIZE_MOBILE,
-  HEADER_FONT_SIZE_DESCTOP_LARGE,
-  HEADER_LINE_HEIGHT_DESCTOP_LARGE,
-  HEADER_FONT_SIZE_DESCTOP_MEDIUM_1,
-  HEADER_LINE_HEIGHT_DESCTOP_MEDIUM_1,
-  HEADER_FONT_SIZE_MOBILE,
-  HEADER_LINE_HEIGHT_MOBILE,
-  TEXT_FONT_SIZE_DESCTOP_LARGE,
-  TEXT_LINE_HEIGHT_DESCTOP_LARGE,
-  TEXT_FONT_SIZE_DESCTOP_MEDIUM_1,
-  TEXT_LINE_HEIGHT_DESCTOP_MEDIUM_1,
-  TEXT_FONT_SIZE_MOBILE,
-  TEXT_LINE_HEIGHT_MOBILE,
-} from '../../const/responsive';
 
-export const GlobalContainer = styled.div`
-  padding-top: 185px;
-  overflow: hidden;
-  position: relative;
-
-  @media (max-width: ${SIZE_DESCTOP_MEDIUM_2}px) {
-    padding-top: 139px;
-  }
-  @media (max-width: ${SIZE_MOBILE}px) {
-    padding-top: 91px;
-  }
-`;
 export const Container = styled.div`
-  margin: 0 auto;
-  text-align: center;
-  padding-right: 150px;  
-  padding-left: 150px;  
-  padding-bottom: 225px;
-  @media (max-width: ${SIZE_DESCTOP_MEDIUM_2}px) {
-    padding-left: ${PADDING_DESCTOP_MEDIUM_2}px;
-    padding-right: ${PADDING_DESCTOP_MEDIUM_2}px;
+  padding-top: 96px;
+  padding-bottom: 157px;
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+  @media screen and (max-width: 991px) {
+    padding-top: 155px;
+    padding-bottom: 135px;
   }
 
-  @media (max-width: ${SIZE_DESCTOP_MEDIUM_1}px) {
-    padding-left: ${PADDING_DESCTOP_MEDIUM_1}px;
-    padding-right: ${PADDING_DESCTOP_MEDIUM_1}px;
-    margin-bottom: 169px;
-  }
-
-  @media (max-width: ${SIZE_DESCTOP_SMALL}px) {
-    padding-left: ${PADDING_DESCTOP_SMALL}px;
-    padding-right: ${PADDING_DESCTOP_SMALL}px;
-  }
-  @media (max-width: ${SIZE_LAPTOP}px) {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-  @media (max-width: ${SIZE_MOBILE}px) {
-    padding-left: ${PADDING_MOBILE}px;
-    padding-right: ${PADDING_MOBILE}px;
-    margin-bottom: 50px;
-  }
-
-  button {
-    margin: 0 auto;
+  @media screen and (max-width: 767px) {
+    padding: 40px 10px 100px 10px;
   }
 `;
 
-export const Slogan = styled.h1`
+export const TitleError = styled.h2`
+  margin-top: 0;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
   text-align: center;
-  line-height: ${HEADER_LINE_HEIGHT_DESCTOP_LARGE}px;
-  opacity: 1;
-  font-size: ${HEADER_FONT_SIZE_DESCTOP_LARGE}px;
-  font-weight: 700;
-  margin: 0;
-  white-space: pre-wrap;
+  text-transform: uppercase;
+  background: linear-gradient(#F8710F 0%, #FFB03A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 64px;
+`;
 
-  @media (max-width: ${SIZE_DESCTOP_MEDIUM_1}px) {
-    font-size: ${HEADER_FONT_SIZE_DESCTOP_MEDIUM_1}px;
-    line-height: ${HEADER_LINE_HEIGHT_DESCTOP_MEDIUM_1}px;
-  }
-  @media (max-width: ${SIZE_MOBILE}px) {
-    font-size: ${HEADER_FONT_SIZE_MOBILE}px;
-    line-height: ${HEADER_LINE_HEIGHT_MOBILE}px;
+export const Frame = styled.img`
+  width: 449px;
+  height: 259px;
+  margin: 0 auto 62px auto;
+
+  @media screen and (max-width: 576px) {
+    max-width: 449px;
+    width: 100%;
+    height: auto;
   }
 `;
 
-export const Discription = styled.p`
-  font-size: ${TEXT_FONT_SIZE_DESCTOP_LARGE}px;
-  line-height: ${TEXT_LINE_HEIGHT_DESCTOP_LARGE}px;
-  color: #a09d9d;
-  position: relative;
-  z-index: 2;
-  margin-bottom: 50px;
-  margin-right:  auto;
-  margin-left:  auto;
-  max-width: 700px;
+export const Description = styled.div`
   text-align: center;
-  @media (max-width: ${SIZE_DESCTOP_MEDIUM_1}px) {
-    font-size: ${TEXT_FONT_SIZE_DESCTOP_MEDIUM_1}px;
-    line-height: ${TEXT_LINE_HEIGHT_DESCTOP_MEDIUM_1}px;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #222222;
+
+  span {
+    font-family: 'Open Sans';
+    display: block;
+    margin-bottom: 10px;
   }
-  @media (max-width: ${SIZE_MOBILE}px) {
-    font-size: ${TEXT_FONT_SIZE_MOBILE}px;
-    line-height: ${TEXT_LINE_HEIGHT_MOBILE}px;
-    margin-bottom: 35px;
+
+  a {
+    color: #FF9434;
+    transition: all .3s;
+    &:hover {
+      color: #d87216;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 16px;
+
+    span {
+      margin-bottom: 19px;
+
+      &:last-child {
+        max-width: 218px;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
   }
 `;
