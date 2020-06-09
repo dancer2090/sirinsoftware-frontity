@@ -138,6 +138,11 @@ export const CaseTitle = styled.h2`
   margin-bottom: 70px;
   padding: 38px 0;
 
+  span {
+    position: relative;
+    z-index: 2;
+  }
+  
   &:before {
     content: attr(data-text);
     position: absolute;
@@ -153,7 +158,7 @@ export const CaseTitle = styled.h2`
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #F3F3F3;
-    z-index: -1;
+    z-index: 1;
   }
 
   @media screen and (max-width: 991px) {

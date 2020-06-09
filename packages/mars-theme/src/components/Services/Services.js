@@ -71,7 +71,9 @@ const Services = () => {
           </ServicesItem>
         </ServicesList>
         <CaseContainer>
-          <CaseTitle data-text="case studies">case studies</CaseTitle>
+          <CaseTitle data-text="case studies">
+            <span>case studies</span>
+          </CaseTitle>
           <CaseSlider>
             <CaseItem src={caseImg}>
               <CaseItemTitle>Other Case Studies</CaseItemTitle>
