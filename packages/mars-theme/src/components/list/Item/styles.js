@@ -1,6 +1,8 @@
 import { styled } from 'frontity';
 
 const CL_TEXT = '#FFFFFF';
+const CL_TEXT_HOVER1 = '#57a64a';
+const CL_TEXT_HOVER2 = '#f9ab39';
 
 const Text = styled.div`
   font-family: Montserrat;
@@ -15,13 +17,12 @@ export const Article = styled.article`
     @media (max-width: 767px) {
       flex: 1 1 98%;
       padding: 10px 0;
-      && button {
+      /* && button {
         background: ${(props) => (
     props.isOdd ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
       : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)')
-}
+} */
     }
-    
 `;
 export const ArtContainer = styled.div`
   position: relative;
@@ -92,17 +93,17 @@ export const ArtDate = styled(Text)`
       font-size: 12px;
       top:10px;
       right: :${({ isOdd }) => (isOdd ? '19px' : '20px')};
-    }
-    
+    }    
 `;
 export const BtnRead = styled.button`
     width:100%;
     height:46px;
     border:none;
     background: ${(props) => (
-    props.isClGreen ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
+    props.isClGreen
+      ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
       : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)'
-  )}; 
+  )};
     font-family: Montserrat;
     font-style: normal;
     font-weight: 800;
@@ -111,8 +112,27 @@ export const BtnRead = styled.button`
     color: ${CL_TEXT};
     text-transform: uppercase;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: rgba(0, 0, 0, 1);
+      pointer-events: none;
+      transition: all .3s ease-in-out;
+    }
+    &:hover {
+      &:after {
+        opacity: .1;
+      }
+    }
 `;
-export const Title = styled.h1`
+export const Title = styled.h2`
     position: absolute;
     bottom: 33px;
     left:${({ isOdd }) => (isOdd ? '29px' : '31px')};
@@ -127,6 +147,11 @@ export const Title = styled.h1`
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: ${(props) => (!props.isClGreen ? CL_TEXT_HOVER2 : CL_TEXT_HOVER1)};
+    } 
+
     @media (max-width: 1151px) {
       font-size: 24px;
       line-height: 26px;

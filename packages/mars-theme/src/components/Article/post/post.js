@@ -1,13 +1,16 @@
 import React from 'react';
-import { Container, Name, Link } from './styles';
+import Link from '../../link';
+import { Container, Name, LinkButton } from './styles';
 
 const Post = ({ className, children, href = '#' }) => (
   <Container className={className}>
     <Name href={href}>
       { children }
     </Name>
-    <Link href={href}>
-      Read
+    <Link>
+      <LinkButton href={href}>
+        Read
+      </LinkButton>
     </Link>
   </Container>
 );

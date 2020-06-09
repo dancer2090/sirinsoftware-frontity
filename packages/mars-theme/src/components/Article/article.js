@@ -34,7 +34,9 @@ const Article = ({ state, libraries }) => {
     <WrapperPage>
       <BigFrame image={Image}>
         <Container>
-          <h1>NB-IoT – a Novel IoT Standard</h1>
+          <h1>
+            <Html2React html={post.title.rendered} />
+          </h1>
         </Container>
       </BigFrame>
       <Container>
