@@ -9,6 +9,7 @@ import Article from './Article';
 import Loader from './Loader';
 import Title from './title';
 import PageError from './page-error';
+import Contacts from './Contacts';
 import Page404 from './404';
 import { Space, globalStyles, Main } from './globalStyles';
 
@@ -44,6 +45,7 @@ const Theme = ({ state }) => {
         <Switch>
           <Loader when={data.isFetching} />
           <List when={data.isArchive} />
+          <Contacts when={state.router.link === '/contacts/'} />
           <Article when={data.isPostType} />
           <Page404 when={state.router.link === '/not-found/' } />
           <PageError when={data.isError} />
