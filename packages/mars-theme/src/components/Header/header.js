@@ -67,7 +67,7 @@ const header = () => (
         <li>
           <a href="#">
             {' '}
-            <span> SERVICES </span>
+            SERVICES
           </a>
           <ul className="sub-menu">
             <li><a href="#"> R&D Center</a></li>
@@ -144,7 +144,7 @@ const header = () => (
                 </ul>
               </li>
               <li>
-                <a href="#"><span> SERVICES </span></a>
+                <a href="#"> SERVICES </a>
                 <ul className="sub-menu">
                   <li><a href="#"> R&D Center </a></li>
                   <li>

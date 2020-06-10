@@ -18,6 +18,7 @@ const StyledButton = styled.button`
   font-size: 14 px;
   color: #FFFFFF;
   outline: none;
+  transition: all 0.5s ease-out;
   
   
   @media (max-width: ${getPxSize(SIZE_DESCTOP_MEDIUM_2)}) {
