@@ -59,6 +59,7 @@ export const SubMenu = styled.ul`
     font-weight: 400;
     font-size: 14px;
     padding: 5px 0;
+    text-transform: capitalize;
     & > a {
 
     }
@@ -87,6 +88,7 @@ export const Menu = styled.ul`
     align-items: center;
     justify-content: center;
     text-align: center;
+    text-transform: uppercase;
 
     & > a {
       height: 100%;

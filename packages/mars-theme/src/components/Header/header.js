@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import { connect } from 'frontity';
 import ReactResizeDetector from 'react-resize-detector';
@@ -27,11 +28,13 @@ import {
   SubMenu,
 } from './styles';
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ state, libraries }) => {
 
   const [isMenu, setMenu] = useState(false);
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
-
+  const { main = {} } = state.theme.menu;
+  const { items = [] } = main;
+  const Html2React = libraries.html2react.Component;
   return (
     <ReactResizeDetector handleWidth onResize={updateWidth}>
       <HeadBlock isMenu={isMenu}>
@@ -46,66 +49,26 @@ const HeaderComponent = () => {
               </Link>
             </Logo>
             <Menu>
-              <li>
-                <Link link="#"> ABOUT US </Link>
-                <SubMenu>
-                  <li>
-                    <Link link="#"> Profile </Link>
-                  </li>
-                  <li>
-                    <Link link="#"> Expertise </Link>
-                  </li>
-                  <li>
-                    <Link link="#"> Testimonials </Link>
-                  </li>
-                  <li>
-                    <Link link="#"> Team </Link>
-                  </li>
-                  <li>
-                    <Link link="#"> Faq </Link>
-                  </li>
-                  <li>
-                    <Link link="#"> Referral Program </Link>
-                  </li>
-                </SubMenu>
-              </li>
-              <li>
-                <Link link="#">
-                  SERVICES
-                </Link>
-                <SubMenu>
-                  <li><Link link="#">R&D Center</Link></li>
-                  <li>
-                    <Link link="#">
-                      IT Staff
-                      <br />
-                      Augmentation
-                    </Link>
-                  </li>
-                </SubMenu>
-              </li>
-              <li>
-                <Link link="#"> CASE STUDIES </Link>
-                <SubMenu>
-                  <li>
-                    <Link link="#">
-                      Linux, Embedded
-                      <br />
-                      And Iot
-                    </Link>
-                  </li>
-                  <li>
-                    <Link link="#">
-                      IT Staff
-                      <br />
-                      Augmentation
-                    </Link>
-                  </li>
-                </SubMenu>
-              </li>
-              <li><Link link="#"> CAREERS </Link></li>
-              <li><Link link="#"> BLOG </Link></li>
-              <li><Link link="#"> CONTACT US </Link></li>
+              {items && items.length > 0 && items.map((item, n) => (
+                <li key={n}>
+                  {item.child_items && item.child_items.length > 0 ? (
+                    <>
+                      <span>{item.title}</span>
+                      <SubMenu>
+                        {item.child_items.map((cItem, cn) => (
+                          <li key={cn}>
+                            <Link link={cItem.urlFrontity}>
+                              <Html2React html={cItem.title} />
+                            </Link>
+                          </li>
+                        ))}
+                      </SubMenu>
+                    </>
+                  ) : (
+                    <Link link={item.urlFrontity}><Html2React html={item.title} /></Link>
+                  )}
+                </li>
+              ))}
             </Menu>
             <MobileButton>
               <Link link="#">GET A FREE QUOTE</Link>
@@ -130,56 +93,24 @@ const HeaderComponent = () => {
                 </LogoBlock>
                 <MobileTopMenu>
                   <Menu isMenu>
-                    <li>
-                      <Link link="#"> ABOUT US </Link>
-                      <SubMenu>
-                        <li><Link link="#"> Profile </Link></li>
-                        <li><Link link="#"> Expertise </Link></li>
-                        <li><Link link="#"> Testimonials </Link></li>
-                        <li><Link link="#"> Team </Link></li>
-                        <li><Link link="#"> Faq </Link></li>
-                        <li><Link link="#"> Referral Program </Link></li>
-                      </SubMenu>
-                    </li>
-                    <li>
-                      <Link link="#"> SERVICES </Link>
-                      <SubMenu>
-                        <li><Link link="#"> R&D Center </Link></li>
-                        <li>
-                          <Link link="#">
-                            IT Staff
-                            <br />
-                            Augmentation
-                          </Link>
-                        </li>
-                      </SubMenu>
-                    </li>
-                    <li>
-                      <Link link="#"> CASE STUDIES </Link>
-                      <SubMenu>
-                        <li>
-                          <Link link="#">
-                            Linux, Embedded
-                            <br />
-                            And Iot
-                          </Link>
-                        </li>
-                        <li>
-                          <Link link="#">
-                            IT Staff
-                            <br />
-                            Augmentation
-                          </Link>
-                        </li>
-                      </SubMenu>
-                    </li>
-                    <li>
-                      <Link link="#"> CAREERS </Link>
-                    </li>
-                    <li>
-                      <Link link="#"> BLOG </Link>
-                    </li>
-                    <li><Link link="#"> CONTACT US </Link></li>
+                    {items && items.length > 0 && items.map((item, n) => (
+                      <li key={n}>
+                        {item.child_items && item.child_items.length > 0 ? (
+                          <>
+                            <span>{item.title}</span>
+                            <SubMenu>
+                              {item.child_items.map((cItem, cn) => (
+                                <li key={cn}>
+                                  <Link link={cItem.urlFrontity}><Html2React html={cItem.title} /></Link>
+                                </li>
+                              ))}
+                            </SubMenu>
+                          </>
+                        ) : (
+                          <Link link={item.urlFrontity}><Html2React html={item.title} /></Link>
+                        )}
+                      </li>
+                    ))}
                   </Menu>
                 </MobileTopMenu>
               </MobileOption>
