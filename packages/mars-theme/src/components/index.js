@@ -4,6 +4,7 @@ import {
 } from 'frontity';
 import Switch from '@frontity/components/switch';
 import Header from './Header';
+import Footer from './Footer';
 import List from './list';
 import Article from './Article';
 import Loader from './Loader';
@@ -37,7 +38,7 @@ const Theme = ({ state }) => {
       <Global styles={globalStyles} />
 
       {/* Add the header of the site. */}
-      <Header />
+      { /* <Header /> */}
       <Space />
 
       {/* Add the main section. It renders a different component depending
@@ -53,6 +54,8 @@ const Theme = ({ state }) => {
           <PageError when={data.isError} />
         </Switch>
       </Main>
+
+      <Footer/>
     </>
   );
 };
