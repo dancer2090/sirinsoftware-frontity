@@ -26,7 +26,10 @@ export const Header = styled.div`
       padding: 0px;
       height: 46px;
   }
-  li span {color: #FF8D23;}
+    ul a:hover, li a:hover {
+        color: #FF8D23;
+    }
+  
   ul li a {
       text-decoration: none;
       color: #222222 !important;
@@ -72,17 +75,18 @@ export const Header = styled.div`
             padding-bottom: 10px;
             padding-top: 10px;
             line-height: 27px;
-            font-size: 15px;
+            font-size: 14px;
             color: #77716d;
             font-weight: 400;
         }
     .sub-menu li {
         margin-left:-30px;
         margin-right: 10px;
-        margin-top: 10px;
-        margin-bottom: 5px;
+        margin-top: -5px;
+        margin-bottom: -5px;
     }
     .sub-menu {
+        margin-top: 0px;
         display: none;
         position: absolute;
         margin-left: -10px;
@@ -94,6 +98,7 @@ export const Header = styled.div`
     }
 
 `;
+
 
 export const Mobilemenu = styled.div`
 @media(min-width: 1100px) {

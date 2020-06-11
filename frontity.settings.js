@@ -49,7 +49,37 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://admin.sirinsoftware.com/wp-json"
+          "api": "https://admin.sirinsoftware.com/wp-json",
+          "homepage": '/home',
+          "postsPage": '/blog',
+          params: {
+            per_page: 9,
+            type: ["post", "page", "teammembers", "portfolio"]
+          },
+          postTypes: [
+            {
+              type: "teammembers", // type slug
+              endpoint: "teammembers", // REST API endpoint
+              archive: "/teammembers" // link where this custom posts are listed
+            },
+            {
+              type: "portfolio", // type slug
+              endpoint: "portfolio", // REST API endpoint
+              archive: "/case-studies" // link where this custom posts are listed
+            }
+          ],
+          taxonomies: [
+            {
+              taxonomy: "portfolio_cat",
+              endpoint: "portfolio_cat",
+              postTypeEndpoint: "portfolio",
+            },
+            {
+              taxonomy: "teammembers_cat",
+              endpoint: "teammembers_cat",
+              postTypeEndpoint: "teammembers",
+            },
+          ]
         }
       }
     },

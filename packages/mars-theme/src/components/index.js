@@ -10,6 +10,8 @@ import Loader from './Loader';
 import Title from './title';
 import Services from './Services';
 import PageError from './page-error';
+import Contacts from './Contacts';
+import Page404 from './404';
 import { Space, globalStyles, Main } from './globalStyles';
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -18,6 +20,7 @@ import { Space, globalStyles, Main } from './globalStyles';
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+  console.log(state);
 
   return (
     <>
@@ -45,6 +48,7 @@ const Theme = ({ state }) => {
           <Loader when={data.isFetching} />
           <List when={data.isArchive} />
           <Services when={state.router.link === '/services/'} />
+          <Contacts when={state.router.link === '/contacts/'} />
           <Article when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
