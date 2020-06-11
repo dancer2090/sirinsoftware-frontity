@@ -39,8 +39,8 @@ const Theme = ({ state }) => {
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
       <Global styles={globalStyles} />
 
-      {/* Add the header of the site. <Header /> */}
-      
+      {/* Add the header of the site.  */}
+      <Header />
       <Space />
 
       {/* Add the main section. It renders a different component depending
