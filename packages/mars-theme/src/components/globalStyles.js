@@ -1,7 +1,6 @@
 import { css, styled } from 'frontity';
 
 export const globalStyles = css`
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -14,9 +13,25 @@ export const globalStyles = css`
     font-weight: 400;
     font-family: Montserrat, sans-serif;
   }
-  a,
-  a:visited {
+  a {
     text-decoration: none;
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    /* background: #666;  */
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 
