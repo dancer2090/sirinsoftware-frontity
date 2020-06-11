@@ -1,8 +1,19 @@
+/* eslint-disable no-param-reassign */
 import Theme from "./components";
 import image from "@frontity/html2react/processors/image";
 import iframe from "@frontity/html2react/processors/iframe";
 import React from 'react';
 import axios from 'axios';
+
+const linkReplace = (link, frontityUrl, adminUrl) => {
+  let newLink = '';
+  if (link.startsWith(frontityUrl)) {
+    newLink = link.replace(frontityUrl, '');
+  } else if (link.startsWith(adminUrl)) {
+    newLink = link.replace(adminUrl, '');
+  }
+  return newLink;
+};
 
 const newHandler = {
   name: "categoryOrPostType",
@@ -40,7 +51,7 @@ const marsTheme = {
      * relevant state. It is scoped to the `theme` namespace.
      */
     theme: {
-      menu: [],
+      menu: {},
       isMobileMenuOpen: false,
       featured: {
         showOnList: false,
@@ -72,6 +83,18 @@ const marsTheme = {
       beforeSSR: async ({ state, actions }) => {
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
+        const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);
+        state.theme.menu.main = mainMenu.data || {};
+        state.theme.menu.main.items.map((item) => {
+          item.urlFrontity = linkReplace(item.url, state.frontity.url, state.frontity.adminUrl);
+          if (item.child_items) {
+            item.child_items = item.child_items.map((cItem) => {
+              cItem.urlFrontity = linkReplace(cItem.url, state.frontity.url, state.frontity.adminUrl);
+              return cItem;
+            });
+          }
+          return item;
+        });
       },
     },
   },
