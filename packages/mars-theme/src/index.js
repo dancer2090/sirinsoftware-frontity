@@ -53,7 +53,7 @@ const marsTheme = {
      * relevant state. It is scoped to the `theme` namespace.
      */
     customSettings: {
-      pageNumber : 1,
+      pageNumber : 2,
       categories: {},
     },
     theme: {

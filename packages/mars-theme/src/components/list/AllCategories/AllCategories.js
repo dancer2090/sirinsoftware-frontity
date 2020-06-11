@@ -19,17 +19,17 @@ const categories = [
 ];
 
 const AllCategories = ({items, state}) => {
-  console.log(state.frontity.adminUrl);
-  console.log(items);
+  const data = state.source.get(state.router.link);
+  const nullActiveItem = (data.isCategory ? data.id : 0);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(nullActiveItem);
   const handleItem = (id) => {
     setActiveItem(id);
     setIsOpen(false);
     // go to the new url here;
   };
   const category = items.find((c) => c.id === activeItem) || {};
-  console.log(category);
+
   return (
     <AllCategoriesContainer>
       <AllCategoriesHeader

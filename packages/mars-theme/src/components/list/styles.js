@@ -6,7 +6,7 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const Text = styled.em`
+export const Text = styled.button`
   font-family: Montserrat;
   font-style: normal;
   font-weight: 800;
@@ -15,6 +15,23 @@ export const Text = styled.em`
   text-align: center;
   text-transform: uppercase;
   color: #FFAD39;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  ${(props) => props.hidden && css`
+    display: none;
+  `}
+  &:hover{
+    background-color: transparent;
+    color: #FF9233;
+  }
+  &:focus{
+    background-color: transparent;
+    color: #FF9233;
+    border: 0px;
+  }
   @media (max-width: 767px) {
     font-size: 1.5rem;
     line-height:1.375rem

@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { connect, decode } from 'frontity';
 import Item from './Item';
-import Pagination from './pagination';
 import AllCAtegories from './AllCategories';
-import { Container, Header } from './styles';
+import { Container, Header, PaginationContainer, Text } from './styles';
 
 const List = ({ state, actions }) => {
   // Get the data of the current list.
@@ -12,7 +11,7 @@ const List = ({ state, actions }) => {
 
   const [loadMoreHidden, setLoadMoreHidden] = useState(false);
 
-  let megaItems = data.items.slice(1);
+  let megaItems = data.items;
   let currentData;
   if (state.customSettings.pageNumber > 2) {
     for (let i = 2; i < state.customSettings.pageNumber; i++) {
@@ -33,20 +32,10 @@ const List = ({ state, actions }) => {
   state.customSettings.categories.map((cat, index) => {
     if(cat.parent === 1) categories.push(cat);
   })
-  console.log(categories);
 
 
   return (
     <Container>
-      {/* If the list is a taxonomy, we render a title. */}
-      {data.isTaxonomy && (
-        <Header>
-          {data.taxonomy}
-          :
-          {' '}
-          <b>{decode(state.source[data.taxonomy][data.id].name)}</b>
-        </Header>
-      )}
 
       {/* If the list is for a specific author, we render a title. */}
       {data.isAuthor && (
@@ -63,8 +52,9 @@ const List = ({ state, actions }) => {
         // Render one Item component for each one.
         return <Item key={item.id} item={item} index={index} />;
       })}
-      <button hidden={loadMoreHidden} onClick={() => loadMore1()}>Load more</button>
-      <Pagination />
+      <PaginationContainer>
+        <Text hidden={loadMoreHidden} onClick={() => loadMore1()}>Load more</Text>
+      </PaginationContainer>
     </Container>
   );
 };

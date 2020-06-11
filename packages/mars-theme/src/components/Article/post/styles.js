@@ -19,7 +19,8 @@ const Container = styled.div`
     }
 `;
 
-const Name = styled.a`
+const Name = styled.div`
+    ta:styles.js
     display: block;
     font-size: 14px;
     line-height: 18px;
@@ -37,7 +38,7 @@ const Name = styled.a`
     }
 `;
 
-const LinkButton = styled.a`
+const LinkButton = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;

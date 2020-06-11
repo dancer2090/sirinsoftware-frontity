@@ -16,6 +16,7 @@ import {
   BusinessButton,
   PostList,
 } from './styles';
+import Link from '../link';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
 import Image from '../../img/image.jpg';
@@ -39,7 +40,6 @@ const Article = ({ state, libraries }) => {
   const category = state.source['category'][category_id];
 
   const dataMore = state.source.get('/blog/');
-  console.log(dataMore);
 
   return (
     <WrapperPage>
@@ -54,7 +54,9 @@ const Article = ({ state, libraries }) => {
         <Wrapper>
           <ArticleLeft>
             <ArticleLeftHeader>
-              <BusinessButton size="large">{category.name}</BusinessButton>
+              <Link link={category.link}>
+                <BusinessButton size="large">{category.name}</BusinessButton>
+              </Link>
               <DateBlock>{ date.toDateString() }</DateBlock>
             </ArticleLeftHeader>
             <ArticleContent>
@@ -77,13 +79,6 @@ const Article = ({ state, libraries }) => {
                   </PostItem>
                 )
               })}
-              <PostItem>
-                ARM SoC for server
-                {' '}
-                <br />
-                {' '}
-                applications
-              </PostItem>
             </PostList>
             <SubscribeForm />
           </Posts>
