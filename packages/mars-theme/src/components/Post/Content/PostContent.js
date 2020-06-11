@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'frontity';
-import StandartTemplate from '../Templates/StardartTemplate';
-import OurStoryTemplate from '../Templates/OurStoryTemplate';
-import OurPlansTemplate from '../Templates/OurPlansTemplate';
-import SpecialTemplate from '../Templates/SpecialTemplate';
-import ProductTemplate from '../Templates/ProductTemplate';
-import EnterpriceTemplate from '../Templates/EnterpriceTemplate';
-import PlanFormTemplate from '../Templates/PlanFormTemplate';
+import StandartTemplate from '../Templates/StandartTemplate';
+import ServicesTemplate from '../Templates/ServicesTemplate';
+import PageFullTemplate from '../Templates/PageFullTemplate';
+import PageBookTemplate from '../Templates/PageBookTemplate';
+import AboutUsTemplate from '../Templates/AboutUsTemplate';
 import { GlobalContainer } from './styles';
 
 
@@ -18,12 +16,10 @@ const PostContent = ({ state }) => {
   return (
     <GlobalContainer>
       {template === 'standart' && <StandartTemplate />}
-      {template === 'page-our_story.php' && <OurStoryTemplate />}
-      {template === 'page-special_page.php' && <SpecialTemplate />}
-      {template === 'page-plan.php' && <OurPlansTemplate />}
-      {template === 'page-product.php' && <ProductTemplate />}
-      {template === 'page-enterprice.php' && <EnterpriceTemplate />}
-      {template === 'page-plan_form.php' && <PlanFormTemplate />}
+      {template === 'services.php' && <ServicesTemplate />}
+      {template === 'page-full.php' && <PageFullTemplate />}
+      {template === 'page-book.php' && <PageBookTemplate />}
+      {template === 'about-us.php' && <AboutUsTemplate />}
     </GlobalContainer>
   );
 };
