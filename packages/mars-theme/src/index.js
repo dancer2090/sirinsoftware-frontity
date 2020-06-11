@@ -11,6 +11,8 @@ const linkReplace = (link, frontityUrl, adminUrl) => {
     newLink = link.replace(frontityUrl, '');
   } else if (link.startsWith(adminUrl)) {
     newLink = link.replace(adminUrl, '');
+  } else {
+    newLink = link;
   }
   return newLink;
 };
