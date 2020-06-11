@@ -39,6 +39,10 @@ const marsTheme = {
      * State is where the packages store their default settings and other
      * relevant state. It is scoped to the `theme` namespace.
      */
+    customSettings: {
+      pageNumber : 1,
+      categories: {},
+    },
     theme: {
       menu: [],
       isMobileMenuOpen: false,
@@ -59,7 +63,7 @@ const marsTheme = {
       },
       loadMore: ({ state, actions }) => async (data) => {
         state.seatbackapi.pageNumber += 1;
-        actions.source.fetch(`posts/${state.seatbackapi.pageNumber}`, {
+        actions.source.fetch(`posts/${state.customSettings.pageNumber}`, {
           force: true,
         });
       },
@@ -72,6 +76,17 @@ const marsTheme = {
       beforeSSR: async ({ state, actions }) => {
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
+        if(!state.router.link.indexOf("/blog/")){
+          const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
+          state.customSettings.categories = categories.data;
+        }
+        if (
+          !state.router.link.indexOf("/blog/") &&
+          state.router.link !== "/blog/"
+        ) {
+          await actions.source.fetch("/blog");
+        }
+
       },
     },
   },

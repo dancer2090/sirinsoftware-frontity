@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'frontity';
+import Link from '../../link';
 import {
   AllCategoriesContainer,
   AllCategoriesHeader,
@@ -16,7 +18,9 @@ const categories = [
   { id: 5, title: 'TECHNOLOGY' },
 ];
 
-const AllCategories = () => {
+const AllCategories = ({items, state}) => {
+  console.log(state.frontity.adminUrl);
+  console.log(items);
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
   const handleItem = (id) => {
@@ -24,23 +28,31 @@ const AllCategories = () => {
     setIsOpen(false);
     // go to the new url here;
   };
-  const category = categories.find((c) => c.id === activeItem) || {};
+  const category = items.find((c) => c.id === activeItem) || {};
+  console.log(category);
   return (
     <AllCategoriesContainer>
       <AllCategoriesHeader
         onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen}
       >
-        {category.title}
+        {category.name ? category.name : "All categories"}
       </AllCategoriesHeader>
       <AllCategoriesContent isOpen={isOpen}>
-        {categories.map(({ id, title }) => (
-          <AllCategoriesItem key={id} onClick={() => handleItem(id)}>
-            {title}
+        <Link link="/blog">
+          <AllCategoriesItem onClick={() => handleItem(0)}>
+              All Categories
           </AllCategoriesItem>
+        </Link>
+        {items.map(({ id, link, name }) => (
+          <Link link={link.replace(state.frontity.adminUrl, state.frontity.url)} key={id}>
+            <AllCategoriesItem onClick={() => handleItem(id)}>
+              {name}
+            </AllCategoriesItem>
+          </Link>
         ))}
       </AllCategoriesContent>
     </AllCategoriesContainer>
   );
 };
-export default AllCategories;
+export default connect(AllCategories);

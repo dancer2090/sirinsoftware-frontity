@@ -53,7 +53,7 @@ const settings = {
           "homepage": '/home',
           "postsPage": '/blog',
           params: {
-            per_page: 9,
+            per_page: 10,
             type: ["post", "page", "teammembers", "portfolio"]
           },
           postTypes: [

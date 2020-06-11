@@ -37,7 +37,7 @@ const Name = styled.a`
     }
 `;
 
-const LinkButton = styled.button`
+const LinkButton = styled.a`
     background-color: transparent;
     border: none;
     cursor: pointer;

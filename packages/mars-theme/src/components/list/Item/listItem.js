@@ -20,7 +20,7 @@ import imgSrc from './img-src';
  * - FeaturedMedia: the featured image/video of the post
  */
 const Item = ({
-  libraries, item, index,
+  libraries, item, index, state,
 }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -41,20 +41,24 @@ const Item = ({
   const monthDay = (date.getDate() < 10) ? (`0${date.getDate()}`) : date.getDate();
   const strDate = `${months[date.getMonth()]}.${monthDay}.${date.getFullYear()}`;
   const title = item.title.rendered;
+  const item_image = state.source['attachment'][item.acf.blog_image];
+
+  let category_id = 1;
+  item.categories.map((p_item, index)=>{
+    category_id = p_item;
+  });
+  const category = state.source['category'][category_id];
 
   return (
     <Article isOdd={isOdd}>
       <ArtContainer>
-        <ImgContainer>
-          <img
-            src={imgSrc[index] ? imgSrc[index]
-              : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU'}
-            alt="Post in blog"
-          />
+        <ImgContainer 
+          bgImage={item_image ? item_image.source_url
+          : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU'}>
         </ImgContainer>
-        <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>Category</ArtCategory>
+        <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>{category.name}</ArtCategory>
         <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>
-        <Link link="/">
+        <Link link={item.link}>
           <Title
             isClGreen={isClGreen}
             isOdd={isOdd}
@@ -63,7 +67,7 @@ const Item = ({
             <Html2React html={title} />
           </Title>
         </Link>
-        <Link link="/">
+        <Link link={item.link}>
           <BtnRead isClGreen={isClGreen}>Read</BtnRead>
         </Link>
       </ArtContainer>

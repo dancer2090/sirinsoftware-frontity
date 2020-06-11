@@ -30,12 +30,16 @@ export const ArtContainer = styled.div`
 
 export const ImgContainer = styled.div`
   width:100%;
-  max-height:470px;
+  height:470px;
   overflow: hidden;
   display:flex;
   justify-content:center;
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
   position:relative;
+  background: url(${(props) => props.bgImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   ::after {
     position:absolute;
     content:'';
@@ -46,7 +50,7 @@ export const ImgContainer = styled.div`
   img {
     width:100%;
     height:100%;
-  } 
+  }
   @media (max-width: 767px) {
     max-height:500px;
     img {

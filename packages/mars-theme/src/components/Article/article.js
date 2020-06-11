@@ -30,6 +30,17 @@ const Article = ({ state, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
+  let category_id = 1;
+  if(post.categories && post.categories.length>0){
+    post.categories.map((item, index)=>{
+      category_id = item;
+    });
+  }
+  const category = state.source['category'][category_id];
+
+  const dataMore = state.source.get('/blog/');
+  console.log(dataMore);
+
   return (
     <WrapperPage>
       <BigFrame image={Image}>
@@ -43,7 +54,7 @@ const Article = ({ state, libraries }) => {
         <Wrapper>
           <ArticleLeft>
             <ArticleLeftHeader>
-              <BusinessButton size="large">Business</BusinessButton>
+              <BusinessButton size="large">{category.name}</BusinessButton>
               <DateBlock>{ date.toDateString() }</DateBlock>
             </ArticleLeftHeader>
             <ArticleContent>
@@ -57,9 +68,15 @@ const Article = ({ state, libraries }) => {
               Related posts
             </PostTitle>
             <PostList>
-              <PostItem>
-                Main reasons to invest in IoT
-              </PostItem>
+              {dataMore.items.length>0 && dataMore.items.map((p_item,index)=>{
+                const sub_post = state.source[p_item.type][p_item.id];
+                const sp_title = sub_post.title.rendered;
+                return (
+                  <PostItem href={sub_post.link} key={sp_title}>
+                    {sp_title}
+                  </PostItem>
+                )
+              })}
               <PostItem>
                 ARM SoC for server
                 {' '}
