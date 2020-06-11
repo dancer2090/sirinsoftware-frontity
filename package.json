@@ -19,6 +19,7 @@
     "@frontity/mars-theme": "./packages/mars-theme",
     "@frontity/tiny-router": "^1.2.0",
     "@frontity/wp-source": "^1.7.0",
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "frontity": "^1.6.0",
     "react-id-swiper": "^3.0.0",

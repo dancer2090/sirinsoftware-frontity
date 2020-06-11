@@ -1,6 +1,8 @@
 import Theme from "./components";
 import image from "@frontity/html2react/processors/image";
 import iframe from "@frontity/html2react/processors/iframe";
+import React from 'react';
+import axios from 'axios';
 
 const newHandler = {
   name: "categoryOrPostType",
@@ -68,7 +70,8 @@ const marsTheme = {
         state.theme.isMobileMenuOpen = false;
       },
       beforeSSR: async ({ state, actions }) => {
-        //await actions.source.fetch("/forms/get-a-demo");
+        const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
+        state.options = optionPage.data;
       },
     },
   },
