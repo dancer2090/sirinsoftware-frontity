@@ -15,7 +15,7 @@ const List = ({ state, actions }) => {
   let currentData;
   if (state.customSettings.pageNumber > 2) {
     for (let i = 2; i < state.customSettings.pageNumber; i++) {
-      currentData = state.source.get(`/blog/page/${i}`);
+      currentData = state.source.get(`${state.router.link}page/${i}`);
       if (currentData.isReady) {
         megaItems = megaItems.concat(currentData.items);
       }
@@ -24,9 +24,11 @@ const List = ({ state, actions }) => {
 
   state.customSettings.customPostTotal = totalPages;
   const loadMore1 = () => {
-    actions.source.fetch(`/blog/page/${state.customSettings.pageNumber}/`);
+    console.log(`${state.router.link}page/${state.customSettings.pageNumber}/`);
+    actions.source.fetch(`${state.router.link}page/${state.customSettings.pageNumber}/`);
     state.customSettings.pageNumber += 1;
     if (state.customSettings.pageNumber - 1 === totalPages) setLoadMoreHidden(true);
+    console.log(state);
   };
   const categories = [];
   state.customSettings.categories.map((cat, index) => {

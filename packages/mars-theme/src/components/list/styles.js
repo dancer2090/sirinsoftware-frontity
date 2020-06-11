@@ -20,9 +20,6 @@ export const Text = styled.button`
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
-  ${(props) => props.hidden && css`
-    display: none;
-  `}
   &:hover{
     background-color: transparent;
     color: #FF9233;

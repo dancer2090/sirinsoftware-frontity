@@ -76,9 +76,6 @@ const marsTheme = {
       },
       loadMore: ({ state, actions }) => async (data) => {
         state.seatbackapi.pageNumber += 1;
-        actions.source.fetch(`posts/${state.customSettings.pageNumber}`, {
-          force: true,
-        });
       },
       toggleMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
