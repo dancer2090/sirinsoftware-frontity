@@ -68,7 +68,8 @@ To add the code to master:
 1. Install  `node.js` version - `12.16.3`
 2. Run the progect
 ```bash
-npx frontity build
+npm intsall
+npm run build
 npx frontity serve
 ``` 
 Sometimes `serve` command returns error. If you get it, run 

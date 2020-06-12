@@ -52,7 +52,7 @@ const Theme = ({ state }) => {
           <List when={data.isArchive} />
           <Services when={state.router.link === '/services/'} />
           <Contacts when={state.router.link === '/contacts/'} />
-          <Article when={data.isPostType} />
+          {/* <Article when={data.isPostType} /> */}
           <PageError when={data.isError} />
         </Switch>
       </Main>

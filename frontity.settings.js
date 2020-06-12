@@ -5,6 +5,7 @@ const settings = {
   "name": "sirinsoftware-frontity",
   "state": {
     "frontity": {
+      isLocal: !!process.env.LOCAL,
       "adminUrl": process.env.ADMIN_URL,
       "url": process.env.SITE_URL,
       "title": "Sirinsoftware",
