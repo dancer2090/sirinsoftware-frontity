@@ -34,20 +34,20 @@ In `frontity.settings.js` set the Wordpress API URL:
 #### Local running
 
 ```bash
-npx frontity dev
+npm run dev
 or
 npx frontity dev --port YOUR_PORT
 ```
 #### Production build
 
 ```bash 
-npx frontity build
+npm run build
 ```
 
 #### Production server test
 
 ```bash 
-npx frontity serve
+npm run serve
 ```
 Sometimes `serve` command returns error. If you get it, run 
 ```bash 
@@ -70,7 +70,7 @@ To add the code to master:
 ```bash
 npm intsall
 npm run build
-npx frontity serve
+npm run serve
 ``` 
 Sometimes `serve` command returns error. If you get it, run 
 ```bash 
