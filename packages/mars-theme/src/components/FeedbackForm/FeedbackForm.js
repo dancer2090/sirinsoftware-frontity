@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'frontity';
 import {
   Block, 
   FormBlock, 
@@ -10,9 +11,9 @@ import {
 } from './styles';
 import Form from './Form';
 
-const FeedbackForm = () => {
+const FeedbackForm = ({actions}) => {
   const submitForm = (value) => {
-    console.log(value);
+    actions.theme.sendForm(value);
   }
 
   return (
@@ -37,4 +38,4 @@ const FeedbackForm = () => {
   )
 }
 
-export default FeedbackForm;
+export default connect(FeedbackForm);
