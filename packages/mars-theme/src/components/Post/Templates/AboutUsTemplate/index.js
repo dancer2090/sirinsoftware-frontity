@@ -1,3 +1,3 @@
-import OurStoryTemplate from './OurStoryTemplate';
+import AboutUsTemplate from './AboutUsTemplate';
 
-export default OurStoryTemplate;
+export default AboutUsTemplate;

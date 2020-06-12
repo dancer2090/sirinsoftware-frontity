@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'frontity';
 import StandartTemplate from '../Templates/StandartTemplate';
+import HomeTemplate from '../Templates/HomeTemplate';
 import ServicesTemplate from '../Templates/ServicesTemplate';
 import PageFullTemplate from '../Templates/PageFullTemplate';
 import PageBookTemplate from '../Templates/PageBookTemplate';
 import AboutUsTemplate from '../Templates/AboutUsTemplate';
-import { GlobalContainer } from './styles';
+import ContactsTemplate from '../Templates/ContactsTemplate';
 
 
 const PostContent = ({ state }) => {
@@ -14,13 +15,15 @@ const PostContent = ({ state }) => {
   const template = (post.template !== '' ? post.template : 'standart');
 
   return (
-    <GlobalContainer>
-      {template === 'standart' && <StandartTemplate />}
-      {template === 'services.php' && <ServicesTemplate />}
+    <>
+      {state.router.link === '/' && <HomeTemplate />}
+      {template === 'standart' && state.router.link !== '/' && <StandartTemplate />}
+      {template === 'page-services-null.php' && <ServicesTemplate />}
       {template === 'page-full.php' && <PageFullTemplate />}
       {template === 'page-book.php' && <PageBookTemplate />}
       {template === 'about-us.php' && <AboutUsTemplate />}
-    </GlobalContainer>
+      {template === 'contacts.php' && <ContactsTemplate />}
+    </>
   );
 };
 export default connect(PostContent);

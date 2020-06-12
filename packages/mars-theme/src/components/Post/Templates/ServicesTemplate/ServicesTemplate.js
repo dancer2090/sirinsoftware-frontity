@@ -1,49 +1,118 @@
-import React, { useRef } from 'react';
-import { connect } from 'frontity';
-import HeaderBox from '../../../HeaderBox';
-import Forms from '../../../Forms';
-import Partners from '../../../Partners';
-import Description from './Description';
+import React from 'react';
+import {
+  Wrapper,
+  Container,
+  BigFrame,
+  BigFrameImage,
+  BigFrameContent,
+  ServicesList,
+  ServicesItem,
+  CaseContainer,
+  CaseTitle,
+  CaseSlider,
+  CaseItem,
+  CaseLink,
+  CaseItemTitle,
+  CaseContent
+} from './styles';
+import ServiceFrameImage from '../../../../img/service.jpg';
+import ItemImg from '../../../../img/item-service.jpg';
+import ItemImgTwo from '../../../../img/service-two.jpg';
+import caseImg from '../../../../img/case-one.jpg';
+import caseImgTwo from '../../../../img/case-two.jpg';
 
-const EnterpriceTemplate = ({ state }) => {
-  const contentRef = useRef(null);
-  const dataP = state.source.get(state.router.link);
-  const post = state.source[dataP.type][dataP.id];
-  const template = (post.template !== '' ? post.template : 'standart');
-  const button = ((typeof post.acf.button === 'undefined' && post.acf.button === false) ? {} : post.acf.button);
-  const isArchive = (post.template !== '');
-  const description = ((typeof post.acf.enterprice_header === 'undefined' && post.acf.enterprice_description === false) ? '' : post.acf.enterprice_description);
-  const title = ((typeof post.acf.enterprice_header === 'undefined' || post.acf.enterprice_header === '') ? post.title.rendered : post.acf.enterprice_header);
-  const form = (!((typeof post.acf.gd_form === 'undefined' || post.acf.gd_form === false)));
-  const { blocks = [] } = post.acf;
-
+const ServicesTemplate = () => {
   return (
-    <>
-      <HeaderBox
-        title={title}
-        isArchive={isArchive}
-        template={template}
-        button={button}
-        description={description}
-        type_header="With lines"
-        scrollRef={contentRef}
-        mode="dark"
-        offset={0}
-        bgColor="#F5F6FA"
-      />
-      <div ref={contentRef}>
-        <Partners bgColor="#F5F6FA" />
-        <Description
-          circleColor="#2E293C"
-          bgColor="#F5F6FA"
-          blocks={blocks}
-        />
-      </div>
-      {form && (
-        <Forms bgColor="#2E293C" />
-      )}
-    </>
-  );
-};
+    <Wrapper>
+      <BigFrame>
+        <BigFrameImage src={ServiceFrameImage} />
+        <BigFrameContent>
+          <div>
+            Nam libero tempore, 
+            cum soluta nobis est eligendi optio, 
+            cumque nihil impedit, quo minus id, quod maxime placeat, f
+            acere possimus, omnis voluptas assumenda est, omnis dolor 
+            repellendus. Temporibus autem quibusdam et aut officiis debitis 
+            aut rerum necessitatibus saepe eveniet, ut et voluptates 
+            repudiandae sint et molestiae non recusandae.
+          </div>
+        </BigFrameContent>
+      </BigFrame>
+      <Container>
+        <ServicesList>
+          <ServicesItem src={ItemImg}>
+            <h2>
+              Software development
+            </h2>
+            <p>
+              Nam libero tempore, cum 
+              soluta nobis est eligendi optio, cumque nihil impedit,
+              quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, 
+              omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut 
+              rerum necessitatibus saepe eveniet, 
+              ut et voluptates repudiandae sint et molestiae non recusandae.
+            </p>
+          </ServicesItem>
+          <ServicesItem 
+            reverse={true} 
+            color="yellow"
+            src={ItemImgTwo}>
+            <h2>
+              Hardware development
+            </h2>
+            <p>
+              Nam libero tempore, cum 
+              soluta nobis est eligendi optio, cumque nihil impedit,
+              quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, 
+              omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut 
+              rerum necessitatibus saepe eveniet, 
+              ut et voluptates repudiandae sint et molestiae non recusandae.
+            </p>
+          </ServicesItem>
+        </ServicesList>
+        <CaseContainer>
+          <CaseTitle data-text="case studies">
+            <span>case studies</span>
+          </CaseTitle>
+          <CaseSlider>
+            <CaseItem src={caseImg}>
+              <CaseItemTitle>Other Case Studies</CaseItemTitle>
+              <CaseContent>
+                Wireless connection manager for IOT-
+                Enabled consumer  electronics
+              </CaseContent>
+              <CaseLink>Learn more</CaseLink>
+            </CaseItem>
+            
+            <CaseItem src={caseImgTwo}>
+              <CaseItemTitle>Other Case Studies</CaseItemTitle>
+              <CaseContent>
+                Platform for petabyte scale backup and archive repositories
+              </CaseContent>
+              <CaseLink>Learn more</CaseLink>
+            </CaseItem>
+            
+            <CaseItem src={caseImg}>
+              <CaseItemTitle>Other Case Studies</CaseItemTitle>
+              <CaseContent>
+                Wireless connection manager for IOT-
+                Enabled consumer  electronics
+              </CaseContent>
+              <CaseLink>Learn more</CaseLink>
+            </CaseItem>
+            
+            <CaseItem src={caseImgTwo}>
+              <CaseItemTitle>Other Case Studies</CaseItemTitle>
+              <CaseContent>
+                Platform for petabyte scale backup and archive repositories
+              </CaseContent>
+              <CaseLink>Learn more</CaseLink>
+            </CaseItem>
+          </CaseSlider>
+        </CaseContainer>
+      </Container>
+    </Wrapper>
+  )
+}
 
-export default connect(EnterpriceTemplate);
+export default ServicesTemplate;

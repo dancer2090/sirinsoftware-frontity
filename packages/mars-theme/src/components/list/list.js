@@ -31,9 +31,11 @@ const List = ({ state, actions }) => {
     console.log(state);
   };
   const categories = [];
-  state.customSettings.categories.map((cat, index) => {
-    if(cat.parent === 1) categories.push(cat);
-  })
+  if(state.customSettings.categories.length>0){
+    state.customSettings.categories.map((cat, index) => {
+      if(cat.parent === 1) categories.push(cat);
+    })
+  }
 
 
   return (

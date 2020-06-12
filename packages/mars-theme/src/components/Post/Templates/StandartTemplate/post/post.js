@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'frontity';
-import Link from '../../link';
+import Link from '../../../../link';
 import { Container, Name, LinkButton } from './styles';
 
 const Post = ({ state, libraries, className, children, href = '#' }) => {

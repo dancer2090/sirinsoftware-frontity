@@ -1,3 +1,3 @@
-import SpecialTemplate from './SpecialTemplate';
+import PageFullTemplate from './PageFullTemplate';
 
-export default SpecialTemplate;
+export default PageFullTemplate;

@@ -1,5 +1,5 @@
 import { styled } from 'frontity';
-import SvgSprite from '../Article/SvgSprite';
+import SvgSprite from '../StandartTemplate/SvgSprite';
 
 export const Container = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');

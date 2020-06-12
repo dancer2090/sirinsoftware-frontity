@@ -1,3 +1,3 @@
-import ProductTemplate from './ProductTemplate';
+import PageBookTemplate from './PageBookTemplate';
 
-export default ProductTemplate;
+export default PageBookTemplate;

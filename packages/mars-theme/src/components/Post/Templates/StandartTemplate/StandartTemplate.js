@@ -16,12 +16,12 @@ import {
   BusinessButton,
   PostList,
 } from './styles';
-import Link from '../link';
+import Link from '../../../link';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
-import Image from '../../img/image.jpg';
+import Image from '../../../../img/image.jpg';
 
-const Article = ({ state, libraries }) => {
+const StandartTemplate = ({ state, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
@@ -73,8 +73,9 @@ const Article = ({ state, libraries }) => {
               {dataMore.items.length>0 && dataMore.items.map((p_item,index)=>{
                 const sub_post = state.source[p_item.type][p_item.id];
                 const sp_title = sub_post.title.rendered;
+                const link = (sub_post ? sub_post.link : "");
                 return (
-                  <PostItem href={sub_post.link} key={sp_title}>
+                  <PostItem href={link} key={sp_title}>
                     {sp_title}
                   </PostItem>
                 )
@@ -87,4 +88,4 @@ const Article = ({ state, libraries }) => {
     </WrapperPage>
   );
 };
-export default connect(Article);
+export default connect(StandartTemplate);

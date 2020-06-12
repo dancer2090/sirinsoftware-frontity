@@ -87,10 +87,9 @@ const marsTheme = {
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
 
-        if(!state.router.link.indexOf("/blog/")){
-          const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
-          state.customSettings.categories = categories.data;
-        }
+        const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
+        state.customSettings.categories = categories.data;
+
         if (
           !state.router.link.indexOf("/blog/") &&
           state.router.link !== "/blog/"
