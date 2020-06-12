@@ -20,7 +20,7 @@ import FeedbackForm from './FeedbackForm';
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
-  console.log(state);
+  // console.log(state);
 
   return (
     <>

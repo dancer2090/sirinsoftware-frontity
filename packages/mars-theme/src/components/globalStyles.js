@@ -51,4 +51,6 @@ export const Main = styled.div`
   display: flex;
   justify-content: center;
   background-color: #ffffff;
+  position: relative;
+  min-height: 400px;
 `;
