@@ -12,10 +12,10 @@ import {
   CardInfo,
   Icon
 } from './styles';
-import oneBg from '../../img/kiyv.svg';
-import twoBg from '../../img/usa.svg';
+import oneBg from '../../../../img/kiyv.svg';
+import twoBg from '../../../../img/usa.svg';
 
-const Contacts = () => {
+const ContactsTemplate = () => {
   return (
     <Container>
       <Title>
@@ -95,4 +95,4 @@ const Contacts = () => {
   )
 }
 
-export default Contacts;
+export default ContactsTemplate;

@@ -6,13 +6,10 @@ import Switch from '@frontity/components/switch';
 import Header from './Header';
 import Footer from './Footer';
 import List from './list';
-import Article from './Article';
+import Post from './post';
 import Loader from './Loader';
 import Title from './title';
-import Services from './Services';
 import PageError from './page-error';
-import Contacts from './Contacts';
-import Page404 from './404';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
 
@@ -50,15 +47,13 @@ const Theme = ({ state }) => {
         <Switch>
           <Loader when={data.isFetching} />
           <List when={data.isArchive} />
-          <Services when={state.router.link === '/services/'} />
-          <Contacts when={state.router.link === '/contacts/'} />
-          {/* <Article when={data.isPostType} /> */}
+          <Post when={data.isPostType} />
           <PageError when={data.isError} />
         </Switch>
       </Main>
 
       <FeedbackForm />
-      <Footer/>
+      <Footer />
     </>
   );
 };

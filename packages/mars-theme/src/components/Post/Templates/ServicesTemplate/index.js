@@ -1,3 +1,3 @@
-import EnterpriceTemplate from './EnterpriceTemplate';
+import ServicesTemplate from './ServicesTemplate';
 
-export default EnterpriceTemplate;
+export default ServicesTemplate;
