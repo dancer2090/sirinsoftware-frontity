@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import { styled, css } from 'frontity';
 import Button from '../button';
 import Field from '../input';
 
@@ -15,6 +15,7 @@ const Form = styled.form`
     @media screen and (max-width: 767px) {
         padding: 25px 11px 27px 11px;
     }
+    position: relative;
 `;
 
 const Title = styled.span`
@@ -68,8 +69,42 @@ const Description = styled.div`
     }
 `;
 
+export const InputGroup = styled.div`
+  position: relative;
+`;
+
+export const ErrorText = styled.div`
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    color: #fb0000;
+    font-size: 14px;
+`;
+
 const Input = styled(Field)`
     margin-bottom: 10px;
+    ${(props) => props.error && css`
+        input {
+          background-color: #ffebeb;
+        }
+    `}
+`;
+
+export const FText = styled.div`
+  overflow: hidden;
+  position: relative;
+  max-height: 0px;
+  text-align: center;
+  color: #ffffff;
+  transition: 0.2s ease all;
+  font-size:0px;
+  opacity: 0;
+
+  ${(props) => props.afterload && css`
+    font-size: 16px;
+    opacity: 1;
+    max-height: 100%;
+  `}
 `;
 
 export {

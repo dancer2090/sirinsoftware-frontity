@@ -35,6 +35,7 @@ const Form = ({ submitForm }) => {
   const fileInput = useRef(null);
 
   const validateForm = () => {
+
     const getNameError = validateFieldName(name);
     const getCompanyError = validateFieldCompany(company);
     const getEmailError = validateFieldEmail(email);
@@ -53,16 +54,15 @@ const Form = ({ submitForm }) => {
 
   const sendForm = () => {
     if(validateForm()) {
-      submitForm({
-        name,
-        email,
-        company,
-        privacy,
-        message,
-        nda,
-        trackNews,
-        nameSelectFile
-      });
+      let formData = new FormData();
+      formData.append('userfile',fileInput.current.files[0]);
+      formData.append('name',name);
+      formData.append('email',email);
+      formData.append('company',company);
+      formData.append('description',message);
+      formData.append('nda',nda);
+      formData.append('subscribe',trackNews);
+      submitForm({formData});
     }
   }
 
@@ -71,12 +71,14 @@ const Form = ({ submitForm }) => {
     setSelectFile(name);
   }
 
+
   return (
     <>
       <FormTemplate>
         <InputTextBlock>
           <InputGroup>
             <FormControl 
+              name="name"
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder="Name*" />
@@ -87,6 +89,7 @@ const Form = ({ submitForm }) => {
           </InputGroup>
           <InputGroup>
             <FormControl 
+              name="email"
               type="email" 
               value={email}
               onChange={e => setEmail(e.target.value)}
@@ -98,6 +101,7 @@ const Form = ({ submitForm }) => {
           </InputGroup>
           <InputGroup>
             <FormControl 
+              name="company"
               value={company}
               onChange={e => setCompany(e.target.value)}
               placeholder="Company*" />
@@ -108,6 +112,7 @@ const Form = ({ submitForm }) => {
           </InputGroup>
         </InputTextBlock>
         <Textarea 
+          name="description"
           className="text-field" 
           placeholder="Message" 
           value={message}
@@ -116,6 +121,7 @@ const Form = ({ submitForm }) => {
           name="text"></Textarea>
         <Clip>
           <input 
+            name="userfile"
             type="file" 
             id="upload" 
             ref={fileInput}
@@ -132,6 +138,7 @@ const Form = ({ submitForm }) => {
         <Send>
           <div className="box">
             <input 
+              name="nda"
               tabIndex="5" 
               type="checkbox" 
               id="nda" 
@@ -158,6 +165,7 @@ const Form = ({ submitForm }) => {
           </div>
           <div className="box">
             <input 
+              name="subscribe"
               tabIndex="7" 
               type="checkbox" 
               checked={trackNews}

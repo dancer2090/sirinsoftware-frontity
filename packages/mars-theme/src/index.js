@@ -55,6 +55,8 @@ const marsTheme = {
     customSettings: {
       pageNumber : 2,
       categories: {},
+      isSubscribeSend: false,
+      isFormSend: false,
     },
     theme: {
       menu: {},
@@ -82,6 +84,34 @@ const marsTheme = {
       },
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
+      },
+      sendForm: ({ state }) => async (data) => {
+        const data_form = data.formData;
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        state.customSettings.isFormSend = true;
+        await axios.post(
+          `${state.source.api}/frontity-api/send-form`,
+          data_form,
+          {headers: {'content-type': 'application/json'}},
+        ).then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            state.customSettings.isFormSend = false;
+          }
+        });
+      },
+      sendSubscribe: ({ state }) => async (data) => {
+        state.customSettings.isSubscribeSend = true;
+        await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            state.customSettings.isSubscribeSend = false;
+          }
+        });
       },
       beforeSSR: async ({ state, actions }) => {
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
