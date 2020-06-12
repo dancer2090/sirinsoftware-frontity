@@ -14,6 +14,8 @@ import PageError from './page-error';
 import Contacts from './Contacts';
 import Page404 from './404';
 import { Space, globalStyles, Main } from './globalStyles';
+import FeedbackForm from './FeedbackForm';
+
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
@@ -37,7 +39,7 @@ const Theme = ({ state }) => {
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
       <Global styles={globalStyles} />
 
-      {/* Add the header of the site. */}
+      {/* Add the header of the site.  */}
       <Header />
       <Space />
 
@@ -55,6 +57,7 @@ const Theme = ({ state }) => {
         </Switch>
       </Main>
 
+      <FeedbackForm />
       <Footer/>
     </>
   );
