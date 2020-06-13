@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'frontity';
 import {
   Wrapper,
   Container,
   BigFrame,
+  BigImageBlock,
   BigFrameImage,
   BigFrameContent,
   ServicesList,
@@ -21,54 +23,39 @@ import ItemImgTwo from '../../../../img/service-two.jpg';
 import caseImg from '../../../../img/case-one.jpg';
 import caseImgTwo from '../../../../img/case-two.jpg';
 
-const ServicesTemplate = () => {
+const ServicesTemplate = ({ state, libraries }) => {
+  const data = state.source.get(state.router.link);
+  const post = state.source[data.type][data.id];
+
+  // Get the html2react component.
+  const Html2React = libraries.html2react.Component;
+
+  console.log(post.acf)
   return (
     <Wrapper>
       <BigFrame>
-        <BigFrameImage src={ServiceFrameImage} />
+        <BigImageBlock>
+          <BigFrameImage src={post.acf.main_image.url} />
+        </BigImageBlock>
         <BigFrameContent>
           <div>
-            Nam libero tempore, 
-            cum soluta nobis est eligendi optio, 
-            cumque nihil impedit, quo minus id, quod maxime placeat, f
-            acere possimus, omnis voluptas assumenda est, omnis dolor 
-            repellendus. Temporibus autem quibusdam et aut officiis debitis 
-            aut rerum necessitatibus saepe eveniet, ut et voluptates 
-            repudiandae sint et molestiae non recusandae.
+            <Html2React html={post.acf.main_text} />
           </div>
         </BigFrameContent>
       </BigFrame>
       <Container>
         <ServicesList>
-          <ServicesItem src={ItemImg}>
-            <h2>
-              Software development
-            </h2>
-            <p>
-              Nam libero tempore, cum 
-              soluta nobis est eligendi optio, cumque nihil impedit,
-              quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, 
-              omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut 
-              rerum necessitatibus saepe eveniet, 
-              ut et voluptates repudiandae sint et molestiae non recusandae.
-            </p>
-          </ServicesItem>
-          <ServicesItem 
-            reverse={true} 
-            color="yellow"
-            src={ItemImgTwo}>
-            <h2>
-              Hardware development
-            </h2>
-            <p>
-              Nam libero tempore, cum 
-              soluta nobis est eligendi optio, cumque nihil impedit,
-              quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, 
-              omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut 
-              rerum necessitatibus saepe eveniet, 
-              ut et voluptates repudiandae sint et molestiae non recusandae.
-            </p>
-          </ServicesItem>
+          { post.acf.services.map((item, index) => {
+            return (
+              <ServicesItem 
+                src={item.image.url}
+                reverse={index % 2 !== 0 ? true : false}
+                color={index % 2 !== 0 ? 'yellow' : ''}>
+                <h2>{item.name}</h2>
+                <p>{item.text}</p>
+              </ServicesItem>
+            )
+          })}
         </ServicesList>
         <CaseContainer>
           <CaseTitle data-text="case studies">
@@ -115,4 +102,4 @@ const ServicesTemplate = () => {
   )
 }
 
-export default ServicesTemplate;
+export default connect(ServicesTemplate);
