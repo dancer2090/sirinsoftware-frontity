@@ -35,7 +35,6 @@ const ServicesTemplate = ({ state, libraries }) => {
     return state.source[item.type][item.id];
   });
 
-  console.log(slidesStudies)
   return (
     <Wrapper>
       <BigFrame>
@@ -73,7 +72,9 @@ const ServicesTemplate = ({ state, libraries }) => {
                   <CaseItem 
                     key={index}
                     src={item.acf.post_featured_image}>
-                    <CaseItemTitle>Other Case Studies</CaseItemTitle>
+                    <CaseItemTitle>
+                    <Html2React html={item.acf.portfolio_business_area} />
+                    </CaseItemTitle>
                     <CaseContent>
                       <Html2React html={item.title.rendered} />
                     </CaseContent>
