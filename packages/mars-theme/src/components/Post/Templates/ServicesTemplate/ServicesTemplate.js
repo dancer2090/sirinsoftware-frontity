@@ -26,11 +26,16 @@ import caseImgTwo from '../../../../img/case-two.jpg';
 const ServicesTemplate = ({ state, libraries }) => {
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
-
+  // case data
+  const caseStudies = state.source.data['/case-studies/'];
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  console.log(post.acf)
+  const slidesStudies = caseStudies.items.map(item => {
+    return state.source[item.type][item.id];
+  });
+
+  console.log(slidesStudies)
   return (
     <Wrapper>
       <BigFrame>
@@ -49,6 +54,7 @@ const ServicesTemplate = ({ state, libraries }) => {
             return (
               <ServicesItem 
                 src={item.image.url}
+                key={index}
                 reverse={index % 2 !== 0 ? true : false}
                 color={index % 2 !== 0 ? 'yellow' : ''}>
                 <h2>{item.name}</h2>
@@ -62,39 +68,20 @@ const ServicesTemplate = ({ state, libraries }) => {
             <span>case studies</span>
           </CaseTitle>
           <CaseSlider>
-            <CaseItem src={caseImg}>
-              <CaseItemTitle>Other Case Studies</CaseItemTitle>
-              <CaseContent>
-                Wireless connection manager for IOT-
-                Enabled consumer  electronics
-              </CaseContent>
-              <CaseLink>Learn more</CaseLink>
-            </CaseItem>
-            
-            <CaseItem src={caseImgTwo}>
-              <CaseItemTitle>Other Case Studies</CaseItemTitle>
-              <CaseContent>
-                Platform for petabyte scale backup and archive repositories
-              </CaseContent>
-              <CaseLink>Learn more</CaseLink>
-            </CaseItem>
-            
-            <CaseItem src={caseImg}>
-              <CaseItemTitle>Other Case Studies</CaseItemTitle>
-              <CaseContent>
-                Wireless connection manager for IOT-
-                Enabled consumer  electronics
-              </CaseContent>
-              <CaseLink>Learn more</CaseLink>
-            </CaseItem>
-            
-            <CaseItem src={caseImgTwo}>
-              <CaseItemTitle>Other Case Studies</CaseItemTitle>
-              <CaseContent>
-                Platform for petabyte scale backup and archive repositories
-              </CaseContent>
-              <CaseLink>Learn more</CaseLink>
-            </CaseItem>
+            { slidesStudies.map((item, index) => {
+                return (
+                  <CaseItem 
+                    key={index}
+                    src={item.acf.post_featured_image}>
+                    <CaseItemTitle>Other Case Studies</CaseItemTitle>
+                    <CaseContent>
+                      <Html2React html={item.title.rendered} />
+                    </CaseContent>
+                    <CaseLink href={item.link}>Learn more</CaseLink>
+                  </CaseItem>
+                )
+              })
+            }
           </CaseSlider>
         </CaseContainer>
       </Container>

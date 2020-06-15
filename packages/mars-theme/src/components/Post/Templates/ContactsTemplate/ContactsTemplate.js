@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'frontity';
 import {
   Container,
   Title,
@@ -15,15 +16,20 @@ import {
 import oneBg from '../../../../img/kiyv.svg';
 import twoBg from '../../../../img/usa.svg';
 
-const ContactsTemplate = () => {
+const ContactsTemplate = ({ state, libraries }) => {
+   // Get information about the current URL.
+  const data = state.source.get(state.router.link);
+  // Get the data of the post.
+  const post = state.source[data.type][data.id];
+  // Get the html2react component.
+  const Html2React = libraries.html2react.Component;
   return (
     <Container>
       <Title>
-        Thank you for your interest in Sirin Software! 
+        <Html2React html={post.excerpt.rendered}/>
       </Title>
       <Description>
-        By completing the form below you can tell us about your needs. Here you can find <br/>
-        all our contact information for both Sirin Software office locations in the USA and Ukraine
+        <Html2React html={post.content.rendered}/>
       </Description>
       <Row>
         <Card src={oneBg} >
@@ -95,4 +101,4 @@ const ContactsTemplate = () => {
   )
 }
 
-export default ContactsTemplate;
+export default connect(ContactsTemplate);
