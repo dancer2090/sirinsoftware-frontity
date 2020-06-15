@@ -10,6 +10,7 @@ import {
   ImgContainer,
 } from './styles';
 import Link from '../../link';
+import { urlControl } from '../../../utils/url-control';
 import imgSrc from './img-src';
 /**
  * Item Component
