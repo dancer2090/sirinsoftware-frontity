@@ -57,6 +57,7 @@ const marsTheme = {
       categories: {},
       isSubscribeSend: false,
       isFormSend: false,
+      isCommentSend: false,
     },
     theme: {
       menu: {},
@@ -104,6 +105,26 @@ const marsTheme = {
           }
         });
       },
+      sendComment: ({ state }) => async (data) => {
+        const data_form = data.formData;
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        state.customSettings.isCommentSend = true;
+        await axios.post(
+          `${state.source.api}/frontity-api/send-comment`,
+          data_form,
+          {headers: {'content-type': 'application/json'}},
+        ).then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            state.customSettings.isCommentSend = false;
+          }
+        });
+      },
+
       sendSubscribe: ({ state }) => async (data) => {
         state.customSettings.isSubscribeSend = true;
         await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
