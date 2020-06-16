@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'frontity';
 import {
   Container,
   Title,
@@ -15,44 +16,51 @@ import {
 import oneBg from '../../../../img/kiyv.svg';
 import twoBg from '../../../../img/usa.svg';
 
-const ContactsTemplate = () => {
+const ContactsTemplate = ({ state, libraries }) => {
+   // Get information about the current URL.
+  const data = state.options;
+  const dataContent = state.source.get(state.router.link);
+
+  // Get the data of the post.
+  const office = data.acf.offices_locations
+  const post = state.source[dataContent.type][dataContent.id];
+
+  // Get the html2react component.
+  const Html2React = libraries.html2react.Component;
+
   return (
     <Container>
       <Title>
-        Thank you for your interest in Sirin Software! 
+        <Html2React html={post.excerpt.rendered} />
       </Title>
       <Description>
-        By completing the form below you can tell us about your needs. Here you can find <br/>
-        all our contact information for both Sirin Software office locations in the USA and Ukraine
+        <Html2React html={post.content.rendered} />
       </Description>
       <Row>
         <Card src={oneBg} >
           <CardTitle>
-            Kyiv, Ukraine
+            <Html2React html={office[0].office_header} />
           </CardTitle>
-
           <CardList>
             <CartAddress>
               <CardItem>
                 <Icon name="location"/>
                 <span>
-                  Delivery office: <br/>
-                  Yaroslavskaya St. 56a, <br/>
-                  04071 Kyiv, Ukraine
+                  <Html2React html={office[0].office_address} />
                 </span>
               </CardItem>
             </CartAddress>
             <CardInfo>
               <CardItem>
                 <Icon name="phone"/>
-                <a href="tel:+380445925087">
-                  +38 044 592 50 87
+                <a href={office[0].office_phone1}>
+                  <Html2React html={office[0].office_phone1} />
                 </a>
               </CardItem>
               <CardItem>
                 <Icon name="message"/>
-                <a href="mailto:info@sirinsoftware.com">
-                  info@sirinsoftware.com
+                <a href={office[0].office_email} >
+                  <Html2React html={office[0].office_email} />
                 </a>
               </CardItem>
             </CardInfo>
@@ -60,16 +68,14 @@ const ContactsTemplate = () => {
         </Card>
         <Card src={twoBg} >
           <CardTitle>
-            Orlando, Florida
+            <Html2React html={office[1].office_header} />
           </CardTitle>
           <CardList>
             <CartAddress>
               <CardItem>
                 <Icon name="location"/>
                 <span>
-                  Mailing address: <br/>
-                  13920 Landstar Blvd Suite #101 - 0060 <br/>
-                  Orlando, FL, 32824
+                  <Html2React html={office[1].office_address} />
                 </span>
               </CardItem>
             </CartAddress>
@@ -77,14 +83,14 @@ const ContactsTemplate = () => {
             <CardInfo>
               <CardItem>
                 <Icon name="phone"/>
-                <a href="tel:+3213288379">
-                  321 328 8379
+                <a href={office[1].office_phone1}>
+                  <Html2React html={office[1].office_phone1} />
                 </a>
               </CardItem>
               <CardItem>
                 <Icon name="message"/>
-                <a href="mailto:info@sirinsoftware.com">
-                  info@sirinsoftware.com
+                <a href={office[1].office_email} >
+                  <Html2React html={office[1].office_email} />
                 </a>
               </CardItem>
             </CardInfo>
@@ -95,4 +101,4 @@ const ContactsTemplate = () => {
   )
 }
 
-export default ContactsTemplate;
+export default connect(ContactsTemplate);
