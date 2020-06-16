@@ -22,7 +22,8 @@ const ContactsTemplate = ({ state, libraries }) => {
   const dataContent = state.source.get(state.router.link);
 
   // Get the data of the post.
-  const office = data.acf.offices_locations
+  const { acf = {} } = data;
+  const office = acf.offices_locations
   const post = state.source[dataContent.type][dataContent.id];
 
   // Get the html2react component.
