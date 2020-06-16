@@ -17,11 +17,6 @@ import {
   CaseItemTitle,
   CaseContent
 } from './styles';
-import ServiceFrameImage from '../../../../img/service.jpg';
-import ItemImg from '../../../../img/item-service.jpg';
-import ItemImgTwo from '../../../../img/service-two.jpg';
-import caseImg from '../../../../img/case-one.jpg';
-import caseImgTwo from '../../../../img/case-two.jpg';
 
 const ServicesTemplate = ({ state, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -35,21 +30,23 @@ const ServicesTemplate = ({ state, libraries }) => {
     return state.source[item.type][item.id];
   });
 
+  const { acf = {} } = post;
+
   return (
     <Wrapper>
       <BigFrame>
         <BigImageBlock>
-          <BigFrameImage src={post.acf.main_image.url} />
+          <BigFrameImage src={acf.main_image.url} />
         </BigImageBlock>
         <BigFrameContent>
           <div>
-            <Html2React html={post.acf.main_text} />
+            <Html2React html={acf.main_text} />
           </div>
         </BigFrameContent>
       </BigFrame>
       <Container>
         <ServicesList>
-          { post.acf.services.map((item, index) => {
+          { acf.services.map((item, index) => {
             return (
               <ServicesItem 
                 src={item.image.url}
@@ -68,12 +65,14 @@ const ServicesTemplate = ({ state, libraries }) => {
           </CaseTitle>
           <CaseSlider>
             { slidesStudies.map((item, index) => {
+                const { acf = {} } = item;
+                const { post_featured_image = {} } = acf;
                 return (
                   <CaseItem 
                     key={index}
-                    src={item.acf.post_featured_image}>
+                    src={post_featured_image}>
                     <CaseItemTitle>
-                    <Html2React html={item.acf.portfolio_business_area} />
+                    <Html2React html={acf.portfolio_business_area} />
                     </CaseItemTitle>
                     <CaseContent>
                       <Html2React html={item.title.rendered} />
