@@ -97,7 +97,7 @@ const HeaderComponent = ({ state, libraries }) => {
                         {item.child_items && item.child_items.length > 0 ? (
                           <>
                             <span>{item.title}</span>
-                            <SubMenu isMobile isOpen={}>
+                            <SubMenu>
                               {item.child_items.map((cItem, cn) => (
                                 <li key={cn}>
                                   <Link afterClick={() => setMenu(false)} link={cItem.urlFrontity}>
