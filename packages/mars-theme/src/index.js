@@ -58,6 +58,7 @@ const marsTheme = {
       isSubscribeSend: false,
       isFormSend: false,
       isCommentSend: false,
+      isThanksOpen: true,
     },
     theme: {
       menu: {},
@@ -93,16 +94,12 @@ const marsTheme = {
                 'content-type': 'multipart/form-data'
             }
         };
-        state.customSettings.isFormSend = true;
         await axios.post(
           `${state.source.api}/frontity-api/send-form`,
           data_form,
           {headers: {'content-type': 'application/json'}},
         ).then((response) => {
-          console.log(response);
-          if (response.status === 200) {
-            state.customSettings.isFormSend = false;
-          }
+          state.customSettings.isFormSend = true;
         });
       },
       sendComment: ({ state }) => async (data) => {
@@ -126,11 +123,10 @@ const marsTheme = {
       },
 
       sendSubscribe: ({ state }) => async (data) => {
-        state.customSettings.isSubscribeSend = true;
         await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
           console.log(response);
           if (response.status === 200) {
-            state.customSettings.isSubscribeSend = false;
+            state.customSettings.isSubscribeSend = true;
           }
         });
       },
