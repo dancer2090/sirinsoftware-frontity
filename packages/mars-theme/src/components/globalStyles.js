@@ -1,6 +1,11 @@
 import { css, styled } from 'frontity';
 
 export const globalStyles = css`
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  } 
+
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;

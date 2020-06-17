@@ -37,20 +37,21 @@ const HeaderComponent = ({
   scrollRef = null,
   offset = 100,
 }) => {
-  const [isMenu, setMenu] = useState(false);
+  const [isMenu, setMenu] = useState(true);
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
   const { main = {} } = state.theme.menu;
   const { items = [] } = main;
   const Html2React = libraries.html2react.Component;
-  const scrollToRef = () => (
-    scrollRef
-      ? window.scrollTo({
+  const scrollToRef = () => {
+    setMenu(false);
+    if (scrollRef) {
+      window.scrollTo({
         top: scrollRef.current.offsetTop - offset,
         left: 0,
         behavior: 'smooth',
-      })
-      : null
-  );
+      });
+    }
+  };
   return (
     <ReactResizeDetector handleWidth onResize={updateWidth}>
       <HeadBlock isMenu={isMenu}>
@@ -133,11 +134,11 @@ const HeaderComponent = ({
                 </MobileTopMenu>
               </MobileOption>
               <MobileGetButton>
-                <Link onClick={() => scrollToRef()}>
-                  <Button>
+                <a>
+                  <Button onClick={() => scrollToRef()}>
                     GET A FREE QUOTE
                   </Button>
-                </Link>
+                </a>
               </MobileGetButton>
             </MobileBody>
             <CrossBlock>
