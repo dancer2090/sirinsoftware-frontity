@@ -120,6 +120,23 @@ const marsTheme = {
         const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
         state.customSettings.categories = categories.data;
 
+        await actions.source.fetch('/case-studies/')
+
+        if (
+          !state.router.link.indexOf("/services/") &&
+          state.router.link !== "/services/"
+        ) {
+          await actions.source.fetch('/case-studies/')
+        }
+
+        if (
+          !state.router.link.indexOf("/case-studies/") &&
+          state.router.link !== "/case-studies/"
+        ) {
+          await actions.source.fetch('/case-studies/')
+        }
+      
+
         if (
           !state.router.link.indexOf("/blog/") &&
           state.router.link !== "/blog/"

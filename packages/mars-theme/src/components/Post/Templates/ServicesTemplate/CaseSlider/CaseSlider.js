@@ -7,6 +7,7 @@ import {
 const CaseSlider = ({ className, children }) => {
   const params = {
     slidesPerView: 1,
+    slidesPerGroup: 1,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
@@ -16,6 +17,7 @@ const CaseSlider = ({ className, children }) => {
     breakpoints: {
       768: {
         slidesPerView: 2,
+        slidesPerGroup: 2,
         spaceBetween: 20,
       }
     }
