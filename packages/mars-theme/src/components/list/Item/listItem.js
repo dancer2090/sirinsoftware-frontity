@@ -45,17 +45,22 @@ const Item = ({
   const mediaObj = state.source.attachment[item.featured_media];
 
   let category_id = 1;
-  item.categories.map((p_item, index)=>{
-    category_id = p_item;
-  });
-  const category = state.source['category'][category_id];
+  let category = {name:''};
+  if(item.categories && item.categories.length>0){
+    item.categories.map((p_item, index)=>{
+      category_id = p_item;
+    });
+    category = state.source['category'][category_id];
+  }
+  let bgImg = imgSrc;
+  if(mediaObj) bgImg = mediaObj.source_url;
+  else if(item_image) bgImg = item_image.source_url;
 
   return (
     <Article isOdd={isOdd}>
       <ArtContainer>
         <ImgContainer 
-          bgImage={mediaObj ? mediaObj.source_url
-          : item_image.source_url}>
+          bgImage={bgImg}>
         </ImgContainer>
         <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>{category.name}</ArtCategory>
         <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>
