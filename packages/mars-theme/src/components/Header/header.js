@@ -37,7 +37,7 @@ const HeaderComponent = ({
   scrollRef = null,
   offset = 100,
 }) => {
-  const [isMenu, setMenu] = useState(true);
+  const [isMenu, setMenu] = useState(false);
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
   const { main = {} } = state.theme.menu;
   const { items = [] } = main;
