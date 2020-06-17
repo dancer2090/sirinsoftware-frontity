@@ -34,6 +34,7 @@ const HeaderComponent = ({ state, libraries }) => {
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
   const { main = {} } = state.theme.menu;
   const { items = [] } = main;
+  // console.log(items);
   const Html2React = libraries.html2react.Component;
   return (
     <ReactResizeDetector handleWidth onResize={updateWidth}>

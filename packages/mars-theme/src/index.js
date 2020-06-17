@@ -1,45 +1,41 @@
 /* eslint-disable no-param-reassign */
-import Theme from "./components";
-import image from "@frontity/html2react/processors/image";
-import iframe from "@frontity/html2react/processors/iframe";
-import imageUrl from './processors/imageUrl';
+import image from '@frontity/html2react/processors/image';
+import iframe from '@frontity/html2react/processors/iframe';
 import axios from 'axios';
-
-const linkReplace = (link, frontityUrl, adminUrl) => {
-  let newLink = '';
-  if (link.startsWith(frontityUrl)) {
-    newLink = link.replace(frontityUrl, '');
-  } else if (link.startsWith(adminUrl)) {
-    newLink = link.replace(adminUrl, '');
-  } else {
-    newLink = link;
-  }
-  return newLink;
-};
+import Theme from './components';
+import imageUrl from './processors/imageUrl';
+import linkUrls from './processors/linkUrls';
+import { linkReplace } from './utils/func';
 
 const newHandler = {
-  name: "categoryOrPostType",
+  name: 'categoryOrPostType',
   priority: 19,
-  pattern: "/(.*)?/:slug", 
-  func: async ({ route, params, state, libraries }) => {
+  pattern: '/(.*)?/:slug',
+  func: async ({
+    route, params, state, libraries,
+  }) => {
     // 1. try with category.
     try {
       const category = libraries.source.handlers.find(
-        handler => handler.name == "category"
+        (handler) => handler.name === 'category',
       );
-      await category.func({ route, params, state, libraries });
+      await category.func({
+        route, params, state, libraries,
+      });
     } catch (e) {
       // It's not a category
       const postType = libraries.source.handlers.find(
-        handler => handler.name == "post type"
+        (handler) => handler.name === 'post type',
       );
-      await postType.func({ link: route, params, state, libraries });
+      await postType.func({
+        link: route, params, state, libraries,
+      });
     }
-  }
+  },
 };
 
 const marsTheme = {
-  name: "@frontity/mars-theme",
+  name: '@frontity/mars-theme',
   roots: {
     /**
      *  In Frontity, any package can add React components to the site.
@@ -53,7 +49,7 @@ const marsTheme = {
      * relevant state. It is scoped to the `theme` namespace.
      */
     customSettings: {
-      pageNumber : 2,
+      pageNumber: 2,
       categories: {},
       isSubscribeSend: false,
       isFormSend: false,
@@ -73,10 +69,7 @@ const marsTheme = {
    */
   actions: {
     theme: {
-      init: ({ libraries }) => {
-
-      },
-      loadMore: ({ state, actions }) => async (data) => {
+      loadMore: ({ state }) => async () => {
         state.seatbackapi.pageNumber += 1;
       },
       toggleMobileMenu: ({ state }) => {
@@ -86,19 +79,18 @@ const marsTheme = {
         state.theme.isMobileMenuOpen = false;
       },
       sendForm: ({ state }) => async (data) => {
-        const data_form = data.formData;
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
+        const dataForm = data.formData;
+        // const config = {
+        //   headers: {
+        //     'content-type': 'multipart/form-data',
+        //   },
+        // };
         state.customSettings.isFormSend = true;
         await axios.post(
           `${state.source.api}/frontity-api/send-form`,
-          data_form,
-          {headers: {'content-type': 'application/json'}},
+          dataForm,
+          { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
-          console.log(response);
           if (response.status === 200) {
             state.customSettings.isFormSend = false;
           }
@@ -107,7 +99,6 @@ const marsTheme = {
       sendSubscribe: ({ state }) => async (data) => {
         state.customSettings.isSubscribeSend = true;
         await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
-          console.log(response);
           if (response.status === 200) {
             state.customSettings.isSubscribeSend = false;
           }
@@ -120,37 +111,38 @@ const marsTheme = {
         const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
         state.customSettings.categories = categories.data;
 
-        await actions.source.fetch('/case-studies/')
+        await actions.source.fetch('/case-studies/');
 
         if (
-          !state.router.link.indexOf("/services/") &&
-          state.router.link !== "/services/"
+          !state.router.link.indexOf('/services/')
+          && state.router.link !== '/services/'
         ) {
-          await actions.source.fetch('/case-studies/')
+          await actions.source.fetch('/case-studies/');
         }
 
         if (
-          !state.router.link.indexOf("/case-studies/") &&
-          state.router.link !== "/case-studies/"
+          !state.router.link.indexOf('/case-studies/')
+          && state.router.link !== '/case-studies/'
         ) {
-          await actions.source.fetch('/case-studies/')
+          await actions.source.fetch('/case-studies/');
         }
-      
+
 
         if (
-          !state.router.link.indexOf("/blog/") &&
-          state.router.link !== "/blog/"
+          !state.router.link.indexOf('/blog/')
+          && state.router.link !== '/blog/'
         ) {
-          await actions.source.fetch("/blog");
+          await actions.source.fetch('/blog');
         }
 
+        const replaces = [state.frontity.url, state.frontity.adminUrl];
         const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);
         state.theme.menu.main = mainMenu.data || {};
         state.theme.menu.main.items.map((item) => {
-          item.urlFrontity = linkReplace(item.url, state.frontity.url, state.frontity.adminUrl);
+          item.urlFrontity = linkReplace(item.url, replaces);
           if (item.child_items) {
             item.child_items = item.child_items.map((cItem) => {
-              cItem.urlFrontity = linkReplace(cItem.url, state.frontity.url, state.frontity.adminUrl);
+              cItem.urlFrontity = linkReplace(cItem.url, replaces);
               return cItem;
             });
           }
@@ -161,14 +153,14 @@ const marsTheme = {
   },
   libraries: {
     source: {
-      handlers: [newHandler]
+      handlers: [newHandler],
     },
     html2react: {
       /**
        * Add a processor to `html2react` so it processes the `<img>` tags
        * inside the content HTML. You can add your own processors too
        */
-      processors: [image, iframe, imageUrl],
+      processors: [image, iframe, imageUrl, linkUrls],
     },
   },
 };

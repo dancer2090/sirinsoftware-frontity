@@ -6,7 +6,7 @@ import { connect } from 'frontity';
 const Link = ({
   state,
   actions,
-  link,
+  link = '/',
   className,
   children,
   'aria-current': ariaCurrent,
