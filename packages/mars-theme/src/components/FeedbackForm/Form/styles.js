@@ -67,10 +67,10 @@ export const FormControl = styled.input`
 `;
 
 export const ErrorText = styled.p`
-  margin-top: 5px;
+  margin: 0;
   color: #fb0000;
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   bottom: 15px;
   right: 20px;
   transition: opacity .5s ease-in-out;

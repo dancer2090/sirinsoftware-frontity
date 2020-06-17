@@ -21,6 +21,7 @@ import FeedbackForm from './FeedbackForm';
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+
   console.log(state);
   const formHandleClose = () => {
     state.customSettings.isFormSend = false;
@@ -28,6 +29,7 @@ const Theme = ({ state }) => {
   const subscribeHandleClose = () => {
     state.customSettings.isSubscribeSend = false;
   }
+
   return (
     <>
       {/* Add some metatags to the <head> of the HTML. */}

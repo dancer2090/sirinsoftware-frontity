@@ -90,6 +90,12 @@ export const Menu = styled.ul`
     text-align: center;
     text-transform: uppercase;
 
+    & > span {
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
     & > a {
       height: 100%;
       display: flex;
@@ -116,45 +122,6 @@ export const Menu = styled.ul`
       }
     }
   }
-  /* .menu ul li {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-  } */
-  /* .menu ul {
-    display: none;
-    position: absolute;
-  }
-  .menu li:hover ul {
-    display: block;
-  }
-  .menu li:hover li {
-    display: block;
-    text-transform: capitalize;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    line-height: 27px;
-    font-size: 14px;
-    color: #77716d;
-    font-weight: 400;
-  }
-  .sub-menu li {
-    margin-left:-30px;
-    margin-right: 10px;
-    margin-top: -5px;
-    margin-bottom: -5px;
-  }
-  .sub-menu {
-    margin-top: 0px;
-    display: none;
-    position: absolute;
-    margin-left: -10px;
-    width: 157 px;
-    background: #fff;
-    box-shadow: 2px 4px 4px rgba(0, 0, 0, .25);
-    z-index: 5;
-    text-align: left;
-  } */
 `;
 
 
@@ -261,44 +228,25 @@ export const MobileLogo = styled.div`
 
 export const MobileTopMenu = styled.div`
     padding:0;
-    ul li a {
+    ul li {      
+      a, span {
         text-decoration: none;
         color: #222222;
         font-size: 14px;
         line-height: 17px;
         font-style: normal;
         font-weight: 500;
-    }
-    a {
-        text-decoration: none;
-    }
-    li span {
-        color: #FF8D23;
+        display: block;
+        width: 100%;
+        padding: 12px 5px;
+      }
     }
     li {
-        height: 45px;
-        list-style-type: none;
+      height: 45px;
+      list-style-type: none;
     }
-        .sub-menu li {
-            margin-left: -30px;
-            margin-right: 10px;
-            margin-top: 10px;
-            margin-bottom: 5px;
-        }
-        .sub-menu {
-            display: none;
-            position: absolute;
-            margin-left: -10px;
-            width: 157px;
-            background: #fff;
-            box-shadow: 2px 4px 4px rgba(0, 0, 0, .25);
-            z-index: 5;
-            text-align: left;
-        }
-
-    font-weight: 500;
     @media(min-width: 1000px) {
-            display: none;
+      display: none;
     }
 `;
 

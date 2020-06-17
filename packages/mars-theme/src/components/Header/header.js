@@ -29,7 +29,6 @@ import {
 } from './styles';
 
 const HeaderComponent = ({ state, libraries }) => {
-
   const [isMenu, setMenu] = useState(false);
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
   const { main = {} } = state.theme.menu;
@@ -101,13 +100,15 @@ const HeaderComponent = ({ state, libraries }) => {
                             <SubMenu>
                               {item.child_items.map((cItem, cn) => (
                                 <li key={cn}>
-                                  <Link link={cItem.urlFrontity}><Html2React html={cItem.title} /></Link>
+                                  <Link afterClick={() => setMenu(false)} link={cItem.urlFrontity}>
+                                    <Html2React html={cItem.title} />
+                                  </Link>
                                 </li>
                               ))}
                             </SubMenu>
                           </>
                         ) : (
-                          <Link link={item.urlFrontity}><Html2React html={item.title} /></Link>
+                          <Link afterClick={() => setMenu(false)} link={item.urlFrontity}><Html2React html={item.title} /></Link>
                         )}
                       </li>
                     ))}
@@ -132,5 +133,5 @@ const HeaderComponent = ({ state, libraries }) => {
       </HeadBlock>
     </ReactResizeDetector>
   );
-}
+};
 export default connect(HeaderComponent);

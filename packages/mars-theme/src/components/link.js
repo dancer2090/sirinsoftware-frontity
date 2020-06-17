@@ -9,6 +9,7 @@ const Link = ({
   link,
   className,
   children,
+  afterClick = () => { console.log('after click'); },
   'aria-current': ariaCurrent,
 }) => {
   const onClick = (event) => {
@@ -26,11 +27,8 @@ const Link = ({
       actions.router.set(link);
       // Scroll the page to the top
     }
+    afterClick();
     window.scrollTo(0, 0);
-    // if the menu modal is open, close it so it doesn't block rendering
-    if (state.theme.isMobileMenuOpen) {
-      actions.theme.closeMobileMenu();
-    }
   };
 
   return (
