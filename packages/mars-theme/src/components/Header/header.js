@@ -97,10 +97,10 @@ const HeaderComponent = ({ state, libraries }) => {
                         {item.child_items && item.child_items.length > 0 ? (
                           <>
                             <span>{item.title}</span>
-                            <SubMenu>
+                            <SubMenu isMobile isOpen={}>
                               {item.child_items.map((cItem, cn) => (
                                 <li key={cn}>
-                                  <Link link={cItem.urlFrontity}>
+                                  <Link afterClick={() => setMenu(false)} link={cItem.urlFrontity}>
                                     <Html2React html={cItem.title} />
                                   </Link>
                                 </li>
@@ -108,7 +108,7 @@ const HeaderComponent = ({ state, libraries }) => {
                             </SubMenu>
                           </>
                         ) : (
-                          <Link link={item.urlFrontity}><Html2React html={item.title} /></Link>
+                          <Link afterClick={() => setMenu(false)} link={item.urlFrontity}><Html2React html={item.title} /></Link>
                         )}
                       </li>
                     ))}
