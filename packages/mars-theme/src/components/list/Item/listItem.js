@@ -42,6 +42,7 @@ const Item = ({
   const strDate = `${months[date.getMonth()]}.${monthDay}.${date.getFullYear()}`;
   const title = item.title.rendered;
   const item_image = state.source['attachment'][item.acf.blog_image];
+  const mediaObj = state.source.attachment[item.featured_media];
 
   let category_id = 1;
   item.categories.map((p_item, index)=>{
@@ -53,8 +54,8 @@ const Item = ({
     <Article isOdd={isOdd}>
       <ArtContainer>
         <ImgContainer 
-          bgImage={item_image ? item_image.source_url
-          : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGt4EM_r-2oqcLhC7uP2o9PUKz52DB7O1Efg7JGuxk2VWJcty9&usqp=CAU'}>
+          bgImage={mediaObj ? mediaObj.source_url
+          : item_image.source_url}>
         </ImgContainer>
         <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>{category.name}</ArtCategory>
         <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>

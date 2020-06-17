@@ -1,10 +1,26 @@
-import { styled } from 'frontity';
+import { styled, css } from 'frontity';
 
 export const PaginationContainer = styled.div`
-  margin-top: 2.68rem;
+  margin-top: 16px;
   width:100%;
   display: flex;
   justify-content: center;
+  position: relative;
+  flex-wrap: wrap;
+  & div{
+    margin-bottom: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: scale(0);
+  }
+  ${(props) => props.when && css`
+    & div{
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+    }
+  `}
 `;
 export const Text = styled.button`
   font-family: Montserrat;
@@ -20,6 +36,7 @@ export const Text = styled.button`
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
+  width: 100%;
   &:hover{
     background-color: transparent;
     color: #FF9233;

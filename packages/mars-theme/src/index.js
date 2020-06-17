@@ -59,6 +59,7 @@ const marsTheme = {
       isFormSend: false,
       isCommentSend: false,
       isThanksOpen: true,
+      blogLoadMore: false,
     },
     theme: {
       menu: {},

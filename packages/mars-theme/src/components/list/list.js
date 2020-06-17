@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { connect, decode } from 'frontity';
 import Item from './Item';
 import AllCAtegories from './AllCategories';
+import Loader from 'react-spinners/ClipLoader';
 import { Container, Header, PaginationContainer, Text } from './styles';
 
 const List = ({ state, actions }) => {
@@ -18,17 +19,18 @@ const List = ({ state, actions }) => {
       currentData = state.source.get(`${state.router.link}page/${i}`);
       if (currentData.isReady) {
         megaItems = megaItems.concat(currentData.items);
+        if((i+1)===state.customSettings.pageNumber) state.customSettings.blogLoadMore=false;
       }
     }
   }
 
   state.customSettings.customPostTotal = totalPages;
   const loadMore1 = () => {
-    console.log(`${state.router.link}page/${state.customSettings.pageNumber}/`);
+    console.log(1);
+    state.customSettings.blogLoadMore=true;
     actions.source.fetch(`${state.router.link}page/${state.customSettings.pageNumber}/`);
     state.customSettings.pageNumber += 1;
     if (state.customSettings.pageNumber - 1 === totalPages) setLoadMoreHidden(true);
-    console.log(state);
   };
   const categories = [];
   if(state.customSettings.categories.length>0){
@@ -40,7 +42,6 @@ const List = ({ state, actions }) => {
 
   return (
     <Container>
-
       {/* If the list is for a specific author, we render a title. */}
       {data.isAuthor && (
         <Header>
@@ -56,7 +57,14 @@ const List = ({ state, actions }) => {
         // Render one Item component for each one.
         return <Item key={item.id} item={item} index={index} />;
       })}
-      <PaginationContainer>
+      <PaginationContainer when={state.customSettings.blogLoadMore}>
+        <Loader
+          color="#52DE97"
+          radius={0}
+          margin="3px"
+          width={4}
+          height={24}
+        />
         <Text hidden={loadMoreHidden} onClick={() => loadMore1()}>Load more</Text>
       </PaginationContainer>
     </Container>
