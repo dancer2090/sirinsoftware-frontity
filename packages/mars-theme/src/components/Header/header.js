@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-undef */
 /* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import { connect } from 'frontity';
@@ -28,12 +31,26 @@ import {
   SubMenu,
 } from './styles';
 
-const HeaderComponent = ({ state, libraries }) => {
+const HeaderComponent = ({
+  state,
+  libraries,
+  scrollRef = null,
+  offset = 100,
+}) => {
   const [isMenu, setMenu] = useState(false);
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
   const { main = {} } = state.theme.menu;
   const { items = [] } = main;
   const Html2React = libraries.html2react.Component;
+  const scrollToRef = () => (
+    scrollRef
+      ? window.scrollTo({
+        top: scrollRef.current.offsetTop - offset,
+        left: 0,
+        behavior: 'smooth',
+      })
+      : null
+  );
   return (
     <ReactResizeDetector handleWidth onResize={updateWidth}>
       <HeadBlock isMenu={isMenu}>
@@ -70,14 +87,14 @@ const HeaderComponent = ({ state, libraries }) => {
               ))}
             </Menu>
             <MobileButton>
-              <Link link="#">GET A FREE QUOTE</Link>
+              <a onClick={() => scrollToRef()}>GET A FREE QUOTE</a>
             </MobileButton>
             <GetButton>
-              <Link link="#">
-                <Button>
+              <a>
+                <Button onClick={() => scrollToRef()}>
                   GET A FREE QUOTE
                 </Button>
-              </Link>
+              </a>
             </GetButton>
           </Header>
         )}
@@ -116,7 +133,7 @@ const HeaderComponent = ({ state, libraries }) => {
                 </MobileTopMenu>
               </MobileOption>
               <MobileGetButton>
-                <Link link="#">
+                <Link onClick={() => scrollToRef()}>
                   <Button>
                     GET A FREE QUOTE
                   </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Global, connect, Head,
 } from 'frontity';
@@ -25,10 +25,12 @@ const Theme = ({ state }) => {
   console.log(state);
   const formHandleClose = () => {
     state.customSettings.isFormSend = false;
-  }
+  };
   const subscribeHandleClose = () => {
     state.customSettings.isSubscribeSend = false;
-  }
+  };
+
+  const formRef = useRef(null);
 
   return (
     <>
@@ -57,7 +59,7 @@ const Theme = ({ state }) => {
         isOpen={state.customSettings.isSubscribeSend}
         handleClose={subscribeHandleClose}
       />
-      <Header />
+      <Header scrollRef={formRef} />
       <Space />
 
       {/* Add the main section. It renders a different component depending
@@ -72,7 +74,9 @@ const Theme = ({ state }) => {
         </Switch>
       </Main>
 
-      <FeedbackForm />
+      <div ref={formRef}>
+        <FeedbackForm />
+      </div>
       <Footer />
     </>
   );

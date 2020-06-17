@@ -165,7 +165,7 @@ export const MobileButton = styled.div`
   align-items: center;
   justify-content: center;
   a {
-
+    cursor: pointer;
     font-style: normal;
     font-weight: 800;
     font-size: 12px;
