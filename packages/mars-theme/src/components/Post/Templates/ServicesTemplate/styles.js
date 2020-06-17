@@ -35,16 +35,22 @@ export const BigFrame = styled.div`
   }
 `;
 
-export const BigFrameImage = styled.img`
+export const BigImageBlock = styled.div`
   height: 100%;
   width: 50%;
-  object-fit: cover;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 
   @media screen and (max-width: 767px) {
     width: 100%;
     height: 250px;
   }
+`;
+
+
+export const BigFrameImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const BigFrameContent = styled.div`
