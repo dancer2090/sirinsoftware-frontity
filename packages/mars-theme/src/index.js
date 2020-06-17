@@ -53,6 +53,9 @@ const marsTheme = {
       categories: {},
       isSubscribeSend: false,
       isFormSend: false,
+      isCommentSend: false,
+      isThanksOpen: true,
+      blogLoadMore: false,
     },
     theme: {
       menu: {},
@@ -79,28 +82,44 @@ const marsTheme = {
         state.theme.isMobileMenuOpen = false;
       },
       sendForm: ({ state }) => async (data) => {
-        const dataForm = data.formData;
-        // const config = {
-        //   headers: {
-        //     'content-type': 'multipart/form-data',
-        //   },
-        // };
-        state.customSettings.isFormSend = true;
+        const data_form = data.formData;
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
         await axios.post(
           `${state.source.api}/frontity-api/send-form`,
           dataForm,
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
+          state.customSettings.isFormSend = true;
+        });
+      },
+      sendComment: ({ state }) => async (data) => {
+        const data_form = data.formData;
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        state.customSettings.isCommentSend = true;
+        await axios.post(
+          `${state.source.api}/frontity-api/send-comment`,
+          data_form,
+          {headers: {'content-type': 'application/json'}},
+        ).then((response) => {
+          console.log(response);
           if (response.status === 200) {
-            state.customSettings.isFormSend = false;
+            state.customSettings.isCommentSend = false;
           }
         });
       },
+
       sendSubscribe: ({ state }) => async (data) => {
-        state.customSettings.isSubscribeSend = true;
         await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
           if (response.status === 200) {
-            state.customSettings.isSubscribeSend = false;
+            state.customSettings.isSubscribeSend = true;
           }
         });
       },

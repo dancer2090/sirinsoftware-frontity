@@ -111,9 +111,6 @@ const SubscribeForm = ({actions, state}) => {
         Subcribing to our blog you agree with our
         <a href="">Privacy Policy</a>
       </Description>
-      <FText afterload={!!(preload && !state.customSettings.isSubscribeSend)}>
-        Thanks you! Your email has been sent!
-      </FText>
       <SubmitButton color="yellow">Subscribe</SubmitButton>
 
     </Form>

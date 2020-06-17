@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import { styled, css } from 'frontity';
 import TextField from '../input';
 import ButtonTempalate from '../button';
 
@@ -72,6 +72,58 @@ const Button = styled(ButtonTempalate)`
     }
 `;
 
+const SingleComment = styled.div`
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.09);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin: 10px 0;
+  padding: 10px;
+`;
+
+const Author = styled.p`
+  font-size: 0.8em;
+  display: inline;
+`;
+
+const Fecha = styled.p`
+  font-size: 0.8em;
+  display: inline;
+`;
+
+const SingleCommentContent = styled.div`
+  font-size: 0.9em;
+  p {
+    margin: 7px 0;
+  }
+`;
+const CommentsContainer = styled.div`
+  position: relative;
+  margin-bottom: 40px;
+`;
+const CommentsSubmitText = styled.div`
+  overflow: hidden;
+  position: relative;
+  max-height: 0px;
+  text-align: center;
+  color: #ff9e36;
+  transition: 0.2s ease all;
+  font-size:0px;
+  opacity: 0;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 20px;
+
+  ${(props) => props.afterload && css`
+    font-size: 19px;
+    opacity: 1;
+    overflow: visible;
+    max-height: 100%;
+  `}
+`;
+
 export {
   Container,
   Title,
@@ -79,4 +131,10 @@ export {
   Input,
   TextArea,
   Button,
+  SingleComment,
+  Author,
+  Fecha,
+  SingleCommentContent,
+  CommentsContainer,
+  CommentsSubmitText,
 };

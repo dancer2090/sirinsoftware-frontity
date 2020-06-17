@@ -9,6 +9,7 @@ import List from './list';
 import Post from './post';
 import Loader from './Loader';
 import Title from './title';
+import Modal from './Modal';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
@@ -20,7 +21,14 @@ import FeedbackForm from './FeedbackForm';
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
-  // console.log(state);
+
+  console.log(state);
+  const formHandleClose = () => {
+    state.customSettings.isFormSend = false;
+  }
+  const subscribeHandleClose = () => {
+    state.customSettings.isSubscribeSend = false;
+  }
 
   return (
     <>
@@ -37,6 +45,18 @@ const Theme = ({ state }) => {
       <Global styles={globalStyles} />
 
       {/* Add the header of the site.  */}
+      <Modal
+        title="Done"
+        text="Thank you for feedback! <br> The confirmation email was sent to your address, please check your inbox."
+        isOpen={state.customSettings.isFormSend}
+        handleClose={formHandleClose}
+      />
+      <Modal
+        title="Done"
+        text="Thank you for subscribing! <br> The confirmation email was sent to your address, please check your inbox."
+        isOpen={state.customSettings.isSubscribeSend}
+        handleClose={subscribeHandleClose}
+      />
       <Header />
       <Space />
 
