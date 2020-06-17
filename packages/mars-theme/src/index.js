@@ -104,7 +104,7 @@ const marsTheme = {
           }
         });
       },
-      beforeSSR: async ({ state, actions }) => {
+      beforeSSR: async ({ state, actions, libraries }) => {
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
 
@@ -134,15 +134,15 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/blog');
         }
-
+        const { urlCheck } = libraries.func;
         const replaces = [state.frontity.url, state.frontity.adminUrl];
         const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);
         state.theme.menu.main = mainMenu.data || {};
         state.theme.menu.main.items.map((item) => {
-          item.urlFrontity = linkReplace(item.url, replaces);
+          item.urlFrontity = urlCheck(item.url, replaces);
           if (item.child_items) {
             item.child_items = item.child_items.map((cItem) => {
-              cItem.urlFrontity = linkReplace(cItem.url, replaces);
+              cItem.urlFrontity = urlCheck(cItem.url, replaces);
               return cItem;
             });
           }
@@ -152,6 +152,9 @@ const marsTheme = {
     },
   },
   libraries: {
+    func: {
+      urlCheck: linkReplace,
+    },
     source: {
       handlers: [newHandler],
     },
