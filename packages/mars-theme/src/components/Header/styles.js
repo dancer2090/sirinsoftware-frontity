@@ -90,6 +90,12 @@ export const Menu = styled.ul`
     text-align: center;
     text-transform: uppercase;
 
+    & > span {
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
     & > a {
       height: 100%;
       display: flex;
@@ -116,45 +122,6 @@ export const Menu = styled.ul`
       }
     }
   }
-  /* .menu ul li {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-  } */
-  /* .menu ul {
-    display: none;
-    position: absolute;
-  }
-  .menu li:hover ul {
-    display: block;
-  }
-  .menu li:hover li {
-    display: block;
-    text-transform: capitalize;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    line-height: 27px;
-    font-size: 14px;
-    color: #77716d;
-    font-weight: 400;
-  }
-  .sub-menu li {
-    margin-left:-30px;
-    margin-right: 10px;
-    margin-top: -5px;
-    margin-bottom: -5px;
-  }
-  .sub-menu {
-    margin-top: 0px;
-    display: none;
-    position: absolute;
-    margin-left: -10px;
-    width: 157 px;
-    background: #fff;
-    box-shadow: 2px 4px 4px rgba(0, 0, 0, .25);
-    z-index: 5;
-    text-align: left;
-  } */
 `;
 
 

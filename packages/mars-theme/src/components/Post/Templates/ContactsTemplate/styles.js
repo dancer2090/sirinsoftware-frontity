@@ -63,6 +63,22 @@ export const Description = styled.div`
     margin-bottom: 27px;
     padding: 0;
   }
+
+  h1 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #F8710F;
+    margin-bottom: 27px;
+    text-align: center;
+
+    @media screen and (max-width: 767px) {
+      font-size: 18px;
+      line-height: 18px;
+      margin-bottom: 25px;
+    }
+  }
 `;
 
 export const Row = styled.div`
@@ -87,7 +103,7 @@ export const Card = styled.div`
     content: "";
     height: 220px;
     width: 98px;
-    background-image: url(${props => props.src});
+    background-image: url(${(props) => props.src});
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
