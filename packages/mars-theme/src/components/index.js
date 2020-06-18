@@ -13,6 +13,7 @@ import Modal from './Modal';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
+import CaseStudiesTemplate from './Post/Templates/CaseStudiesTemplate';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -22,7 +23,6 @@ const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
-  console.log(state);
   const formHandleClose = () => {
     state.customSettings.isFormSend = false;
   };
@@ -67,6 +67,7 @@ const Theme = ({ state }) => {
 
       <Main>
         <Switch>
+          <CaseStudiesTemplate when={state.router.link === '/case-studies/'} />
           <Loader when={data.isFetching} />
           <List when={data.isArchive} />
           <Post when={data.isPostType} />
