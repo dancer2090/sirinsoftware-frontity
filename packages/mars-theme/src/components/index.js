@@ -13,6 +13,7 @@ import Modal from './Modal';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
+import CaseStudiesPost from './Post/Templates/CaseStudiesPostTemplate';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -67,6 +68,7 @@ const Theme = ({ state }) => {
 
       <Main>
         <Switch>
+          <CaseStudiesPost when={state.router.link === '/case-studies-item/' } />
           <Loader when={data.isFetching} />
           <List when={data.isArchive} />
           <Post when={data.isPostType} />
