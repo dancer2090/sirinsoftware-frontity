@@ -22,7 +22,6 @@ const ContactsTemplate = ({ state, libraries }) => {
 
   // Get the data of the post.
   const { acf = {} } = data;
-  const office = acf.offices_locations;
   const post = state.source[dataContent.type][dataContent.id];
 
   // Get the html2react component.
@@ -34,65 +33,43 @@ const ContactsTemplate = ({ state, libraries }) => {
         <Html2React html={post.content.rendered} />
       </Description>
       <Row>
-        <Card src={oneBg}>
-          <CardTitle>
-            <Html2React html={office[0].office_header} />
-          </CardTitle>
-          <CardList>
-            <CartAddress>
-              <CardItem>
-                <Icon name="location" />
-                <span>
-                  <Html2React html={office[0].office_address} />
-                </span>
-              </CardItem>
-            </CartAddress>
-            <CardInfo>
-              <CardItem>
-                <Icon name="phone" />
-                <a href={office[0].office_phone1}>
-                  <Html2React html={office[0].office_phone1} />
-                </a>
-              </CardItem>
-              <CardItem>
-                <Icon name="message" />
-                <a href={office[0].office_email}>
-                  <Html2React html={office[0].office_email} />
-                </a>
-              </CardItem>
-            </CardInfo>
-          </CardList>
-        </Card>
-        <Card src={twoBg}>
-          <CardTitle>
-            <Html2React html={office[1].office_header} />
-          </CardTitle>
-          <CardList>
-            <CartAddress>
-              <CardItem>
-                <Icon name="location" />
-                <span>
-                  <Html2React html={office[1].office_address} />
-                </span>
-              </CardItem>
-            </CartAddress>
-
-            <CardInfo>
-              <CardItem>
-                <Icon name="phone" />
-                <a href={office[1].office_phone1}>
-                  <Html2React html={office[1].office_phone1} />
-                </a>
-              </CardItem>
-              <CardItem>
-                <Icon name="message" />
-                <a href={office[1].office_email}>
-                  <Html2React html={office[1].office_email} />
-                </a>
-              </CardItem>
-            </CardInfo>
-          </CardList>
-        </Card>
+        { acf.offices_locations.map((item, index) => {
+          return (
+            <Card 
+              src={index === 0 ? oneBg : twoBg}
+              key={index}
+              >
+              <CardTitle>
+                <Html2React html={item.office_header} />
+              </CardTitle>
+              <CardList>
+                <CartAddress>
+                  <CardItem>
+                    <Icon name="location" />
+                    <span>
+                      <Html2React html={item.office_address} />
+                    </span>
+                  </CardItem>
+                </CartAddress>
+                <CardInfo>
+                  <CardItem>
+                    <Icon name="phone" />
+                    <a href={item.office_phone1}>
+                      <Html2React html={item.office_phone1} />
+                    </a>
+                  </CardItem>
+                  <CardItem>
+                    <Icon name="message" />
+                    <a href={item.office_email}>
+                      <Html2React html={item.office_email} />
+                    </a>
+                  </CardItem>
+                </CardInfo>
+              </CardList>
+            </Card>
+          )
+        })
+        }
       </Row>
     </Container>
   );
