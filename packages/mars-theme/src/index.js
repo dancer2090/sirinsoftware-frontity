@@ -87,7 +87,7 @@ const marsTheme = {
       },
       sendForm: ({ state }) => async (data) => {
         const dataForm = data.formData;
-        dataForm.push({ recaptchaToken: state.theme.recaptchaToken });
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         await axios.post(
           `${state.source.api}/frontity-api/send-form`,
           dataForm,
@@ -103,7 +103,7 @@ const marsTheme = {
                 'content-type': 'multipart/form-data'
             }
         };
-        dataForm.push({ recaptchaToken: state.theme.recaptchaToken });
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         state.customSettings.isCommentSend = true;
         await axios.post(
           `${state.source.api}/frontity-api/send-comment`,
