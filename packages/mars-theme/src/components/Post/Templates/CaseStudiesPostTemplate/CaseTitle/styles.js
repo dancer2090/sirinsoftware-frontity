@@ -17,10 +17,40 @@ export const Title = styled.h2`
     position: relative;
     left: -30px;
   }
+
+  @media screen and (max-width: 991px) {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 36px;
+
+    span {
+      left: -15px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 10px;
+    font-size: 24px;
+    line-height: 24px;
+
+    span {
+      left: -38px;
+    }
+  }
 `;
 
 export const Icon = styled(SvgSprite)`
   width: 120px;
   height: 108px;
   opacity: 0.1;
+
+  @media screen and (max-width: 991px) {
+    width: 100px;
+    height: 90px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 70px;
+    height: 63px;
+  }
 `;

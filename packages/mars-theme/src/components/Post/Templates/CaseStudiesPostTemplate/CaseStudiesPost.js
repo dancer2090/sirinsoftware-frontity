@@ -20,18 +20,23 @@ import {
   CardSet,
   Title,
   Text,
-  BusinesCard
+  BusinesCard,
+  CaseStudiesSlider,
 } from './styles';
 import caseItemFrame from '../../../../img/case-item-post.jpg';
 import logoCase from '../../../../img/logo-case.png';
 import caseTextOne from '../../../../img/case-text-one.jpg';
 
 const CaseStudiesPost = () => {
+  const backLink = () => {
+
+  }
+
   return (
     <Wrapper>
       <ContainerFrame src={caseItemFrame}>
         <FrameContent>
-          <BackLink>
+          <BackLink onClick={backLink} href="#">
             <BackIcon name="arrow-left" />
           </BackLink>
           <FrameTitle>
@@ -123,6 +128,9 @@ const CaseStudiesPost = () => {
             </Post>
           </PostsContent>        
         </ContentWrapper>
+
+        <CaseStudiesSlider>
+        </CaseStudiesSlider>
       </Container>
     </Wrapper>
   )
