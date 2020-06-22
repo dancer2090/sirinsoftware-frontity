@@ -72,6 +72,9 @@ const marsTheme = {
    */
   actions: {
     theme: {
+      setRecaptchaToken: ({ state }) => (token) => {
+        state.theme.recaptchaToken = token;
+      },
       loadMore: ({ state }) => async () => {
         state.seatbackapi.pageNumber += 1;
       },

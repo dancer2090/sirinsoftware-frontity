@@ -10,11 +10,11 @@ import {
   InputBlock,
 } from './styles';
 import Form from './Form';
-
 const FeedbackForm = ({actions}) => {
+  
   const submitForm = (value) => {
     actions.theme.sendForm(value);
-  }
+  };
 
   return (
     <Block>
