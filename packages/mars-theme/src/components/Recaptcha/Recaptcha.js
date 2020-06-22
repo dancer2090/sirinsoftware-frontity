@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-const Recaptcha = ({ state, actions }) => {
+const Recaptcha = ({ actions }) => {
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
