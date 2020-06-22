@@ -22,10 +22,16 @@ import {
   Text,
   BusinesCard,
   CaseStudiesSlider,
+  ContainerSlider,
+  CaseItem,
+  CaseLink,
+  CaseItemTitle,
+  CaseContent
 } from './styles';
 import caseItemFrame from '../../../../img/case-item-post.jpg';
 import logoCase from '../../../../img/logo-case.png';
 import caseTextOne from '../../../../img/case-text-one.jpg';
+import caseOne from '../../../../img/case-one.jpg';
 
 const CaseStudiesPost = () => {
   const backLink = () => {
@@ -129,8 +135,43 @@ const CaseStudiesPost = () => {
           </PostsContent>        
         </ContentWrapper>
 
-        <CaseStudiesSlider>
-        </CaseStudiesSlider>
+        <ContainerSlider>
+          <CaseStudiesSlider>
+            <CaseItem 
+              src={caseOne}>
+              <CaseItemTitle>
+                Other Case Studies
+              </CaseItemTitle>
+              <CaseContent>
+                Wireless connection manager for IOT-
+                Enabled consumer  electronics
+              </CaseContent>
+              <CaseLink href="#">Learn more</CaseLink>
+            </CaseItem>
+            <CaseItem 
+              src={caseOne}>
+              <CaseItemTitle>
+                Other Case Studies
+              </CaseItemTitle>
+              <CaseContent>
+                Wireless connection manager for IOT-
+                Enabled consumer  electronics
+              </CaseContent>
+              <CaseLink href="#">Learn more</CaseLink>
+            </CaseItem>
+            <CaseItem 
+              src={caseOne}>
+              <CaseItemTitle>
+                Other Case Studies
+              </CaseItemTitle>
+              <CaseContent>
+                Wireless connection manager for IOT-
+                Enabled consumer  electronics
+              </CaseContent>
+              <CaseLink href="#">Learn more</CaseLink>
+            </CaseItem>
+          </CaseStudiesSlider>
+        </ContainerSlider>
       </Container>
     </Wrapper>
   )
