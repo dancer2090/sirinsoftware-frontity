@@ -2,33 +2,18 @@ import React, { Fragment } from 'react';
 import {
   CaseItemBlock,
   CaseLink,
-  CaseItemTitle,
-  CaseContent
 } from './styles';
 
 
-const CaseItem = ({ children, className, post_featured_image = '', acf = {}, item = {}, textBlock = false }) => {
-
+const CaseItem = ({ children, className, textBlock = false, src = '' }) => {
   return (
     <CaseItemBlock 
-      src={!textBlock ? 'https://admin.sirinsoftware.com/wp-content/uploads/2019/05/2019-05-16-16-46-45.jpg' : null}
+      src={src}
       className={className}
       >
-      { !textBlock 
-        ? (
-          <Fragment>
-            <CaseItemTitle>
-              IOT
-            </CaseItemTitle>
-            <CaseContent>
-              Increasing the scalability of a cloud-based system for IoT products.
-            </CaseContent>
-          </Fragment>
-        )
-        : (
-          <Fragment>
-            { children }
-          </Fragment>
+      {
+        React.Children.map(children, child => 
+          React.cloneElement(child, {})
         )
       }
       <CaseLink href="#">Learn more</CaseLink>
