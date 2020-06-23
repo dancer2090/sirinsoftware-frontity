@@ -59,6 +59,7 @@ const marsTheme = {
     },
     theme: {
       menu: {},
+      recaptchaToken: null,
       isMobileMenuOpen: false,
       featured: {
         showOnList: false,
@@ -72,6 +73,9 @@ const marsTheme = {
    */
   actions: {
     theme: {
+      setRecaptchaToken: ({ state }) => (token) => {
+        state.theme.recaptchaToken = token;
+      },
       loadMore: ({ state }) => async () => {
         state.seatbackapi.pageNumber += 1;
       },
@@ -82,12 +86,8 @@ const marsTheme = {
         state.theme.isMobileMenuOpen = false;
       },
       sendForm: ({ state }) => async (data) => {
-        const data_form = data.formData;
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
+        const dataForm = data.formData;
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         await axios.post(
           `${state.source.api}/frontity-api/send-form`,
           dataForm,
@@ -97,16 +97,17 @@ const marsTheme = {
         });
       },
       sendComment: ({ state }) => async (data) => {
-        const data_form = data.formData;
+        const dataForm = data.formData;
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         };
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         state.customSettings.isCommentSend = true;
         await axios.post(
           `${state.source.api}/frontity-api/send-comment`,
-          data_form,
+          dataForm,
           {headers: {'content-type': 'application/json'}},
         ).then((response) => {
           console.log(response);

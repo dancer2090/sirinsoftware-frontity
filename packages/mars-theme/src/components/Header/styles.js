@@ -75,6 +75,7 @@ export const Menu = styled.ul`
   
   @media(max-width: 1000px) {
     display: ${props => props.isMenu ? 'block' : 'none'};
+    padding-bottom: 50px;
   }
   
   & > li {
@@ -113,12 +114,34 @@ export const Menu = styled.ul`
       `}
     }
 
+    @media(max-width: 1000px) {
+      width: 100%;
+      display: block;
+      text-align: left;
+      max-width: 300px;
+      margin: 0 auto;
+
+      & > span {
+        text-align: left;
+        display: block;
+      }
+
+      & > a {
+        text-align: left;
+        display: block;
+      }
+
+      & > ul {
+        width: 100%;
+        display: block;
+        position: static;
+        padding-left: 40px;
+        box-shadow: none;
+      }
+    }
     &:hover {
       & > ul {
-        display: block;
-        @media (max-width: 1000px) {
-          display: none;
-        }
+        display: block;        
       }
     }
   }
@@ -165,7 +188,7 @@ export const MobileButton = styled.div`
   align-items: center;
   justify-content: center;
   a {
-
+    cursor: pointer;
     font-style: normal;
     font-weight: 800;
     font-size: 12px;
@@ -211,7 +234,7 @@ export const MobileBody = styled.div`
 
 export const MobileOption = styled.div`
   text-align: center;
-  height: 320px;     
+  height: auto;     
 `;
 
 export const LogoBlock = styled.div`
