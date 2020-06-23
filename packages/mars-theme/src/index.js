@@ -124,6 +124,12 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ state, actions, libraries }) => {
+        if(
+          !state.router.link.indexOf('/services/')
+          && state.router.link !== '/services/'
+        ) {
+          actions.router.set('/services/');
+        }
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
 
