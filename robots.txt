@@ -1,9 +1,5 @@
 
 User-agent: *
-Disallow: /wp-admin
-Disallow: /teammembers
-Allow: /wp-admin/admin-ajax.php
+Disallow: /
 
-Host: sirinsoftware.com
-
-Sitemap: https://sirinsoftware.com/sitemap_index.xml
+Sitemap: https://admin.sirinsoftware.com/sitemap_index.xml
