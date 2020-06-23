@@ -284,7 +284,7 @@ export const FilterItem = styled.div`
       background: linear-gradient(274.14deg, #3FA54A 3.6%, #216628 97.69%);
       box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
       color: white;
-      pointer-events: none;`
+      cursor: default;`
     : css`background: #F2F2F2; 
     color: #222222;` 
   )}
