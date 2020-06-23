@@ -208,6 +208,7 @@ export const ClientDescription = styled.div`
     font-size: 14px;
     line-height: 14px;
     text-align: left;
+    padding-right: 11px;
   }
 `;
 
@@ -229,6 +230,10 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 111px;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const Content = styled.div`

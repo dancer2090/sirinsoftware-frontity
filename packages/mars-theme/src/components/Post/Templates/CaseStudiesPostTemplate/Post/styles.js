@@ -11,6 +11,7 @@ export const Container = styled.div`
 
   &:hover {
     background: #F2F2F2;
+    cursor: pointer;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
   }
 
