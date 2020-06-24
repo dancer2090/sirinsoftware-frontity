@@ -5,6 +5,7 @@ const settings = {
   "name": "sirinsoftware-frontity",
   "state": {
     "frontity": {
+      recaptchaKey: process.env.RECAPTCHA_KEY,
       isLocal: !!process.env.LOCAL,
       "adminUrl": process.env.ADMIN_URL,
       "url": process.env.SITE_URL,
@@ -17,6 +18,7 @@ const settings = {
       "name": "@frontity/mars-theme",
       "state": {
         "theme": {
+          "recaptchaToken": null,
           "menu": {},
           "featured": {
             "showOnList": false,
