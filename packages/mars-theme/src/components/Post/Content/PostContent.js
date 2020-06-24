@@ -8,7 +8,6 @@ import PageBookTemplate from '../Templates/PageBookTemplate';
 import AboutUsTemplate from '../Templates/AboutUsTemplate';
 import ContactsTemplate from '../Templates/ContactsTemplate';
 
-
 const PostContent = ({ state }) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];

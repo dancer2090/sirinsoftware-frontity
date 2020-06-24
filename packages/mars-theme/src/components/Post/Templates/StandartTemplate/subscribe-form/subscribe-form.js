@@ -39,7 +39,10 @@ const SubscribeForm = ({actions, state}) => {
   const submitForm = (e) => {
     e.preventDefault();
     if (validForm()) {
-      actions.theme.sendSubscribe(formState);
+      let formData = new FormData();
+      formData.append('FNAME',formState.FNAME);
+      formData.append('EMAIL',formState.EMAIL);
+      actions.theme.sendSubscribe(formData);
       setFormErrorState(preErrors);
       setFormState(preForm);
       setPreload(true);
@@ -88,6 +91,7 @@ const SubscribeForm = ({actions, state}) => {
           placeholder="Name*"
           error={formError["FNAME"]}
           onChange={(e) => handleChangeInput(e, "FNAME")}
+          value={formState["FNAME"]}
         />
         { formError['FNAME']
           ? <ErrorText>Field is required</ErrorText>
@@ -101,6 +105,7 @@ const SubscribeForm = ({actions, state}) => {
           placeholder="Email*"
           error={formError["EMAIL"]}
           onChange={(e) => handleChangeInput(e, "EMAIL")}
+          value={formState["EMAIL"]}
         />
         { formError['EMAIL']
           ? <ErrorText>Field is required</ErrorText>
