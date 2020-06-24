@@ -11,10 +11,25 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 
-export const CollaplseContainer = styled.div`
+export const CollapseContainer = styled.div`
   max-width: 600px;
   width: 100%;
   margin-right: 60px;
+`;
+
+export const CollapseBlock = styled.div`
+
+`;
+
+export const CollapseTitle = styled.h2`
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #216628;
+  margin-top: 0;
+  margin-bottom: 26px;
 `;
 
 export const TableContainer = styled.div`

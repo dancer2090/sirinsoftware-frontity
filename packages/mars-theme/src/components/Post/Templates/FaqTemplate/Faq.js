@@ -2,14 +2,17 @@ import React, { useEffect, useRef, useState } from 'react'
 import {
   Container, 
   Wrapper,
-  CollaplseContainer,
+  CollapseContainer,
   TableContainer,
   TableTitle,
   TableList,
   TableItem,
   TableWrapper,
+  CollapseBlock,
+  CollapseTitle,
 
 } from './styles';
+import Collapse from './Collapse';
 
 const Faq = () => {
   const tableList = useRef(null);
@@ -36,9 +39,16 @@ const Faq = () => {
   return (
     <Container>
       <Wrapper>
-        <CollaplseContainer>
-          left
-        </CollaplseContainer>
+        <CollapseContainer>
+          <CollapseBlock>
+            <CollapseTitle>
+              Sirin <br />
+              software
+            </CollapseTitle>
+            <Collapse/>
+            <Collapse/>
+          </CollapseBlock>
+        </CollapseContainer>
 
         <TableContainer ref={tableList}>
           <TableWrapper fixeds={fixedsTable} top="117">
