@@ -120,6 +120,7 @@ const marsTheme = {
 
       sendSubscribe: ({ state }) => async (data) => {
         const dataForm = data.formData;
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         await axios.post(
           `${state.source.api}/frontity-api/send-subscribe`,
           dataForm,
