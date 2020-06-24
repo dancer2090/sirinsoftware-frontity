@@ -94,6 +94,7 @@ const marsTheme = {
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           state.customSettings.isFormSend = true;
+          console.log(response);
         });
       },
       sendComment: ({ state }) => async (data) => {
@@ -118,7 +119,12 @@ const marsTheme = {
       },
 
       sendSubscribe: ({ state }) => async (data) => {
-        await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
+        const dataForm = data.formData;
+        await axios.post(
+          `${state.source.api}/frontity-api/send-subscribe`,
+          dataForm,
+          {headers: {'content-type': 'application/json'}},
+        ).then((response) => {
           if (response.status === 200) {
             state.customSettings.isSubscribeSend = true;
           }
