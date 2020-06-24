@@ -13,6 +13,7 @@ import Modal from './Modal';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
+import CaseStudiesTemplate from './Post/Templates/CaseStudiesTemplate';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
 
@@ -25,7 +26,6 @@ const Theme = ({ state }) => {
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
 
-  console.log(state);
   const formHandleClose = () => {
     state.customSettings.isFormSend = false;
   };
@@ -71,6 +71,7 @@ const Theme = ({ state }) => {
 
         <Main>
           <Switch>
+            <CaseStudiesTemplate when={state.router.link === '/case-studies/'} />
             <Loader when={data.isFetching} />
             <List when={data.isArchive} />
             <Post when={data.isPostType} />
