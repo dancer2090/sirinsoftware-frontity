@@ -1,7 +1,7 @@
 import { styled } from 'frontity';
 
 export const Container = styled.div`
-
+  margin-bottom: 10px;
 `;
 
 export const Item = styled.div`
@@ -15,6 +15,11 @@ export const ItemHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 11px 26px 16px 21px;
+
+  @media screen and (max-width: 767px) {
+    padding: 13px 10px 4px 11px;
+    min-height: 46px;
+  }
 `;
 
 export const ItemTitle = styled.div`
@@ -22,6 +27,11 @@ export const ItemTitle = styled.div`
   line-height: 36px;
   color: #222222;
   margin-right: 10px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 `;
 
 export const ItemIcon = styled.div`
@@ -35,7 +45,11 @@ export const ItemIcon = styled.div`
     content: "";
     width: 100%;
     height: 2px;
-    background: #F8710F;
+    ${({ color }) => (
+      color === 'green'
+      ? 'background: #216628;'
+      : 'background: #F8710F;'
+    )}
     position: absolute;
     left: 50%;
     top: 50%;
@@ -43,6 +57,13 @@ export const ItemIcon = styled.div`
 
   &:after {
     transform: translate(-50%, -50%) rotate(90deg);
+    transition: all .3s;
+
+    ${({ active }) => (
+      active
+      ? 'transform: translate(-50%, -50%) rotate(0deg);'
+      : null
+    )}
   }
 
   &:before {
@@ -51,9 +72,22 @@ export const ItemIcon = styled.div`
 `;
 
 export const ItemBody = styled.div`
+  overflow: hidden;
+  transition: all .3s ease-in-out;
+`;
+
+export const ItemContent = styled.div`
   padding: 33px 16px 14px 20px;
   font-family: 'Open Sans';
   font-size: 14px;
   line-height: 22px;
   color: #222222;
+
+  @media screen and (max-width: 991px) {
+    padding: 35px 0 43px 0;
+  } 
+
+  @media screen and (max-width: 767px) {
+    padding: 35px 10px;
+  }
 `;

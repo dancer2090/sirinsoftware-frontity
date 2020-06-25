@@ -1,26 +1,43 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
   Container, 
   Item,
   ItemHeader, 
   ItemIcon,
   ItemTitle,
-  ItemBody
+  ItemBody,
+  ItemContent
 } from './styles';
 
-const Collapse = () => {
+const Collapse = ({ data = {}, active, index, color, onToggle }) => {
+  const content = useRef(null);
+  const [height, setHeight] = useState('0px');
+  
+  useEffect(() => {
+    setHeight(!active ? '0px' : content.current.scrollHeight);
+  }, [active]);
+
+  const toggleCollapse = () => {
+    onToggle(data, !active , index);
+  }
+
   return (
     <Container>
       <Item>
         <ItemHeader>
           <ItemTitle>
-            Why should I hire your company?
+            {data.title}
           </ItemTitle>
-          <ItemIcon></ItemIcon>
+          <ItemIcon 
+            onClick={toggleCollapse} 
+            active={active}
+            color={color}
+          />
         </ItemHeader>
-        <ItemBody>
-          We offer high-quality engineering in Embedded, Linux and IoT related services. We keep our focus on these services in order to attract the best talent and expertise in the business. Our main goal is to act not as much as the contractor but rather as the trusted partner which makes software R&D process easier, more cost-effective and speeds up the 
-          development of new products together with clients.
+        <ItemBody ref={content} style={{maxHeight: height}}>
+          <ItemContent>
+            {data.content}
+          </ItemContent>
         </ItemBody>
       </Item>
     </Container>
