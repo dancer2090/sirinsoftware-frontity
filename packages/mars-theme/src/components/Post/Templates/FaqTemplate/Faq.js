@@ -42,6 +42,7 @@ let tabs = [
     active: false,
   }
 ]
+
 const Faq = () => {
   const tableList = useRef(null);
   const collapseContainer = useRef(null);
@@ -71,8 +72,10 @@ const Faq = () => {
   }
 
   const scrollQuestion = (value) => {
-    const blockCollapse = collapseContainer.current.querySelector(`[data-id="${value}"]`)
+    const blockCollapse = collapseContainer.current.querySelector(`[data-id="${value}"]`);
+    const titleHeight = blockCollapse.querySelector(`h2`).offsetHeight;
     const { top } = blockCollapse.getBoundingClientRect();
+
     const editTabs = listTabs.map((item, index) => {
       if(index === value) {
         return {
@@ -88,7 +91,7 @@ const Faq = () => {
 
     setTabs(editTabs);
     window.scrollTo({
-      top,
+      top: (top - (titleHeight + 10)),
       behavior: "smooth"
     });
   }

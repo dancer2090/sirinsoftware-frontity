@@ -12,10 +12,8 @@ const CollapseList = ({ elements = [], color }) => {
           active: active
         }
       }
-      return {
-        ...item,
-        active: false
-      }
+      
+      return item;
     })
 
     setDataClone(newData);
