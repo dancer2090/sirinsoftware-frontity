@@ -20,7 +20,7 @@ const PostContent = ({ state }) => {
       {state.router.link === '/' && <HomeTemplate />}
       {dataP.type === 'portfolio' && <CaseStudiesPost />}
       {template === 'page-faq.php' && <FaqTemplate />}
-      {template === 'standart' && state.router.link !== '/' && <StandartTemplate />}
+      {dataP.type === 'post' && template === 'standart' && state.router.link !== '/' && <StandartTemplate />}
       {template === 'page-services-null.php' && <ServicesTemplate />}
       {template === 'page-full.php' && <PageFullTemplate />}
       {template === 'page-book.php' && <PageBookTemplate />}

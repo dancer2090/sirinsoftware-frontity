@@ -50,18 +50,6 @@ const settings = {
               archive: "/case-studies" // link where this custom posts are listed
             }
           ],
-          taxonomies: [
-            {
-              taxonomy: "portfolio_cat",
-              endpoint: "portfolio_cat",
-              postTypeEndpoint: "portfolio",
-            },
-            {
-              taxonomy: "teammembers_cat",
-              endpoint: "teammembers_cat",
-              postTypeEndpoint: "teammembers",
-            },
-          ]
         }
       }
     },

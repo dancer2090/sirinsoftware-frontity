@@ -10,7 +10,7 @@ import { linkReplace } from './utils/func';
 const newHandler = {
   name: 'categoryOrPostType',
   priority: 19,
-  pattern: '/(.*)?/:slug',
+  pattern: '/:type/:slug',
   func: async ({
     route, params, state, libraries,
   }) => {
@@ -23,9 +23,11 @@ const newHandler = {
         route, params, state, libraries,
       });
     } catch (e) {
+      let hand_name = 'portfolio';
+      if(params.type==="blog") hand_name = 'post type';
       // It's not a category
       const postType = libraries.source.handlers.find(
-        (handler) => handler.name === 'post type',
+        (handler) => handler.name === hand_name,
       );
       await postType.func({
         link: route, params, state, libraries,
