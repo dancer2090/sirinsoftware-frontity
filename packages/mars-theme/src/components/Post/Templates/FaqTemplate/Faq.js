@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
+import { connect } from 'frontity';
 import {
   Container, 
   Wrapper,
@@ -10,60 +11,50 @@ import {
   TableWrapper,
   CollapseBlock,
   CollapseTitle,
-
 } from './styles';
 import CollapseList from './CollapseList';
 
-const collapseGenerate = () => {
-  const result = []
-  for(let i = 0; i < 5; i++) {
-    result.push({
-      title: 'Why should I hire your company?',
-      content: `We offer high-quality engineering in Embedded, Linux and IoT related services. We keep our focus on these services in order to attract the best talent and expertise in the business. Our main goal is to act not as much as the contractor but rather as the trusted partner which makes software R&D process easier, more cost-effective and speeds up the 
-      development of new products together with clients.`,
-      active: false
-    });
-  }
-
-  return result;
-}
-
-let tabs = [
-  {
-    title: 'SIRIN SOFTWARE',
-    active: true,
-  },
-  {
-    title: 'DEVELOPMENT PROCESS',
-    active: false,
-  },
-  {
-    title: 'COMMUNICATION',
-    active: false,
-  }
-]
-
-const Faq = () => {
+const Faq = ({ state, libraries }) => {
+  // create refs
   const tableList = useRef(null);
   const collapseContainer = useRef(null);
-  const [listTabs, setTabs] = useState(tabs);
+  // get data this page
+  const data = state.source.get(state.router.link);
+  const post = state.source[data.type][data.id];
+  const { acf = {} } = post;
+  const collapseCategory = acf.categories.map((category, index) => {
+    return {
+      active: index === 0 ? true : false,
+      category_name: category.category_name,
+      questions: category.questions
+    }
+  });
+
+  const [listTabs, setTabs] = useState(collapseCategory);
   const [fixedsTable, setFixedsTable] = useState(true);
   const [hasBottom, setBottom] = useState(false);
   const [topPosition, setTopPosition] = useState('117px');
 
   useEffect(() => {
     fixationTableList();
+
+    return function () {
+      window.removeEventListener('scroll', () => {});
+    }
   }, []);
 
   const fixationTableList = () => {
-    const { top: positionTop } = tableList.current.getBoundingClientRect();
-    setTopPosition(positionTop);
+    const tableNative = tableList.current;
+    const childrenWrapper = tableNative.firstElementChild;
+
+    const { top: positionTop } = tableNative.getBoundingClientRect();
+    setTopPosition(positionTop + window.pageYOffset);
 
     window.addEventListener('scroll', function() {
       const top = this.scrollY;
-      const tableHeight = tableList.current.firstElementChild.offsetHeight;
+      const tableHeight = childrenWrapper.offsetHeight;
 
-      if(top + tableHeight >= tableList.current.offsetHeight) {
+      if(top + tableHeight >= tableNative.offsetHeight) {
         setBottom(true);
       } else {
         setBottom(false);
@@ -73,8 +64,7 @@ const Faq = () => {
 
   const scrollQuestion = (value) => {
     const blockCollapse = collapseContainer.current.querySelector(`[data-id="${value}"]`);
-    const titleHeight = blockCollapse.querySelector(`h2`).offsetHeight;
-    const { top } = blockCollapse.getBoundingClientRect();
+    const top = blockCollapse.offsetTop - 10;
 
     const editTabs = listTabs.map((item, index) => {
       if(index === value) {
@@ -91,7 +81,7 @@ const Faq = () => {
 
     setTabs(editTabs);
     window.scrollTo({
-      top: (top - (titleHeight + 10)),
+      top,
       behavior: "smooth"
     });
   }
@@ -100,27 +90,22 @@ const Faq = () => {
     <Container>
       <Wrapper>
         <CollapseContainer ref={collapseContainer}>
-          <CollapseBlock>
-            <CollapseTitle data-id="0">
-              Sirin <br />
-              software
-            </CollapseTitle>
-            <CollapseList elements={collapseGenerate()}/>
-          </CollapseBlock>
-          <CollapseBlock  data-id="1">
-            <CollapseTitle color="yellow">
-              DEVELOPMENT <br/>
-              PROCESS
-            </CollapseTitle>
-            <CollapseList color="green" elements={collapseGenerate()}/>
-          </CollapseBlock>
-          <CollapseBlock  data-id="2">
-            <CollapseTitle color="yellow">
-              DEVELOPMENT <br/>
-              PROCESS
-            </CollapseTitle>
-            <CollapseList color="green" elements={collapseGenerate()}/>
-          </CollapseBlock>
+          {
+            listTabs.map((item, key) => {
+              return (
+                <CollapseBlock key={key} data-id={key}>
+                  <CollapseTitle 
+                    color={key % 2 !== 0 ? 'yellow' : null}>
+                    {item.category_name}
+                  </CollapseTitle>
+                  <CollapseList 
+                    color={key % 2 !== 0 ? 'green' : null}
+                    libraries={libraries} 
+                    elements={item.questions}/>
+                </CollapseBlock>
+              )
+            })
+          }
         </CollapseContainer>
 
         <TableContainer ref={tableList}>
@@ -138,7 +123,7 @@ const Faq = () => {
                       active={item.active}
                       onClick={() => scrollQuestion(index)}
                       >
-                        {item.title}
+                        {item.category_name}
                       </TableItem>
                   )
                 })
@@ -151,4 +136,4 @@ const Faq = () => {
   )
 }
 
-export default Faq;
+export default connect(Faq);

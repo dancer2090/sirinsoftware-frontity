@@ -155,12 +155,18 @@ const marsTheme = {
           await actions.source.fetch('/case-studies/');
         }
 
+        if (state.router.link.includes('/about/faq/')) {
+          console.log('run')
+          // await actions.source.fetch('about/faq');
+        }
+
         if (
           !state.router.link.indexOf('/blog/')
           && state.router.link !== '/blog/'
         ) {
           await actions.source.fetch('/blog');
         }
+       
         const { urlCheck } = libraries.func;
         const replaces = [state.frontity.url, state.frontity.adminUrl];
         const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);
