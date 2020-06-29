@@ -8,6 +8,7 @@ import PageBookTemplate from '../Templates/PageBookTemplate';
 import AboutUsTemplate from '../Templates/AboutUsTemplate';
 import ContactsTemplate from '../Templates/ContactsTemplate';
 import CaseStudiesPost from '../Templates/CaseStudiesPostTemplate';
+import FaqTemplate from '../Templates/FaqTemplate';
 
 const PostContent = ({ state }) => {
   const dataP = state.source.get(state.router.link);
@@ -18,6 +19,7 @@ const PostContent = ({ state }) => {
     <>
       {state.router.link === '/' && <HomeTemplate />}
       {dataP.type === 'portfolio' && <CaseStudiesPost />}
+      {template === 'page-faq.php' && <FaqTemplate />}
       {template === 'standart' && state.router.link !== '/' && <StandartTemplate />}
       {template === 'page-services-null.php' && <ServicesTemplate />}
       {template === 'page-full.php' && <PageFullTemplate />}
