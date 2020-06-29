@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'frontity';
+import BigFrameContainer from '../../../BigFrameContainer';
 import {
   Wrapper,
   Container,
-  BigFrame,
-  BigImageBlock,
-  BigFrameImage,
-  BigFrameContent,
   ServicesList,
   ServicesItem,
   CaseContainer,
@@ -32,18 +29,12 @@ const ServicesTemplate = ({ state, libraries }) => {
 
   const { acf = {} } = post;
 
+  const bigFrameTitle = acf.main_text;
+  const bigFrameImage = acf.main_image.url;
+
   return (
     <Wrapper>
-      <BigFrame>
-        <BigImageBlock>
-          <BigFrameImage src={acf.main_image.url} />
-        </BigImageBlock>
-        <BigFrameContent>
-          <div>
-            <Html2React html={acf.main_text} />
-          </div>
-        </BigFrameContent>
-      </BigFrame>
+      <BigFrameContainer title={bigFrameTitle} image={bigFrameImage}/>
       <Container>
         <ServicesList>
           { acf.services.map((item, index) => {

@@ -13,8 +13,6 @@ import Modal from './Modal';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
-import CaseStudiesPost from './Post/Templates/CaseStudiesPostTemplate';
-import CaseStudiesTemplate from './Post/Templates/CaseStudiesTemplate';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
 
@@ -22,16 +20,16 @@ import Recaptcha from './Recaptcha';
  * Theme is the root React component of our theme. The one we will export
  * in roots.
  */
-const Theme = ({ state }) => {
+const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
-
+  console.log(state);
   const formHandleClose = () => {
-    state.customSettings.isFormSend = false;
+    actions.theme.changeFormSend();
   };
   const subscribeHandleClose = () => {
-    state.customSettings.isSubscribeSend = false;
+    actions.theme.changeFormSend();
   };
 
   const formRef = useRef(null);
@@ -72,8 +70,6 @@ const Theme = ({ state }) => {
 
         <Main>
           <Switch>
-            <CaseStudiesTemplate when={state.router.link === '/case-studies/'} />
-            <CaseStudiesPost when={state.router.link === '/case-studies-item/' } />
             <Loader when={data.isFetching} />
             <List when={data.isArchive} />
             <Post when={data.isPostType} />

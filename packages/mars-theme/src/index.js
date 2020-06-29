@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign */ 
 import image from '@frontity/html2react/processors/image';
 import iframe from '@frontity/html2react/processors/iframe';
 import axios from 'axios';
@@ -84,6 +84,9 @@ const marsTheme = {
       },
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
+      },
+      changeFormSend: ({ state }) => {
+        state.customSettings.isFormSend = !state.customSettings.isFormSend;
       },
       sendForm: ({ state }) => async (data) => {
         const dataForm = data.formData;
