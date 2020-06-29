@@ -94,6 +94,7 @@ const marsTheme = {
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           state.customSettings.isFormSend = true;
+          console.log(response);
         });
       },
       sendComment: ({ state }) => async (data) => {
@@ -118,35 +119,38 @@ const marsTheme = {
       },
 
       sendSubscribe: ({ state }) => async (data) => {
-        await axios.post(`${state.source.api}/frontity-api/send-subscribe`, { data }).then((response) => {
+        const dataForm = data.formData;
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
+        await axios.post(
+          `${state.source.api}/frontity-api/send-subscribe`,
+          dataForm,
+          {headers: {'content-type': 'application/json'}},
+        ).then((response) => {
           if (response.status === 200) {
             state.customSettings.isSubscribeSend = true;
           }
         });
       },
       beforeSSR: async ({ state, actions, libraries }) => {
+        if(
+          !state.router.link.indexOf('/services/')
+          && state.router.link !== '/services/'
+        ) {
+          actions.router.set('/services/');
+        }
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
 
         const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
         state.customSettings.categories = categories.data;
 
-        await actions.source.fetch('/case-studies/');
-
-        if (
-          !state.router.link.indexOf('/services/')
-          && state.router.link !== '/services/'
-        ) {
+        if (state.router.link.includes('/services/')) {
           await actions.source.fetch('/case-studies/');
         }
-
-        if (
-          !state.router.link.indexOf('/case-studies/')
-          && state.router.link !== '/case-studies/'
-        ) {
+        
+        if (state.router.link.includes('/case-studies/')) {
           await actions.source.fetch('/case-studies/');
         }
-
 
         if (
           !state.router.link.indexOf('/blog/')
