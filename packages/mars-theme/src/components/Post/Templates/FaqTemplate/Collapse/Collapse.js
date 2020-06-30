@@ -9,9 +9,10 @@ import {
   ItemContent
 } from './styles';
 
-const Collapse = ({ data = {}, active, index, color, onToggle }) => {
+const Collapse = ({ data = {}, active, index, color, onToggle, libraries }) => {
   const content = useRef(null);
   const [height, setHeight] = useState('0px');
+  const Html2React = libraries.html2react.Component;
   
   useEffect(() => {
     setHeight(!active ? '0px' : content.current.scrollHeight);
@@ -26,7 +27,7 @@ const Collapse = ({ data = {}, active, index, color, onToggle }) => {
       <Item>
         <ItemHeader>
           <ItemTitle>
-            {data.title}
+            {data.question}
           </ItemTitle>
           <ItemIcon 
             onClick={toggleCollapse} 
@@ -36,7 +37,7 @@ const Collapse = ({ data = {}, active, index, color, onToggle }) => {
         </ItemHeader>
         <ItemBody ref={content} style={{maxHeight: height}}>
           <ItemContent>
-            {data.content}
+            <Html2React html={data.description} />
           </ItemContent>
         </ItemBody>
       </Item>
