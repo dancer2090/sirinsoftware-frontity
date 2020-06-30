@@ -3,17 +3,14 @@ import SvgSprite from '../../StandartTemplate/SvgSprite';
 
 export const Card = styled.div`
   background: #F2F2F2;
-  min-height: 430px;
   padding: 43px 70px 40px 38px;
   position: relative;
 
   @media screen and (max-width: 991px) {
-    min-height: 370px;
     padding: 35px 29px 7px 41px;
   }
 
   @media screen and (max-width: 767px) {
-    min-height: 384px;
     padding: 37px 8px 35px 20px;
   }
 `;

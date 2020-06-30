@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'frontity';
 import { 
   ContainerFrame,
   Wrapper,
@@ -28,26 +29,35 @@ import {
   CaseItemTitle,
   CaseContent
 } from './styles';
-import caseItemFrame from '../../../../img/case-item-post.jpg';
-import logoCase from '../../../../img/logo-case.png';
-import caseTextOne from '../../../../img/case-text-one.jpg';
-import caseOne from '../../../../img/case-one.jpg';
 
-const CaseStudiesPost = () => {
-  const backLink = () => {
+const CaseStudiesPost = ({ actions, state, libraries }) => {
+  const data = state.source.get(state.router.link);
+  const caseStudies = state.source.data['/case-studies/'];
+  // Get the html2react component.
+  const Html2React = libraries.html2react.Component;
 
+  const slidesStudies = caseStudies.items.map(item => {
+    return state.source[item.type][item.id];
+  });
+
+  const post = state.source[data.type][data.id];
+  const { acf = {} } = post;
+
+  const backLink = (event) => {
+    event.preventDefault();
+
+    actions.router.set('/case-studies/');
   }
 
   return (
     <Wrapper>
-      <ContainerFrame src={caseItemFrame}>
+      <ContainerFrame src={acf.post_featured_image}>
         <FrameContent>
           <BackLink onClick={backLink} href="#">
             <BackIcon name="arrow-left" />
           </BackLink>
           <FrameTitle>
-            IMPROVING CONNECTION STANDARDS FOR A NEW GENERATION
-            OF CONSUMER SMARTWATCHES
+            <Html2React html={post.title.rendered}/>
           </FrameTitle>
         </FrameContent>
       </ContainerFrame>
@@ -57,79 +67,76 @@ const CaseStudiesPost = () => {
             <ClientTitle>
               Client
             </ClientTitle>
-            <ClientFrame src={logoCase} />
+            <ClientDescription>
+              <Html2React html={acf.portfolio_client_title}/>
+            </ClientDescription>
           </ClientItem>
           <ClientItem>
             <ClientTitle>
               Business area
             </ClientTitle>
             <ClientDescription>
-              Information technology and services
+              <Html2React html={acf.portfolio_business_area}/>
             </ClientDescription>
           </ClientItem>
           <ClientItem>
             <ClientTitle>
-              Geography
+              GEOGRAPHY
             </ClientTitle>
             <ClientDescription>
-              USA
+              <Html2React html={acf.portfolio_geography}/>
             </ClientDescription>
           </ClientItem>
         </ClientBlock>
 
         <ContentWrapper>
           <Content>
-            <CardSet title="Technology set" nameSvg="set-one" />
+            <CardSet 
+              title="Technology set" 
+              nameSvg="set-one" 
+              list={acf.embedded_linux_technology_list} />
             <Title nameSvg="portfolio">
               Clients <br/>
               background
             </Title>
             
             <Text>
-              The client works towards a safer future by manufacturing reliable, affordable, and easy-to-install wireless infrastructure for buildings. A multinational corporation based out of New York City, the company’s Tactical Series line of products operates at the nexus of two-way radio and fire-alarm systems, speaking the language of both. The company is FDNY ARCS B-03 certified, providing unmatched experience at getting installations for US FD by UL and FCC.
-              <p>
-                The company has a wide resellers network: Siemens Building Technologies, New York Fire Detection Inc, National Fire Products Inc, etc.
-              </p>
+              <Html2React html={acf.portfolio_client_background} />
             </Text>
 
-            <BusinesCard></BusinesCard>
+            <BusinesCard>
+              <Html2React html={acf.portfolio_business_challenge} />
+            </BusinesCard>
 
             <Title nameSvg="solution">
               Solution
             </Title>
 
             <Text>
-              The client works towards a safer future by manufacturing reliable, affordable, and easy-to-install wireless infrastructure for buildings. A multinational corporation based out of New York City, the company’s Tactical Series line of products operates at the nexus of two-way radio and fire-alarm systems, speaking the language of both. The company is FDNY ARCS B-03 certified, providing unmatched experience at getting installations for US FD by UL and FCC.
-              <p>
-                The company has a wide resellers network: Siemens Building Technologies, New York Fire Detection Inc, National Fire Products Inc, etc.
-              </p>
+              <Html2React html={acf.portfolio_solution} />
             </Text>
 
-            <img src={caseTextOne} />
-            
-            <Text>
-              The client works towards a safer future by manufacturing reliable, affordable, and easy-to-install wireless infrastructure for buildings. A multinational corporation based out of New York City, the company’s Tactical Series line of products operates at the nexus of two-way radio and fire-alarm systems, speaking the language of both. The company is FDNY ARCS B-03 certified, providing unmatched experience at getting installations for US FD by UL and FCC.
-              <p>
-                The company has a wide resellers network: Siemens Building Technologies, New York Fire Detection Inc, National Fire Products Inc, etc.
-              </p>
-            </Text>
-            <CardSet title="Value delivered" nameSvg="set-two" />
+            <CardSet 
+              title="Value delivered" 
+              nameSvg="set-two">
+              <Html2React html={acf.portfolio_value_delivered} />
+            </CardSet>
           </Content>
 
           <PostsContent>
             <PostTitle>
               Linux, embedded and IOT
             </PostTitle>
-            <Post title="IoT">
+            <Post title="IoT" index="4">
               IMPROVING CONNECTION STANDARDS FOR A NEW GENERATION OF CONSUMER SMARTWATCHES
             </Post>
-            <Post title="Embedded Linux">
+            <Post title="Embedded Linux" index="3">
               AI DUAL DASH CAMERA FOR VEHICLES
             </Post>
-            <Post title="SOFTWARE & HI-TECH">
+            <Post title="SOFTWARE & HI-TECH" index="2">
               PROTECTED: CONTROLLED AIR SUPPLY SYSTEM OF HEATING- CONDITIONING FOR SMART HOUSES
             </Post>
-            <Post title="SMART HOME">
+            <Post title="SMART HOME" index="1">
               SMART PARKING SOLUTION WITH CLOUD, MOBILE APP AND WEB DASHBOARD
             </Post>
           </PostsContent>        
@@ -137,39 +144,24 @@ const CaseStudiesPost = () => {
 
         <ContainerSlider>
           <CaseStudiesSlider>
-            <CaseItem 
-              src={caseOne}>
-              <CaseItemTitle>
-                Other Case Studies
-              </CaseItemTitle>
-              <CaseContent>
-                Wireless connection manager for IOT-
-                Enabled consumer  electronics
-              </CaseContent>
-              <CaseLink href="#">Learn more</CaseLink>
-            </CaseItem>
-            <CaseItem 
-              src={caseOne}>
-              <CaseItemTitle>
-                Other Case Studies
-              </CaseItemTitle>
-              <CaseContent>
-                Wireless connection manager for IOT-
-                Enabled consumer  electronics
-              </CaseContent>
-              <CaseLink href="#">Learn more</CaseLink>
-            </CaseItem>
-            <CaseItem 
-              src={caseOne}>
-              <CaseItemTitle>
-                Other Case Studies
-              </CaseItemTitle>
-              <CaseContent>
-                Wireless connection manager for IOT-
-                Enabled consumer  electronics
-              </CaseContent>
-              <CaseLink href="#">Learn more</CaseLink>
-            </CaseItem>
+            { slidesStudies.map((item, index) => {
+                const { acf = {} } = item;
+                const { post_featured_image = {} } = acf;
+                return (
+                  <CaseItem 
+                    key={index}
+                    src={post_featured_image}>
+                    <CaseItemTitle>
+                    <Html2React html={acf.portfolio_business_area} />
+                    </CaseItemTitle>
+                    <CaseContent>
+                      <Html2React html={item.title.rendered} />
+                    </CaseContent>
+                    <CaseLink href={item.link}>Learn more</CaseLink>
+                  </CaseItem>
+                )
+              })
+            }
           </CaseStudiesSlider>
         </ContainerSlider>
       </Container>
@@ -177,4 +169,4 @@ const CaseStudiesPost = () => {
   )
 }
 
-export default CaseStudiesPost;
+export default connect(CaseStudiesPost);
