@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect, styled } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
-import AboutUsSlider from './AboutUsSlider'
 import BigTitle from '../../../BigTitle';
 import Image from '../../../../img/service.jpg';
 import {
   GlobalContainer,
   Container,
+  AboutUsSlider,
   AwardsGlobalContainer,
   AwardsContainer,
   AwardsItem,
   AwardsImageContainer,
   AwardsImage,
+  AwardsGalleryItem,
   TestimonialsGlobalContainer,
   TestimonialsContainer,
   TestimonialsItem,
@@ -22,10 +23,18 @@ import {
   TestimonialsRightContainer,
   TestimonialsText,
   TestimonialsSignature,
+  TestimonialsTextStart,
+  TestimonialsTextEnd,
+  TestimonialsTextContent,
+  GalleryGlobalContainer,
+  GalleryContainer,
+  GalleryItem,
+  GalleryImageContainer,
+  GalleryImage,
 } from './styles';
 
 
-const AboutUsTemplate = ({ state }) => {
+const AboutUsTemplate = ({ state, libraries }) => {
     const dataP = state.source.get(state.router.link);
     const post = state.source[dataP.type][dataP.id];
 
@@ -37,6 +46,7 @@ const AboutUsTemplate = ({ state }) => {
     const {
         awards = {},
         testimonials = {},
+        gallery = {},
     } = acf;
 
     let subawards = [];
@@ -45,6 +55,16 @@ const AboutUsTemplate = ({ state }) => {
         subawards[i] = awards.slice((i*size), (i*size) + size);
     }
 
+    let subgallery = [];
+    size = 8;
+    for (let i = 0; i < Math.ceil(gallery.length/size); i++){
+        subgallery[i] = gallery.slice((i*size), (i*size) + size);
+    }
+
+    const Html2React = libraries.html2react.Component;
+
+    console.log(subawards);
+
   return (
     <GlobalContainer>
         <BigFrameContainer title={post.content.rendered} image={bgImg}/>
@@ -52,15 +72,19 @@ const AboutUsTemplate = ({ state }) => {
             <BigTitle title="Awards" />
             <Container>
                 <AwardsContainer>
-                {subawards && subawards.map((aitem, k) => (
-                  <AwardsItem>
-                    {aitem && aitem.map((asubitem, k) => (
-                        <AwardsImageContainer>
-                            <AwardsImage src={asubitem.image.url} />
-                        </AwardsImageContainer>
-                    ))}
-                  </AwardsItem>
-                ))}
+                    <AboutUsSlider>
+                        {subawards && subawards.map((aitem, k) => (
+                          <AwardsGalleryItem>
+                              <AwardsItem>
+                                {aitem && aitem.map((asubitem, k) => (
+                                    <AwardsImageContainer key={asubitem.url}>
+                                        <AwardsImage src={asubitem.image.url} />
+                                    </AwardsImageContainer>
+                                ))}
+                              </AwardsItem>
+                          </AwardsGalleryItem>
+                        ))}
+                    </AboutUsSlider>
                 </AwardsContainer>
             </Container>
         </AwardsGlobalContainer>
@@ -69,7 +93,7 @@ const AboutUsTemplate = ({ state }) => {
             <Container>
                 <TestimonialsContainer>
                     {testimonials && testimonials.length>0 && testimonials.map((item, k) => (
-                        <TestimonialsItem>
+                        <TestimonialsItem key={k+item.logo.url}>
                             <TestimonialsLeft>
                                 <TestimonialsLogo src={item.logo.url} />
                                 <TestimonialsPhoto src={item.photo.url} />
@@ -77,7 +101,15 @@ const AboutUsTemplate = ({ state }) => {
                             <TestimonialsRight>
                                 <TestimonialsRightContainer>
                                     <TestimonialsText>
-                                        {item.text}
+                                        <TestimonialsTextStart>
+                                            “
+                                        </TestimonialsTextStart>
+                                        <TestimonialsTextContent>
+                                            <Html2React html={item.text} />
+                                        </TestimonialsTextContent>
+                                        <TestimonialsTextEnd>
+                                            “
+                                        </TestimonialsTextEnd>
                                     </TestimonialsText>
                                     <TestimonialsSignature>
                                         {item.signature}
@@ -89,6 +121,24 @@ const AboutUsTemplate = ({ state }) => {
                 </TestimonialsContainer>
             </Container>
         </TestimonialsGlobalContainer>
+        <GalleryGlobalContainer>
+            <BigTitle title="Gallery" />
+            <GalleryContainer>
+                <AboutUsSlider>
+                    {subgallery && subgallery.length>0 && subgallery.map((item, k) => (
+                        <div>
+                            <GalleryItem key={k+"galleryItem"}>
+                                {item && item.length>0 && item.map((subitem, k) => (
+                                    <GalleryImageContainer key={k+subitem.url}>
+                                        <GalleryImage src={subitem.url} />
+                                    </GalleryImageContainer>
+                                ))}
+                            </GalleryItem>
+                        </div>
+                    ))}
+                </AboutUsSlider>
+            </GalleryContainer>
+        </GalleryGlobalContainer>
     </GlobalContainer>
   );
 };
