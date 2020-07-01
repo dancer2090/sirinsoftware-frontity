@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'frontity';
 import {
   Container, 
   HeaderFilter,
   FilterItem,
   CaseWrapper,
-  ItemBlock,
+  ItemBlock, 
   LastItem,
   LastItemFrame,
   LastItemTitle,
@@ -82,11 +83,67 @@ const genegateFilter = () => {
   ]
 }
 
-const CaseStudies = () => {
-  const data = genegateDate();
+const CaseStudies = ({ state, actions }) => {
+
+  const data = [];
+  const dataCat = [];
+
+  const { acf : optionsAcf = {} } = state.options;
+  const { cs_text = "", cs_title = "" } = optionsAcf;
+
+  const dataList = state.source.get(state.router.link);
+  const { totalPages } = state.source.get(state.router.link);
+  let megaItems = dataList.items;
+  let currentData;
+  for(let i = 2; i < totalPages; i++){
+    currentData = state.source.get(`${state.router.link}page/${i}`);
+    if (currentData.isReady) {
+      megaItems = megaItems.concat(currentData.items);
+    }
+  }
+  megaItems.map((item, k) => {
+    const post = state.source.get(`${item.link}`);
+    const p_item = state.source[post.type][post.id];
+    const { acf = {} } = p_item;
+    const {
+      category_for_green_line = "",
+      post_featured_image = "",
+      short_description = "",
+    } = acf;
+    let check = true;
+    let keyCat = dataCat.length;
+    console.log(p_item);
+    dataCat.map((catItem, k) => {
+      if(catItem.toUpperCase() === category_for_green_line.toUpperCase()){
+        check = false;
+        keyCat = k;
+      }
+    })
+    if(check){
+      dataCat.push(category_for_green_line);
+    }
+    data.push({
+      src: post_featured_image,
+      title: category_for_green_line,
+      key: keyCat,
+      content: p_item.title.rendered,
+      back: {
+        label: category_for_green_line,
+        title: p_item.title.rendered,
+        content: short_description
+      }
+    });
+  });
+  let catNull = [];
+  dataCat.map((item,k)=>{
+    if(item!=="") catNull.push({title:item,key:k});
+  });
+  console.log(data);
+  console.log(catNull);
+
   const [items, setItem] = useState(data);
   const [active, setActive] = useState(-1);
-  const [filter, setFilter] = useState(genegateFilter);
+  const [filter, setFilter] = useState(catNull);
 
   const filters = (item, index) => {
     if(active === index) {
@@ -94,7 +151,7 @@ const CaseStudies = () => {
       setItem(data);
 
       return
-    } 
+    }
     const filterData = data.filter(el => el.key === item.key)
 
     setItem(filterData)
@@ -146,17 +203,18 @@ const CaseStudies = () => {
           )
         })
         }
-        
-        <LastItem>
-          <LastItemFrame src={CaseBox} />
-          <LastItemTitle>Some text</LastItemTitle>
-          <LastItemDescription>
-            The client required a solution that would evolve the capabilities of its next generation of smartwatches
-          </LastItemDescription>
-        </LastItem>
+        {items.length % 2 !== 0 && (
+          <LastItem>
+            <LastItemFrame src={CaseBox} />
+            <LastItemTitle>{cs_title}</LastItemTitle>
+            <LastItemDescription>
+              {cs_text}
+            </LastItemDescription>
+          </LastItem>
+        )}
       </CaseWrapper>
     </Container>
   )
 }
 
-export default CaseStudies;
+export default connect(CaseStudies);

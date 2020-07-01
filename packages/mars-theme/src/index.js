@@ -23,8 +23,8 @@ const newHandler = {
         route, params, state, libraries,
       });
     } catch (e) {
-      let hand_name = 'portfolio';
-      if(params.type==="blog") hand_name = 'post type';
+      let hand_name = 'post type';
+      if(params.type==="case-studies") hand_name = 'portfolio';
       // It's not a category
       const postType = libraries.source.handlers.find(
         (handler) => handler.name === hand_name,
@@ -152,9 +152,19 @@ const marsTheme = {
         if (state.router.link.includes('/services/')) {
           await actions.source.fetch('/case-studies/');
         }
-        
-        if (state.router.link.includes('/case-studies/')) {
+
+        if (
+          state.router.link.includes('/case-studies/')
+          && state.router.link !== '/case-studies/'
+        ) {
           await actions.source.fetch('/case-studies/');
+        }
+
+        if (state.router.link === '/case-studies/') {
+          const { totalPages } = state.source.get(state.router.link);
+          for(let i = 2; i <= totalPages; i++){
+            await actions.source.fetch('/case-studies/page/'+i+'/');
+          }
         }
 
         if (state.router.link.includes('/about/faq/')) {
