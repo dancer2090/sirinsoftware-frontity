@@ -84,7 +84,7 @@ const Footer = () => {
         </Header>
         <Private>
           © Copyright - Sirin Software. <br className="mobile"/> All Rights Reserved. <br/>
-          <Link href="#">Privacy Policy</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
         </Private>
       </Container>
     </Wrapper>

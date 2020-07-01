@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'frontity';
+import Link from '../../../../link';
 import {
-  Form, Title, SubmitButton, Description, Input, FText, InputGroup, ErrorText,
+  Form,
+  Title,
+  SubmitButton,
+  Description,
+  Input,
+  FText,
+  InputGroup,
+  ErrorText,
 } from './styles';
 
 function validateEmail(email) {
@@ -114,7 +122,7 @@ const SubscribeForm = ({actions, state}) => {
       </InputGroup>
       <Description>
         Subcribing to our blog you agree with our
-        <a href="">Privacy Policy</a>
+        <Link href="/privacy-policy">Privacy Policy</Link>
       </Description>
       <SubmitButton color="yellow">Subscribe</SubmitButton>
 
