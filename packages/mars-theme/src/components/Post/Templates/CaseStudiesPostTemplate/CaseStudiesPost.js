@@ -43,6 +43,9 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const post = state.source[data.type][data.id];
   const { acf = {} } = post;
 
+  const test = state.source.get('/case-studies-cat/embedded-linux-outsourcing/');
+  console.log(test);
+
   const backLink = (event) => {
     event.preventDefault();
 
