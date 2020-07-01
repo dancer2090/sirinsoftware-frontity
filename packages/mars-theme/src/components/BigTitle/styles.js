@@ -34,6 +34,7 @@ export const BigTitleBackground = styled.div`
 
   @media screen and (max-width: 991px) {
     height: 117px;
+    line-height: 117px;
     font-size: 96px;
   }
 

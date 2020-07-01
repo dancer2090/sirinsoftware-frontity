@@ -14,18 +14,11 @@ const AboutUsSlider = ({ className, children }) => {
       clickable: true
     },
     spaceBetween: 0,
-    breakpoints: {
-      768: {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: 20,
-      }
-    }
   }
 
   return (
     <Container>
-      <Swiper className={className} {...params}>
+      <Swiper {...params}>
         { children }
       </Swiper>
     </Container>
