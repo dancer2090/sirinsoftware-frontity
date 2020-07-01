@@ -16,8 +16,10 @@ const newHandler = {
   }) => {
     // 1. try with category.
     try {
+      let hand_name = 'category';
+      if(params.type==="case-studies-cat") hand_name = 'case-studies-cat';
       const category = libraries.source.handlers.find(
-        (handler) => handler.name === 'category',
+        (handler) => handler.name === hand_name,
       );
       await category.func({
         route, params, state, libraries,
@@ -155,6 +157,8 @@ const marsTheme = {
         
         if (state.router.link.includes('/case-studies/')) {
           await actions.source.fetch('/case-studies/');
+          await actions.source.fetch('/case-studies-cat/');
+          await actions.source.fetch('/case-studies-cat/embedded-linux-outsourcing/');
         }
 
         if (
