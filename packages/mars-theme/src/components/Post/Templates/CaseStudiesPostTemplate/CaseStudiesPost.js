@@ -54,10 +54,13 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
 
   useEffect(() => {
     actions.source.fetch(`/case-studies-cat/${category_slug}/`);
-    
-    const category_get = state.source.get(`/case-studies-cat/${category_slug}/`)
-    console.log(category_get);
   }, [])
+
+  const { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`)
+
+  const postsRight = items.map(item => {
+    return state.source[item.type][item.id]
+  });
 
   const backLink = (event) => {
     event.preventDefault();
@@ -143,18 +146,19 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             <PostTitle>
               Linux, embedded and IOT
             </PostTitle>
-            <Post title="IoT" index="4">
-              IMPROVING CONNECTION STANDARDS FOR A NEW GENERATION OF CONSUMER SMARTWATCHES
-            </Post>
-            <Post title="Embedded Linux" index="3">
-              AI DUAL DASH CAMERA FOR VEHICLES
-            </Post>
-            <Post title="SOFTWARE & HI-TECH" index="2">
-              PROTECTED: CONTROLLED AIR SUPPLY SYSTEM OF HEATING- CONDITIONING FOR SMART HOUSES
-            </Post>
-            <Post title="SMART HOME" index="1">
-              SMART PARKING SOLUTION WITH CLOUD, MOBILE APP AND WEB DASHBOARD
-            </Post>
+            {
+              postsRight.map((item, index) => {
+                return (
+                  <Post 
+                    title={item.acf.category_for_green_line}
+                    href={item.link}
+                    key={index} 
+                    index={postsRight.length - index}>
+                    <Html2React html={item.title.rendered} />
+                  </Post>
+                )
+              })
+            }
           </PostsContent>        
         </ContentWrapper>
 
