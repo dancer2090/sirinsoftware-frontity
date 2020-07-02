@@ -63,8 +63,6 @@ const Theme = ({ state, actions }) => {
           isOpen={state.customSettings.isSubscribeSend}
           handleClose={subscribeHandleClose}
         />
-
-        <UseCookiesModal />
         
         <Header scrollRef={formRef} />
         <Space />
@@ -85,6 +83,8 @@ const Theme = ({ state, actions }) => {
           <FeedbackForm />
         </div>
         <Footer />
+
+        <UseCookiesModal />
       </GoogleReCaptchaProvider>
     </>
   );
