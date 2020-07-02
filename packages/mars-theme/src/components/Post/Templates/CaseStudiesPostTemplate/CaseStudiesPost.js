@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import { 
   ContainerFrame,
@@ -43,8 +43,13 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const post = state.source[data.type][data.id];
   const { acf = {} } = post;
 
-  const test = state.source.get('/case-studies-cat/embedded-linux-outsourcing/');
-  console.log(test);
+
+  useEffect(() => {
+    const category = state.source.get('/case-studies/embedded-linux-outsourcing/');
+
+    console.log(state.source.data[category.link][category.taxonomy])
+  }, []);
+
 
   const backLink = (event) => {
     event.preventDefault();
