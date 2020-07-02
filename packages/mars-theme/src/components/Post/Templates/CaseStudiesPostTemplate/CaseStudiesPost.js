@@ -52,10 +52,12 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const category = state.source['portfolio-cat'][category_id]; // берем таксономию
   const category_slug = category.slug; // берем slug таксономии
 
-  actions.source.fetch(`/case-studies-cat/${category_slug}/`)
-
-  const category_get = state.source.get(`/case-studies-cat/${category_slug}/`)
-  console.log(category_get);
+  useEffect(() => {
+    actions.source.fetch(`/case-studies-cat/${category_slug}/`);
+    
+    const category_get = state.source.get(`/case-studies-cat/${category_slug}/`)
+    console.log(category_get);
+  }, [])
 
   const backLink = (event) => {
     event.preventDefault();
