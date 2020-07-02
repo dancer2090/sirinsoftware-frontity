@@ -12,7 +12,6 @@ import {
   ClientItem,
   ClientTitle,
   ClientDescription,
-  ClientFrame,
   ContentWrapper,
   Content,
   PostsContent,
@@ -43,13 +42,20 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const post = state.source[data.type][data.id];
   const { acf = {} } = post;
 
+  let category_id = 0; // значение по умолчанию
+  if(post['portfolio-cat'] && post['portfolio-cat'].length > 0) {
+    post['portfolio-cat'].map((item, index) => {
+      category_id = item; // перебираем массив с таксономиями поста
+    });
+  }
 
-  useEffect(() => {
-    const category = state.source.get('/case-studies/embedded-linux-outsourcing/');
+  const category = state.source['portfolio-cat'][category_id]; // берем таксономию
+  const category_slug = category.slug; // берем slug таксономии
 
-    console.log(state.source.data[category.link][category.taxonomy])
-  }, []);
+  actions.source.fetch(`/case-studies-cat/${category_slug}/`)
 
+  const category_get = state.source.get(`/case-studies-cat/${category_slug}/`)
+  console.log(category_get);
 
   const backLink = (event) => {
     event.preventDefault();
