@@ -10,6 +10,7 @@ import ContactsTemplate from '../Templates/ContactsTemplate';
 import CaseStudiesPost from '../Templates/CaseStudiesPostTemplate';
 import FaqTemplate from '../Templates/FaqTemplate';
 import FullPageTemplate from '../Templates/FullPageTemplate';
+import BookTemplate from '../Templates/BookTemplate';
 
 const PostContent = ({ state }) => {
   const dataP = state.source.get(state.router.link);
@@ -28,6 +29,7 @@ const PostContent = ({ state }) => {
       {template === 'about-us.php' && <AboutUsTemplate />}
       {template === 'contacts.php' && <ContactsTemplate />}
       {template === 'page-full.php' && <FullPageTemplate />}
+      {template === 'page-book.php' && <BookTemplate />}
     </>
   );
 };
