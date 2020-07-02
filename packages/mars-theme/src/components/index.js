@@ -15,6 +15,7 @@ import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
+import UseCookiesModal from './UseCookiesModal';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -62,6 +63,9 @@ const Theme = ({ state, actions }) => {
           isOpen={state.customSettings.isSubscribeSend}
           handleClose={subscribeHandleClose}
         />
+
+        <UseCookiesModal />
+        
         <Header scrollRef={formRef} />
         <Space />
 
