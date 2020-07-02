@@ -157,12 +157,6 @@ const marsTheme = {
         
         if (state.router.link.includes('/case-studies/')) {
           await actions.source.fetch('/case-studies/');
-<<<<<<< HEAD
-
-=======
-          await actions.source.fetch('/case-studies-cat/');
-          await actions.source.fetch('/case-studies-cat/embedded-linux-outsourcing/');
->>>>>>> 408d4c77d9fd0c565f8af3119d902cac230da002
         }
 
         if (
