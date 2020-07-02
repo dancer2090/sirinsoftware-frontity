@@ -60,7 +60,7 @@ const BlogListTemplate = ({ state, actions }) => {
       })}
       <PaginationContainer when={state.customSettings.blogLoadMore}>
         <Loader
-          color="#52DE97"
+          color="#F8710F"
           radius={0}
           margin="3px"
           width={4}
