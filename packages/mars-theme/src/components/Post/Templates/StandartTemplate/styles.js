@@ -131,6 +131,16 @@ export const ArticleContent = styled.div`
         line-height: 28px;
     }
 
+    a {
+        color: #3a6c2c;
+        text-decoration: underline;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            color: #25461c;
+        }
+    }
+
     @media screen and  (max-width: 767px) {
         line-height: 22px;
         font-size: 12px;
