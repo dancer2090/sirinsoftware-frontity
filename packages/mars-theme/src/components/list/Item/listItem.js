@@ -39,7 +39,10 @@ const Item = ({
   // const author = state.source.author[item.author];
   const date = new Date(item.date);
   const monthDay = (date.getDate() < 10) ? (`0${date.getDate()}`) : date.getDate();
-  const strDate = `${months[date.getMonth()]}.${monthDay}.${date.getFullYear()}`;
+  const month = date.getMonth() + 1;
+  const mothValue = month < 10 ? `0${month}` : month;
+
+  const strDate = `${monthDay}.${mothValue}.${date.getFullYear()}`;
   const title = item.title.rendered;
   const item_image = state.source['attachment'][item.acf.blog_image];
   const mediaObj = state.source.attachment[item.featured_media];
