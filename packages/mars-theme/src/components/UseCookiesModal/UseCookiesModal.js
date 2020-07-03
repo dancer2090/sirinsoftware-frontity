@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react'
-import { getCookie, setCookie } from './helpers/cookies';
+import { getCookie, setCookie } from '../../utils/cookies';
 import {
   Container, 
   Content,
