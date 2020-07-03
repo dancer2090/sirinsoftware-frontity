@@ -1,6 +1,6 @@
 import { styled } from 'frontity';
 
-export const Container = styled.div`
+export const Container = styled.a`
   background: #FFFFFF;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
   min-height: 140px;

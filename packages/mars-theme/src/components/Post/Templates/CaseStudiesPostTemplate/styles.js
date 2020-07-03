@@ -16,6 +16,7 @@ export const ContainerFrame = styled.div`
     linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url(${({src}) => src})
   ;
+  background-size: cover;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   border-radius: 0px;
   margin-bottom: 100px;
@@ -298,6 +299,9 @@ export const PostTitle = styled.span`
 
 export const Post = styled(PostItem)`
   text-align: left;
+
+  position: relative;
+  z-index: ${({ index = 1}) => index};
 `;
 
 export const CardSet = styled(CardCase)`
@@ -329,6 +333,10 @@ export const Text = styled.div`
   color: #222222;
   margin-bottom: 49px;
   text-align: left;
+
+  img {
+    margin: 0 auto;
+  }
 
   @media screen and (max-width: 767px) {
     padding: 0 6px 0 20px;

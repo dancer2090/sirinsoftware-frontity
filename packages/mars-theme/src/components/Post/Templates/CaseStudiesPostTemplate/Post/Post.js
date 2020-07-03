@@ -5,9 +5,9 @@ import {
   Description
 } from './styles';
 
-const Post = ({ className, title = '', children }) => {
+const Post = ({ className, href, title = '', children }) => {
   return (
-    <Container className={className} >
+    <Container className={className} href={href}>
       <Title>{title}</Title>
       <Description>
         {children}
