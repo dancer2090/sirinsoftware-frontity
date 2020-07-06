@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Global, connect, Head,
 } from 'frontity';
@@ -33,6 +33,14 @@ const Theme = ({ state, actions }) => {
   };
 
   const formRef = useRef(null);
+  const transparent = (state.router.link === "/" ? true : false);
+  const [posScroll, setPosScroll] = useState(0);
+
+  const onScoll = () => {
+    const scrollY = window.scrollY;
+    setPosScroll(scrollY);
+    console.log(posScroll);
+  }
 
   return (
     <>
@@ -62,8 +70,8 @@ const Theme = ({ state, actions }) => {
           isOpen={state.customSettings.isSubscribeSend}
           handleClose={subscribeHandleClose}
         />
-        <Header scrollRef={formRef} />
-        <Space />
+        <Header scrollRef={formRef} transparent={transparent} />
+        <Space transparent={transparent} />
 
         {/* Add the main section. It renders a different component depending
         on the type of URL we are in. */}

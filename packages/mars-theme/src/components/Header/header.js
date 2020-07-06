@@ -7,6 +7,7 @@ import { connect } from 'frontity';
 import ReactResizeDetector from 'react-resize-detector';
 import groupMenu from '../../img/group_menu.svg';
 import logo from '../../img/logo.svg';
+import logoWhite from '../../img/logo_white.svg';
 import CrossImg from '../../img/cross.svg';
 import Button from '../Button';
 import Link from '../link';
@@ -36,6 +37,7 @@ const HeaderComponent = ({
   libraries,
   scrollRef = null,
   offset = 100,
+  transparent = false,
 }) => {
   const [isMenu, setMenu] = useState(false);
   const updateWidth = (width) => (width < 1000 ? null : setMenu(false));
@@ -52,26 +54,28 @@ const HeaderComponent = ({
       });
     }
   };
+  let logoImg = (transparent ? logoWhite : logo);
+
   return (
     <ReactResizeDetector handleWidth onResize={updateWidth}>
-      <HeadBlock isMenu={isMenu}>
+      <HeadBlock transparent={transparent} isMenu={isMenu}>
         {!isMenu && (
-          <Header>
+          <Header transparent={transparent}>
             <Mobilemenu onClick={() => setMenu(true)}>
               <img src={groupMenu} alt="mobile menu" />
             </Mobilemenu>
             <Logo>
               <Link link="/">
-                <img src={logo} alt="Logo" />
+                <img src={logoImg} alt="Logo" />
               </Link>
             </Logo>
-            <Menu>
+            <Menu transparent={transparent}>
               {items && items.length > 0 && items.map((item, n) => (
                 <li key={n}>
                   {item.child_items && item.child_items.length > 0 ? (
                     <>
                       <span>{item.title}</span>
-                      <SubMenu>
+                      <SubMenu transparent={transparent}>
                         {item.child_items.map((cItem, cn) => (
                           <li key={cn}>
                             <Link link={cItem.urlFrontity}>
@@ -90,7 +94,7 @@ const HeaderComponent = ({
             <MobileButton>
               <a onClick={() => scrollToRef()}>GET A FREE QUOTE</a>
             </MobileButton>
-            <GetButton>
+            <GetButton transparent={transparent}>
               <a>
                 <Button onClick={() => scrollToRef()}>
                   GET A FREE QUOTE

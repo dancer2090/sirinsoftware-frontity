@@ -19,6 +19,7 @@ import {
   CaseItemWrapper
 } from './styles';
 import CaseBox from '../../../../img/case-box.svg';
+import Link from '../../../link';
 
 const genegateDate = () => {
   const data = []
@@ -53,40 +54,12 @@ const genegateDate = () => {
   return data;
 }
 
-const genegateFilter = () => {
-  return [
-    {
-      title: 'Hardware <br /> design',
-      key: '1'
-    },
-    {
-      title: 'Embedded <br /> software',
-      key: '2'
-    },
-    {
-      title: 'Firmware <br /> engineering',
-      key: '3'
-    },
-    {
-      title: 'IOT',
-      key: '1'
-    },
-    {
-      title: 'CLOUD',
-      key: '2'
-    },
-    {
-      title: `Mobile & app <br />
-      development`,
-      key: '3'
-    } 
-  ]
-}
 
 const CaseStudies = ({ state, actions }) => {
 
   const data = [];
   const dataCat = [];
+  dataCat[0] = 'All';
 
   const { acf : optionsAcf = {} } = state.options;
   const { cs_text = "", cs_title = "" } = optionsAcf;
@@ -112,7 +85,7 @@ const CaseStudies = ({ state, actions }) => {
     } = acf;
     let check = true;
     let keyCat = dataCat.length;
-    console.log(p_item);
+
     dataCat.map((catItem, k) => {
       if(catItem.toUpperCase() === category_for_green_line.toUpperCase()){
         check = false;
@@ -127,6 +100,7 @@ const CaseStudies = ({ state, actions }) => {
       title: category_for_green_line,
       key: keyCat,
       content: p_item.title.rendered,
+      link: p_item.link,
       back: {
         label: category_for_green_line,
         title: p_item.title.rendered,
@@ -138,21 +112,22 @@ const CaseStudies = ({ state, actions }) => {
   dataCat.map((item,k)=>{
     if(item!=="") catNull.push({title:item,key:k});
   });
-  console.log(data);
-  console.log(catNull);
 
   const [items, setItem] = useState(data);
   const [active, setActive] = useState(-1);
   const [filter, setFilter] = useState(catNull);
 
   const filters = (item, index) => {
-    if(active === index) {
-      setActive(-1)
-      setItem(data);
+    let filterData = data;
+    if(index!==0){
+      if(active === index) {
+        setActive(-1);
+        setItem(data);
 
-      return
+        return
+      }
+      filterData = data.filter(el => el.key === item.key);
     }
-    const filterData = data.filter(el => el.key === item.key)
 
     setItem(filterData)
     setActive(index)
@@ -170,14 +145,15 @@ const CaseStudies = ({ state, actions }) => {
               key={index} dangerouslySetInnerHTML={{__html: item.title}}>
             </FilterItem>
           )
-        })
+        }) 
       }
       </HeaderFilter>
       <CaseWrapper>
         { items.map((item, index) => {
           return (
             <ItemBlock 
-              key={index}>
+              key={index}
+              link={item.link}>
               <CaseItemWrapper
                 src={item.src}>
                   <CaseItemTitle>

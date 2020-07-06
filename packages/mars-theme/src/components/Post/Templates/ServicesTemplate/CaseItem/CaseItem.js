@@ -5,7 +5,7 @@ import {
 } from './styles';
 
 
-const CaseItem = ({ children, className, textBlock = false, src = '' }) => {
+const CaseItem = ({ children, className, textBlock = false, src = '', link = '#' }) => {
   return (
     <CaseItemBlock 
       src={src}
@@ -16,7 +16,7 @@ const CaseItem = ({ children, className, textBlock = false, src = '' }) => {
           React.cloneElement(child, {})
         )
       }
-      <CaseLink href="#">Learn more</CaseLink>
+      <CaseLink link={link}>Learn more</CaseLink>
     </CaseItemBlock>
   )
 }

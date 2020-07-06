@@ -1,5 +1,5 @@
 import { styled, css } from 'frontity';
-
+import Link from '../../../../Link';
 export const CaseItemBlock = styled.div`
   min-height: 470px;
   width: 100%;
@@ -27,7 +27,7 @@ export const CaseItemBlock = styled.div`
   }
 `;
 
-export const CaseLink = styled.a`
+export const CaseLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
