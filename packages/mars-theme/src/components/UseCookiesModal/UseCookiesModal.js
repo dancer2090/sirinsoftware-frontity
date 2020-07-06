@@ -1,5 +1,6 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState, useEffect} from 'react';
 import { getCookie, setCookie } from '../../utils/cookies';
+import Link from '../link';
 import {
   Container, 
   Content,
@@ -50,7 +51,7 @@ const UseCookiesModal = () => {
     <Container active={show} ref={modal}>
       <Content>
         <p>
-          Sirin Software is updating its Privacy Policy on Jan 01, 2020. See the updated Privacy Policy <a href="#">here</a>.
+          Sirin Software is updating its Privacy Policy on Jan 01, 2020. See the updated Privacy Policy <Link link="/privacy-policy">here</Link>.
         </p>
         <p>
           We use cookies to improve your experience with our site, including analytics and personalisation. 
