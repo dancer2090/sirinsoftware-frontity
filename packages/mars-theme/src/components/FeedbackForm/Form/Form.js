@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Link from '../../link';
 import {
   InputTextBlock,
   InputGroup,
@@ -160,7 +161,7 @@ const Form = ({ submitForm }) => {
             <label 
               htmlFor="accept" 
               className={hasErrorPrivacy ? 'error' : null}>
-              I accept Sirin software <span> Private policy </span>
+              I accept Sirin software <Link link="/privacy-policy"><span> Privacy policy </span></Link>
             </label>
           </div>
           <div className="box">

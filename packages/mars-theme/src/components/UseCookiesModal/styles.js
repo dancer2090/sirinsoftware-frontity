@@ -40,11 +40,11 @@ export const Content = styled.div`
   }
 
   a {
-    color: #3FA44A;
+    color: #FFB03A;
     transition: all .3s;
 
     &:hover {
-      color: #317d3a;
+      color: #FF9233;
     }
   }
 

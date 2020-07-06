@@ -102,7 +102,7 @@ const MainTemplate = ({ state, libraries, scrollRef = null }) => {
           <Container>
             <ServicesList>
               {services && services.map((service, k)=>(
-                <ServicesItem src={service.bg.url} link={service.link} key={service.url}>
+                <ServicesItem src={service.bg.url} link="/services" key={service.url}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
               ))}
