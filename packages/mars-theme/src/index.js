@@ -161,6 +161,11 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/case-studies/');
         }
+        if (
+          state.router.link === '/'
+        ) {
+          await actions.source.fetch('/case-studies/');
+        }
 
         if (state.router.link === '/case-studies/') {
           const { totalPages } = state.source.get(state.router.link);

@@ -31,6 +31,7 @@ export const BigTitleBackground = styled.div`
   text-transform: uppercase;
   color: ${(props) => (props.bigTitleBackgroundColor ? props.bigTitleBackgroundColor : "#F3F3F3")};
   z-index: 0;
+  overflow: hidden;
 
   @media screen and (max-width: 991px) {
     height: 117px;

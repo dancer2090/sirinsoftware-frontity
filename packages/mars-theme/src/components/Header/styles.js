@@ -4,8 +4,8 @@ export const HeadBlock = styled.div`
   width: 100%;
   position: fixed;
   z-index: 10;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF;
+  box-shadow: ${props => props.transparent ? 'none' : '0px 5px 10px rgba(0, 0, 0, 0.1)'};
+  background-color: ${props => props.transparent ? 'transparent' : '#FFFFFF'};
 
   ${props => props.isMenu && css`
     height: 100%;
@@ -19,7 +19,7 @@ export const Header = styled.div`
   justify-content: space-around;
   width: 100%;
   height: 76px;
-  background-color: #FFFFFF;
+  background-color: ${props => props.transparent ? 'transparent' : '#FFFFFF'};
   margin: 0 auto;
   top: 0;
   max-width: 960px;
@@ -36,7 +36,7 @@ export const Header = styled.div`
       list-style-type: none;
       a {
         text-decoration: none;
-        color: #222222;
+        color: ${props => props.transparent ? '#FFFFFF' : '#222222'};
         font-weight: 500;
         transition: all 0.3s ease-in-out;
         &:hover {
@@ -50,7 +50,7 @@ export const SubMenu = styled.ul`
   display: none;
   position: absolute;
   top: 76px;
-  background-color: white;
+  background-color: #FFFFFF;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   padding: 5px 10px;
   margin: 0;
@@ -61,7 +61,10 @@ export const SubMenu = styled.ul`
     padding: 5px 0;
     text-transform: capitalize;
     & > a {
-
+      color: #222222 !important;
+      &:hover{
+        color: #FF8D23 !important;
+      }
     }
   }
 `;
@@ -95,6 +98,7 @@ export const Menu = styled.ul`
       font-size: 12px;
       font-weight: 500;
       cursor: pointer;
+      color: ${props => props.transparent ? '#FFFFFF' : '#222222'};
     }
 
     & > a {
@@ -104,6 +108,13 @@ export const Menu = styled.ul`
       justify-content: center;
       text-align: center;
       transition: all 0.3s ease-in-out;
+      ${props => props.transparent && css`
+        color: #FFFFFF;
+
+        &:hover {
+          color: #FF8D23;
+        }
+      `}
 
       ${props => props.isMenu && css`
         padding: 12px 5px;
@@ -210,6 +221,14 @@ export const GetButton = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  ${props => props.transparent && css`
+    & button{
+      background: transparent;
+      color: #FF8D23;
+      font-size: 16px;
+      box-shadow: none;
+    }
+  `}
   @media(max-width: 699px) {
     display: none;
   }

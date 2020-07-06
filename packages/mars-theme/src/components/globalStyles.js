@@ -41,7 +41,7 @@ export const globalStyles = css`
 `;
 
 export const Space = styled.div`
-  height: 76px;
+  height: ${props => props.transparent ? '0px' : '76px'};
 `;
 
 

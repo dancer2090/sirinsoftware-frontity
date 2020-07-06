@@ -56,8 +56,8 @@ const Item = ({
     category = state.source['category'][category_id];
   }
   let bgImg = imgSrc;
-  if(mediaObj) bgImg = mediaObj.source_url;
-  else if(item_image) bgImg = item_image.source_url;
+  if(item_image) bgImg = item_image.source_url;
+  else if(mediaObj) bgImg = mediaObj.source_url;
 
   return (
     <Article isOdd={isOdd}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'frontity';
 import StandartTemplate from '../Templates/StandartTemplate';
-import HomeTemplate from '../Templates/HomeTemplate';
+import MainTemplate from '../Templates/MainTemplate';
 import ServicesTemplate from '../Templates/ServicesTemplate';
 import PageFullTemplate from '../Templates/PageFullTemplate';
 import PageBookTemplate from '../Templates/PageBookTemplate';
@@ -19,7 +19,7 @@ const PostContent = ({ state }) => {
 
   return (
     <>
-      {state.router.link === '/' && <HomeTemplate />}
+      {state.router.link === '/' && <MainTemplate />}
       {dataP.type === 'portfolio' && <CaseStudiesPost />}
       {template === 'page-faq.php' && <FaqTemplate />}
       {dataP.type === 'post' && template === 'standart' && state.router.link !== '/' && <StandartTemplate />}
