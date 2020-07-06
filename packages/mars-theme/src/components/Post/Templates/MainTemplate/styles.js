@@ -1,7 +1,7 @@
 import { styled, css } from 'frontity';
 import Slider from './MainSlider';
 import Button from '../../../Button';
-import Link from '../../../Link';
+import Link from '../../../link';
 
 export const GlobalContainer = styled.div`
   display: block;
