@@ -12,14 +12,14 @@ import FaqTemplate from '../Templates/FaqTemplate';
 import FullPageTemplate from '../Templates/FullPageTemplate';
 import BookTemplate from '../Templates/BookTemplate';
 
-const PostContent = ({ state }) => {
+const PostContent = ({ state, scrollRef = null }) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
   const template = (post.template !== '' ? post.template : 'standart');
 
   return (
     <>
-      {state.router.link === '/' && <MainTemplate />}
+      {state.router.link === '/' && <MainTemplate scrollRef={scrollRef} />}
       {dataP.type === 'portfolio' && <CaseStudiesPost />}
       {template === 'page-faq.php' && <FaqTemplate />}
       {dataP.type === 'post' && template === 'standart' && state.router.link !== '/' && <StandartTemplate />}

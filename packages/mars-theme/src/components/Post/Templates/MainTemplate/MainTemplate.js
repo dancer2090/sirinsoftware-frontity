@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, styled } from 'frontity';
 import BigTitle from '../../../BigTitle';
 import {
@@ -75,12 +75,13 @@ const MainTemplate = ({ state, libraries, scrollRef = null }) => {
     const scrollToRef = () => {
       if (scrollRef) {
         window.scrollTo({
-          top: scrollRef.current.offsetTop - offset,
+          top: scrollRef.current.offsetTop - 100,
           left: 0,
           behavior: 'smooth',
         });
       }
     };
+
   return (
     <GlobalContainer>
         <MainBlock src={main_bg.url}>
@@ -124,8 +125,8 @@ const MainTemplate = ({ state, libraries, scrollRef = null }) => {
               <PartnerShipRight>
                 <PartnerShipRightTitle> <Html2React html={right_text} /> </PartnerShipRightTitle>
                 <PartnerShipRightContainer src={Triangle}>
-                  <GreenTitle>{t_green}</GreenTitle>
-                  <OrangeTitle>{t_orange}</OrangeTitle>
+                  <GreenTitle><Html2React html={t_green} /></GreenTitle>
+                  <OrangeTitle><Html2React html={t_orange} /></OrangeTitle>
                   <TText>{t_after}</TText>
                 </PartnerShipRightContainer>
               </PartnerShipRight>

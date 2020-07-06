@@ -20,6 +20,8 @@ export const Container = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   * {
@@ -159,6 +161,7 @@ export const ServicesItem = styled(Link)`
   position: relative;
   @media (max-width: 991px) {
     height: 354px;
+    padding: 20px;
   }
   @media screen and (max-width: 767px) {
     width: 100%;
@@ -189,6 +192,10 @@ export const ServicesItemTitle = styled.div`
     font-size: 36px;
     line-height: 40px;
   }
+  @media (max-width: 767px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
 `;
 export const ServicesList = styled(Link)`
   display: flex;
@@ -213,6 +220,7 @@ export const PartnerShip = styled.div`
   display: block;
   margin-top: 156px;
   padding-top: 72px;
+  padding-bottom: 60px;
   background: linear-gradient(272.06deg, #40A74A 0%, #216628 100%);
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
   @media (max-width: 991px) {
@@ -318,6 +326,7 @@ export const Box = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   text-align: center;
+  position: relative;
   @media (max-width: 991px) {
     width: 250px;
     height: 120px;
@@ -334,6 +343,40 @@ export const PartnerShipLeft = styled.div`
   width: 50%;
   @media screen and (max-width: 767px) {
     width: 100%;
+  }
+  & ${Box}:nth-child(2):after{
+    content:' ';
+    position: absolute;
+    width: 80px;
+    height: 140px;
+    border-top: 2px solid rgba(255,255,255,0.3);
+    border-right: 2px solid rgba(255,255,255,0.3);
+    left: 100%;
+    top: 50%;
+    @media screen and (max-width: 767px) {
+      top: 100%;
+      left: 50%;
+      border-top: 0px;
+      height: 30px;
+      width: 1px;
+    }
+  }
+  & ${Box}:nth-child(3):after{
+    content:' ';
+    position: absolute;
+    width: 80px;
+    height: 140px;
+    border-top: 2px solid rgba(255,255,255,0.3);
+    border-left: 2px solid rgba(255,255,255,0.3);
+    right: 100%;
+    top: 50%;
+    @media screen and (max-width: 767px) {
+      top: 100%;
+      left: 50%;
+      border-top: 0px;
+      height: 30px;
+      width: 1px;
+    }
   }
   & ${Box}:nth-child(3){
     background: #FB9B2B;
@@ -360,9 +403,9 @@ export const PartnerShipRightContainer = styled.div`
   height: 615px;
   width: 458px;
   background-image: url(${(props) => props.src});
-  background-position: center;
+  background-position: 0 0;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   @media (max-width: 991px) {
     width: 344px;
     height: 410px;
@@ -372,6 +415,7 @@ export const PartnerShipRightContainer = styled.div`
     margin-top: 20px;
     width: 284px;
     height: 295px;
+    background-position: 50% 0;
   }
 `;
 export const GreenTitle = styled.div`
@@ -390,10 +434,12 @@ export const GreenTitle = styled.div`
     width: 113px;
     font-size: 18px;
     line-height: 22px;
+    left: 182px;
+    top: 232px;
   }
   @media screen and (max-width: 767px) {
-    left: 155px;
-    top: 174px;
+    left: 137px;
+    top: 160px;
     font-size: 14px;
     line-height: 24px;
   }
@@ -415,10 +461,12 @@ export const OrangeTitle = styled.div`
     width: 117px;
     font-size: 18px;
     line-height: 22px;
+    left: 78px;
+    top: 189px;
   }
   @media screen and (max-width: 767px) {
-    left: 72px;
-    top: 130px;
+    left: 57px;
+    top: 139px;
     font-size: 14px;
     line-height: 24px;
   }
@@ -440,7 +488,7 @@ export const TText = styled.div`
   @media screen and (max-width: 767px) {
     font-size: 14px;
     line-height: 16px;
-    bottom: 37px;
+    bottom: 15px;
   }
 `;
 export const CaseStudiesGlobalContainer = styled.div`

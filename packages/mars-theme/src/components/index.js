@@ -35,13 +35,6 @@ const Theme = ({ state, actions }) => {
 
   const formRef = useRef(null);
   const transparent = (state.router.link === "/" ? true : false);
-  const [posScroll, setPosScroll] = useState(0);
-
-  const onScoll = () => {
-    const scrollY = window.scrollY;
-    setPosScroll(scrollY);
-    console.log(posScroll);
-  }
 
   return (
     <>
@@ -82,7 +75,7 @@ const Theme = ({ state, actions }) => {
           <Switch>
             <Loader when={data.isFetching} />
             <List when={data.isArchive} />
-            <Post when={data.isPostType} />
+            <Post scrollRef={formRef} when={data.isPostType} />
             <PageError when={data.isError} />
           </Switch>
         </Main>
