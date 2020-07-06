@@ -1,52 +1,8 @@
 import { styled } from 'frontity';
 import SvgSprite from '../../StandartTemplate/SvgSprite';
 
-export const Card = styled.div`
-  min-height: 380px;
-  background: #216628;
-  padding: 42px 40px 36px 40px;
-  position: relative;
-
-  @media screen and (max-width: 991px) {
-    padding: 38px 36px 38px 40px;
-  }
-
-  @media screen and (max-width: 767px) {
-    min-height: 270px;
-    padding: 19px 7px 28px 21px;
-  }
-`;
-
-export const Title = styled.h2`
-  margin-top: 0;
-  margin-bottom: 26px;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 48px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  
-  @media screen and (max-width: 991px) {
-    font-size: 36px;
-    margin-bottom: 21px;
-  }
-
-  @media screen and (max-width: 767px) {
-    font-size: 24px;
-    line-height: 25px;
-    margin-bottom: 16px;
-  }
-`;
-
-export const Content = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`;
-
-export const Item = styled.li`
-  font-family: 'Open Sans';
+const styledLiTag = `
+font-family: 'Open Sans';
   font-size: 14px;
   line-height: 26px;
   color: #FFFFFF;
@@ -84,6 +40,63 @@ export const Item = styled.li`
       display: none;
     }
   }
+`;
+
+export const Card = styled.div`
+  background: #216628;
+  padding: 42px 40px 36px 40px;
+  position: relative;
+
+  @media screen and (max-width: 991px) {
+    padding: 38px 36px 38px 40px;
+  }
+
+  @media screen and (max-width: 767px) {
+    min-height: 270px;
+    padding: 19px 7px 28px 21px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      ${styledLiTag}
+    }
+  }
+`;
+
+export const Title = styled.h2`
+  margin-top: 0;
+  margin-bottom: 26px;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  
+  @media screen and (max-width: 991px) {
+    font-size: 36px;
+    margin-bottom: 21px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
+    line-height: 25px;
+    margin-bottom: 16px;
+  }
+`;
+
+export const Content = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+
+export const Item = styled.li`
+  ${styledLiTag}
 `;
 
 export const Icon = styled(SvgSprite)`

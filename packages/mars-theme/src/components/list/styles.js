@@ -7,6 +7,8 @@ export const PaginationContainer = styled.div`
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
+  margin-bottom: 80px;
+
   & div{
     margin-bottom: 10px;
     visibility: hidden;

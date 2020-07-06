@@ -28,6 +28,11 @@ const StandartTemplate = ({ state, libraries }) => {
   const post = state.source[data.type][data.id];
   // Get a human readable date.
   const date = new Date(post.date);
+  const monthDay = (date.getDate() < 10) ? (`0${date.getDate()}`) : date.getDate();
+  const month = date.getMonth() + 1;
+  const mothValue = month < 10 ? `0${month}` : month;
+
+  const strDate = `${monthDay}.${mothValue}.${date.getFullYear()}`;
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
@@ -57,7 +62,7 @@ const StandartTemplate = ({ state, libraries }) => {
               <Link link={category.link}>
                 <BusinessButton size="large">{category.name}</BusinessButton>
               </Link>
-              <DateBlock>{ date.toDateString() }</DateBlock>
+              <DateBlock>{ strDate }</DateBlock>
             </ArticleLeftHeader>
             <ArticleContent>
               <Html2React html={post.content.rendered} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import {
@@ -15,7 +15,7 @@ import {
   CaseContent
 } from './styles';
 
-const ServicesTemplate = ({ state, libraries }) => {
+const ServicesTemplate = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
   // case data
@@ -23,14 +23,18 @@ const ServicesTemplate = ({ state, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const slidesStudies = caseStudies.items.map(item => {
+  const slidesStudies = caseStudies && caseStudies.items ? caseStudies.items.map((item) => {
     return state.source[item.type][item.id];
-  });
+  }) : [];
 
   const { acf = {} } = post;
 
   const bigFrameTitle = acf.main_text;
   const bigFrameImage = acf.main_image.url;
+
+  useEffect(() => {
+    actions.source.fetch('/case-studies/');
+  }, []);
 
   return (
     <Wrapper>
@@ -50,31 +54,33 @@ const ServicesTemplate = ({ state, libraries }) => {
             )
           })}
         </ServicesList>
-        <CaseContainer>
-          <CaseTitle data-text="case studies">
-            <span>case studies</span>
-          </CaseTitle>
-          <CaseSlider>
-            { slidesStudies.map((item, index) => {
-                const { acf = {} } = item;
-                const { post_featured_image = {} } = acf;
-                return (
-                  <CaseItem 
-                    key={index}
-                    src={post_featured_image}>
-                    <CaseItemTitle>
-                    <Html2React html={acf.portfolio_business_area} />
-                    </CaseItemTitle>
-                    <CaseContent>
-                      <Html2React html={item.title.rendered} />
-                    </CaseContent>
-                    <CaseLink href={item.link}>Learn more</CaseLink>
-                  </CaseItem>
-                )
-              })
-            }
-          </CaseSlider>
-        </CaseContainer>
+        {slidesStudies && slidesStudies.length > 0 && (
+          <CaseContainer>
+            <CaseTitle data-text="case studies">
+              <span>case studies</span>
+            </CaseTitle>
+            <CaseSlider>
+              { slidesStudies.map((item, index) => {
+                  const { acf = {} } = item;
+                  const { post_featured_image = {} } = acf;
+                  return (
+                    <CaseItem 
+                      key={index}
+                      src={post_featured_image}>
+                      <CaseItemTitle>
+                      <Html2React html={acf.portfolio_business_area} />
+                      </CaseItemTitle>
+                      <CaseContent>
+                        <Html2React html={item.title.rendered} />
+                      </CaseContent>
+                      <CaseLink href={item.link}>Learn more</CaseLink>
+                    </CaseItem>
+                  )
+                })
+              }
+            </CaseSlider>
+          </CaseContainer>
+        )}
       </Container>
     </Wrapper>
   )
