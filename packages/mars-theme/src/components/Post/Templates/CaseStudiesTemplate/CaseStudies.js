@@ -142,6 +142,7 @@ const CaseStudies = ({ state, actions }) => {
             <FilterItem 
               onClick={() => filters(item, index)}
               active={active === index ? true : false}
+              min={filter.length > 6 ? true : false}
               key={index} dangerouslySetInnerHTML={{__html: item.title}}>
             </FilterItem>
           )
@@ -168,7 +169,7 @@ const CaseStudies = ({ state, actions }) => {
                   <ItemLabel>
                     { item.back.label }
                   </ItemLabel>
-                  <ItemTitle>
+                  <ItemTitle href={item.link}>
                     { item.back.title }
                   </ItemTitle>
                   <ItemDescription>
