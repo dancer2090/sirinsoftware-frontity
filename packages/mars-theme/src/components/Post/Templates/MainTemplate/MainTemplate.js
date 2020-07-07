@@ -49,38 +49,43 @@ import Link from '../../../link';
 import Triangle from '../../../../img/main_triangle.svg';
 
 
-const MainTemplate = ({ state, libraries, scrollRef = null }) => {
-    const dataP = state.source.get(state.router.link);
-    const post = state.source[dataP.type][dataP.id];
+const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
+  const dataP = state.source.get(state.router.link);
+  const post = state.source[dataP.type][dataP.id];
 
-    const { acf = {} } = post;
-    const {
-      main_title = "",
-      main_bg = {},
-      main_icon = {},
-      main_button = "",
-      services = {},
-      left_text = "",
-      right_text = "",
-      boxes = {},
-      t_after = "",
-      t_green = "",
-      t_orange = "",
-      clients = {},
-    } = acf;
+  const { acf = {} } = post;
+  const {
+    main_title = "",
+    main_bg = {},
+    main_icon = {},
+    main_button = "",
+    services = {},
+    left_text = "",
+    right_text = "",
+    boxes = {},
+    t_after = "",
+    t_green = "",
+    t_orange = "",
+    clients = {},
+  } = acf;
 
-    const Html2React = libraries.html2react.Component;
-    const case_studies_null = state.source.get('/case-studies/');
-    const case_studies = case_studies_null.items.slice(0,4);
-    const scrollToRef = () => {
-      if (scrollRef) {
-        window.scrollTo({
-          top: scrollRef.current.offsetTop - 100,
-          left: 0,
-          behavior: 'smooth',
-        });
-      }
-    };
+  useEffect(() => {
+    actions.source.fetch('/case-studies/');
+  }, []);
+
+  const Html2React = libraries.html2react.Component;
+  const case_studies_null = state.source.get('/case-studies/');
+  let case_studies = [];
+  case_studies = case_studies_null.items.slice(0,4);
+  const scrollToRef = () => {
+    if (scrollRef) {
+      window.scrollTo({
+        top: scrollRef.current.offsetTop - 100,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <GlobalContainer>
