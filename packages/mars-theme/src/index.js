@@ -104,6 +104,21 @@ const marsTheme = {
           console.log(response);
         });
       },
+      sendFormGuide: ({ state }) => async (data) => {
+        try {
+          const result = await axios.post(
+            `${state.source.api}/frontity-api/sendbookdata`,
+            data,
+            { headers: { 'content-type': 'application/json' } },
+          );
+
+          return result;
+        } catch(error) {
+          console.log(error)
+        }
+
+        state.customSettings.sendFormGuide = true;
+      },
       sendComment: ({ state }) => async (data) => {
         const dataForm = data.formData;
         const config = {
