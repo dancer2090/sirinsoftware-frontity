@@ -19,11 +19,10 @@ import {
 } from './styled';
 
 const Footer = ({ state, libraries}) => {
-  const { main = {} } = state.theme.menu;
-  const { items = [] } = main;
+  const { footer_menu = {} } = state.theme.menu;
+  const { items = [] } = footer_menu;
   const { acf = {} } = state.options;
 
-  console.log(acf)
   return (
     <Wrapper>
       <Container>
@@ -36,7 +35,7 @@ const Footer = ({ state, libraries}) => {
                   return (
                     index < 4 &&
                       <LinkItem key={index}>
-                        <Link href={item.urlFrontity}>
+                        <Link link={item.url}>
                           { item.title }
                         </Link>
                       </LinkItem>
@@ -50,7 +49,7 @@ const Footer = ({ state, libraries}) => {
                   return (
                     index >=4 &&
                       <LinkItem key={index}>
-                        <Link href={item.urlFrontity}>
+                        <Link link={item.url}>
                           { item.title }
                         </Link>
                       </LinkItem>

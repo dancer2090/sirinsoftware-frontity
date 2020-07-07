@@ -1,5 +1,6 @@
 import { styled } from 'frontity';
 import Sprite from '../Post/Templates/StandartTemplate/SvgSprite';
+import LinkComponent from '../link';
 
 export const Wrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
@@ -77,7 +78,7 @@ export const NavigationLine = styled.div`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(LinkComponent)`
   font-family: 'Montserrat';
   font-weight: 500;
   font-size: 12px;
