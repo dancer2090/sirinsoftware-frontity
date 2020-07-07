@@ -174,6 +174,13 @@ const marsTheme = {
           }
         }
 
+        if (state.router.link === '/teammembers/') {
+          const { totalPages } = state.source.get(state.router.link);
+          for(let i = 2; i <= totalPages; i++){
+            await actions.source.fetch('/teammembers/page/'+i+'/');
+          }
+        }
+
         if (state.router.link.includes('/about/faq/')) {
           console.log('run')
           // await actions.source.fetch('about/faq');

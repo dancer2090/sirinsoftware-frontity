@@ -25,7 +25,7 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
-  console.log(state);
+
   const formHandleClose = () => {
     actions.theme.changeFormSend();
   };
