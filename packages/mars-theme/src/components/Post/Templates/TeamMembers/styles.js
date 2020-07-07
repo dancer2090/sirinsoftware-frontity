@@ -53,13 +53,17 @@ export const Banner = styled.div`
     padding-bottom: 65px;
     z-index: 1;
     pointer-events: none;
-​
-    @media screen and (max-width: 992px) {
-      font-size: 48px;
-      line-height: 60px;
+  }
+
+​  @media screen and (max-width: 992px) {
+    h1 {
+      font-size: 44px;
+      line-height: 56px;
     }
-​
-    @media screen (max-width: 550px) {
+  }
+
+  @media screen and (max-width: 550px) {
+    h1 {
       font-size: 28px;
       line-height: 36px;
     }
@@ -81,7 +85,7 @@ export const FilterContainer = styled.div`
       cursor: pointer;
       padding: 10px 14px;
 
-      a {
+      span {
         font-weight: normal;
         font-size: 14px;
         line-height: 22px;
