@@ -4,10 +4,10 @@ export const HeadBlock = styled.div`
   width: 100%;
   position: fixed;
   z-index: 10;
-  box-shadow: ${props => props.transparent ? 'none' : '0px 5px 10px rgba(0, 0, 0, 0.1)'};
-  background-color: ${props => props.transparent ? 'transparent' : '#FFFFFF'};
+  box-shadow: ${(props) => (props.transparent ? 'none' : '0px 5px 10px rgba(0, 0, 0, 0.1)')};
+  background-color: ${(props) => (props.transparent ? 'transparent' : '#FFFFFF')};
 
-  ${props => props.isMenu && css`
+  ${(props) => props.isMenu && css`
     height: 100%;
     overflow: auto;
   `}
@@ -19,7 +19,7 @@ export const Header = styled.div`
   justify-content: space-around;
   width: 100%;
   height: 76px;
-  background-color: ${props => props.transparent ? 'transparent' : '#FFFFFF'};
+  background-color: ${(props) => (props.transparent ? 'transparent' : '#FFFFFF')};
   margin: 0 auto;
   top: 0;
   max-width: 960px;
@@ -36,7 +36,7 @@ export const Header = styled.div`
       list-style-type: none;
       a {
         text-decoration: none;
-        color: ${props => props.transparent ? '#FFFFFF' : '#222222'};
+        color: ${(props) => (props.transparent ? '#FFFFFF' : '#222222')};
         font-weight: 500;
         transition: all 0.3s ease-in-out;
         &:hover {
@@ -69,7 +69,6 @@ export const SubMenu = styled.ul`
   }
 `;
 export const Menu = styled.ul`
-
   margin: 0;
   height: 100%;
   display: flex;
@@ -77,7 +76,7 @@ export const Menu = styled.ul`
   padding: 0;
   
   @media(max-width: 1000px) {
-    display: ${props => props.isMenu ? 'block' : 'none'};
+    display: ${(props) => (props.isMenu ? 'block' : 'none')};
     padding-bottom: 50px;
   }
   
@@ -98,7 +97,7 @@ export const Menu = styled.ul`
       font-size: 12px;
       font-weight: 500;
       cursor: pointer;
-      color: ${props => props.transparent ? '#FFFFFF' : '#222222'};
+      color: ${(props) => (props.transparent ? '#FFFFFF' : '#222222')};
     }
 
     & > a {
@@ -108,7 +107,7 @@ export const Menu = styled.ul`
       justify-content: center;
       text-align: center;
       transition: all 0.3s ease-in-out;
-      ${props => props.transparent && css`
+      ${(props) => props.transparent && css`
         color: #FFFFFF;
 
         &:hover {
@@ -116,7 +115,7 @@ export const Menu = styled.ul`
         }
       `}
 
-      ${props => props.isMenu && css`
+      ${(props) => props.isMenu && css`
         padding: 12px 5px;
 
         &:hover {
@@ -142,7 +141,7 @@ export const Menu = styled.ul`
         display: block;
       }
 
-      & > ul {
+      & > div > ul {
         width: 100%;
         display: block;
         position: static;
@@ -221,7 +220,7 @@ export const GetButton = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  ${props => props.transparent && css`
+  ${(props) => props.transparent && css`
     & button{
       background: transparent;
       color: #FF8D23;
@@ -235,7 +234,6 @@ export const GetButton = styled.div`
 `;
 
 export const PopUpWindow = styled.div`
-  margin-top: 5px;
   display: flex;
   justify-content: space-around;
   height: 100%;

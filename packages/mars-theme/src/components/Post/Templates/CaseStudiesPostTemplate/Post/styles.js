@@ -1,6 +1,7 @@
 import { styled } from 'frontity';
+import Link from '../../../../link';
 
-export const Container = styled.a`
+export const Container = styled(Link)`
   background: #FFFFFF;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
   min-height: 140px;

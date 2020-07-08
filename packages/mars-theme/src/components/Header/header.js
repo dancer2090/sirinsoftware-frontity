@@ -31,6 +31,7 @@ import {
   Menu,
   SubMenu,
 } from './styles';
+import Collapse from './Collapse';
 
 const HeaderComponent = ({
   state,
@@ -54,34 +55,33 @@ const HeaderComponent = ({
       });
     }
   };
-  let logoImg = (transparent ? logoWhite : logo);
+  const logoImg = (transparent ? logoWhite : logo);
 
   const [height, setHeight] = useState(0);
   const ref = useRef();
 
   useEffect(() => {
-      setHeight(ref.current.getBoundingClientRect().height);
+    setHeight(ref.current.getBoundingClientRect().height);
   }, []);
 
   const [scrollTop, setScrollTop] = useState(0);
 
   useEffect(() => {
-      const onScroll = (e) => {
-          setScrollTop(e.target.documentElement.scrollTop);
-      };
-      window.addEventListener('scroll', onScroll);
+    const onScroll = (e) => {
+      setScrollTop(e.target.documentElement.scrollTop);
+    };
+    window.addEventListener('scroll', onScroll);
 
-      return () => {
-          window.removeEventListener('scroll', onScroll);
-      }
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   });
-
 
   return (
     <ReactResizeDetector handleWidth onResize={updateWidth}>
-      <HeadBlock transparent={(scrollTop < height && transparent) ? true : false} isMenu={isMenu}>
+      <HeadBlock transparent={!!((scrollTop < height && transparent))} isMenu={isMenu}>
         {!isMenu && (
-          <Header transparent={(scrollTop < height && transparent) ? true : false} ref={ref}>
+          <Header transparent={!!((scrollTop < height && transparent))} ref={ref}>
             <Mobilemenu onClick={() => setMenu(true)}>
               <img src={groupMenu} alt="mobile menu" />
             </Mobilemenu>
@@ -90,13 +90,13 @@ const HeaderComponent = ({
                 <img src={(scrollTop < height && transparent) ? logoWhite : logo} alt="Logo" />
               </Link>
             </Logo>
-            <Menu transparent={(scrollTop < height && transparent) ? true : false}>
+            <Menu transparent={!!((scrollTop < height && transparent))}>
               {items && items.length > 0 && items.map((item, n) => (
                 <li key={n}>
                   {item.child_items && item.child_items.length > 0 ? (
                     <>
                       <span>{item.title}</span>
-                      <SubMenu transparent={(scrollTop < height && transparent) ? true : false}>
+                      <SubMenu transparent={!!((scrollTop < height && transparent))}>
                         {item.child_items.map((cItem, cn) => (
                           <li key={cn}>
                             <Link link={cItem.urlFrontity}>
@@ -115,7 +115,7 @@ const HeaderComponent = ({
             <MobileButton>
               <a onClick={() => scrollToRef()}>GET A FREE QUOTE</a>
             </MobileButton>
-            <GetButton transparent={(scrollTop < height && transparent) ? true : false}>
+            <GetButton transparent={!!((scrollTop < height && transparent))}>
               <a>
                 <Button onClick={() => scrollToRef()}>
                   GET A FREE QUOTE
@@ -138,8 +138,7 @@ const HeaderComponent = ({
                     {items && items.length > 0 && items.map((item, n) => (
                       <li key={n}>
                         {item.child_items && item.child_items.length > 0 ? (
-                          <>
-                            <span>{item.title}</span>
+                          <Collapse title={item.title}>
                             <SubMenu>
                               {item.child_items.map((cItem, cn) => (
                                 <li key={cn}>
@@ -149,9 +148,11 @@ const HeaderComponent = ({
                                 </li>
                               ))}
                             </SubMenu>
-                          </>
+                          </Collapse>
                         ) : (
-                          <Link afterClick={() => setMenu(false)} link={item.urlFrontity}><Html2React html={item.title} /></Link>
+                          <Link afterClick={() => setMenu(false)} link={item.urlFrontity}>
+                            <Html2React html={item.title} />
+                          </Link>
                         )}
                       </li>
                     ))}
