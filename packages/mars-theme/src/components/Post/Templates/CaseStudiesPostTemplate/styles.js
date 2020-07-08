@@ -336,6 +336,22 @@ export const Text = styled.div`
 
   img {
     margin: 0 auto;
+    position: relative !important;
+    height: auto !important;
+    max-width: 100%;
+  }
+  
+  p span {
+    height: auto !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+  
+  li span {
+    height: auto !important;
+    padding: 0 !important;
+    display: flex;
   }
 
   @media screen and (max-width: 767px) {
