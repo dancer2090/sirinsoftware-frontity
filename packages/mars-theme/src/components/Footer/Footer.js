@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'frontity';
 import {
   Wrapper,
   Container,
@@ -17,36 +18,44 @@ import {
   NavigationLine
 } from './styled';
 
-const Footer = () => {
+const Footer = ({ state, libraries}) => {
+  const { footer_menu = {} } = state.theme.menu;
+  const { items = [] } = footer_menu;
+  const { acf = {} } = state.options;
+
   return (
     <Wrapper>
       <Container>
         <Header>
           <Navigation>
+
             <NavigationLine>
-              <LinkItem>
-                <Link href="#">ABOUT US</Link>
-              </LinkItem>
-              <LinkItem>
-                <Link href="#">SERVICES</Link>
-              </LinkItem>
-              <LinkItem>
-                <Link href="#">CASE STUDIES</Link>
-              </LinkItem>
-              <LinkItem>
-                <Link href="#">Career</Link>
-              </LinkItem>
+              {
+                items.map((item, index) => {
+                  return (
+                    index < 4 &&
+                      <LinkItem key={index}>
+                        <Link link={item.url}>
+                          { item.title }
+                        </Link>
+                      </LinkItem>
+                  )
+                }) 
+              }
             </NavigationLine>
             <NavigationLine>
-              <LinkItem>
-                <Link href="#">Blog</Link>
-              </LinkItem>
-              <LinkItem>
-                <Link href="#">FAQ</Link>
-              </LinkItem>
-              <LinkItem>
-                <Link href="#">Contacts</Link>
-              </LinkItem>
+              {
+                items.map((item, index) => {
+                  return (
+                    index >=4 &&
+                      <LinkItem key={index}>
+                        <Link link={item.url}>
+                          { item.title }
+                        </Link>
+                      </LinkItem>
+                  )
+                }) 
+              }
             </NavigationLine>
           </Navigation>
           <Info>
@@ -57,27 +66,27 @@ const Footer = () => {
               <InfoLabel>
                 Phone:
               </InfoLabel>
-              <Link href="tel:3213288379">
-                321 328 8379
+              <Link href={`tel:${acf.main_phone_number}`}>
+                { acf.main_phone_number }
               </Link>
             </InfoItem>
             <InfoItem>
               <InfoLabel>
                 Email:
               </InfoLabel>
-              <Link href="mailto:info@sirinsoftware.com">
-                info@sirinsoftware.com
+              <Link href={`mailto:${acf.main_email}`}>
+                { acf.main_email }
               </Link>
             </InfoItem>
           </Info>
           <Social>
-            <SocialLink href="https://www.facebook.com/sirinsoftware" target="__blank">
+            <SocialLink href={acf.facebook_link} target="__blank">
               <Icon name="facebook-footer"/>
             </SocialLink>
-            <SocialLink href="https://www.linkedin.com/company/10654107" target="__blank">
+            <SocialLink href={acf.linkedin_link} target="__blank">
               <Icon name="linkedin-footer"/>
             </SocialLink>
-            <SocialLink href="https://twitter.com/Sirin_Software" target="__blank" >
+            <SocialLink href={acf.twitter__link} target="__blank" >
               <Icon name="twitter-footer"/>
             </SocialLink>
           </Social>
@@ -91,4 +100,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default connect(Footer);

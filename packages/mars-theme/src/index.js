@@ -207,6 +207,10 @@ const marsTheme = {
           }
           return item;
         });
+
+
+        const footerData = await axios.get(`${state.source.api}/menus/v1/menus/4`);
+        state.theme.menu.footer_menu = footerData.data;
       },
     },
   },
