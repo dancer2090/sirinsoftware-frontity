@@ -10,7 +10,8 @@ const settings = {
       "adminUrl": process.env.ADMIN_URL,
       "url": process.env.SITE_URL,
       "title": "Sirinsoftware",
-      "description": "WordPress installation for Frontity development"
+      "description": "WordPress installation for Frontity development",
+      "replaceImageUrl": !!process.env.LOCAL ? [] : [process.env.ADMIN_URL, process.env.SITE_URL]
     }
   },
   "packages": [
