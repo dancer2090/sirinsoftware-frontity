@@ -1,5 +1,6 @@
 import { styled, css } from 'frontity';
 import CaseItem from '../ServicesTemplate/CaseItem';
+import Link from '../../../link';
 
 export const Container = styled.div`
   max-width: 960px;
@@ -163,7 +164,7 @@ export const ItemLabel = styled.span`
   }
 `;
 
-export const ItemTitle = styled.a`
+export const ItemTitle = styled(Link)`
   font-weight: bold;
   font-size: 30px;
   line-height: 30px;

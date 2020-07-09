@@ -169,7 +169,7 @@ const CaseStudies = ({ state, actions }) => {
                   <ItemLabel>
                     { item.back.label }
                   </ItemLabel>
-                  <ItemTitle href={item.link}>
+                  <ItemTitle link={item.link}>
                     { item.back.title }
                   </ItemTitle>
                   <ItemDescription>

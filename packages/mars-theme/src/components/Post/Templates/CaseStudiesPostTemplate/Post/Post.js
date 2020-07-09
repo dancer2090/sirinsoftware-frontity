@@ -7,7 +7,7 @@ import {
 
 const Post = ({ className, href, title = '', children }) => {
   return (
-    <Container className={className} href={href}>
+    <Container className={className} link={href}>
       <Title>{title}</Title>
       <Description>
         {children}
