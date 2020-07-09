@@ -17,7 +17,6 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
 
-const url = state.isLocal ? url : ckeckUrl();
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
