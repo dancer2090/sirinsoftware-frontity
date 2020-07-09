@@ -26,9 +26,9 @@ const Collapse = ({
 
   return (
     <Container>
-      <Item>
+      <Item itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <ItemHeader>
-          <ItemTitle>
+          <ItemTitle itemprop="name">
             {data.question}
           </ItemTitle>
           <ItemIcon
@@ -38,8 +38,8 @@ const Collapse = ({
           />
         </ItemHeader>
         <ItemBody ref={content} style={{ maxHeight: height }}>
-          <ItemContent>
-            <Html2React html={data.description} />
+          <ItemContent itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <Html2React html={data.description} itemprop="text" />
           </ItemContent>
         </ItemBody>
       </Item>

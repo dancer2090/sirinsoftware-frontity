@@ -15,10 +15,10 @@ import {
   SocialLink,
   Icon,
   Private,
-  NavigationLine
+  NavigationLine,
 } from './styled';
 
-const Footer = ({ state, libraries}) => {
+const Footer = ({ state, libraries }) => {
   const { footer_menu = {} } = state.theme.menu;
   const { items = [] } = footer_menu;
   const { acf = {} } = state.options;
@@ -31,34 +31,34 @@ const Footer = ({ state, libraries}) => {
 
             <NavigationLine>
               {
-                items.map((item, index) => {
-                  return (
-                    index < 4 &&
+                items.map((item, index) => (
+                  index < 4
+                      && (
                       <LinkItem key={index}>
                         <Link link={item.url}>
                           { item.title }
                         </Link>
                       </LinkItem>
-                  )
-                }) 
+                      )
+                ))
               }
             </NavigationLine>
             <NavigationLine>
               {
-                items.map((item, index) => {
-                  return (
-                    index >=4 &&
+                items.map((item, index) => (
+                  index >= 4
+                      && (
                       <LinkItem key={index}>
                         <Link link={item.url}>
                           { item.title }
                         </Link>
                       </LinkItem>
-                  )
-                }) 
+                      )
+                ))
               }
             </NavigationLine>
           </Navigation>
-          <Info>
+          <Info itemscope itemtype="http://schema.org/Organization">
             <InfoTitle>
               CONTACT US:
             </InfoTitle>
@@ -66,7 +66,7 @@ const Footer = ({ state, libraries}) => {
               <InfoLabel>
                 Phone:
               </InfoLabel>
-              <Link href={`tel:${acf.main_phone_number}`}>
+              <Link href={`tel:${acf.main_phone_number}`} itemprop="telephone">
                 { acf.main_phone_number }
               </Link>
             </InfoItem>
@@ -74,30 +74,36 @@ const Footer = ({ state, libraries}) => {
               <InfoLabel>
                 Email:
               </InfoLabel>
-              <Link href={`mailto:${acf.main_email}`}>
+              <Link href={`mailto:${acf.main_email}`} itemprop="email">
                 { acf.main_email }
               </Link>
             </InfoItem>
           </Info>
           <Social>
             <SocialLink href={acf.facebook_link} target="__blank">
-              <Icon name="facebook-footer"/>
+              <Icon name="facebook-footer" />
             </SocialLink>
             <SocialLink href={acf.linkedin_link} target="__blank">
-              <Icon name="linkedin-footer"/>
+              <Icon name="linkedin-footer" />
             </SocialLink>
-            <SocialLink href={acf.twitter__link} target="__blank" >
-              <Icon name="twitter-footer"/>
+            <SocialLink href={acf.twitter__link} target="__blank">
+              <Icon name="twitter-footer" />
             </SocialLink>
           </Social>
         </Header>
         <Private>
-          © Copyright - Sirin Software. <br className="mobile"/> All Rights Reserved. <br/>
+          © Copyright - Sirin Software.
+          {' '}
+          <br className="mobile" />
+          {' '}
+          All Rights Reserved.
+          {' '}
+          <br />
           <Link href="/privacy-policy">Privacy Policy</Link>
         </Private>
       </Container>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default connect(Footer);

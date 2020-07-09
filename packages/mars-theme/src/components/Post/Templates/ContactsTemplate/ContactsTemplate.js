@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'frontity';
+import Breadcrumbs from '../../../Breadcrumbs';
 import {
+  Wrapper,
   Container,
   Description,
   Row,
@@ -29,21 +31,22 @@ const ContactsTemplate = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Description>
-        <Html2React html={post.content.rendered} />
-      </Description>
-      <Row>
-        { acf.offices_locations.map((item, index) => {
-          return (
-            <Card 
+      <Breadcrumbs links={[{ name: 'Contacts', link: '#' }]} />
+      <Wrapper>
+        <Description>
+          <Html2React html={post.content.rendered} />
+        </Description>
+        <Row itemscope itemtype="http://schema.org/Organization">
+          { acf.offices_locations.map((item, index) => (
+            <Card
               src={index === 0 ? oneBg : twoBg}
               key={index}
-              >
+            >
               <CardTitle>
                 <Html2React html={item.office_header} />
               </CardTitle>
               <CardList>
-                <CartAddress>
+                <CartAddress itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                   <CardItem>
                     <Icon name="location" />
                     <span>
@@ -52,13 +55,13 @@ const ContactsTemplate = ({ state, libraries }) => {
                   </CardItem>
                 </CartAddress>
                 <CardInfo>
-                  <CardItem>
+                  <CardItem itemprop="telephone">
                     <Icon name="phone" />
-                    <a href={item.office_phone1}>
+                    <a href={item.office_phone1} >
                       <Html2React html={item.office_phone1} />
                     </a>
                   </CardItem>
-                  <CardItem>
+                  <CardItem itemprop="email">
                     <Icon name="message" />
                     <a href={item.office_email}>
                       <Html2React html={item.office_email} />
@@ -67,10 +70,9 @@ const ContactsTemplate = ({ state, libraries }) => {
                 </CardInfo>
               </CardList>
             </Card>
-          )
-        })
-        }
-      </Row>
+          ))}
+        </Row>
+      </Wrapper>
     </Container>
   );
 };
