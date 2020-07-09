@@ -1,5 +1,6 @@
 import { styled, css } from 'frontity';
 import Link from '../../../../link';
+
 export const CaseItemBlock = styled.div`
   min-height: 470px;
   width: 100%;

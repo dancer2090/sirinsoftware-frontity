@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'frontity';
-import axios from 'axios';
+
 import {
   ContainerFrame,
   Wrapper,
   FrameContent,
-  BackLink,
-  BackIcon,
   FrameTitle,
   Container,
   ClientBlock,
@@ -49,33 +47,21 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   }
 
   const category = state.source['portfolio-cat'][category_id]; // берем таксономию
-  const category_slug = (category && category !== {} ? category.slug : "");
+  const category_slug = (category && category !== {} ? category.slug : '');
 
   useEffect(() => {
     actions.source.fetch(`/case-studies-cat/${category_slug}/`);
   }, []);
 
   const { cases = [] } = state.theme;
-  let { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`);
-  //if(cases && cases.length > 0 && items === []) items = cases;
-  console.log(items);
-  console.log(cases);
+  const { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`);
 
   const postsRight = items.map((item) => state.source[item.type][item.id]);
-
-  const backLink = (event) => {
-    event.preventDefault();
-
-    actions.router.set('/case-studies/');
-  };
 
   return (
     <Wrapper>
       <ContainerFrame src={acf.post_featured_image}>
         <FrameContent>
-          <BackLink onClick={backLink} href="#">
-            <BackIcon name="arrow-left" />
-          </BackLink>
           <FrameTitle>
             <Html2React html={post.title.rendered} />
           </FrameTitle>
@@ -188,7 +174,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
                   <CaseContent>
                     <Html2React html={item.title.rendered} />
                   </CaseContent>
-                  <CaseLink href={item.link}>Learn more</CaseLink>
+                  <CaseLink link={item.link}>Learn more</CaseLink>
                 </CaseItem>
               );
             })}

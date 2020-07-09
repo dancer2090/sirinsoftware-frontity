@@ -12,7 +12,7 @@ import {
   CaseItem,
   CaseLink,
   CaseItemTitle,
-  CaseContent
+  CaseContent,
 } from './styles';
 
 const ServicesTemplate = ({ state, actions, libraries }) => {
@@ -23,9 +23,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const slidesStudies = caseStudies && caseStudies.items ? caseStudies.items.map((item) => {
-    return state.source[item.type][item.id];
-  }) : [];
+  const slidesStudies = caseStudies && caseStudies.items ? caseStudies.items.map((item) => state.source[item.type][item.id]) : [];
 
   const { acf = {} } = post;
 
@@ -38,21 +36,20 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
 
   return (
     <Wrapper>
-      <BigFrameContainer title={bigFrameTitle} image={bigFrameImage}/>
+      <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
       <Container>
         <ServicesList>
-          { acf.services.map((item, index) => {
-            return (
-              <ServicesItem 
-                src={item.image.url}
-                key={index}
-                reverse={index % 2 !== 0 ? true : false}
-                color={index % 2 !== 0 ? 'yellow' : ''}>
-                <h2>{item.name}</h2>
-                <p>{item.text}</p>
-              </ServicesItem>
-            )
-          })}
+          { acf.services.map((item, index) => (
+            <ServicesItem
+              src={item.image.url}
+              key={index}
+              reverse={index % 2 !== 0}
+              color={index % 2 !== 0 ? 'yellow' : ''}
+            >
+              <h2>{item.name}</h2>
+              <p>{item.text}</p>
+            </ServicesItem>
+          ))}
         </ServicesList>
         {slidesStudies && slidesStudies.length > 0 && (
           <CaseContainer>
@@ -61,29 +58,29 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
             </CaseTitle>
             <CaseSlider>
               { slidesStudies.map((item, index) => {
-                  const { acf = {} } = item;
-                  const { post_featured_image = {} } = acf;
-                  return (
-                    <CaseItem 
-                      key={index}
-                      src={post_featured_image}>
-                      <CaseItemTitle>
+                const { acf = {} } = item;
+                const { post_featured_image = {} } = acf;
+                return (
+                  <CaseItem
+                    key={index}
+                    src={post_featured_image}
+                  >
+                    <CaseItemTitle>
                       <Html2React html={acf.portfolio_business_area} />
-                      </CaseItemTitle>
-                      <CaseContent>
-                        <Html2React html={item.title.rendered} />
-                      </CaseContent>
-                      <CaseLink href={item.link}>Learn more</CaseLink>
-                    </CaseItem>
-                  )
-                })
-              }
+                    </CaseItemTitle>
+                    <CaseContent>
+                      <Html2React html={item.title.rendered} />
+                    </CaseContent>
+                    <CaseLink link={item.link}>Learn more</CaseLink>
+                  </CaseItem>
+                );
+              })}
             </CaseSlider>
           </CaseContainer>
         )}
       </Container>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default connect(ServicesTemplate);

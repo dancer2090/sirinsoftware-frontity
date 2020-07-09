@@ -1,6 +1,7 @@
 import { styled } from 'frontity';
 import ItemList from './ServicesItem';
 import Slider from './CaseSlider';
+import LinkComponent from '../../../link';
 
 export const Wrapper = styled.div`
   display: block;
@@ -194,7 +195,7 @@ export const CaseContent = styled.p`
   }
 `;
 
-export const CaseLink = styled.a`
+export const CaseLink = styled(LinkComponent)`
   display: flex;
   justify-content: center;
   align-items: center;

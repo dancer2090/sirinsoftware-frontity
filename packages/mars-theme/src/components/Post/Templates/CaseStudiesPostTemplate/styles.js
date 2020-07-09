@@ -5,6 +5,7 @@ import CardCase from './CardCase';
 import CaseTitle from './CaseTitle';
 import CaseBussines from './BusinesCard';
 import Slider from '../ServicesTemplate/CaseSlider';
+import LinkComponent from '../../../link';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -32,10 +33,10 @@ export const ContainerFrame = styled.div`
 `;
 
 export const FrameContent = styled.div`
-  padding-top: 48px;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
@@ -446,7 +447,7 @@ export const CaseContent = styled.p`
   }
 `;
 
-export const CaseLink = styled.a`
+export const CaseLink = styled(LinkComponent)`
   display: flex;
   justify-content: center;
   align-items: center;
