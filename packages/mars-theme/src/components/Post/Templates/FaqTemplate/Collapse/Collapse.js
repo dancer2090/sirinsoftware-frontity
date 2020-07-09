@@ -1,26 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import {
-  Container, 
+  Container,
   Item,
-  ItemHeader, 
+  ItemHeader,
   ItemIcon,
   ItemTitle,
   ItemBody,
-  ItemContent
+  ItemContent,
 } from './styles';
 
-const Collapse = ({ data = {}, active, index, color, onToggle, libraries }) => {
+const Collapse = ({
+  data = {}, active, index, color, onToggle, libraries,
+}) => {
   const content = useRef(null);
   const [height, setHeight] = useState('0px');
   const Html2React = libraries.html2react.Component;
-  
+
   useEffect(() => {
     setHeight(!active ? '0px' : content.current.scrollHeight);
   }, [active]);
 
   const toggleCollapse = () => {
-    onToggle(data, !active , index);
-  }
+    onToggle(data, !active, index);
+  };
 
   return (
     <Container>
@@ -29,20 +31,20 @@ const Collapse = ({ data = {}, active, index, color, onToggle, libraries }) => {
           <ItemTitle>
             {data.question}
           </ItemTitle>
-          <ItemIcon 
-            onClick={toggleCollapse} 
+          <ItemIcon
+            onClick={toggleCollapse}
             active={active}
             color={color}
           />
         </ItemHeader>
-        <ItemBody ref={content} style={{maxHeight: height}}>
+        <ItemBody ref={content} style={{ maxHeight: height }}>
           <ItemContent>
             <Html2React html={data.description} />
           </ItemContent>
         </ItemBody>
       </Item>
     </Container>
-  )
-}
+  );
+};
 
 export default Collapse;

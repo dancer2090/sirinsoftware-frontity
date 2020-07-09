@@ -124,6 +124,16 @@ const CommentsSubmitText = styled.div`
   `}
 `;
 
+export const RecaptchaText = styled.div`
+  color: #222222;
+  margin-top: 15px;
+  font-size: 14px;
+  & a{
+    color: #222222;
+    font-weight: 700;
+  }
+`;
+
 export {
   Container,
   Title,

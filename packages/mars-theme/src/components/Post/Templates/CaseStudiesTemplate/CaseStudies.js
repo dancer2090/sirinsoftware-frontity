@@ -56,6 +56,7 @@ const genegateDate = () => {
 
 
 const CaseStudies = ({ state, actions }) => {
+  console.log(state);
 
   const data = [];
   const dataCat = [];
@@ -68,7 +69,7 @@ const CaseStudies = ({ state, actions }) => {
   const { totalPages } = state.source.get(state.router.link);
   let megaItems = dataList.items;
   let currentData;
-  for(let i = 2; i < totalPages; i++){
+  for(let i = 2; i <= totalPages; i++){
     currentData = state.source.get(`${state.router.link}page/${i}`);
     if (currentData.isReady) {
       megaItems = megaItems.concat(currentData.items);
@@ -108,6 +109,7 @@ const CaseStudies = ({ state, actions }) => {
       }
     });
   });
+  console.log(data);
   let catNull = [];
   dataCat.map((item,k)=>{
     if(item!=="") catNull.push({title:item,key:k});
@@ -142,6 +144,7 @@ const CaseStudies = ({ state, actions }) => {
             <FilterItem 
               onClick={() => filters(item, index)}
               active={active === index ? true : false}
+              min={filter.length > 6 ? true : false}
               key={index} dangerouslySetInnerHTML={{__html: item.title}}>
             </FilterItem>
           )
@@ -168,7 +171,7 @@ const CaseStudies = ({ state, actions }) => {
                   <ItemLabel>
                     { item.back.label }
                   </ItemLabel>
-                  <ItemTitle>
+                  <ItemTitle link={item.link}>
                     { item.back.title }
                   </ItemTitle>
                   <ItemDescription>

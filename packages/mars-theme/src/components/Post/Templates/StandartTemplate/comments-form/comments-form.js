@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect, styled } from "frontity";
 import {
-  Container, Title, Form, Input, TextArea, Button, SingleComment, Author, Fecha, SingleCommentContent, CommentsContainer, CommentsSubmitText
+  Container, Title, Form, Input, TextArea, Button, SingleComment, Author, Fecha, SingleCommentContent, CommentsContainer, CommentsSubmitText, RecaptchaText
 } from './styles';
 
 const CommentsForm = ({ libraries, state, actions }) => {
@@ -150,6 +150,9 @@ const CommentsForm = ({ libraries, state, actions }) => {
         />
         <Button type="submit">Send</Button>
       </Form>
+      <RecaptchaText>
+        This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </RecaptchaText>
       <CommentsSubmitText afterload={!!(preload && !state.customSettings.isCommentSend)}>Thank you for your feedback. After moderation, your comment will be published.</CommentsSubmitText>
     </Container>
   )

@@ -1,4 +1,6 @@
 import { styled } from 'frontity';
+import check from '../../../../img/check_mark.svg';
+import Svg from '../StandartTemplate/SvgSprite';
 
 export const BookPage = styled.div`
   width: 100%;
@@ -116,6 +118,7 @@ export const Image = styled.div`
   padding-left: 32px;
   padding-right: 32px;
 `;
+
 export const Text = styled.div`
   max-width: 322px;
   padding-bottom: 10px;
@@ -141,7 +144,112 @@ export const Text = styled.div`
 `;
 
 export const Form = styled.div`
+  .accept-book-space {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 
+    & > div {
+      width: calc(50% - 10px);
+      height: 70px;    
+      background: rgba(242,242,242,.9);
+      padding: 0 13px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    @media screen and (max-width: 767px) {
+      flex-wrap: wrap;
+
+      & > div {
+        width: 100%;
+        margin-bottom: 15px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+
+    & + .error-text {
+      color: red;
+      font-size: 10px;
+      text-align: right;
+      position: absolute;
+      right: 10px;
+      bottom: 5px;
+      margin: 0;
+    }
+
+    span {
+      color: #F8710F;
+    }
+
+    input[type="checkbox"]{
+      display:none;
+    }
+
+    label {
+        font-family: 'Open Sans' !important;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        color: #77716D;
+
+        &.error {
+          &::before {
+            background: #ffa4a4bf;
+            box-shadow: none;
+          }
+        }
+
+        a {
+          color: #A6C950;
+          font-weight: 600;
+        }
+    }
+
+    .box-block {
+      display: inline-block;
+
+      &::before{
+          content:'';
+          text-align: center;
+          display:inline-block;
+          width:24px;
+          min-width: 24px;
+          height:24px;
+          background: #FFFFFF;
+          /* box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2); */
+          margin-right: 10px;
+          cursor: pointer;
+          transition: all .3s;
+      }
+    }
+
+    input[type="checkbox"]:checked + .box-block::before{
+      background-image: url(${check});
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: center;
+    }
+
+    @media screen and (max-width: 785px) {
+      label {
+        display: flex;
+      }
+      &:before {
+        min-width: 24px;
+        margin-right: 19px;
+      }
+    }
+  }
 `;
 
 export const FormGroup = styled.div`
@@ -529,5 +637,63 @@ export const FormGroup = styled.div`
         }
       }
     }
+  }
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  height: 62px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  line-height: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: #F6B131;
+  border-radius: 4px;
+  border: none;
+  margin-top: 30px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: rgba(0,0,0,1);
+      pointer-events: none;
+      -webkit-transition: all .3s ease-in-out;
+      -webkit-transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out;
+  }
+  &:hover:after{
+    opacity: 0.1;
+  }
+  &:active {
+    outline: none;
+  }
+`;
+
+export const Icon = styled(Svg)`
+  width: 32px;
+  height: 32px;
+  fill: white;
+  margin-left: 15px;
+`;
+
+export const RecaptchaText = styled.div`
+  color: #FFFFFF;
+  margin-top: 15px;
+  font-size: 14px;
+  & a{
+    color: #FFFFFF;
+    font-weight: 700;
   }
 `;

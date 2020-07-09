@@ -107,6 +107,17 @@ export const FText = styled.div`
   `}
 `;
 
+export const RecaptchaText = styled.div`
+  color: #ffffff;
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: center;
+  & a{
+    color: #ffffff;
+    font-weight: 700;
+  }
+`;
+
 export {
   Form,
   Title,

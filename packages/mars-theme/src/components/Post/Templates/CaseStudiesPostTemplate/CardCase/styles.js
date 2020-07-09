@@ -56,7 +56,21 @@ export const Card = styled.div`
     padding: 19px 7px 28px 21px;
   }
 
+  b {
+    color: white;
+  }
+  
   ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      ${styledLiTag}
+    }
+  }
+  
+  ol {
     margin: 0;
     padding: 0;
     list-style: none;

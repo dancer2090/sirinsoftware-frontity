@@ -11,8 +11,17 @@ import {
   Image,
   Text,
   Form,
-  FormGroup
+  FormGroup,
+  SubmitButton,
+  Icon,
+  RecaptchaText
 } from './styles';
+import {
+  validateFieldName,
+  validateFieldEmail,
+  validateFieldCompany,
+  validateCheckbox
+} from '../../../FeedbackForm/Form/utils/validate';
 
 const DEFAULT_FIELDS = {
   firstName: '',
@@ -27,9 +36,19 @@ const DEFAULT_FIELDS_CLASSES = {
   company: [],
   email: [],
 };
-export const BookTemplate = ({ state }) => {
+ 
+export const BookTemplate = ({ state, actions }) => {
+
   const [fields, setFields] = useState(DEFAULT_FIELDS);
   const [fieldsClasses, setFieldsClasses] = useState(DEFAULT_FIELDS_CLASSES);
+  const [privacy, setPrivacy] = useState(false);
+  const [news, setNews] = useState(false);
+
+  const [hasErrorName, setHasErrorName] = useState(false);
+  const [hasLastName, setErrorLastName] = useState(false);
+  const [hasCompany, setErrorCompany] = useState(false);
+  const [hasEmailError, setErrorEmail] = useState(false);
+  const [hasPrivaty, setErrorPrivaty] = useState(false);
 
   const handleChangeTextInput = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
@@ -44,11 +63,62 @@ export const BookTemplate = ({ state }) => {
 
   const handleBlurInput = (e) => {
     const field = e.target.name;
+    const value = e.target.value;
+
+    if(value.length > 0) {
+      setFieldsClasses({ ...fieldsClasses});
+      return;
+    } 
     const classes = fieldsClasses[field].filter((c) => c !== 'focused');
     setFieldsClasses({ ...fieldsClasses, [field]: classes });
   };
 
   const setBoxClasses = (field) => fieldsClasses[field] && fieldsClasses[field].join(' ');
+
+  const validateForm = () => {
+    const getNameError = validateFieldName(fields.firstName);
+    const getLastError = validateFieldName(fields.lastName);
+    const getCompanyError = validateFieldCompany(fields.company);
+    const getEmailError = validateFieldEmail(fields.email);
+    const getPrivacyError = validateCheckbox(privacy);
+
+    setHasErrorName(getNameError);
+    setErrorLastName(getLastError);
+    setErrorCompany(getCompanyError);
+    setErrorEmail(getEmailError);
+    setErrorPrivaty(getPrivacyError);
+
+    return getNameError.length === 0 &&
+      getCompanyError.length === 0 &&
+      getEmailError.length === 0 &&
+      getLastError.length === 0 &&
+      getPrivacyError === false
+  }
+
+  const generateClass = (defaultClass, variable) => {
+    if(variable) {
+      return defaultClass + ' error';
+    }
+    return defaultClass;
+  }
+
+  const sendForm = (event) => {
+    event.preventDefault();
+    
+    const valid = validateForm();
+
+    if(valid) {
+      const formData2 = new FormData();
+      formData2.append('first_name',fields.firstName);
+      formData2.append('last_name',fields.lastName);
+      formData2.append('company',fields.company);
+      formData2.append('email',fields.email);
+      formData2.append('accept-with-news',news);
+      formData2.append('privacy',privacy);
+
+      actions.theme.sendFormGuide(formData2);
+    }
+  }
 
   return (
     <BookPage>
@@ -90,8 +160,8 @@ export const BookTemplate = ({ state }) => {
             </Title>
             <Form>
               <form action="" id="Book_send">
-                <FormGroup className={setBoxClasses('firstName')}>
-                  <label for="field-book-first-name">First name *</label>
+                <FormGroup className={generateClass(setBoxClasses('firstName'), hasErrorName)}>
+                  <label htmlFor="field-book-first-name">First name *</label>
                   <input
                     type="text"
                     name="firstName"
@@ -103,8 +173,8 @@ export const BookTemplate = ({ state }) => {
                   />
                   <p className="error-text">Enter first name</p>
                 </FormGroup>
-                <FormGroup className={setBoxClasses('lastName')}>
-                  <label for="field-book-last-name">Last name *</label>
+                <FormGroup className={generateClass(setBoxClasses('lastName'), hasLastName)}>
+                  <label htmlFor="field-book-last-name">Last name *</label>
                   <input
                     type="text"
                     name="lastName"
@@ -116,8 +186,8 @@ export const BookTemplate = ({ state }) => {
                   />
                   <p className="error-text">Enter last name</p>
                 </FormGroup>
-                <FormGroup className={setBoxClasses('company')}>
-                  <label for="field-book-company">Company *</label>
+                <FormGroup className={generateClass(setBoxClasses('company'), hasCompany)}>
+                  <label htmlFor="field-book-company">Company *</label>
                   <input
                     type="text"
                     name="company"
@@ -129,8 +199,8 @@ export const BookTemplate = ({ state }) => {
                   />
                   <p className="error-text">Enter company</p>
                 </FormGroup>
-                <FormGroup className={setBoxClasses('email')}>
-                  <label for="ield-book-email">E-mail *</label>
+                <FormGroup className={generateClass(setBoxClasses('email'), hasEmailError)}>
+                  <label htmlFor="ield-book-email">E-mail *</label>
                   <input
                     type="text"
                     name="email"
@@ -145,53 +215,59 @@ export const BookTemplate = ({ state }) => {
                 <div className="accept-book-space">
                   <div className="accept-policy">
                       <div className="form-group">
-                          <div className="accept-block">
-                              <input type="checkbox" id="book-cbx-accept" className="cbx" name="accetp-with" style={{ display: 'none' }}/>
-                              <label for="book-cbx-accept" className="check">
-                                  <table>
-                                      <tr>
-                                          <td>
-                                              <svg width="32px" height="32px" viewBox="0 0 18 18">
-                                                  <path fill="#ffffff" d="M0.7,9 L0.7,0.7 L14.5,0.7 L14.5,14.5 L1,14.5 L0.7,9 Z"></path>
-                                                  <polyline points="1 9 7 14 15 4"></polyline>
-                                              </svg>
-                                          </td>
-                                          <td>
-                                              <span>I accept Sirin Software <br /> <a href="/">privacy policy</a></span>
-                                          </td>
-                                      </tr>
-                                  </table>
+                          <div className="box">
+                              <input 
+                                type="checkbox" 
+                                checked 
+                                id="book-cbx-accept" 
+                                className="cbx" 
+                                checked={privacy} 
+                                onChange={() => setPrivacy(!privacy)}
+                                name="accetp-with" 
+                                style={{ display: 'none' }}/>
+                              <label htmlFor="book-cbx-accept" className="box-block"></label>
+                              <label htmlFor="book-cbx-accept" className="">
+                                I accept Sirin Software <br /> 
+                                <a href="/">privacy policy</a>
                               </label>
                           </div>
-                          <p className="error-text">Please, accept privacy policy</p>
+                          {
+                            hasPrivaty &&
+                              <p className="error-text">Please, accept privacy policy</p>
+                          }
                       </div>
                   </div>
                   <div className="accept-news">
                       <div className="form-group">
-                          <div className="accept-block">
-                              <input type="checkbox" id="book-cbx-news" className="cbx" name="accetp-with-news" style={{ display: 'none' }} />
-                              <label for="book-cbx-news" className="check">
-                                  <table>
-                                      <tr>
-                                          <td>
-                                              <svg width="32px" height="32px" viewBox="0 0 18 18">
-                                                  <path fill="#ffffff" d="M0.7,9 L0.7,0.7 L14.5,0.7 L14.5,14.5 L1,14.5 L0.7,9 Z"></path>
-                                                  <polyline points="1 9 7 14 15 4"></polyline>
-                                              </svg>
-                                          </td>
-                                          <td>
-                                              <span>I want to stay tuned for Sirin Software latest articles and news</span>
-                                          </td>
-                                      </tr>
-                                  </table>
+                          <div className="box">
+                              <input 
+                                type="checkbox" 
+                                id="book-cbx-news" 
+                                className="cbx" 
+                                checked={news} 
+                                onChange={() => setNews(!news)}
+                                name="accetp-with-news" 
+                                style={{ display: 'none' }} />
+                              <label htmlFor="book-cbx-news"  className="box-block"></label>
+                              <label htmlFor="book-cbx-news" className="check">
+                                I want to stay tuned for Sirin Software latest articles and news
                               </label>
                           </div>
-                          <p className="error-text">Please, accept privacy policy</p>
                       </div>
                   </div>
               </div>
+              <div className="send-button">
+                <SubmitButton
+                  onClick={(event) => sendForm(event)}>
+                  download 
+                  <Icon name="pdf"/>
+                </SubmitButton>
+              </div>
               </form>
             </Form>
+            <RecaptchaText>
+              This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+            </RecaptchaText>
           </FormContent>
         </BookForm>
       </BookSpace>

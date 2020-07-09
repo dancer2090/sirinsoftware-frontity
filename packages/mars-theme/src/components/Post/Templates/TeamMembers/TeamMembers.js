@@ -115,13 +115,12 @@ const TeamMembers = ({ state }) => {
               renderCategory.map((item, index) => {
                 return (
                   <li key={index}>
-                    <a 
-                      href="#" 
+                    <span
                       onClick={(event) => filterElements(event, item)}
                       className={activeIndex === item.id ? 'selected' : null}
                       >
                       { item.name } ({item.counter})
-                    </a>
+                    </span>
                   </li>
                 )
               })

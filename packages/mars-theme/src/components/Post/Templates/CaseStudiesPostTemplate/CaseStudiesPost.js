@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'frontity';
-import { 
+import axios from 'axios';
+import {
   ContainerFrame,
   Wrapper,
   FrameContent,
@@ -26,7 +27,7 @@ import {
   CaseItem,
   CaseLink,
   CaseItemTitle,
-  CaseContent
+  CaseContent,
 } from './styles';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
@@ -35,38 +36,38 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const slidesStudies = caseStudies.items.map(item => {
-    return state.source[item.type][item.id];
-  });
+  const slidesStudies = caseStudies.items.map((item) => state.source[item.type][item.id]);
 
   const post = state.source[data.type][data.id];
   const { acf = {} } = post;
 
   let category_id = 0; // значение по умолчанию
-  if(post['portfolio-cat'] && post['portfolio-cat'].length > 0) {
+  if (post['portfolio-cat'] && post['portfolio-cat'].length > 0) {
     post['portfolio-cat'].map((item, index) => {
       category_id = item; // перебираем массив с таксономиями поста
     });
   }
 
   const category = state.source['portfolio-cat'][category_id]; // берем таксономию
-  const category_slug = category.slug; // берем slug таксономии
+  const category_slug = (category && category !== {} ? category.slug : "");
 
   useEffect(() => {
     actions.source.fetch(`/case-studies-cat/${category_slug}/`);
-  }, [])
+  }, []);
 
-  const { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`)
+  const { cases = [] } = state.theme;
+  let { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`);
+  //if(cases && cases.length > 0 && items === []) items = cases;
+  console.log(items);
+  console.log(cases);
 
-  const postsRight = items.map(item => {
-    return state.source[item.type][item.id]
-  });
+  const postsRight = items.map((item) => state.source[item.type][item.id]);
 
   const backLink = (event) => {
     event.preventDefault();
 
     actions.router.set('/case-studies/');
-  }
+  };
 
   return (
     <Wrapper>
@@ -76,7 +77,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             <BackIcon name="arrow-left" />
           </BackLink>
           <FrameTitle>
-            <Html2React html={post.title.rendered}/>
+            <Html2React html={post.title.rendered} />
           </FrameTitle>
         </FrameContent>
       </ContainerFrame>
@@ -87,7 +88,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               Client
             </ClientTitle>
             <ClientDescription>
-              <Html2React html={acf.portfolio_client_title}/>
+              <Html2React html={acf.portfolio_client_title} />
             </ClientDescription>
           </ClientItem>
           <ClientItem>
@@ -95,7 +96,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               Business area
             </ClientTitle>
             <ClientDescription>
-              <Html2React html={acf.portfolio_business_area}/>
+              <Html2React html={acf.portfolio_business_area} />
             </ClientDescription>
           </ClientItem>
           <ClientItem>
@@ -103,22 +104,31 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               GEOGRAPHY
             </ClientTitle>
             <ClientDescription>
-              <Html2React html={acf.portfolio_geography}/>
+              <Html2React html={acf.portfolio_geography} />
             </ClientDescription>
           </ClientItem>
         </ClientBlock>
 
         <ContentWrapper>
           <Content>
-            <CardSet 
-              title="Technology set" 
-              nameSvg="set-one" 
-              list={acf.embedded_linux_technology_list} />
-            <Title nameSvg="portfolio">
-              Clients <br/>
-              background
-            </Title>
-            
+            <CardSet
+              title="Technology set"
+              nameSvg="set-one"
+              list={acf.embedded_linux_technology_list}
+            />
+
+            {
+              acf.portfolio_client_background
+                && (
+                <Title nameSvg="portfolio">
+                  Clients
+                  {' '}
+                  <br />
+                  background
+                </Title>
+                )
+            }
+
             <Text>
               <Html2React html={acf.portfolio_client_background} />
             </Text>
@@ -135,9 +145,10 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               <Html2React html={acf.portfolio_solution} />
             </Text>
 
-            <CardSet 
-              title="Value delivered" 
-              nameSvg="set-two">
+            <CardSet
+              title="Value delivered"
+              nameSvg="set-two"
+            >
               <Html2React html={acf.portfolio_value_delivered} />
             </CardSet>
           </Content>
@@ -147,46 +158,45 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               Linux, embedded and IOT
             </PostTitle>
             {
-              postsRight.map((item, index) => {
-                return (
-                  <Post 
-                    title={item.acf.category_for_green_line}
-                    href={item.link}
-                    key={index} 
-                    index={postsRight.length - index}>
-                    <Html2React html={item.title.rendered} />
-                  </Post>
-                )
-              })
+              postsRight.map((item, index) => (
+                <Post
+                  title={item.acf.category_for_green_line}
+                  href={item.link}
+                  key={index}
+                  index={postsRight.length - index}
+                >
+                  <Html2React html={item.title.rendered} />
+                </Post>
+              ))
             }
-          </PostsContent>        
+          </PostsContent>
         </ContentWrapper>
 
         <ContainerSlider>
           <CaseStudiesSlider>
             { slidesStudies.map((item, index) => {
-                const { acf = {} } = item;
-                const { post_featured_image = {} } = acf;
-                return (
-                  <CaseItem 
-                    key={index}
-                    src={post_featured_image}>
-                    <CaseItemTitle>
+              const { acf = {} } = item;
+              const { post_featured_image = {} } = acf;
+              return (
+                <CaseItem
+                  key={index}
+                  src={post_featured_image}
+                >
+                  <CaseItemTitle>
                     <Html2React html={acf.portfolio_business_area} />
-                    </CaseItemTitle>
-                    <CaseContent>
-                      <Html2React html={item.title.rendered} />
-                    </CaseContent>
-                    <CaseLink href={item.link}>Learn more</CaseLink>
-                  </CaseItem>
-                )
-              })
-            }
+                  </CaseItemTitle>
+                  <CaseContent>
+                    <Html2React html={item.title.rendered} />
+                  </CaseContent>
+                  <CaseLink href={item.link}>Learn more</CaseLink>
+                </CaseItem>
+              );
+            })}
           </CaseStudiesSlider>
         </ContainerSlider>
       </Container>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default connect(CaseStudiesPost);

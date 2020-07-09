@@ -11,6 +11,7 @@ import {
   PictureIcon,
   Send,
   BtnSend,
+  RecaptchaText,
 } from './styles';
 import {
   validateFieldName,
@@ -181,6 +182,9 @@ const Form = ({ submitForm }) => {
       <BtnSend>
         <button onClick={sendForm}>SEND</button>
       </BtnSend>
+      <RecaptchaText>
+        This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </RecaptchaText>
     </>
   )
 }

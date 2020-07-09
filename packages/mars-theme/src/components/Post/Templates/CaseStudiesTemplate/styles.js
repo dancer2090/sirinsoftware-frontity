@@ -1,5 +1,6 @@
 import { styled, css } from 'frontity';
 import CaseItem from '../ServicesTemplate/CaseItem';
+import Link from '../../../link';
 
 export const Container = styled.div`
   max-width: 960px;
@@ -24,6 +25,7 @@ export const Container = styled.div`
 
 export const HeaderFilter = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 40px;
 
   @media screen and (max-width: 767px) {
@@ -162,13 +164,18 @@ export const ItemLabel = styled.span`
   }
 `;
 
-export const ItemTitle = styled.h4`
+export const ItemTitle = styled(Link)`
   font-weight: bold;
   font-size: 30px;
   line-height: 30px;
   color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 21px;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: #cacaca;
+  }
 
   @media screen and (max-width: 991px) {
     font-size: 26px;
@@ -275,7 +282,12 @@ export const FilterItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
+  padding: ${({ min }) => (
+    min
+    ? '0 23px;'
+    : '0 15px;'
+  )};
+  margin-bottom: 10px;
   height: 50px;
   
   ${({ active = false }) => (
@@ -323,7 +335,7 @@ export const FilterItem = styled.div`
 
   @media screen and (max-width: 767px) {
     margin-bottom: 10px;
-    padding: 0 25px;
+    padding: 0 24px;
 
     &:first-child {
       flex-grow: 2;
