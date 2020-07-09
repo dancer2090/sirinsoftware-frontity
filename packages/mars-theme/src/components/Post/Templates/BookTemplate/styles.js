@@ -657,7 +657,25 @@ export const SubmitButton = styled.button`
   border: none;
   margin-top: 30px;
   outline: none;
-
+  cursor: pointer;
+  position: relative;
+  &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: rgba(0,0,0,1);
+      pointer-events: none;
+      -webkit-transition: all .3s ease-in-out;
+      -webkit-transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out;
+  }
+  &:hover:after{
+    opacity: 0.1;
+  }
   &:active {
     outline: none;
   }
@@ -668,4 +686,14 @@ export const Icon = styled(Svg)`
   height: 32px;
   fill: white;
   margin-left: 15px;
+`;
+
+export const RecaptchaText = styled.div`
+  color: #FFFFFF;
+  margin-top: 15px;
+  font-size: 14px;
+  & a{
+    color: #FFFFFF;
+    font-weight: 700;
+  }
 `;

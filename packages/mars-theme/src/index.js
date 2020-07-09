@@ -63,6 +63,7 @@ const marsTheme = {
     },
     theme: {
       menu: {},
+      cases: {},
       recaptchaToken: null,
       isMobileMenuOpen: false,
       featured: {
@@ -105,13 +106,19 @@ const marsTheme = {
         });
       },
       sendFormGuide: ({ state }) => async (data) => {
+        console.log(state);
+        const dataForm = data.formData;
+        console.log(state.theme.recaptchaToken);
+        dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         try {
           const result = await axios.post(
             `${state.source.api}/frontity-api/sendbookdata`,
-            data,
+            dataForm,
             { headers: { 'content-type': 'application/json' } },
-          );
-
+          ).then((response) => {
+            console.log(response);
+          });
+          console.log(result);
           return result;
         } catch(error) {
           console.log(error)
@@ -207,7 +214,10 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/blog');
         }
-       
+
+        const random_cases = await axios.get(`${state.source.api}/frontity-api/random-case`);
+        state.theme.cases = random_cases.data || {};
+
         const { urlCheck } = libraries.func;
         const replaces = [state.frontity.url, state.frontity.adminUrl];
         const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);

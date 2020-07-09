@@ -10,6 +10,7 @@ import {
   FText,
   InputGroup,
   ErrorText,
+  RecaptchaText
 } from './styles';
 
 function validateEmail(email) {
@@ -125,7 +126,9 @@ const SubscribeForm = ({actions, state}) => {
         <Link href="/privacy-policy">Privacy Policy</Link>
       </Description>
       <SubmitButton color="yellow">Subscribe</SubmitButton>
-
+      <RecaptchaText>
+        This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </RecaptchaText>
     </Form>
   )};
 

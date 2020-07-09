@@ -13,7 +13,8 @@ import {
   Form,
   FormGroup,
   SubmitButton,
-  Icon
+  Icon,
+  RecaptchaText
 } from './styles';
 import {
   validateFieldName,
@@ -35,9 +36,8 @@ const DEFAULT_FIELDS_CLASSES = {
   company: [],
   email: [],
 };
-
+ 
 export const BookTemplate = ({ state, actions }) => {
-  console.log(state.customSettings.sendFormGuide);
 
   const [fields, setFields] = useState(DEFAULT_FIELDS);
   const [fieldsClasses, setFieldsClasses] = useState(DEFAULT_FIELDS_CLASSES);
@@ -108,15 +108,15 @@ export const BookTemplate = ({ state, actions }) => {
     const valid = validateForm();
 
     if(valid) {
-      const data = {
-        ...fields,
-        first_name: fields.firstName,
-        last_name: fields.lastName,
-        'accept-with-news': news,
-        privacy
-      }
+      const formData2 = new FormData();
+      formData2.append('first_name',fields.firstName);
+      formData2.append('last_name',fields.lastName);
+      formData2.append('company',fields.company);
+      formData2.append('email',fields.email);
+      formData2.append('accept-with-news',news);
+      formData2.append('privacy',privacy);
 
-      actions.theme.sendFormGuide(data);
+      actions.theme.sendFormGuide(formData2);
     }
   }
 
@@ -265,6 +265,9 @@ export const BookTemplate = ({ state, actions }) => {
               </div>
               </form>
             </Form>
+            <RecaptchaText>
+              This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+            </RecaptchaText>
           </FormContent>
         </BookForm>
       </BookSpace>

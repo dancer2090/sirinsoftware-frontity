@@ -292,3 +292,14 @@ export const BtnSend = styled.div`
     }
   }
 `;
+
+export const RecaptchaText = styled.div`
+  color: #FFFFFF;
+  margin: 20px;
+  margin-top: 15px;
+  font-size: 14px;
+  & a{
+    color: #FFFFFF;
+    font-weight: 700;
+  }
+`;

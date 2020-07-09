@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'frontity';
+import axios from 'axios';
 import {
   ContainerFrame,
   Wrapper,
@@ -48,13 +49,17 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   }
 
   const category = state.source['portfolio-cat'][category_id]; // берем таксономию
-  const category_slug = category.slug; // берем slug таксономии
+  const category_slug = (category && category !== {} ? category.slug : "");
 
   useEffect(() => {
     actions.source.fetch(`/case-studies-cat/${category_slug}/`);
   }, []);
 
-  const { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`);
+  const { cases = [] } = state.theme;
+  let { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`);
+  //if(cases && cases.length > 0 && items === []) items = cases;
+  console.log(items);
+  console.log(cases);
 
   const postsRight = items.map((item) => state.source[item.type][item.id]);
 

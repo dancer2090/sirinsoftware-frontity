@@ -38,6 +38,7 @@ export const globalStyles = css`
     /* background: #666;  */
     background: rgba(0, 0, 0, 0.1);
   }
+  .grecaptcha-badge { visibility: hidden; }
 `;
 
 export const Space = styled.div`
