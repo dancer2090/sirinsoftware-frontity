@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, styled } from 'frontity';
+import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import BigTitle from '../../../BigTitle';
 import Image from '../../../../img/service.jpg';
@@ -64,94 +64,93 @@ const AboutUsTemplate = ({ state, libraries }) => {
 
   const Html2React = libraries.html2react.Component;
 
-  console.log(subawards);
-
   return (
     <GlobalContainer>
-        <BigFrameContainer title={post.content.rendered} image={bgImg}/>
-        <Container style={{ padding: 0 }}>
-          <Breadcrumbs links={[{
-            name: 'About',
-            link: '#',
-          }]}
-          />
-        </Container>
-        <AwardsGlobalContainer>
-            <BigTitle title="Awards" />
-            <Container>
-                <AwardsContainer>
-                    <AboutUsSlider>
-                        {subawards && subawards.map((aitem, k) => (
-                          <AwardsGalleryItem>
-                              <AwardsItem>
-                                {aitem && aitem.map((asubitem, k) => (
-                                    <AwardsImageContainer key={asubitem.url}>
-                                        <AwardsImage src={asubitem.image.url} />
-                                    </AwardsImageContainer>
-                                ))}
-                              </AwardsItem>
-                          </AwardsGalleryItem>
-                        ))}
-                    </AboutUsSlider>
-                </AwardsContainer>
-            </Container>
-        </AwardsGlobalContainer>
-        <TestimonialsGlobalContainer>
-            <BigTitle title="Testimonials" />
-            <Container>
-                <TestimonialsContainer>
-                    {testimonials && testimonials.length>0 && testimonials.map((item, k) => {
-                      const {
-                        logo = { url : "" },
-                        photo = { url : "" },
-                      } = item;
-                      return (
-                      <TestimonialsItem key={k+logo.url}>
-                          <TestimonialsLeft>
-                              <TestimonialsLogo src={logo.url} />
-                              <TestimonialsPhoto src={photo.url} />
-                          </TestimonialsLeft>
-                          <TestimonialsRight>
-                              <TestimonialsRightContainer>
-                                  <TestimonialsText>
-                                      <TestimonialsTextStart>
-                                          “
-                                      </TestimonialsTextStart>
-                                      <TestimonialsTextContent>
-                                          <Html2React html={item.text} />
-                                      </TestimonialsTextContent>
-                                      <TestimonialsTextEnd>
-                                          “
-                                      </TestimonialsTextEnd>
-                                  </TestimonialsText>
-                                  <TestimonialsSignature>
-                                      {item.signature}
-                                  </TestimonialsSignature>
-                              </TestimonialsRightContainer>
-                          </TestimonialsRight>
-                      </TestimonialsItem>
-                  )})}
-                </TestimonialsContainer>
-            </Container>
-        </TestimonialsGlobalContainer>
-        <GalleryGlobalContainer>
-            <BigTitle title="Gallery" />
-            <GalleryContainer>
-                <AboutUsSlider>
-                    {subgallery && subgallery.length>0 && subgallery.map((item, k) => (
-                        <div>
-                            <GalleryItem key={k+"galleryItem"}>
-                                {item && item.length>0 && item.map((subitem, k) => (
-                                    <GalleryImageContainer key={k+subitem.url}>
-                                        <GalleryImage src={subitem.url} />
-                                    </GalleryImageContainer>
-                                ))}
-                            </GalleryItem>
-                        </div>
+      <BigFrameContainer title={post.content.rendered} image={bgImg} />
+      <Container style={{ padding: 0 }}>
+        <Breadcrumbs links={[{
+          name: 'About',
+          link: '#',
+        }]}
+        />
+      </Container>
+      <AwardsGlobalContainer>
+        <BigTitle title="Awards" />
+        <Container>
+          <AwardsContainer>
+            <AboutUsSlider>
+              {subawards && subawards.map((aitem, k) => (
+                <AwardsGalleryItem>
+                  <AwardsItem>
+                    {aitem && aitem.map((asubitem, k) => (
+                      <AwardsImageContainer key={asubitem.url}>
+                        <AwardsImage src={asubitem.image.url} />
+                      </AwardsImageContainer>
                     ))}
-                </AboutUsSlider>
-            </GalleryContainer>
-        </GalleryGlobalContainer>
+                  </AwardsItem>
+                </AwardsGalleryItem>
+              ))}
+            </AboutUsSlider>
+          </AwardsContainer>
+        </Container>
+      </AwardsGlobalContainer>
+      <TestimonialsGlobalContainer>
+        <BigTitle title="Testimonials" />
+        <Container>
+          <TestimonialsContainer>
+            {testimonials && testimonials.length > 0 && testimonials.map((item, k) => {
+              const {
+                logo = { url: '' },
+                photo = { url: '' },
+              } = item;
+              return (
+                <TestimonialsItem key={k + logo.url}>
+                  <TestimonialsLeft>
+                    <TestimonialsLogo src={logo.url} />
+                    <TestimonialsPhoto src={photo.url} />
+                  </TestimonialsLeft>
+                  <TestimonialsRight>
+                    <TestimonialsRightContainer>
+                      <TestimonialsText>
+                        <TestimonialsTextStart>
+                          “
+                        </TestimonialsTextStart>
+                        <TestimonialsTextContent>
+                          <Html2React html={item.text} />
+                        </TestimonialsTextContent>
+                        <TestimonialsTextEnd>
+                          “
+                        </TestimonialsTextEnd>
+                      </TestimonialsText>
+                      <TestimonialsSignature>
+                        {item.signature}
+                      </TestimonialsSignature>
+                    </TestimonialsRightContainer>
+                  </TestimonialsRight>
+                </TestimonialsItem>
+              );
+            })}
+          </TestimonialsContainer>
+        </Container>
+      </TestimonialsGlobalContainer>
+      <GalleryGlobalContainer>
+        <BigTitle title="Gallery" />
+        <GalleryContainer>
+          <AboutUsSlider>
+            {subgallery && subgallery.length > 0 && subgallery.map((item, k) => (
+              <div>
+                <GalleryItem key={`${k}galleryItem`}>
+                  {item && item.length > 0 && item.map((subitem, k) => (
+                    <GalleryImageContainer key={k + subitem.url}>
+                      <GalleryImage src={subitem.url} />
+                    </GalleryImageContainer>
+                  ))}
+                </GalleryItem>
+              </div>
+            ))}
+          </AboutUsSlider>
+        </GalleryContainer>
+      </GalleryGlobalContainer>
     </GlobalContainer>
   );
 };

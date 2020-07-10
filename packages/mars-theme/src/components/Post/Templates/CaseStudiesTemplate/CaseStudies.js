@@ -33,7 +33,7 @@ const CaseStudies = ({ state, actions }) => {
   const { totalPages } = state.source.get(state.router.link);
   let megaItems = dataList.items;
   let currentData;
-  console.log(totalPages);
+
   for (let i = 2; i <= totalPages; i++) {
     currentData = state.source.get(`${state.router.link}page/${i}`);
     if (currentData.isReady) {

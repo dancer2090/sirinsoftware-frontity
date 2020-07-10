@@ -1,25 +1,27 @@
-import React from 'react'
+import React from 'react';
 import {
   Card,
   Title,
   Content,
   Item,
-  Icon
+  Icon,
 } from './styles';
 
-const CardCase = ({ className, title = '', list = [], nameSvg = '', children }) => {
-  return (
-    <Card className={className}>
-      <Icon name={nameSvg} />
-      <Title>{title}</Title>
-        {
-          list.length > 0 &&
-          (
+const CardCase = ({
+  className, title = '', list = [], nameSvg = '', children,
+}) => (
+  <Card className={className}>
+    <Icon name={nameSvg} />
+    <Title>{title}</Title>
+    {
+          list.length > 0
+          && (
             <Content>
               {
                 list.map((item, key) => (
                   <Item
-                    key={key}>
+                    key={key}
+                  >
                     { item.embedded_linux_technology_list_item }
                   </Item>
                 ))
@@ -28,9 +30,8 @@ const CardCase = ({ className, title = '', list = [], nameSvg = '', children }) 
           )
         }
 
-        { children }
-    </Card>
-  )
-}
+    { children }
+  </Card>
+);
 
 export default CardCase;

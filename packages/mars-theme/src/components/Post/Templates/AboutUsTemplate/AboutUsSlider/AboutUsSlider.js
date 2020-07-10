@@ -1,20 +1,20 @@
 import React from 'react';
 import {
   Container,
-  Swiper
+  Swiper,
 } from './styles';
 
-const AboutUsSlider = ({ className, children }) => {
+const AboutUsSlider = ({ children }) => {
   const params = {
     slidesPerView: 1,
     slidesPerGroup: 1,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     spaceBetween: 0,
-  }
+  };
 
   return (
     <Container>
@@ -22,7 +22,7 @@ const AboutUsSlider = ({ className, children }) => {
         { children }
       </Swiper>
     </Container>
-  )
-}
+  );
+};
 
 export default AboutUsSlider;

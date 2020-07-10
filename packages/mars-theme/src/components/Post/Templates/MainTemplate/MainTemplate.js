@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { connect, styled } from 'frontity';
+import React, { useEffect } from 'react';
+import { connect } from 'frontity';
 import BigTitle from '../../../BigTitle';
 import {
   GlobalContainer,
@@ -44,28 +44,28 @@ import {
   CaseItemWrapper,
   CaseLink,
 } from './styles';
-import Button from '../../../Button';
-import Link from '../../../link';
 import Triangle from '../../../../img/main_triangle.svg';
 
 
-const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
+const MainTemplate = ({
+  state, libraries, actions, scrollRef = null,
+}) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
 
   const { acf = {} } = post;
   const {
-    main_title = "",
-    main_bg = { url : "" },
-    main_icon = { url : "" },
-    main_button = "",
+    main_title = '',
+    main_bg = { url: '' },
+    main_icon = { url: '' },
+    main_button = '',
     services = {},
-    left_text = "",
-    right_text = "",
+    left_text = '',
+    right_text = '',
     boxes = {},
-    t_after = "",
-    t_green = "",
-    t_orange = "",
+    t_after = '',
+    t_green = '',
+    t_orange = '',
     clients = {},
   } = acf;
 
@@ -75,7 +75,7 @@ const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
 
   const Html2React = libraries.html2react.Component;
   const case_studies_null = state.source.get('/case-studies/');
-  let case_studies = case_studies_null.items.slice(0,4);
+  const case_studies = case_studies_null.items.slice(0, 4);
 
   const scrollToRef = () => {
     if (scrollRef) {
@@ -89,115 +89,138 @@ const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
 
   return (
     <GlobalContainer>
-        <MainBlock src={main_bg.url}>
-          <Container>
-            <MainBlockContainer>
-              <MainBlockLeft>
-                <MainBlockTitle>{main_title}</MainBlockTitle>
-                <MainBlockButton onClick={() => scrollToRef()}>{main_button}</MainBlockButton>
-              </MainBlockLeft>
-              <MainBlockRight>
-                <MainBlockIcon src={main_icon.url} />
-              </MainBlockRight>
-            </MainBlockContainer>
-          </Container>
-        </MainBlock>
-        <ServicesGlobalContainer>
-          <BigTitle title="Services" />
-          <Container>
-            <ServicesList>
-              {services && services.map((service, k)=>{
-                const {
-                  bg = { url : "" }
-                } = service;
-                return (
+      <MainBlock src={main_bg.url}>
+        <Container>
+          <MainBlockContainer>
+            <MainBlockLeft>
+              <MainBlockTitle>{main_title}</MainBlockTitle>
+              <MainBlockButton onClick={() => scrollToRef()}>{main_button}</MainBlockButton>
+            </MainBlockLeft>
+            <MainBlockRight>
+              <MainBlockIcon src={main_icon.url} />
+            </MainBlockRight>
+          </MainBlockContainer>
+        </Container>
+      </MainBlock>
+      <ServicesGlobalContainer>
+        <BigTitle title="Services" />
+        <Container>
+          <ServicesList>
+            {services && services.map((service, k) => {
+              const {
+                bg = { url: '' },
+              } = service;
+              return (
                 <ServicesItem src={bg.url} link="/services" key={service.url}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
-              )})}
-            </ServicesList>
-          </Container>
-        </ServicesGlobalContainer>
-        <PartnerShip>
-          <BigTitle title="Partnership types" bigTitleBackgroundColor="rgba(255,255,255,0.06)" bigTitleTextColor="#FFFFFF"/>
-          <Container>
-            <PartnerShipContainer>
-              <PartnerShipLeft>
-                <PartnerShipLeftTitle> <Html2React html={left_text} /> </PartnerShipLeftTitle>
-                {boxes && boxes.map((box,key)=>(
-                    <Box key={box.title}>
-                      {box.title!=="" && <BoxTitle> {box.title} </BoxTitle>}
-                      {box.text!=="" && <BoxText> {box.text} </BoxText>}
-                    </Box>
-                ))}
-              </PartnerShipLeft>
-              <PartnerShipRight>
-                <PartnerShipRightTitle> <Html2React html={right_text} /> </PartnerShipRightTitle>
-                <PartnerShipRightContainer src={Triangle}>
-                  <GreenTitle><Html2React html={t_green} /></GreenTitle>
-                  <OrangeTitle><Html2React html={t_orange} /></OrangeTitle>
-                  <TText>{t_after}</TText>
-                </PartnerShipRightContainer>
-              </PartnerShipRight>
-            </PartnerShipContainer>
-          </Container>
-        </PartnerShip>
-        <CaseStudiesGlobalContainer>
-          <BigTitle title="case studies"/>
-          <Container>
-            <CaseStudiesList>
-              {case_studies && case_studies.map((item,index)=>{
-                const p_item = state.source[item.type][item.id];
-                const { acf = {} } = p_item;
-                const {
-                  post_featured_image = {},
-                  category_for_green_line = "",
-                  short_description = "",
-                } = acf;
-                return (
-                  <ItemBlock key={index}>
-                    <CaseItemWrapper
-                      src={post_featured_image}>
-                      <CaseItemTitle>
-                        {category_for_green_line}
-                      </CaseItemTitle>
-                      <CaseContent>
-                        {p_item.title.rendered}
-                      </CaseContent>
-                    </CaseItemWrapper>
+              );
+            })}
+          </ServicesList>
+        </Container>
+      </ServicesGlobalContainer>
+      <PartnerShip>
+        <BigTitle title="Partnership types" bigTitleBackgroundColor="rgba(255,255,255,0.06)" bigTitleTextColor="#FFFFFF" />
+        <Container>
+          <PartnerShipContainer>
+            <PartnerShipLeft>
+              <PartnerShipLeftTitle>
+                {' '}
+                <Html2React html={left_text} />
+                {' '}
+              </PartnerShipLeftTitle>
+              {boxes && boxes.map((box, key) => (
+                <Box key={box.title}>
+                  {box.title !== '' && (
+                    <BoxTitle>
+                      {' '}
+                      {box.title}
+                      {' '}
+                    </BoxTitle>
+                  )}
+                  {box.text !== '' && (
+                    <BoxText>
+                      {' '}
+                      {box.text}
+                      {' '}
+                    </BoxText>
+                  )}
+                </Box>
+              ))}
+            </PartnerShipLeft>
+            <PartnerShipRight>
+              <PartnerShipRightTitle>
+                {' '}
+                <Html2React html={right_text} />
+                {' '}
+              </PartnerShipRightTitle>
+              <PartnerShipRightContainer src={Triangle}>
+                <GreenTitle><Html2React html={t_green} /></GreenTitle>
+                <OrangeTitle><Html2React html={t_orange} /></OrangeTitle>
+                <TText>{t_after}</TText>
+              </PartnerShipRightContainer>
+            </PartnerShipRight>
+          </PartnerShipContainer>
+        </Container>
+      </PartnerShip>
+      <CaseStudiesGlobalContainer>
+        <BigTitle title="case studies" />
+        <Container>
+          <CaseStudiesList>
+            {case_studies && case_studies.map((item, index) => {
+              const p_item = state.source[item.type][item.id];
+              const { acf = {} } = p_item;
+              const {
+                post_featured_image = {},
+                category_for_green_line = '',
+                short_description = '',
+              } = acf;
+              return (
+                <ItemBlock key={index}>
+                  <CaseItemWrapper
+                    src={post_featured_image}
+                  >
+                    <CaseItemTitle>
+                      {category_for_green_line}
+                    </CaseItemTitle>
+                    <CaseContent>
+                      {p_item.title.rendered}
+                    </CaseContent>
+                  </CaseItemWrapper>
 
-                    <ItemWrapper>
-                      <ItemLabel>
-                        {category_for_green_line}
-                      </ItemLabel>
-                      <ItemTitle>
-                        {p_item.title.rendered}
-                      </ItemTitle>
-                      <ItemDescription>
-                        {short_description}
-                      </ItemDescription>
-                    </ItemWrapper>
-                    <CaseLink link={p_item.link}>Learn more</CaseLink>
-                  </ItemBlock>
-                )
-              })}
-            </CaseStudiesList>
-          </Container>
-        </CaseStudiesGlobalContainer>
-        <ClientsGlobalContainer>
-          <BigTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)"/>
-          <Container>
-            <ClientsGallery>
-              {clients && clients.map((client,key)=>{
-                const { image = { url : "" } } = client;
-                return (
-                <ClientContainer link={client.url} key={client.url+key}>
+                  <ItemWrapper>
+                    <ItemLabel>
+                      {category_for_green_line}
+                    </ItemLabel>
+                    <ItemTitle>
+                      {p_item.title.rendered}
+                    </ItemTitle>
+                    <ItemDescription>
+                      {short_description}
+                    </ItemDescription>
+                  </ItemWrapper>
+                  <CaseLink link={p_item.link}>Learn more</CaseLink>
+                </ItemBlock>
+              );
+            })}
+          </CaseStudiesList>
+        </Container>
+      </CaseStudiesGlobalContainer>
+      <ClientsGlobalContainer>
+        <BigTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)" />
+        <Container>
+          <ClientsGallery>
+            {clients && clients.map((client, key) => {
+              const { image = { url: '' } } = client;
+              return (
+                <ClientContainer link={client.url} key={client.url + key}>
                   <Client src={image.url} />
                 </ClientContainer>
-              )})}
-            </ClientsGallery>
-          </Container>
-        </ClientsGlobalContainer>
+              );
+            })}
+          </ClientsGallery>
+        </Container>
+      </ClientsGlobalContainer>
     </GlobalContainer>
   );
 };

@@ -15,7 +15,7 @@ import {
 const SocialList = ({ className, title = '' }) => {
   const [show, setShow] = useState(false);
 
-  let href
+  let href;
   const copyLink = () => {
     href = location.href;
     navigator.clipboard.writeText(href);

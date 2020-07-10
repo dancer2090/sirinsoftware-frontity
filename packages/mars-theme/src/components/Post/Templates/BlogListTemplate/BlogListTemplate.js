@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { connect, decode } from 'frontity';
 import Loader from 'react-spinners/ClipLoader';
 import Item from '../../../list/Item';
@@ -37,7 +37,7 @@ const BlogListTemplate = ({ state, actions }) => {
   };
   const categories = [];
   if (state.customSettings.categories.length > 0) {
-    state.customSettings.categories.map((cat, index) => {
+    state.customSettings.categories.map((cat) => {
       if (cat.parent === 1) categories.push(cat);
     });
   }

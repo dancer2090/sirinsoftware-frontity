@@ -2,7 +2,7 @@ import { styled } from 'frontity';
 import SvgSprite from '../../StandartTemplate/SvgSprite';
 
 const styledLiTag = `
-font-family: 'Open Sans';
+  font-family: 'Open Sans';
   font-size: 14px;
   line-height: 26px;
   color: #FFFFFF;

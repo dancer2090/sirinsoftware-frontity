@@ -3,7 +3,9 @@ import { connect } from 'frontity';
 import Link from '../../../../link';
 import { Container, Name, LinkButton } from './styles';
 
-const Post = ({ state, libraries, className, children, href = '#' }) => {
+const Post = ({
+  libraries, className, children, href = '#',
+}) => {
   const Html2React = libraries.html2react.Component;
   return (
     <Container className={className}>
@@ -18,6 +20,7 @@ const Post = ({ state, libraries, className, children, href = '#' }) => {
         </LinkButton>
       </Link>
     </Container>
-  )};
+  );
+};
 
 export default connect(Post);

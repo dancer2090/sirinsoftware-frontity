@@ -1,13 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { connect } from 'frontity';
 
-const PageFullTemplate = ({ state }) => {
+const PageFullTemplate = () => (
+  <>
 
-  return (
-    <>
-      
-    </>
-  );
-};
+  </>
+);
 
 export default connect(PageFullTemplate);

@@ -1,16 +1,14 @@
-import React from 'react'
+import React from 'react';
 import {
   Title,
-  Icon
+  Icon,
 } from './styles';
 
-const CaseTitle = ({ className, children, nameSvg }) => {
-  return (
-    <Title className={className}>
-      <Icon name={nameSvg}/>
-      <span>{children}</span>
-    </Title>
-  )
-}
+const CaseTitle = ({ className, children, nameSvg }) => (
+  <Title className={className}>
+    <Icon name={nameSvg} />
+    <span>{children}</span>
+  </Title>
+);
 
 export default CaseTitle;

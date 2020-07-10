@@ -28,8 +28,8 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
 
   const { acf = {} } = post;
   const {
-    main_image = { url : "" },
-    main_text = "",
+    main_image = { url: '' },
+    main_text = '',
   } = acf;
 
   const bigFrameTitle = main_text;

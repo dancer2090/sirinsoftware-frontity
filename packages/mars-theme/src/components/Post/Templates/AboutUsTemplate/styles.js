@@ -1,4 +1,4 @@
-import { styled, css } from 'frontity';
+import { styled } from 'frontity';
 import Slider from './AboutUsSlider';
 
 export const GlobalContainer = styled.div`

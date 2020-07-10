@@ -46,10 +46,10 @@ export const ItemIcon = styled.div`
     width: 100%;
     height: 2px;
     ${({ color }) => (
-      color === 'green'
+    color === 'green'
       ? 'background: #216628;'
       : 'background: #F8710F;'
-    )}
+  )};
     position: absolute;
     left: 50%;
     top: 50%;
@@ -60,10 +60,10 @@ export const ItemIcon = styled.div`
     transition: all .3s;
 
     ${({ active }) => (
-      active
+    active
       ? 'transform: translate(-50%, -50%) rotate(0deg);'
       : null
-    )}
+  )};
   }
 
   &:before {

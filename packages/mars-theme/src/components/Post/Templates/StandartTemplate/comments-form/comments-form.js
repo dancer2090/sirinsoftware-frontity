@@ -1,7 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { connect, styled } from "frontity";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'frontity';
 import {
-  Container, Title, Form, Input, TextArea, Button, SingleComment, Author, Fecha, SingleCommentContent, CommentsContainer, CommentsSubmitText, RecaptchaText
+  Container,
+  Title,
+  Form,
+  Input,
+  TextArea,
+  Button,
+  SingleComment,
+  Author,
+  Fecha,
+  SingleCommentContent,
+  CommentsContainer,
+  CommentsSubmitText,
+  RecaptchaText,
 } from './styles';
 
 const CommentsForm = ({ libraries, state, actions }) => {
@@ -9,19 +21,19 @@ const CommentsForm = ({ libraries, state, actions }) => {
   const dataP = state.source.get(state.router.link);
   const postId = dataP.id;
 
-  const [ comments, setComments ] = useState( [] );
-  const [ loading, setLoading ] = useState( true );
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const preErrors = {
-    author_name : false,
-    author_email : false,
-    content : false,
+    author_name: false,
+    author_email: false,
+    content: false,
     post: false,
   };
   const preForm = {
-    author_name : '',
-    author_email : '',
-    content : '',
+    author_name: '',
+    author_email: '',
+    content: '',
     post: postId,
   };
 
@@ -30,18 +42,16 @@ const CommentsForm = ({ libraries, state, actions }) => {
   const [preload, setPreload] = useState(false);
 
   useEffect(() => {
-
-      libraries.source.api.get({
-          endpoint: "comments",
-          params: { post: postId, _embed: false, per_page: 100 }
-      })
-      .then(response => {
-          response.json().then( data => {
-              setComments( data );
-              setLoading( false )
-          });
+    libraries.source.api.get({
+      endpoint: 'comments',
+      params: { post: postId, _embed: false, per_page: 100 },
+    })
+      .then((response) => {
+        response.json().then((data) => {
+          setComments(data);
+          setLoading(false);
+        });
       });
-
   }, []);
 
   const validForm = () => {
@@ -60,13 +70,13 @@ const CommentsForm = ({ libraries, state, actions }) => {
   const submitForm = (e) => {
     e.preventDefault();
     if (validForm()) {
-      let formData = new FormData();
-      formData.append('author_name',formState.author_name);
-      formData.append('author_email',formState.author_email);
-      formData.append('content',formState.content);
-      formData.append('post',formState.post);
+      const formData = new FormData();
+      formData.append('author_name', formState.author_name);
+      formData.append('author_email', formState.author_email);
+      formData.append('content', formState.content);
+      formData.append('post', formState.post);
 
-      actions.theme.sendComment({formData});
+      actions.theme.sendComment({ formData });
       setFormErrorState(preErrors);
       setFormState(preForm);
       setPreload(true);
@@ -80,7 +90,7 @@ const CommentsForm = ({ libraries, state, actions }) => {
     setFormState({ ...formState, ...objJ });
 
     const errorObj = {};
-    let optional = false;
+    const optional = false;
 
     if (inputValue.length < 2 && !optional) {
       errorObj[key] = true;
@@ -88,7 +98,6 @@ const CommentsForm = ({ libraries, state, actions }) => {
       errorObj[key] = false;
     }
     setFormErrorState({ ...formError, ...errorObj });
-
   };
 
   return (
@@ -96,32 +105,36 @@ const CommentsForm = ({ libraries, state, actions }) => {
       <CommentsContainer>
         {loading && (<div>Loading...</div>)}
         {!loading && (
-            <div>
-                {comments.length === 0 && (<p>Comment not found</p>)}
-                {comments.length > 0 && (
-                    <>
-                        {comments.map(item => {
-                            const date = new Date(item.date);
-                            return (
-                                <SingleComment key={item.id}>
-                                    <Author>
-                                        By <b>{item.author_name}</b>
-                                    </Author>
-                                    <Fecha>
-                                        {" "}
-                                        on <b>{date.toDateString()}</b>
-                                    </Fecha>
+        <div>
+          {comments.length === 0 && (<p>Comment not found</p>)}
+          {comments.length > 0 && (
+          <>
+            {comments.map((item) => {
+              const date = new Date(item.date);
+              return (
+                <SingleComment key={item.id}>
+                  <Author>
+                    By
+                    {' '}
+                    <b>{item.author_name}</b>
+                  </Author>
+                  <Fecha>
+                    {' '}
+                    on
+                    {' '}
+                    <b>{date.toDateString()}</b>
+                  </Fecha>
 
-                                    <SingleCommentContent dangerouslySetInnerHTML={{
-                                        __html: item.content.rendered
-                                    }}
-                                    />
-                                </SingleComment>
-                            )
-                        })}
-                    </>
-                )}
-            </div>
+                  <SingleCommentContent dangerouslySetInnerHTML={{
+                    __html: item.content.rendered,
+                  }}
+                  />
+                </SingleComment>
+              );
+            })}
+          </>
+          )}
+        </div>
         )}
       </CommentsContainer>
       <Title>Leave a comment</Title>
@@ -132,30 +145,38 @@ const CommentsForm = ({ libraries, state, actions }) => {
         <Input
           name="author_name"
           placeholder="Name*"
-          onChange={(e) => handleChangeInput(e, "author_name")}
+          onChange={(e) => handleChangeInput(e, 'author_name')}
           value={formState.author_name}
         />
         <Input
           name="author_email"
           type="email"
           placeholder="Email*"
-          onChange={(e) => handleChangeInput(e, "author_email")}
+          onChange={(e) => handleChangeInput(e, 'author_email')}
           value={formState.author_email}
         />
         <TextArea
           name="content"
           placeholder="Message"
-          onChange={(e) => handleChangeInput(e, "content")}
+          onChange={(e) => handleChangeInput(e, 'content')}
           value={formState.content}
         />
         <Button type="submit">Send</Button>
       </Form>
       <RecaptchaText>
-        This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+        This site is protected by reCAPTCHA and the Google
+        {' '}
+        <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a>
+        {' '}
+        and
+        {' '}
+        <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a>
+        {' '}
+        apply.
       </RecaptchaText>
       <CommentsSubmitText afterload={!!(preload && !state.customSettings.isCommentSend)}>Thank you for your feedback. After moderation, your comment will be published.</CommentsSubmitText>
     </Container>
-  )
+  );
 };
 
 export default connect(CommentsForm);

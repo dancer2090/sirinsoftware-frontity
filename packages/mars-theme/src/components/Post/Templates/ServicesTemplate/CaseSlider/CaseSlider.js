@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Container,
-  Swiper
+  Swiper,
 } from './styles';
 
 const CaseSlider = ({ className, children }) => {
@@ -11,7 +11,7 @@ const CaseSlider = ({ className, children }) => {
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     spaceBetween: 0,
     breakpoints: {
@@ -19,9 +19,9 @@ const CaseSlider = ({ className, children }) => {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 20,
-      }
-    }
-  }
+      },
+    },
+  };
 
   return (
     <Container>
@@ -29,7 +29,7 @@ const CaseSlider = ({ className, children }) => {
         { children }
       </Swiper>
     </Container>
-  )
-}
+  );
+};
 
 export default CaseSlider;

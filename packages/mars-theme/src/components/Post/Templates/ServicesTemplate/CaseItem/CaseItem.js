@@ -6,7 +6,7 @@ import {
 
 
 const CaseItem = ({
-  children, className, textBlock = false, src = '', link = '#',
+  children, className, src = '', link = '#',
 }) => (
   <CaseItemBlock
     src={src}

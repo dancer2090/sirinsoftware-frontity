@@ -92,8 +92,8 @@ export const ItemBlock = styled(CaseItem)`
 
   ${({ textBlock }) => (
     textBlock
-    ? 'padding-top: 0;'
-    : null
+      ? 'padding-top: 0;'
+      : null
   )}
 
   @media screen and (max-width: 991px) {
@@ -281,13 +281,13 @@ export const FilterItem = styled.div`
   
   ${({ active = false }) => (
     active
-    ? css`
+      ? css`
       background: linear-gradient(274.14deg, #3FA54A 3.6%, #216628 97.69%);
       box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
       color: white;
       cursor: default;`
-    : css`background: #F2F2F2; 
-    color: #222222;` 
+      : css`background: #F2F2F2; 
+    color: #222222;`
   )}
   font-weight: bold;
   font-size: 14px;
@@ -316,10 +316,10 @@ export const FilterItem = styled.div`
 
   @media screen and (max-width: 991px) {
     ${({ active = false }) => (
-      active
+    active
       ? css`text-align: center;`
-      : css`text-align: center;` 
-    )}
+      : css`text-align: center;`
+  )}
   }
 
   @media screen and (max-width: 767px) {
@@ -359,10 +359,10 @@ export const CaseItemWrapper = styled.div`
 
   ${({ src }) => (
     src
-    ? css`background: 
+      ? css`background: 
       linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
       url(${src});`
-    : css`background: linear-gradient(270.99deg, #3FA54A 3.6%, #216628 97.69%);`
+      : css`background: linear-gradient(270.99deg, #3FA54A 3.6%, #216628 97.69%);`
   )}
   background-size: cover;
 

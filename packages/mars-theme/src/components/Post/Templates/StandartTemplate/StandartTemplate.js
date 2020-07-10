@@ -39,7 +39,7 @@ const StandartTemplate = ({ state, libraries }) => {
 
   let category_id = 1;
   if (post.categories && post.categories.length > 0) {
-    post.categories.map((item, index) => {
+    post.categories.map((item) => {
       category_id = item;
     });
   }
@@ -47,7 +47,6 @@ const StandartTemplate = ({ state, libraries }) => {
 
   const dataMore = state.source.get('/blog/');
 
-  console.log(post)
   return (
     <WrapperPage>
       <BigFrame image={Image}>

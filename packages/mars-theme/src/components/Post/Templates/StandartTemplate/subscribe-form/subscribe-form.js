@@ -10,7 +10,7 @@ import {
   FText,
   InputGroup,
   ErrorText,
-  RecaptchaText
+  RecaptchaText,
 } from './styles';
 
 function validateEmail(email) {
@@ -18,14 +18,14 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-const SubscribeForm = ({actions, state}) => {
+const SubscribeForm = ({ actions, state }) => {
   const preErrors = {
-    FNAME : false,
-    EMAIL : false,
+    FNAME: false,
+    EMAIL: false,
   };
   const preForm = {
-    FNAME : '',
-    EMAIL : '',
+    FNAME: '',
+    EMAIL: '',
   };
 
   const [formError, setFormErrorState] = useState(preErrors);
@@ -48,9 +48,9 @@ const SubscribeForm = ({actions, state}) => {
   const submitForm = (e) => {
     e.preventDefault();
     if (validForm()) {
-      let formData = new FormData();
-      formData.append('FNAME',formState.FNAME);
-      formData.append('EMAIL',formState.EMAIL);
+      const formData = new FormData();
+      formData.append('FNAME', formState.FNAME);
+      formData.append('EMAIL', formState.EMAIL);
       actions.theme.sendSubscribe(formData);
       setFormErrorState(preErrors);
       setFormState(preForm);
@@ -66,7 +66,7 @@ const SubscribeForm = ({actions, state}) => {
 
     const errorObj = {};
     const type = e.target.attributes.getNamedItem('type').value;
-    let optional = false;
+    const optional = false;
 
     if (type === 'email') {
       if (!validateEmail(inputValue) && !optional) {
@@ -98,28 +98,26 @@ const SubscribeForm = ({actions, state}) => {
         <Input
           name="FNAME"
           placeholder="Name*"
-          error={formError["FNAME"]}
-          onChange={(e) => handleChangeInput(e, "FNAME")}
-          value={formState["FNAME"]}
+          error={formError.FNAME}
+          onChange={(e) => handleChangeInput(e, 'FNAME')}
+          value={formState.FNAME}
         />
-        { formError['FNAME']
+        { formError.FNAME
           ? <ErrorText>Field is required</ErrorText>
-          : null
-        }
+          : null}
       </InputGroup>
       <InputGroup>
         <Input
           type="email"
           name="EMAIL"
           placeholder="Email*"
-          error={formError["EMAIL"]}
-          onChange={(e) => handleChangeInput(e, "EMAIL")}
-          value={formState["EMAIL"]}
+          error={formError.EMAIL}
+          onChange={(e) => handleChangeInput(e, 'EMAIL')}
+          value={formState.EMAIL}
         />
-        { formError['EMAIL']
+        { formError.EMAIL
           ? <ErrorText>Field is required</ErrorText>
-          : null
-        }
+          : null}
       </InputGroup>
       <Description>
         Subcribing to our blog you agree with our
@@ -127,9 +125,18 @@ const SubscribeForm = ({actions, state}) => {
       </Description>
       <SubmitButton color="yellow">Subscribe</SubmitButton>
       <RecaptchaText>
-        This site is protected by reCAPTCHA and the Google <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+        This site is protected by reCAPTCHA and the Google
+        {' '}
+        <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a>
+        {' '}
+        and
+        {' '}
+        <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a>
+        {' '}
+        apply.
       </RecaptchaText>
     </Form>
-  )};
+  );
+};
 
 export default connect(SubscribeForm);
