@@ -32,42 +32,50 @@ import {
   GalleryImageContainer,
   GalleryImage,
 } from './styles';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 
 const AboutUsTemplate = ({ state, libraries }) => {
-    const dataP = state.source.get(state.router.link);
-    const post = state.source[dataP.type][dataP.id];
+  const dataP = state.source.get(state.router.link);
+  const post = state.source[dataP.type][dataP.id];
 
-    const mediaObj = state.source.attachment[post.featured_media];
-    let bgImg = Image;
-    if(mediaObj) bgImg = mediaObj.source_url;
+  const mediaObj = state.source.attachment[post.featured_media];
+  let bgImg = Image;
+  if (mediaObj) bgImg = mediaObj.source_url;
 
-    const { acf = {} } = post;
-    const {
-        awards = {},
-        testimonials = {},
-        gallery = {},
-    } = acf;
+  const { acf = {} } = post;
+  const {
+    awards = {},
+    testimonials = {},
+    gallery = {},
+  } = acf;
 
-    let subawards = [];
-    let size = 10;
-    for (let i = 0; i < Math.ceil(awards.length/size); i++){
-        subawards[i] = awards.slice((i*size), (i*size) + size);
-    }
+  const subawards = [];
+  let size = 10;
+  for (let i = 0; i < Math.ceil(awards.length / size); i++) {
+    subawards[i] = awards.slice((i * size), (i * size) + size);
+  }
 
-    let subgallery = [];
-    size = 8;
-    for (let i = 0; i < Math.ceil(gallery.length/size); i++){
-        subgallery[i] = gallery.slice((i*size), (i*size) + size);
-    }
+  const subgallery = [];
+  size = 8;
+  for (let i = 0; i < Math.ceil(gallery.length / size); i++) {
+    subgallery[i] = gallery.slice((i * size), (i * size) + size);
+  }
 
-    const Html2React = libraries.html2react.Component;
+  const Html2React = libraries.html2react.Component;
 
-    console.log(subawards);
+  console.log(subawards);
 
   return (
     <GlobalContainer>
         <BigFrameContainer title={post.content.rendered} image={bgImg}/>
+        <Container style={{ padding: 0 }}>
+          <Breadcrumbs links={[{
+            name: 'About',
+            link: '#',
+          }]}
+          />
+        </Container>
         <AwardsGlobalContainer>
             <BigTitle title="Awards" />
             <Container>

@@ -1,20 +1,21 @@
 import { styled, css } from 'frontity';
 import CaseItem from '../ServicesTemplate/CaseItem';
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
+  width: 100%;
+`;
+
+export const ContainerWrapper = styled.div`
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  padding: 47px 0 101px 0;
 
   @media screen and (max-width: 991px) {
     max-width: 728px;
-    padding: 30px 0 100px 0;
   }
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
-    padding: 30px 10px 80px 10px;
   }
 
   * {

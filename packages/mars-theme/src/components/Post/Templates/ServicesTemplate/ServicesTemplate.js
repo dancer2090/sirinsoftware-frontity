@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
+import Breadcrumbs from '../../../Breadcrumbs';
 import {
   Wrapper,
   Container,
@@ -42,6 +43,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
     <Wrapper>
       <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
       <Container>
+        <Breadcrumbs links={[{ name: 'Services', link: '#' }]} />
         <ServicesList>
           { acf.services.map((item, index) => (
             <ServicesItem

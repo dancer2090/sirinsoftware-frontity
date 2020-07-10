@@ -56,17 +56,24 @@ export const Text = styled.button`
 
 export const Container = styled.section`
   width: 960px;
-  margin: 0;
-  margin-top: 30px;
-  padding: 1rem;
-  padding-top: 1.75rem;
+  margin: 30px auto 0 auto;
+  padding: 1.75rem 0;
   list-style: none;
   display: flex;
   justify-content:space-between;
   flex-wrap: wrap;
   position: relative;
+ 
   @media (max-width: 767px) {
     margin-top: 60px;
+  }
+  
+ @media screen and (max-width: 991px) {
+    max-width: 728px;
+  }
+
+  @media screen and (max-width: 767px) {
+    max-width: 100%;
   }
 `;
 

@@ -20,6 +20,7 @@ import Link from '../../../link';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
 import Image from '../../../../img/image.jpg';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 const StandartTemplate = ({ state, libraries }) => {
   // Get information about the current URL.
@@ -37,15 +38,16 @@ const StandartTemplate = ({ state, libraries }) => {
   const Html2React = libraries.html2react.Component;
 
   let category_id = 1;
-  if(post.categories && post.categories.length>0){
-    post.categories.map((item, index)=>{
+  if (post.categories && post.categories.length > 0) {
+    post.categories.map((item, index) => {
       category_id = item;
     });
   }
-  const category = state.source['category'][category_id];
+  const category = state.source.category[category_id];
 
   const dataMore = state.source.get('/blog/');
 
+  console.log(post)
   return (
     <WrapperPage>
       <BigFrame image={Image}>
@@ -56,6 +58,11 @@ const StandartTemplate = ({ state, libraries }) => {
         </Container>
       </BigFrame>
       <Container>
+        <Breadcrumbs links={[
+          { name: 'Blog', link: '/blog' },
+          { name: category.name, link: `/blog/${category.name.toLocaleLowerCase()}` },
+          { name: <Html2React html={post.title.rendered} />, link: '#' }]}
+        />
         <Wrapper>
           <ArticleLeft>
             <ArticleLeftHeader>
@@ -75,15 +82,15 @@ const StandartTemplate = ({ state, libraries }) => {
               Related posts
             </PostTitle>
             <PostList>
-              {dataMore.items.length>0 && dataMore.items.map((p_item,index)=>{
+              {dataMore.items.length > 0 && dataMore.items.map((p_item, index) => {
                 const sub_post = state.source[p_item.type][p_item.id];
                 const sp_title = sub_post.title.rendered;
-                const link = (sub_post ? sub_post.link : "");
+                const link = (sub_post ? sub_post.link : '');
                 return (
                   <PostItem href={link} key={sp_title}>
                     {sp_title}
                   </PostItem>
-                )
+                );
               })}
             </PostList>
             <SubscribeForm />

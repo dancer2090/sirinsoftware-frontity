@@ -1,11 +1,24 @@
 import { styled } from 'frontity';
 import SvgSprite from '../StandartTemplate/SvgSprite';
 
+export const Wrapper = styled.div`
+  padding: 57px 0 100px 0;
+  
+  @media screen and (max-width: 991px) {
+    max-width: 100%;
+    padding: 69px 20px 90px 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 29px 10px 80px 10px;
+  }
+`;
+
 export const Container = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
-  padding: 97px 0 100px 0;
+  padding-top: 10px;
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
@@ -17,11 +30,6 @@ export const Container = styled.div`
 
   @media screen and (max-width: 991px) {
     max-width: 100%;
-    padding: 69px 20px 90px 20px;
-  }
-
-  @media screen and (max-width: 767px) {
-    padding: 29px 10px 80px 10px;
   }
 `;
 

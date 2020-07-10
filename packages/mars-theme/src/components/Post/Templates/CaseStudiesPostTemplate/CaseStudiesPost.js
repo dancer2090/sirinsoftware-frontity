@@ -27,6 +27,7 @@ import {
   CaseItemTitle,
   CaseContent,
 } from './styles';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -78,7 +79,12 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
           </FrameTitle>
         </FrameContent>
       </ContainerFrame>
+
       <Container>
+        <Breadcrumbs links={[
+          { name: 'Case Studies', link: '/case-studies' },
+          { name: <Html2React html={post.title.rendered} />, link: '#' }]}
+        />
         <ClientBlock>
           <ClientItem>
             <ClientTitle>
