@@ -11,7 +11,7 @@ const List = ({ state, actions }) => {
   return (
     <>
       {data.isArchive && data.type === 'portfolio' && <CaseStudiesTemplate />}
-      {data.isArchive && data.type === 'post' && <BlogListTemplate />}
+      {data.isArchive && (data.type === 'post' || data.items[0].type === "post") && <BlogListTemplate />}
       {data.isArchive && data.type === 'teammembers' && <TeamMembers />}
     </>
   );
