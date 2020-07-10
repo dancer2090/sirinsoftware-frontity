@@ -39,6 +39,18 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
 
   const post = state.source[data.type][data.id];
   const { acf = {} } = post;
+  const {
+    post_featured_image = "",
+    archive_featured_image = {},
+    portfolio_client_title = "",
+    portfolio_business_area = "",
+    portfolio_geography = "",
+    embedded_linux_technology_list = [],
+    portfolio_client_background = "",
+    portfolio_business_challenge = "",
+    portfolio_solution = "",
+    portfolio_value_delivered = "",
+  } = acf;
 
   let category_id = 0; // значение по умолчанию
   if (post['portfolio-cat'] && post['portfolio-cat'].length > 0) {
@@ -54,14 +66,13 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
     actions.source.fetch(`/case-studies-cat/${category_slug}/`);
   }, []);
 
-  const { cases = [] } = state.theme;
-  const { items = [] } = state.source.get(`/case-studies-cat/${category_slug}/`);
+  const { items = slidesStudies } = state.source.get(`/case-studies-cat/${category_slug}/`);
 
   const postsRight = items.map((item) => state.source[item.type][item.id]);
 
   return (
     <Wrapper>
-      <ContainerFrame src={acf.post_featured_image}>
+      <ContainerFrame src={post_featured_image}>
         <FrameContent>
           <FrameTitle>
             <Html2React html={post.title.rendered} />
@@ -80,7 +91,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               Client
             </ClientTitle>
             <ClientDescription>
-              <Html2React html={acf.portfolio_client_title} />
+              <Html2React html={portfolio_client_title} />
             </ClientDescription>
           </ClientItem>
           <ClientItem>
@@ -88,7 +99,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               Business area
             </ClientTitle>
             <ClientDescription>
-              <Html2React html={acf.portfolio_business_area} />
+              <Html2React html={portfolio_business_area} />
             </ClientDescription>
           </ClientItem>
           <ClientItem>
@@ -96,7 +107,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               GEOGRAPHY
             </ClientTitle>
             <ClientDescription>
-              <Html2React html={acf.portfolio_geography} />
+              <Html2React html={portfolio_geography} />
             </ClientDescription>
           </ClientItem>
         </ClientBlock>
@@ -106,11 +117,11 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             <CardSet
               title="Technology set"
               nameSvg="set-one"
-              list={acf.embedded_linux_technology_list}
+              list={embedded_linux_technology_list}
             />
 
             {
-              acf.portfolio_client_background
+              portfolio_client_background
                 && (
                 <Title nameSvg="portfolio">
                   Clients
@@ -122,11 +133,11 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             }
 
             <Text>
-              <Html2React html={acf.portfolio_client_background} />
+              <Html2React html={portfolio_client_background} />
             </Text>
 
             <BusinesCard>
-              <Html2React html={acf.portfolio_business_challenge} />
+              <Html2React html={portfolio_business_challenge} />
             </BusinesCard>
 
             <Title nameSvg="solution">
@@ -134,14 +145,14 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             </Title>
 
             <Text>
-              <Html2React html={acf.portfolio_solution} />
+              <Html2React html={portfolio_solution} />
             </Text>
 
             <CardSet
               title="Value delivered"
               nameSvg="set-two"
             >
-              <Html2React html={acf.portfolio_value_delivered} />
+              <Html2React html={portfolio_value_delivered} />
             </CardSet>
           </Content>
 
@@ -150,16 +161,24 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               Linux, embedded and IOT
             </PostTitle>
             {
-              postsRight.map((item, index) => (
-                <Post
-                  title={item.acf.category_for_green_line}
-                  href={item.link}
-                  key={index}
-                  index={postsRight.length - index}
-                >
-                  <Html2React html={item.title.rendered} />
-                </Post>
-              ))
+              postsRight.map((item, index) => {
+                const {
+                  acf = {},
+                  link = "",
+                  title = { rendered : "" },
+                } = item;
+                const { category_for_green_line = "" } = acf;
+                return (
+                  <Post
+                    title={category_for_green_line}
+                    href={link}
+                    key={index}
+                    index={postsRight.length - index}
+                  >
+                    <Html2React html={title.rendered} />
+                  </Post>
+                )
+               })
             }
           </PostsContent>
         </ContentWrapper>
@@ -167,7 +186,11 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
         <ContainerSlider>
           <CaseStudiesSlider>
             { slidesStudies.map((item, index) => {
-              const { acf = {} } = item;
+              const {
+                acf = {},
+                title = { rendered : "" },
+                link = "",
+              } = item;
               const { post_featured_image = {} } = acf;
               return (
                 <CaseItem
@@ -175,12 +198,12 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
                   src={post_featured_image}
                 >
                   <CaseItemTitle>
-                    <Html2React html={acf.portfolio_business_area} />
+                    <Html2React html={portfolio_business_area} />
                   </CaseItemTitle>
                   <CaseContent>
-                    <Html2React html={item.title.rendered} />
+                    <Html2React html={title.rendered} />
                   </CaseContent>
-                  <CaseLink link={item.link}>Learn more</CaseLink>
+                  <CaseLink link={link}>Learn more</CaseLink>
                 </CaseItem>
               );
             })}

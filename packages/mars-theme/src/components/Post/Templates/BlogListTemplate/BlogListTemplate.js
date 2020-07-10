@@ -30,8 +30,7 @@ const BlogListTemplate = ({ state, actions }) => {
 
   state.customSettings.customPostTotal = totalPages;
   const loadMore1 = () => {
-    console.log(1);
-    state.customSettings.blogLoadMore = true;
+    state.customSettings.blogLoadMore=true;
     actions.source.fetch(`${state.router.link}page/${state.customSettings.pageNumber}/`);
     state.customSettings.pageNumber += 1;
     if (state.customSettings.pageNumber - 1 === totalPages) setLoadMoreHidden(true);

@@ -27,9 +27,13 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
   const slidesStudies = caseStudies && caseStudies.items ? caseStudies.items.map((item) => state.source[item.type][item.id]) : [];
 
   const { acf = {} } = post;
+  const {
+    main_image = { url : "" },
+    main_text = "",
+  } = acf;
 
-  const bigFrameTitle = acf.main_text;
-  const bigFrameImage = acf.main_image.url;
+  const bigFrameTitle = main_text;
+  const bigFrameImage = main_image.url;
 
   useEffect(() => {
     actions.source.fetch('/case-studies/');
