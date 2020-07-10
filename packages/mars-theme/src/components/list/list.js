@@ -1,10 +1,10 @@
 import React from 'react';
-import { connect, decode } from 'frontity';
+import { connect } from 'frontity';
 import BlogListTemplate from '../Post/Templates/BlogListTemplate';
 import CaseStudiesTemplate from '../Post/Templates/CaseStudiesTemplate';
 import TeamMembers from '../Post/Templates/TeamMembers';
 
-const List = ({ state, actions }) => {
+const List = ({ state }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
 

@@ -17,10 +17,10 @@ export const Container = styled.div`
   transition-delay: .3s;
   transition: all .3s ease-in-out;
 
-  ${({active}) => (
+  ${({ active }) => (
     active
-    ? 'transform: none; opacity: 1;'
-    : null
+      ? 'transform: none; opacity: 1;'
+      : null
   )}
 
   @media screen and (max-width: 992px) {

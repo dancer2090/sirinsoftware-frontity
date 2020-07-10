@@ -14,7 +14,7 @@ const StyledButton = styled.button`
   background: linear-gradient(274.43deg, #FFB03A 3.6% , #FF9233 97.69%);
   font-style: normal;
   font-weight: 800;
-  font-size: 14 px;
+  font-size: 14px;
   color: #FFFFFF;
   outline: none;
   transition: all 0.5s ease-out;

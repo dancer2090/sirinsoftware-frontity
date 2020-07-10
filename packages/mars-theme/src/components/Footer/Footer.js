@@ -18,7 +18,7 @@ import {
   NavigationLine,
 } from './styled';
 
-const Footer = ({ state, libraries }) => {
+const Footer = ({ state }) => {
   const { footer_menu = {} } = state.theme.menu;
   const { items = [] } = footer_menu;
   const { acf = {} } = state.options;

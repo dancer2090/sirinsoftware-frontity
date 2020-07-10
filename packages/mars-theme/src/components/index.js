@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   Global, connect, Head,
 } from 'frontity';
 import Switch from '@frontity/components/switch';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Header from './Header';
 import Footer from './Footer';
 import List from './list';
@@ -13,7 +14,6 @@ import Modal from './Modal';
 import PageError from './page-error';
 import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
 
@@ -35,7 +35,7 @@ const Theme = ({ state, actions }) => {
   };
 
   const formRef = useRef(null);
-  const transparent = (state.router.link === "/" ? true : false);
+  const transparent = (state.router.link === '/');
 
   console.log(state);
 

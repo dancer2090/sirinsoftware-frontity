@@ -1,17 +1,17 @@
 export const nameCheck = [
   {
     reg: '',
-    validation: val => val.length === 0,
+    validation: (val) => val.length === 0,
     message: 'Field is required',
-  }
+  },
 ];
 
 export const companyCheck = [
   {
     reg: '',
-    validation: val => val.length === 0,
+    validation: (val) => val.length === 0,
     message: 'Field is required',
-  }
+  },
 ];
 
 export const emailCheck = [
@@ -30,7 +30,7 @@ export const emailCheck = [
 export const checkboxCheck = [
   {
     reg: '',
-    validation: val => val !== true,
+    validation: (val) => val !== true,
     message: '',
-  }
-]
+  },
+];

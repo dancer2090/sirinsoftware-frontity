@@ -96,7 +96,7 @@ export const ArtDate = styled(Text)`
     @media (max-width: 767px) {
       font-size: 12px;
       top:10px;
-      right: :${({ isOdd }) => (isOdd ? '19px' : '20px')};
+      right: ${({ isOdd }) => (isOdd ? '19px' : '20px')};
     }    
 `;
 export const BtnRead = styled.button`

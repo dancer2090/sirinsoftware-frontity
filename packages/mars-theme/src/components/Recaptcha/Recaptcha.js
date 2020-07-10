@@ -3,7 +3,6 @@ import { connect } from 'frontity';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const Recaptcha = ({ actions }) => {
-
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const tokenControl = async () => {

@@ -26,10 +26,6 @@ const Item = ({
   const Html2React = libraries.html2react.Component;
   const n = Math.floor(index / 2);
   const isOdd = (index === 1) ? true : index % 2 !== 0;
-  const months = ['January', 'February', 'March',
-    'April', 'May', 'June',
-    'July', 'August', 'September',
-    'October', 'November', 'December'];
 
   let isClGreen;
   if ((n % 2 === 0 && index === 2 * n + 1) || (n % 2 && index % 2 === 0)) {
@@ -44,27 +40,27 @@ const Item = ({
 
   const strDate = `${monthDay}.${mothValue}.${date.getFullYear()}`;
   const title = item.title.rendered;
-  const item_image = state.source['attachment'][item.acf.blog_image];
+  const item_image = state.source.attachment[item.acf.blog_image];
   const mediaObj = state.source.attachment[item.featured_media];
 
   let category_id = 1;
-  let category = {name:''};
-  if(item.categories && item.categories.length>0){
-    item.categories.map((p_item, index)=>{
+  let category = { name: '' };
+  if (item.categories && item.categories.length > 0) {
+    item.categories.map((p_item, index) => {
       category_id = p_item;
     });
-    category = state.source['category'][category_id];
+    category = state.source.category[category_id];
   }
   let bgImg = imgSrc;
-  if(item_image) bgImg = item_image.source_url;
-  else if(mediaObj) bgImg = mediaObj.source_url;
+  if (item_image) bgImg = item_image.source_url;
+  else if (mediaObj) bgImg = mediaObj.source_url;
 
   return (
     <Article isOdd={isOdd}>
       <ArtContainer>
-        <ImgContainer 
-          bgImage={bgImg}>
-        </ImgContainer>
+        <ImgContainer
+          bgImage={bgImg}
+        />
         <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>{category.name}</ArtCategory>
         <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>
         <Link link={item.link}>

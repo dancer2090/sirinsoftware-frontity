@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { connect, styled } from "frontity";
-import {
-  ModalBackground, ModalButton, ModalButtonWrapper, ModalText, ModalTitle, CModal,
-} from './styles';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'frontity';
 import Modal from 'react-modal';
+import {
+  ModalButton, ModalButtonWrapper, ModalText, ModalTitle, CModal,
+} from './styles';
 
 // http://reactcommunity.org/react-modal/accessibility/
 Modal.setAppElement('#root');
- 
-function ModalComponent({title, text, isOpen, afterOpen, handleClose, state, libraries}) {
+
+function ModalComponent({
+  title, text, isOpen, afterOpen, handleClose, libraries,
+}) {
   const customStyles = {
     content: {
       top: '50%',
@@ -19,7 +20,7 @@ function ModalComponent({title, text, isOpen, afterOpen, handleClose, state, lib
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       padding: '0',
-      borderRadius: 'none'
+      borderRadius: 'none',
     },
     overlay: {
       position: 'fixed',
@@ -29,7 +30,7 @@ function ModalComponent({title, text, isOpen, afterOpen, handleClose, state, lib
       bottom: '0px',
       background: 'rgba(30, 30, 30, 0.9)',
       zIndex: '1000',
-    }
+    },
   };
   const Html2React = libraries.html2react.Component;
   return (
@@ -46,7 +47,7 @@ function ModalComponent({title, text, isOpen, afterOpen, handleClose, state, lib
           <ModalText><Html2React html={text} /></ModalText>
           <ModalButtonWrapper>
             <ModalButton onClick={handleClose}>
-              <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z" /></svg>
             </ModalButton>
           </ModalButtonWrapper>
         </CModal>

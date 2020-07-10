@@ -6,8 +6,8 @@ import {
   BigFrameImage,
   BigFrameContent,
 } from './styles';
-const BigFrameContainer = ({title, image, libraries}) => {
 
+const BigFrameContainer = ({ title, image, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
@@ -22,7 +22,7 @@ const BigFrameContainer = ({title, image, libraries}) => {
         </div>
       </BigFrameContent>
     </BigFrame>
-  )
-}
+  );
+};
 
 export default connect(BigFrameContainer);

@@ -6,22 +6,21 @@ import {
   Name,
 } from './styles';
 
-const Breadcrumbs = ({ links = [] }) => {
-  return (
-    <Container itemscope itemtype="https://schema.org/BreadcrumbList">
-      <Li
-        itemprop="itemListElement"
-        itemscope
-        itemtype="https://schema.org/ListItem"
-      >
-        <Item itemprop="item" link="/">
-          <Name itemprop="name">
-            Main
-          </Name>
-        </Item>
-        <meta itemProp="position" content="1" />
-      </Li>
-      {
+const Breadcrumbs = ({ links = [] }) => (
+  <Container itemscope itemtype="https://schema.org/BreadcrumbList">
+    <Li
+      itemprop="itemListElement"
+      itemscope
+      itemtype="https://schema.org/ListItem"
+    >
+      <Item itemprop="item" link="/">
+        <Name itemprop="name">
+          Main
+        </Name>
+      </Item>
+      <meta itemProp="position" content="1" />
+    </Li>
+    {
         links.map((item, index) => (
           <Li
             key={index}
@@ -38,8 +37,7 @@ const Breadcrumbs = ({ links = [] }) => {
           </Li>
         ))
       }
-    </Container>
-  );
-};
+  </Container>
+);
 
 export default Breadcrumbs;

@@ -2,7 +2,7 @@ import {
   nameCheck,
   companyCheck,
   emailCheck,
-  checkboxCheck
+  checkboxCheck,
 } from './checkValidate';
 
 
@@ -11,9 +11,9 @@ export const validateFieldName = (name) => {
   nameCheck.forEach((el) => {
     if (el.validation(name, el.reg)) error.push(el.message);
   });
-  
+
   return error.length ? error[0] : '';
-}
+};
 
 export const validateFieldCompany = (company) => {
   const error = [];
@@ -21,9 +21,9 @@ export const validateFieldCompany = (company) => {
   companyCheck.forEach((el) => {
     if (el.validation(company, el.reg)) error.push(el.message);
   });
-  
+
   return error.length ? error[0] : '';
-}
+};
 
 export const validateFieldEmail = (email) => {
   const error = [];
@@ -31,9 +31,9 @@ export const validateFieldEmail = (email) => {
   emailCheck.forEach((el) => {
     if (el.validation(email, el.reg)) error.push(el.message);
   });
-  
+
   return error.length ? error[0] : '';
-}
+};
 
 export const validateCheckbox = (value) => {
   const error = [];
@@ -42,5 +42,5 @@ export const validateCheckbox = (value) => {
     if (el.validation(value, el.reg)) error.push(el.message);
   });
 
-  return error.length ? true : false;
-}
+  return !!error.length;
+};

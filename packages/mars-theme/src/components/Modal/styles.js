@@ -1,14 +1,14 @@
 import { styled, css } from 'frontity';
 
 export const Content = styled.div`
-  top: '50%';
-  left: '50%';
-  right: 'auto';
-  bottom: 'auto';
-  marginRight: '-50%';
-  transform: 'translate(-50%, -50%)';
-  padding: '0';
-  borderRadius: 'none';
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  marginRight: -50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  borderRadius: none;
 `;
 export const CModal = styled.div`
   padding: 40px 50px;
