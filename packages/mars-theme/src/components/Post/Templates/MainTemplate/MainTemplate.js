@@ -56,8 +56,8 @@ const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
   const { acf = {} } = post;
   const {
     main_title = "",
-    main_bg = {},
-    main_icon = {},
+    main_bg = { url : "" },
+    main_icon = { url : "" },
     main_button = "",
     services = {},
     left_text = "",
@@ -75,8 +75,8 @@ const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
 
   const Html2React = libraries.html2react.Component;
   const case_studies_null = state.source.get('/case-studies/');
-  let case_studies = [];
-  case_studies = case_studies_null.items.slice(0,4);
+  let case_studies = case_studies_null.items.slice(0,4);
+
   const scrollToRef = () => {
     if (scrollRef) {
       window.scrollTo({
@@ -106,11 +106,15 @@ const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
           <BigTitle title="Services" />
           <Container>
             <ServicesList>
-              {services && services.map((service, k)=>(
-                <ServicesItem src={service.bg.url} link="/services" key={service.url}>
+              {services && services.map((service, k)=>{
+                const {
+                  bg = { url : "" }
+                } = service;
+                return (
+                <ServicesItem src={bg.url} link="/services" key={service.url}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
-              ))}
+              )})}
             </ServicesList>
           </Container>
         </ServicesGlobalContainer>
@@ -184,11 +188,13 @@ const MainTemplate = ({ state, libraries, actions, scrollRef = null }) => {
           <BigTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)"/>
           <Container>
             <ClientsGallery>
-              {clients && clients.map((client,key)=>(
+              {clients && clients.map((client,key)=>{
+                const { image = { url : "" } } = client;
+                return (
                 <ClientContainer link={client.url} key={client.url+key}>
-                  <Client src={client.image.url} />
+                  <Client src={image.url} />
                 </ClientContainer>
-              ))}
+              )})}
             </ClientsGallery>
           </Container>
         </ClientsGlobalContainer>

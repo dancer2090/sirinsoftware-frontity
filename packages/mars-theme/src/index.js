@@ -107,8 +107,10 @@ const marsTheme = {
       },
       sendFormGuide: ({ state }) => async (data) => {
         console.log(state);
-        const dataForm = data.formData;
+        const dataForm = data;
         console.log(state.theme.recaptchaToken);
+        console.log(dataForm);
+        console.log(data);
         dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         try {
           const result = await axios.post(
@@ -161,12 +163,7 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ state, actions, libraries }) => {
-        if(
-          !state.router.link.indexOf('/services/')
-          && state.router.link !== '/services/'
-        ) {
-          actions.router.set('/services/');
-        }
+
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
 
@@ -215,9 +212,6 @@ const marsTheme = {
           await actions.source.fetch('/blog');
         }
 
-        const random_cases = await axios.get(`${state.source.api}/frontity-api/random-case`);
-        state.theme.cases = random_cases.data || {};
-
         const { urlCheck } = libraries.func;
         const replaces = [state.frontity.url, state.frontity.adminUrl];
         const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);
@@ -233,9 +227,11 @@ const marsTheme = {
           return item;
         });
 
-
         const footerData = await axios.get(`${state.source.api}/menus/v1/menus/4`);
         state.theme.menu.footer_menu = footerData.data;
+      },
+      afterSSR: async ({ state, actions, libraries }) => {
+
       },
     },
   },

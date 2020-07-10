@@ -92,32 +92,37 @@ const AboutUsTemplate = ({ state, libraries }) => {
             <BigTitle title="Testimonials" />
             <Container>
                 <TestimonialsContainer>
-                    {testimonials && testimonials.length>0 && testimonials.map((item, k) => (
-                        <TestimonialsItem key={k+item.logo.url}>
-                            <TestimonialsLeft>
-                                <TestimonialsLogo src={item.logo.url} />
-                                <TestimonialsPhoto src={item.photo.url} />
-                            </TestimonialsLeft>
-                            <TestimonialsRight>
-                                <TestimonialsRightContainer>
-                                    <TestimonialsText>
-                                        <TestimonialsTextStart>
-                                            “
-                                        </TestimonialsTextStart>
-                                        <TestimonialsTextContent>
-                                            <Html2React html={item.text} />
-                                        </TestimonialsTextContent>
-                                        <TestimonialsTextEnd>
-                                            “
-                                        </TestimonialsTextEnd>
-                                    </TestimonialsText>
-                                    <TestimonialsSignature>
-                                        {item.signature}
-                                    </TestimonialsSignature>
-                                </TestimonialsRightContainer>
-                            </TestimonialsRight>
-                        </TestimonialsItem>
-                    ))}
+                    {testimonials && testimonials.length>0 && testimonials.map((item, k) => {
+                      const {
+                        logo = { url : "" },
+                        photo = { url : "" },
+                      } = item;
+                      return (
+                      <TestimonialsItem key={k+logo.url}>
+                          <TestimonialsLeft>
+                              <TestimonialsLogo src={logo.url} />
+                              <TestimonialsPhoto src={photo.url} />
+                          </TestimonialsLeft>
+                          <TestimonialsRight>
+                              <TestimonialsRightContainer>
+                                  <TestimonialsText>
+                                      <TestimonialsTextStart>
+                                          “
+                                      </TestimonialsTextStart>
+                                      <TestimonialsTextContent>
+                                          <Html2React html={item.text} />
+                                      </TestimonialsTextContent>
+                                      <TestimonialsTextEnd>
+                                          “
+                                      </TestimonialsTextEnd>
+                                  </TestimonialsText>
+                                  <TestimonialsSignature>
+                                      {item.signature}
+                                  </TestimonialsSignature>
+                              </TestimonialsRightContainer>
+                          </TestimonialsRight>
+                      </TestimonialsItem>
+                  )})}
                 </TestimonialsContainer>
             </Container>
         </TestimonialsGlobalContainer>
