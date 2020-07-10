@@ -1,10 +1,15 @@
-import { styled } from 'frontity';
+// import { styled } from 'frontity';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Item = styled.div`
+export const Item = styled.div.attrs(props => ({
+  itemType: props.propType,
+  itemProp: props.prop,
+  itemScope: props.scope
+}))`
   width: 100%;
 `;
 
@@ -22,7 +27,9 @@ export const ItemHeader = styled.div`
   }
 `;
 
-export const ItemTitle = styled.div`
+export const ItemTitle = styled.div.attrs(props => ({
+  itemProp: props.prop
+}))`
   font-size: 18px;
   line-height: 36px;
   color: #222222;
@@ -76,7 +83,11 @@ export const ItemBody = styled.div`
   transition: all .3s ease-in-out;
 `;
 
-export const ItemContent = styled.div`
+export const ItemContent = styled.div.attrs(props => ({
+  itemType: props.propType,
+  itemProp: props.prop,
+  itemScope: props.scope
+}))`
   padding: 33px 16px 14px 20px;
   font-family: 'Open Sans';
   font-size: 14px;
@@ -91,3 +102,7 @@ export const ItemContent = styled.div`
     padding: 35px 10px;
   }
 `;
+
+export const ItemText = styled.div.attrs(props => ({
+  itemProp: props.prop
+}))``;
