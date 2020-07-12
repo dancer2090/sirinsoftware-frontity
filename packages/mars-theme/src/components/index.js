@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   Global, connect, Head,
 } from 'frontity';
@@ -16,13 +16,13 @@ import FeedbackForm from './FeedbackForm';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
+import ServiceItem from './Post/Templates/ServiceItemTemplate';
 
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
  */
 const Theme = ({ state, actions }) => {
-  console.log(state);
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
@@ -37,7 +37,6 @@ const Theme = ({ state, actions }) => {
   const formRef = useRef(null);
   const transparent = (state.router.link === "/" ? true : false);
 
-  console.log(state);
 
   return (
     <>
@@ -76,6 +75,7 @@ const Theme = ({ state, actions }) => {
 
         <Main>
           <Switch>
+            <ServiceItem when={state.router.link === '/services/rd-center/'} />
             <Loader when={data.isFetching} />
             <List when={data.isArchive} />
             <Post scrollRef={formRef} when={data.isPostType} />
