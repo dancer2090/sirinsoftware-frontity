@@ -19,7 +19,7 @@ const settings = {
       name: "@frontity/google-tag-manager-analytics",
       state: {
         googleTagManagerAnalytics: {
-          containerId: "GTM-BCDFGHJ",
+          containerId: "GTM-PN5W3K4",
         },
       },
     },
