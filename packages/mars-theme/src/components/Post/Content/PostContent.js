@@ -10,6 +10,8 @@ import CaseStudiesPost from '../Templates/CaseStudiesPostTemplate';
 import FaqTemplate from '../Templates/FaqTemplate';
 import FullPageTemplate from '../Templates/FullPageTemplate';
 import BookTemplate from '../Templates/BookTemplate';
+import OtherTempalate from '../Templates/OtherTemplate';
+import Switch from '@frontity/components/switch';
 
 const PostContent = ({ state, actions, scrollRef = null }) => {
   const dataP = state.source.get(state.router.link);
@@ -27,16 +29,19 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
 
   return (
     <>
-      {state.router.link === '/' && <MainTemplate scrollRef={scrollRef} />}
-      {dataP.type === 'portfolio' && <CaseStudiesPost />}
-      {template === 'page-faq.php' && <FaqTemplate />}
-      {dataP.type === 'post' && template === 'standart' && state.router.link !== '/' && <StandartTemplate />}
-      {template === 'page-services-null.php' && <ServicesTemplate />}
-      {template === 'page-full.php' && <PageFullTemplate />}
-      {template === 'about-us.php' && <AboutUsTemplate />}
-      {template === 'contacts.php' && <ContactsTemplate />}
-      {template === 'page-full.php' && <FullPageTemplate />}
-      {template === 'page-book.php' && <BookTemplate />}
+      <Switch>
+        <MainTemplate scrollRef={scrollRef} when={state.router.link === '/'} />
+        <CaseStudiesPost when={dataP.type === 'portfolio'} />
+        <FaqTemplate when={template === 'page-faq.php'} />
+        <StandartTemplate when={dataP.type === 'post' && template === 'standart' && state.router.link !== '/'} />
+        <ServicesTemplate when={template === 'page-services-null.php'} />
+        <PageFullTemplate when={template === 'page-full.php'} />
+        <AboutUsTemplate when={template === 'about-us.php'} />
+        <ContactsTemplate when={template === 'contacts.php'} />
+        <FullPageTemplate when={template === 'page-full.php'} />
+        <BookTemplate when={template === 'page-book.php' } />
+        <OtherTempalate />
+      </Switch>
     </>
   );
 };
