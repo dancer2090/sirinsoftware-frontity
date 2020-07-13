@@ -26,18 +26,37 @@ export const Container = styled.div`
 
 export const Banner = styled.div`
   width: 100%;
-  min-height: 250px;
-  background: linear-gradient(272.07deg,#3FA44A 3.6%,#216628 97.69%);
+  min-height: 400px;
+  background: ${({ src }) => (
+    src
+    ? `url(${src});`
+    : 'linear-gradient(272.07deg,#3FA44A 3.6%,#216628 97.69%);'
+  )};
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  position: relative;
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background: linear-gradient(0deg,rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(22957.jpg);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    z-index: 1;
+  }
 
   @media screen and (max-width: 991px) {
-    min-height: 200px;
+    min-height: 300px;
   }
 
   @media screen and (max-width: 767px) {
-    min-height: 150px;
+    min-height: 250px;
   }
 `;
 
@@ -48,6 +67,8 @@ export const Title = styled.h1`
   text-transform: uppercase;
   font-size: 45px;
   line-height: 48px;
+  position: relative;
+  z-index: 2;
 
   @media screen and (max-width: 991px) {
     font-size: 35px;

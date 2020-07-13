@@ -16,7 +16,6 @@ import FeedbackForm from './FeedbackForm';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
-import ServiceItem from './Post/Templates/ServiceItemTemplate';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -75,7 +74,6 @@ const Theme = ({ state, actions }) => {
 
         <Main>
           <Switch>
-            <ServiceItem when={state.router.link === '/services/rd-center/'} />
             <Loader when={data.isFetching} />
             <List when={data.isArchive} />
             <Post scrollRef={formRef} when={data.isPostType} />
