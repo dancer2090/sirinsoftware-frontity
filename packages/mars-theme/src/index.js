@@ -182,14 +182,6 @@ const marsTheme = {
       },
       beforeSSR: async ({ state, actions, libraries }) => {
 
-        const { api } = libraries.source;
-
-        const postsCategories = await api.get({
-          endpoint: "posts",
-          params: { _embed: true, categories: "32, 47" },
-        });
-        console.log(postsCategories);
-
 
         actions.theme.alternativeUrlForImage();
 
