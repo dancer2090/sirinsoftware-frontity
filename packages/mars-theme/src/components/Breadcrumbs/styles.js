@@ -1,7 +1,10 @@
-import { styled } from 'frontity';
+import styled from 'styled-components';
 import Link from '../link';
 
-export const Container = styled.ol`
+export const Container = styled.ol.attrs(props => ({
+  itemScope: props.itemscope,
+  itemType: props.itemtype
+}))`
   width: 100%;
   padding: 15px 0;
   list-style: none;
@@ -10,7 +13,11 @@ export const Container = styled.ol`
   margin-bottom: 30px;
 `;
 
-export const Li = styled.li`
+export const Li = styled.li.attrs(props => ({
+  itemProp: props.itemprop,
+  itemScope: props.itemscope,
+  itemType: props.itemtype
+}))`
   padding: 0;
   margin: 0;
   display: inline;
@@ -33,7 +40,9 @@ export const Li = styled.li`
   }
 `;
 
-export const Item = styled(Link)`
+export const Item = styled(Link).attrs(props => ({
+  itemProp: props.itemprop,
+}))`
   color: black;
   transition: all .3s;
     
@@ -42,4 +51,6 @@ export const Item = styled(Link)`
   }
 `;
 
-export const Name = styled.span``;
+export const Name = styled.span.attrs(props => ({
+  itemProp: props.itemprop,
+}))``;

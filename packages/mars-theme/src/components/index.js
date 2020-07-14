@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   Global, connect, Head,
 } from 'frontity';
@@ -22,7 +22,6 @@ import UseCookiesModal from './UseCookiesModal';
  * in roots.
  */
 const Theme = ({ state, actions }) => {
-  console.log(state);
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
@@ -37,7 +36,6 @@ const Theme = ({ state, actions }) => {
   const formRef = useRef(null);
   const transparent = (state.router.link === "/" ? true : false);
 
-  console.log(state);
 
   return (
     <>

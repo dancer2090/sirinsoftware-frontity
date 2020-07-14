@@ -11,6 +11,7 @@ import FaqTemplate from '../Templates/FaqTemplate';
 import FullPageTemplate from '../Templates/FullPageTemplate';
 import BookTemplate from '../Templates/BookTemplate';
 import OtherTempalate from '../Templates/OtherTemplate';
+import ServiceItemTemplate from '../Templates/ServiceItemTemplate';
 import Switch from '@frontity/components/switch';
 
 const PostContent = ({ state, actions, scrollRef = null }) => {
@@ -18,14 +19,14 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
   const post = state.source[dataP.type][dataP.id];
   const template = (post.template !== '' ? post.template : 'standart');
 
-  useEffect(() => {
-    if(
-      !state.router.link.indexOf('/services/')
-      && state.router.link !== '/services/'
-    ) {
-      actions.router.set('/services/');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if(
+  //     !state.router.link.indexOf('/services/')
+  //     && state.router.link !== '/services/'
+  //   ) {
+  //     actions.router.set('/services/');
+  //   }
+  // }, []);
 
   return (
     <>
@@ -35,6 +36,7 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
         <FaqTemplate when={template === 'page-faq.php'} />
         <StandartTemplate when={dataP.type === 'post' && template === 'standart' && state.router.link !== '/'} />
         <ServicesTemplate when={template === 'page-services-null.php'} />
+        <ServiceItemTemplate when={template === 'services.php'} />
         <PageFullTemplate when={template === 'page-full.php'} />
         <AboutUsTemplate when={template === 'about-us.php'} />
         <ContactsTemplate when={template === 'contacts.php'} />

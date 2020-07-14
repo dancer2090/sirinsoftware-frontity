@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import styled from 'styled-components';
 import Sprite from '../Post/Templates/StandartTemplate/SvgSprite';
 import LinkComponent from '../link';
 
@@ -126,7 +126,10 @@ export const LinkItem = styled.div`
   }
 `;
 
-export const Info = styled.div`
+export const Info = styled.div.attrs(props => ({
+  itemScope: props.itemscope,
+  itemType: props.itemtype
+}))`
   margin-right: 50px;
 
   @media screen and (max-width: 991px) {
