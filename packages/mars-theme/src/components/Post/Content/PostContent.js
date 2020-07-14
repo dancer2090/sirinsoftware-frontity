@@ -10,6 +10,7 @@ import CaseStudiesPost from '../Templates/CaseStudiesPostTemplate';
 import FaqTemplate from '../Templates/FaqTemplate';
 import FullPageTemplate from '../Templates/FullPageTemplate';
 import BookTemplate from '../Templates/BookTemplate';
+import OtherTempalate from '../Templates/OtherTemplate';
 import ServiceItemTemplate from '../Templates/ServiceItemTemplate';
 import Switch from '@frontity/components/switch';
 
@@ -41,6 +42,7 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
         <ContactsTemplate when={template === 'contacts.php'} />
         <FullPageTemplate when={template === 'page-full.php'} />
         <BookTemplate when={template === 'page-book.php' } />
+        <OtherTempalate />
       </Switch>
     </>
   );
