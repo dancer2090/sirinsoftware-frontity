@@ -27,12 +27,12 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
         <FaqTemplate when={template === 'page-faq.php'} />
         <StandartTemplate when={dataP.type === 'post' && template === 'standart' && state.router.link !== '/'} />
         <ServicesTemplate when={template === 'page-services-null.php'} />
-        <ServiceItemTemplate when={template === 'services.php'} />
+        <ServiceItemTemplate scrollRef={scrollRef} when={template === 'services.php'} />
         <PageFullTemplate when={template === 'page-full.php'} />
         <AboutUsTemplate when={template === 'about-us.php'} />
         <ContactsTemplate when={template === 'contacts.php'} />
         <FullPageTemplate when={template === 'page-full.php'} />
-        <BookTemplate when={template === 'page-book.php' } />
+        <BookTemplate when={template === 'page-book.php'} />
         <OtherTempalate />
       </Switch>
     </>
