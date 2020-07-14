@@ -7,6 +7,7 @@ import {
   ItemTitle,
   ItemBody,
   ItemContent,
+  ItemText
 } from './styles';
 
 const Collapse = ({
@@ -26,9 +27,9 @@ const Collapse = ({
 
   return (
     <Container>
-      <Item itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <Item scope prop="mainEntity" propType="https://schema.org/Question">
         <ItemHeader>
-          <ItemTitle itemprop="name">
+          <ItemTitle prop="name">
             {data.question}
           </ItemTitle>
           <ItemIcon
@@ -38,8 +39,10 @@ const Collapse = ({
           />
         </ItemHeader>
         <ItemBody ref={content} style={{ maxHeight: height }}>
-          <ItemContent itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <Html2React html={data.description} itemprop="text" />
+          <ItemContent scope prop="acceptedAnswer" propType="https://schema.org/Answer">
+            <ItemText prop="text">
+              <Html2React html={data.description} />
+            </ItemText>
           </ItemContent>
         </ItemBody>
       </Item>
