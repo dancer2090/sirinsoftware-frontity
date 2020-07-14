@@ -47,7 +47,6 @@ const StandartTemplate = ({ state, libraries }) => {
 
   const dataMore = state.source.get('/blog/');
 
-  console.log(post)
   return (
     <WrapperPage>
       <BigFrame image={Image}>

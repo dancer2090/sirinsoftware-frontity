@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import styled from 'styled-components';
 import SvgSprite from '../StandartTemplate/SvgSprite';
 
 export const Wrapper = styled.div`
@@ -89,7 +89,10 @@ export const Description = styled.div`
   }
 `;
 
-export const Row = styled.div`
+export const Row = styled.div.attrs(props => ({
+  itemScope: props.itemscope,
+  itemType: props.itemtype,
+}))`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -184,7 +187,11 @@ export const CardList = styled.div`
   }
 `;
 
-export const CartAddress = styled.div`
+export const CartAddress = styled.div.attrs(props => ({
+  itemScope: props.itemscope,
+  itemType: props.itemtype,
+  itemProp: props.itemprop
+}))`
    @media (min-width: 767px) and (max-width: 991px) {
     max-width: 270px;
     width: 100%;
@@ -194,7 +201,9 @@ export const CartAddress = styled.div`
 
 export const CardInfo = styled.div``;
 
-export const CardItem = styled.div`
+export const CardItem = styled.div.attrs(props => ({
+  itemProp: props.itemprop
+}))`
   display: flex;
   margin-bottom: 15px;
 
