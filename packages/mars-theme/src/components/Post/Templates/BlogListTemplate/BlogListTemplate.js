@@ -10,6 +10,7 @@ import Breadcrumbs from '../../../Breadcrumbs';
 import { Wrapper, ContainerWrapper } from './styles';
 
 const BlogListTemplate = ({ state, actions }) => {
+  const [categoryName, setCategoryName] = useState('All categories');
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
   const { totalPages } = state.source.get(state.router.link);
@@ -30,11 +31,12 @@ const BlogListTemplate = ({ state, actions }) => {
 
   state.customSettings.customPostTotal = totalPages;
   const loadMore1 = () => {
-    state.customSettings.blogLoadMore=true;
+    state.customSettings.blogLoadMore = true;
     actions.source.fetch(`${state.router.link}page/${state.customSettings.pageNumber}/`);
     state.customSettings.pageNumber += 1;
     if (state.customSettings.pageNumber - 1 === totalPages) setLoadMoreHidden(true);
   };
+
   const categories = [];
   if (state.customSettings.categories.length > 0) {
     state.customSettings.categories.map((cat, index) => {
@@ -45,7 +47,12 @@ const BlogListTemplate = ({ state, actions }) => {
   return (
     <Wrapper>
       <ContainerWrapper>
-        <Breadcrumbs links={[{ name: 'Blog', link: '#' }]} />
+        <Breadcrumbs links={
+          categoryName === 'All categories' || categoryName === undefined
+            ? [{ name: 'Blog', link: '#' }]
+            : [{ name: 'Blog', link: '/blog' }, { name: categoryName, link: '#' }]
+        }
+        />
       </ContainerWrapper>
       <Container>
         {/* If the list is for a specific author, we render a title. */}
@@ -56,7 +63,7 @@ const BlogListTemplate = ({ state, actions }) => {
             <b>{decode(state.source.author[data.id].name)}</b>
           </Header>
         )}
-        <AllCAtegories items={categories} />
+        <AllCAtegories items={categories} onChange={(value) => setCategoryName(value)} />
         {/* Iterate over the items of the list. */}
         {megaItems.map(({ type, id }, index) => {
           const item = state.source[type][id];
