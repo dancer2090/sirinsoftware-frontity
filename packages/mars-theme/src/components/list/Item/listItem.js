@@ -24,6 +24,10 @@ const Item = ({
 }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
+
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
+
   const n = Math.floor(index / 2);
   const isOdd = (index === 1) ? true : index % 2 !== 0;
   const months = ['January', 'February', 'March',
@@ -56,8 +60,8 @@ const Item = ({
     category = state.source['category'][category_id];
   }
   let bgImg = imgSrc;
-  if(item_image) bgImg = item_image.source_url;
-  else if(mediaObj) bgImg = mediaObj.source_url;
+  if(item_image) bgImg = imageUrlCheck( item_image.source_url, urlsWithLocal );
+  else if(mediaObj) bgImg = imageUrlCheck( mediaObj.source_url, urlsWithLocal );
 
   return (
     <Article isOdd={isOdd}>

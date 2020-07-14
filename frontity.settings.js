@@ -12,7 +12,7 @@ const settings = {
       "title": "Sirinsoftware",
       "description": "WordPress installation for Frontity development",
       "replaceImageUrl": !!process.env.LOCAL ? [] : [process.env.ADMIN_URL, process.env.SITE_URL]
-    }
+    } 
   },
   "packages": [
     {

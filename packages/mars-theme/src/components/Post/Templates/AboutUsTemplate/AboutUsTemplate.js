@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect, styled } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import BigTitle from '../../../BigTitle';
@@ -35,13 +35,15 @@ import {
 import Breadcrumbs from '../../../Breadcrumbs';
 
 
-const AboutUsTemplate = ({ state, libraries }) => {
+const AboutUsTemplate = ({ state, libraries, actions }) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
 
   const mediaObj = state.source.attachment[post.featured_media];
   let bgImg = Image;
-  if (mediaObj) bgImg = mediaObj.source_url;
+  if (mediaObj) bgImg = imageUrlCheck( mediaObj.source_url, urlsWithLocal );
 
   const { acf = {} } = post;
   const {
@@ -64,8 +66,6 @@ const AboutUsTemplate = ({ state, libraries }) => {
 
   const Html2React = libraries.html2react.Component;
 
-  console.log(subawards);
-
   return (
     <GlobalContainer>
         <BigFrameContainer title={post.content.rendered} image={bgImg}/>
@@ -82,13 +82,16 @@ const AboutUsTemplate = ({ state, libraries }) => {
                 <AwardsContainer>
                     <AboutUsSlider>
                         {subawards && subawards.map((aitem, k) => (
-                          <AwardsGalleryItem>
+                          <AwardsGalleryItem key={k}>
                               <AwardsItem>
-                                {aitem && aitem.map((asubitem, k) => (
-                                    <AwardsImageContainer key={asubitem.url}>
-                                        <AwardsImage src={asubitem.image.url} />
-                                    </AwardsImageContainer>
-                                ))}
+                                {aitem && aitem.map((asubitem, k) => {
+                                  const awardsUrl = imageUrlCheck( asubitem.image.url, urlsWithLocal );
+                                  return (
+                                      <AwardsImageContainer key={k+asubitem.url}>
+                                          <AwardsImage src={ awardsUrl } />
+                                      </AwardsImageContainer>
+                                  )
+                                })}
                               </AwardsItem>
                           </AwardsGalleryItem>
                         ))}
@@ -105,11 +108,13 @@ const AboutUsTemplate = ({ state, libraries }) => {
                         logo = { url : "" },
                         photo = { url : "" },
                       } = item;
+                      const logoUrl = imageUrlCheck( logo.url, urlsWithLocal );
+                      const photoUrl = imageUrlCheck( photo.url, urlsWithLocal );
                       return (
                       <TestimonialsItem key={k+logo.url}>
                           <TestimonialsLeft>
-                              <TestimonialsLogo src={logo.url} />
-                              <TestimonialsPhoto src={photo.url} />
+                              <TestimonialsLogo src={logoUrl} />
+                              <TestimonialsPhoto src={photoUrl} />
                           </TestimonialsLeft>
                           <TestimonialsRight>
                               <TestimonialsRightContainer>
@@ -141,11 +146,14 @@ const AboutUsTemplate = ({ state, libraries }) => {
                     {subgallery && subgallery.length>0 && subgallery.map((item, k) => (
                         <div>
                             <GalleryItem key={k+"galleryItem"}>
-                                {item && item.length>0 && item.map((subitem, k) => (
-                                    <GalleryImageContainer key={k+subitem.url}>
-                                        <GalleryImage src={subitem.url} />
-                                    </GalleryImageContainer>
-                                ))}
+                                {item && item.length>0 && item.map((subitem, k) => {
+                                  const subItemUrl = imageUrlCheck( subitem.url, urlsWithLocal )
+                                  return (
+                                      <GalleryImageContainer key={k+subitem.url}>
+                                          <GalleryImage src={subItemUrl} />
+                                      </GalleryImageContainer>
+                                  )
+                                })}
                             </GalleryItem>
                         </div>
                     ))}

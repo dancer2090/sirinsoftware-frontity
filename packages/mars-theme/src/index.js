@@ -5,7 +5,7 @@ import axios from 'axios';
 import Theme from './components';
 import imageUrl from './processors/imageUrl';
 import linkUrls from './processors/linkUrls';
-import { linkReplace } from './utils/func';
+import { linkReplace, linkImageReplace } from './utils/func';
 
 const newHandler = {
   name: 'categoryOrPostType',
@@ -54,6 +54,7 @@ const marsTheme = {
      */
     customSettings: {
       pageNumber: 2,
+      urlsWithLocal: {},
       categories: {},
       isSubscribeSend: false,
       isFormSend: false,
@@ -78,11 +79,19 @@ const marsTheme = {
    */
   actions: {
     theme: {
+      alternativeUrlForImage: ({ state }) => () => {
+        const urls = {
+          urlFrom : state.frontity.adminUrl,
+          urlTo : state.frontity.url,
+          isLocal : state.frontity.isLocal,
+        }
+        state.customSettings.urlsWithLocal = urls;
+      },
       setRecaptchaToken: ({ state }) => (token) => {
         state.theme.recaptchaToken = token;
       },
       loadMore: ({ state }) => async () => {
-        state.seatbackapi.pageNumber += 1;
+        state.customSettings.pageNumber += 1;
       },
       toggleMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
@@ -112,6 +121,14 @@ const marsTheme = {
         console.log(dataForm);
         console.log(data);
         dataForm.append('recaptchaToken', state.theme.recaptchaToken);
+        await axios.post(
+          `${state.source.api}/frontity-api/sendbookdata`,
+          dataForm,
+          { headers: { 'content-type': 'application/json' } },
+        ).then((response) => {
+          console.log(response);
+        });
+        /*
         try {
           const result = await axios.post(
             `${state.source.api}/frontity-api/sendbookdata`,
@@ -125,6 +142,7 @@ const marsTheme = {
         } catch(error) {
           console.log(error)
         }
+        */
 
         state.customSettings.sendFormGuide = true;
       },
@@ -163,6 +181,17 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ state, actions, libraries }) => {
+
+        const { api } = libraries.source;
+
+        const postsCategories = await api.get({
+          endpoint: "posts",
+          params: { _embed: true, categories: "32, 47" },
+        });
+        console.log(postsCategories);
+
+
+        actions.theme.alternativeUrlForImage();
 
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
         state.options = optionPage.data;
@@ -230,14 +259,12 @@ const marsTheme = {
         const footerData = await axios.get(`${state.source.api}/menus/v1/menus/4`);
         state.theme.menu.footer_menu = footerData.data;
       },
-      afterSSR: async ({ state, actions, libraries }) => {
-
-      },
     },
   },
   libraries: {
     func: {
       urlCheck: linkReplace,
+      imageUrlCheck: linkImageReplace,
     },
     source: {
       handlers: [newHandler],

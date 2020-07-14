@@ -16,14 +16,9 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
   const post = state.source[dataP.type][dataP.id];
   const template = (post.template !== '' ? post.template : 'standart');
 
-  useEffect(() => {
-    if(
-      !state.router.link.indexOf('/services/')
-      && state.router.link !== '/services/'
-    ) {
-      actions.router.set('/services/');
-    }
-  }, []);
+/*  useEffect(() => {
+
+  }, []);*/
 
   return (
     <>
