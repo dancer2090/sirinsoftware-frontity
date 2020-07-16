@@ -15,6 +15,8 @@ import {
   CaseItemTitle,
   CaseContent,
 } from './styles';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const ServicesTemplate = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -39,6 +41,8 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
     actions.source.fetch('/case-studies/');
   }, []);
 
+  const faqArray = filterQuestions(state, data.id);
+  
   return (
     <Wrapper>
       <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
@@ -84,6 +88,8 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
             </CaseSlider>
           </CaseContainer>
         )}
+
+        <CollapseList elements={faqArray} libraries={libraries} />
       </Container>
     </Wrapper>
   );

@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'frontity';
 import {
   Wrapper, 
+  Container,
   Banner,
   FilterContainer,
 } from './styles';
 import Items from './TeamMembersItem';
 import bg from '../../../../img/engenners-bg.jpg';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const TeamMembers = ({ state }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,6 +17,8 @@ const TeamMembers = ({ state }) => {
   const data = state.source.get(state.router.link);
   const { items = {} } = data;
   const { totalPages } = data;
+
+  const faqArray = filterQuestions(state, data.id);
 
   let fullTeams = items;
   let currentData;
@@ -132,6 +137,10 @@ const TeamMembers = ({ state }) => {
       <div className="container">
         <Items teams={showTeams} />
       </div>
+
+      <Container>
+        <CollapseList elements={faqArray} libraries={libraries} />
+      </Container>
     </Wrapper>
   )
 }

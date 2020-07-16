@@ -97,7 +97,8 @@ export const Row = styled.div.attrs(props => ({
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  margin-bottom: 60px;
+  
   @media screen and (max-width: 767px) {
     margin: 0 -10px;
   }

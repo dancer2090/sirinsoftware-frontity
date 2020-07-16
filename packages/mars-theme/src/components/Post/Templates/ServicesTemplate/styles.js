@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   max-width: 960px;
   margin: 0 auto;
+  padding-bottom: 40px;
 
   @media screen and (max-width: 991px) {
     max-width: 728px;
@@ -22,7 +23,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
-    padding: 0 10px;
+    padding: 0 10px 30px 10px;
   }
 `;
 

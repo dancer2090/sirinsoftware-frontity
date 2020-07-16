@@ -20,8 +20,10 @@ import {
 } from './styles';
 import CaseBox from '../../../../img/case-box.svg';
 import Breadcrumbs from '../../../Breadcrumbs';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
-const CaseStudies = ({ state, actions }) => {
+const CaseStudies = ({ state, actions, libraries }) => {
   const data = [];
   const dataCat = [];
   dataCat[0] = 'All';
@@ -33,13 +35,14 @@ const CaseStudies = ({ state, actions }) => {
   const { totalPages } = state.source.get(state.router.link);
   let megaItems = dataList.items;
   let currentData;
-  console.log(totalPages);
+  
   for (let i = 2; i <= totalPages; i++) {
     currentData = state.source.get(`${state.router.link}page/${i}`);
     if (currentData.isReady) {
       megaItems = megaItems.concat(currentData.items);
     }
   }
+
   megaItems.map((item, k) => {
     const post = state.source.get(`${item.link}`);
     const p_item = state.source[post.type][post.id];
@@ -107,6 +110,8 @@ const CaseStudies = ({ state, actions }) => {
     }
   }, []);
 
+  const faqArray = filterQuestions(state, data.id);
+
   return (
     <Container>
       <Breadcrumbs links={[{ name: 'Case studies', link: '#' }]} />
@@ -163,6 +168,8 @@ const CaseStudies = ({ state, actions }) => {
           </LastItem>
         )}
       </CaseWrapper>
+
+      <CollapseList elements={faqArray} libraries={libraries} />
     </Container>
   );
 };

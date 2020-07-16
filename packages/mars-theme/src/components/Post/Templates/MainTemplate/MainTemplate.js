@@ -39,7 +39,8 @@ import {
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
 import Triangle from '../../../../img/main_triangle.svg';
-
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const MainTemplate = ({
   state, libraries, actions, scrollRef = null,
@@ -80,6 +81,8 @@ const MainTemplate = ({
       });
     }
   };
+
+  const faqArray = filterQuestions(state, dataP.id);
 
   return (
     <GlobalContainer>
@@ -209,6 +212,10 @@ const MainTemplate = ({
           </ClientsGallery>
         </Container>
       </ClientsGlobalContainer>
+    
+      <Container>
+        <CollapseList elements={faqArray} libraries={libraries} />
+      </Container>
     </GlobalContainer>
   );
 };

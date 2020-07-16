@@ -6,6 +6,7 @@ import Link from '../../../link';
 export const GlobalContainer = styled.div`
   display: block;
   width: 100%;
+  padding-bottom: 30px;
 `;
 
 export const Container = styled.div`

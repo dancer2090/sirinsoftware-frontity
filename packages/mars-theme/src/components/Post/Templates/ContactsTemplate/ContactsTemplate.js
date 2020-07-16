@@ -16,6 +16,8 @@ import {
 } from './styles';
 import oneBg from '../../../../img/kiyv.svg';
 import twoBg from '../../../../img/usa.svg';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const ContactsTemplate = ({ state, libraries }) => {
   // Get information about the current URL.
@@ -28,6 +30,8 @@ const ContactsTemplate = ({ state, libraries }) => {
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
+
+  const faqArray = filterQuestions(state, dataContent.id);
 
   return (
     <Container>
@@ -72,6 +76,8 @@ const ContactsTemplate = ({ state, libraries }) => {
             </Card>
           ))}
         </Row>
+
+        <CollapseList elements={faqArray} libraries={libraries} />
       </Wrapper>
     </Container>
   );

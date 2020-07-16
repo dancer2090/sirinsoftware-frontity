@@ -33,7 +33,8 @@ import {
   GalleryImage,
 } from './styles';
 import Breadcrumbs from '../../../Breadcrumbs';
-
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const AboutUsTemplate = ({ state, libraries, actions }) => {
   const dataP = state.source.get(state.router.link);
@@ -65,6 +66,8 @@ const AboutUsTemplate = ({ state, libraries, actions }) => {
   }
 
   const Html2React = libraries.html2react.Component;
+
+  const faqArray = filterQuestions(state, dataP.id);
 
   return (
     <GlobalContainer>
@@ -160,6 +163,10 @@ const AboutUsTemplate = ({ state, libraries, actions }) => {
                 </AboutUsSlider>
             </GalleryContainer>
         </GalleryGlobalContainer>
+      
+      <Container>
+        <CollapseList elements={faqArray} libraries={libraries} />
+      </Container>
     </GlobalContainer>
   );
 };

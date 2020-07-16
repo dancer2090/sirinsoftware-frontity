@@ -191,6 +191,8 @@ const marsTheme = {
         const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
         state.customSettings.categories = categories.data;
 
+        await actions.source.fetch('/about/faq');
+        
         if (state.router.link.includes('/services/')) {
           await actions.source.fetch('/case-studies/');
         }
@@ -219,11 +221,6 @@ const marsTheme = {
           for(let i = 2; i <= totalPages; i++){
             await actions.source.fetch('/teammembers/page/'+i+'/');
           }
-        }
-
-        if (state.router.link.includes('/about/faq/')) {
-          console.log('run')
-          // await actions.source.fetch('about/faq');
         }
 
         if (

@@ -13,6 +13,28 @@ export const BookSpace = styled.div`
   flex-wrap: wrap;
 `;
 
+export const Container = styled.div`
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+  padding-bottom: 30px;
+
+  @media screen and (max-width: 991px) {
+    max-width: 728px;
+  }
+
+  @media screen and (max-width: 767px) {
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+`;
+
 export const Book = styled.div`
   width: 50%;
   padding-top: 50px;
