@@ -82,7 +82,7 @@ const CaseStudies = ({ state, actions }) => {
 
   const [items, setItem] = useState(data);
   const [active, setActive] = useState(-1);
-  const [filter, setFilter] = useState(catNull);
+  // const [filter, setFilter] = useState(catNull);
 
   const filters = (item, index) => {
     let filterData = data;
@@ -112,11 +112,11 @@ const CaseStudies = ({ state, actions }) => {
       <Breadcrumbs links={[{ name: 'Case studies', link: '#' }]} />
       <HeaderFilter>
         {
-        filter.map((item, index) => (
+        catNull.map((item, index) => (
           <FilterItem
             onClick={() => filters(item, index)}
             active={active === index}
-            min={filter.length > 6}
+            min={catNull.length > 6}
             key={index}
             dangerouslySetInnerHTML={{ __html: item.title }}
           />
