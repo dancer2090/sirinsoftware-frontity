@@ -165,16 +165,16 @@ export const ItemLabel = styled.span`
 `;
 
 export const ItemTitle = styled(Link)`
+  display: block;
   font-weight: bold;
   font-size: 30px;
   line-height: 30px;
   color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 21px;
-  transition: all .3s ease-in-out;
-
+  transition: all 0.3s ease-in-out;
   &:hover {
-    color: #cacaca;
+    color: #FFB03A;
   }
 
   @media screen and (max-width: 991px) {

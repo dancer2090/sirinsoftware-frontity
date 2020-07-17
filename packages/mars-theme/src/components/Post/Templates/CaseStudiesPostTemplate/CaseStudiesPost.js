@@ -200,7 +200,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
                   <CaseItemTitle>
                     <Html2React html={portfolio_business_area} />
                   </CaseItemTitle>
-                  <CaseContent>
+                  <CaseContent link={link}>
                     <Html2React html={title.rendered} />
                   </CaseContent>
                   <CaseLink link={link}>Learn more</CaseLink>

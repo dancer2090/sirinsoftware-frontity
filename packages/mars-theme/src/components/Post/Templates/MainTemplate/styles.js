@@ -641,6 +641,12 @@ export const ItemTitle = styled.h4`
   color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 21px;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #FFB03A;
+  }
 
   @media screen and (max-width: 991px) {
     font-size: 26px;

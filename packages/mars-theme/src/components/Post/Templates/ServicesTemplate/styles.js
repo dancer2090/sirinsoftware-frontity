@@ -170,7 +170,9 @@ export const CaseItemTitle = styled.span`
   }
 `;
 
-export const CaseContent = styled.p`
+export const CaseContent = styled(LinkComponent)`
+  cursor: pointer;
+  display: block;
   font-family: 'Montserrat';
   font-weight: bold;
   font-size: 30px;
@@ -179,6 +181,10 @@ export const CaseContent = styled.p`
   color: #FFFFFF;
   padding: 0 90px 0 41px;
   margin-bottom: 36px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #FFB03A;
+  }
 
   @media screen and (max-width: 992px) {
     font-size: 24px;
