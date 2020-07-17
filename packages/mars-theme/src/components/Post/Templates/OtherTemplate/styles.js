@@ -82,6 +82,26 @@ export const Content = styled.div`
         color: #25461c;
     }
   }
+    
+  img {
+    margin: 0 auto;
+    position: relative !important;
+    height: auto !important;
+    max-width: 100%;
+  }
+  
+  p span {
+    height: auto !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+  
+  li span {
+    height: auto !important;
+    padding: 0 !important;
+    display: flex;
+  }
 
   @media screen and  (max-width: 767px) {
     line-height: 22px;
