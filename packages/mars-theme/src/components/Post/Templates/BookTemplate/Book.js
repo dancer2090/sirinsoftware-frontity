@@ -12,6 +12,7 @@ import {
   Title,
   Image,
   Text,
+  Container,
   Form,
   FormGroup,
   SubmitButton,
@@ -24,6 +25,8 @@ import {
   validateFieldCompany,
   validateCheckbox,
 } from '../../../FeedbackForm/Form/utils/validate';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const DEFAULT_FIELDS = {
   firstName: '',
@@ -120,6 +123,8 @@ export const BookTemplate = ({ state, actions }) => {
       actions.theme.sendFormGuide(formData2);
     }
   };
+
+  const faqArray = filterQuestions(state, data.id);
 
   return (
     <BookPage>
@@ -299,6 +304,10 @@ export const BookTemplate = ({ state, actions }) => {
           </FormContent>
         </BookForm>
       </BookSpace>
+      
+      <Container>
+        <CollapseList elements={faqArray} libraries={libraries} />
+      </Container>
     </BookPage>
   );
 };

@@ -28,6 +28,8 @@ import {
   CaseContent,
 } from './styles';
 import Breadcrumbs from '../../../Breadcrumbs';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -69,6 +71,8 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const { items = slidesStudies } = state.source.get(`/case-studies-cat/${category_slug}/`);
 
   const postsRight = items.map((item) => state.source[item.type][item.id]);
+
+  const faqArray = filterQuestions(state, data.id);
 
   return (
     <Wrapper>
@@ -208,6 +212,8 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               );
             })}
           </CaseStudiesSlider>
+
+          <CollapseList elements={faqArray} libraries={libraries} />
         </ContainerSlider>
       </Container>
     </Wrapper>

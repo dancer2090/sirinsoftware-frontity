@@ -19,6 +19,27 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+
+  @media screen and (max-width: 991px) {
+    max-width: 728px;
+  }
+
+  @media screen and (max-width: 767px) {
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+`;
+
 export const Banner = styled.div`
   background-image: url(${({ url }) => url});
   background-repeat: no-repeat;

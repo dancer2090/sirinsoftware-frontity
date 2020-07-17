@@ -42,6 +42,8 @@ import {
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
 import Triangle from '../../../../img/main_triangle.svg';
+import CollapseList from '../FaqTemplate/CollapseList';
+import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const MainTemplate = ({
   state, libraries, actions, scrollRef = null,
@@ -72,6 +74,8 @@ const MainTemplate = ({
   const Html2React = libraries.html2react.Component;
   const case_studies_null = state.source.get('/case-studies/');
   const case_studies = case_studies_null.items ? case_studies_null.items.slice(0, 4) : [];
+
+  const faqArray = filterQuestions(state, dataP.id);
 
   return (
     <GlobalContainer>
@@ -203,6 +207,10 @@ const MainTemplate = ({
           </ClientsGallery>
         </Container>
       </ClientsGlobalContainer>
+    
+      <Container>
+        <CollapseList elements={faqArray} libraries={libraries} />
+      </Container>
     </GlobalContainer>
   );
 };
