@@ -68,17 +68,17 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
             </CaseTitle>
             <CaseSlider>
               { slidesStudies.map((item, index) => {
-                const { acf = {} } = item;
-                const { post_featured_image = {} } = acf;
+                const { acf: acfItem = {} } = item;
+                const { post_featured_image = {} } = acfItem;
                 return (
                   <CaseItem
                     key={index}
                     src={post_featured_image}
                   >
                     <CaseItemTitle>
-                      <Html2React html={acf.portfolio_business_area} />
+                      <Html2React html={acfItem.portfolio_business_area} />
                     </CaseItemTitle>
-                    <CaseContent>
+                    <CaseContent link={item.link}>
                       <Html2React html={item.title.rendered} />
                     </CaseContent>
                     <CaseLink link={item.link}>Learn more</CaseLink>

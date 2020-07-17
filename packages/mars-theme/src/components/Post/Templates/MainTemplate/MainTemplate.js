@@ -1,6 +1,9 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import BigTitle from '../../../BigTitle';
+import Link from '../../../link';
 import {
   GlobalContainer,
   Container,
@@ -70,17 +73,7 @@ const MainTemplate = ({
 
   const Html2React = libraries.html2react.Component;
   const case_studies_null = state.source.get('/case-studies/');
-  const case_studies = case_studies_null.items.slice(0, 4);
-
-  const scrollToRef = () => {
-    if (scrollRef) {
-      window.scrollTo({
-        top: scrollRef.current.offsetTop - 100,
-        left: 0,
-        behavior: 'smooth',
-      });
-    }
-  };
+  const case_studies = case_studies_null.items ? case_studies_null.items.slice(0, 4) : [];
 
   const faqArray = filterQuestions(state, dataP.id);
 
@@ -120,7 +113,7 @@ const MainTemplate = ({
                 <Html2React html={left_text} />
                 {' '}
               </PartnerShipLeftTitle>
-              {boxes && boxes.map((box, key) => (
+              {boxes && boxes.map((box) => (
                 <Box key={box.title}>
                   {box.title !== '' && (
                     <BoxTitle>
@@ -160,12 +153,12 @@ const MainTemplate = ({
           <CaseStudiesList>
             {case_studies && case_studies.map((item, index) => {
               const p_item = state.source[item.type][item.id];
-              const { acf = {} } = p_item;
+              const { acf: acfItem = {} } = p_item;
               const {
                 post_featured_image = {},
                 category_for_green_line = '',
                 short_description = '',
-              } = acf;
+              } = acfItem;
               return (
                 <ItemBlock key={index}>
                   <CaseItemWrapper
@@ -183,9 +176,11 @@ const MainTemplate = ({
                     <ItemLabel>
                       {category_for_green_line}
                     </ItemLabel>
-                    <ItemTitle>
-                      {p_item.title.rendered}
-                    </ItemTitle>
+                    <Link link={p_item.link}>
+                      <ItemTitle>
+                        {p_item.title.rendered}
+                      </ItemTitle>
+                    </Link>
                     <ItemDescription>
                       {short_description}
                     </ItemDescription>
