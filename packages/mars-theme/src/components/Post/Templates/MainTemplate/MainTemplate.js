@@ -69,7 +69,7 @@ const MainTemplate = ({
 
   const Html2React = libraries.html2react.Component;
   const case_studies_null = state.source.get('/case-studies/');
-  const case_studies = case_studies_null.items.slice(0, 4);
+  const case_studies = case_studies_null.items ? case_studies_null.items.slice(0, 4) : [];
 
   const scrollToRef = () => {
     if (scrollRef) {
