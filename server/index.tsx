@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore, require-atomic-updates */
 import Koa from "koa";
 import { get } from "koa-route";
+import Router from "koa-router";
 import serve from "koa-static";
 import mount from "koa-mount";
 import React from "react";
@@ -26,7 +27,9 @@ import { exists } from "fs";
 import { promisify } from "util";
 
 export default ({ packages }): ReturnType<Koa["callback"]> => {
+  const router = require('koa-router');
   const app = new Koa();
+  const _ = new Router();
 
   // Serve static files.
   app.use(async (ctx, next) => {
@@ -67,7 +70,8 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   };
   app.use(get("/__webpack_hmr", return404));
   app.use(get("/static/([a-z0-9]+\\.hot-update\\.json)", return404));
-  app.use(get("/services/([a-z0-9])", returnServices));
+  app.use(get("/services/rd-center/", returnServices));
+  app.use(get("/services/it-staff-augmentation/", returnServices));
 
   // Return Frontity favicon for favicon.ico.
   app.use(get("/favicon.ico", serve("./")));

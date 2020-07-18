@@ -26,6 +26,7 @@
     "dotenv": "^8.2.0",
     "frontity": "^1.6.0",
     "isotope-layout": "^3.0.6",
+    "koa-router": "^9.1.0",
     "prop-types": "^15.7.2",
     "react-google-recaptcha-v3": "^1.5.2",
     "react-id-swiper": "^3.0.0",

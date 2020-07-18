@@ -261,6 +261,11 @@ export const TestimonialsSignature = styled.div`
   color: #FFFFFF;
   font-weight: 700;
   text-align: right;
+  & a{
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 10px;
+  }
   @media screen and (max-width: 991px) {
     margin-top: 50px;
     font-size: 16px;
