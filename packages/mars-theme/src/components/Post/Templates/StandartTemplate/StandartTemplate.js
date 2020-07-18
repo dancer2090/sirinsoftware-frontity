@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'frontity';
+import { connect, Head } from 'frontity';
 import {
   Container,
   Wrapper,
@@ -23,6 +23,7 @@ import Image from '../../../../img/image.jpg';
 import Breadcrumbs from '../../../Breadcrumbs';
 import CollapseList from '../FaqTemplate/CollapseList';
 import { filterQuestions } from '../../../../utils/filterQuestions';
+import logo from '../../../../img/logo.svg';
 
 const StandartTemplate = ({ state, libraries }) => {
   // Get information about the current URL.
@@ -49,9 +50,29 @@ const StandartTemplate = ({ state, libraries }) => {
 
   const dataMore = state.source.get('/blog/');
   const faqArray = filterQuestions(state, data.id);
-  
+
   return (
     <WrapperPage>
+      <Head>
+        <script type="application/ld+json">
+          {`
+              {
+                '@context': 'http://schema.org',
+                '@type': 'NewsArticle',
+                'url': '${state.frontity.url}${state.router.link}',
+                'publisher': {
+                  '@type': 'Organization',
+                  'name': 'Sirin Software',
+                  'logo': '${logo}',
+                },
+                'headline': '${post.title.rendered}',
+                'articleBody': '${post.content.rendered.toString()}',
+                'datePublished': '${post.date}',
+                'dateModified': '${post.modified}'
+              }
+            `}
+        </script>
+      </Head>
       <BigFrame image={Image}>
         <Container>
           <h1>
