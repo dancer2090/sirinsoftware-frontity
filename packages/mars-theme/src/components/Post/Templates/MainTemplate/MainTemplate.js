@@ -68,14 +68,14 @@ const MainTemplate = ({
   } = acf;
 
   useEffect(() => {
-    actions.source.fetch('/case-studies/');
+    //actions.source.fetch('/case-studies/');
   }, []);
 
   const Html2React = libraries.html2react.Component;
-  const case_studies_null = state.source.get('/case-studies/');
-  const case_studies = case_studies_null.items ? case_studies_null.items.slice(0, 4) : [];
+  //const case_studies_null = state.source.get('/case-studies/');
+  //const case_studies = case_studies_null.items ? case_studies_null.items.slice(0, 4) : [];
 
-  const faqArray = filterQuestions(state, dataP.id);
+  //const faqArray = filterQuestions(state, dataP.id);
 
   return (
     <GlobalContainer>
@@ -147,6 +147,7 @@ const MainTemplate = ({
           </PartnerShipContainer>
         </Container>
       </PartnerShip>
+      {/* 
       <CaseStudiesGlobalContainer>
         <BigTitle title="case studies" />
         <Container>
@@ -192,6 +193,7 @@ const MainTemplate = ({
           </CaseStudiesList>
         </Container>
       </CaseStudiesGlobalContainer>
+      */}
       <ClientsGlobalContainer>
         <BigTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)" />
         <Container>
@@ -209,7 +211,7 @@ const MainTemplate = ({
       </ClientsGlobalContainer>
     
       <Container>
-        <CollapseList elements={faqArray} libraries={libraries} />
+        {/*<CollapseList elements={faqArray} libraries={libraries} />*/}
       </Container>
     </GlobalContainer>
   );

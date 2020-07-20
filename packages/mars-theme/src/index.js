@@ -57,6 +57,26 @@ const caseHandler = {
   },
 };
 
+const teamHandler = {
+  name: 'teamHandler',
+  priority: 19,
+  pattern: 'teamHandler',
+  func: async ({
+    route, params, state, libraries,
+  }) => {
+    const teammembersResponse = await libraries.source.api.get({
+      endpoint: "teammembers",
+      params: { per_page: "9999", _embed: true }
+    });
+    const teammembersItems = await libraries.source.populate({
+      state,
+      response: teammembersResponse
+    });
+
+    state.theme.teammembers = teammembersItems;
+  },
+};
+
 const marsTheme = {
   name: '@frontity/mars-theme',
   roots: {
@@ -190,7 +210,7 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ route, state, actions, libraries }) => {
-
+/*
         actions.theme.alternativeUrlForImage();
 
         const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
@@ -211,6 +231,7 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/case-studies/');
         }
+        
         if (
           state.router.link === '/'
         ) {
@@ -222,16 +243,7 @@ const marsTheme = {
         }
 
         if (state.router.link === '/teammembers/') {
-          const teammembersResponse = await libraries.source.api.get({
-            endpoint: "teammembers",
-            params: { per_page: "9999", _embed: true }
-          });
-          const teammembersItems = await libraries.source.populate({
-            state,
-            response: teammembersResponse
-          });
-
-          state.theme.teammembers = teammembersItems;
+          await actions.source.fetch("teamHandler");
         }
 
         if (
@@ -258,6 +270,7 @@ const marsTheme = {
 
         const footerData = await axios.get(`${state.source.api}/menus/v1/menus/4`);
         state.theme.menu.footer_menu = footerData.data;
+*/
       },
     },
   },
