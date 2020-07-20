@@ -87,7 +87,7 @@ const HeaderComponent = ({
             </Mobilemenu>
             <Logo>
               <Link link="/">
-                <img src={(scrollTop < height && transparent) ? logoWhite : logo} alt="Logo" />
+                <img width="165" src={(scrollTop < height && transparent) ? logoWhite : logo} alt="Logo" />
               </Link>
             </Logo>
             <Menu transparent={!!((scrollTop < height && transparent))}>
