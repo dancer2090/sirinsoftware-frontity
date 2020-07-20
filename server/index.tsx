@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore, require-atomic-updates */
 import Koa from "koa";
 import { get } from "koa-route";
-import Router from "koa-router";
 import serve from "koa-static";
 import mount from "koa-mount";
 import React from "react";
@@ -29,7 +28,6 @@ import { promisify } from "util";
 export default ({ packages }): ReturnType<Koa["callback"]> => {
   const router = require('koa-router');
   const app = new Koa();
-  const _ = new Router();
 
   // Serve static files.
   app.use(async (ctx, next) => {

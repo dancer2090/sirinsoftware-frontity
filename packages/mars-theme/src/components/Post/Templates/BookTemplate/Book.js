@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'frontity';
 import Link from '../../../link';
+import Modal from '../../../Modal';
 
 import {
   BookPage,
@@ -42,7 +43,7 @@ const DEFAULT_FIELDS_CLASSES = {
   email: [],
 };
 
-export const BookTemplate = ({ state, actions }) => {
+export const BookTemplate = ({ state, actions, libraries }) => {
   const [fields, setFields] = useState(DEFAULT_FIELDS);
   const [fieldsClasses, setFieldsClasses] = useState(DEFAULT_FIELDS_CLASSES);
   const [privacy, setPrivacy] = useState(false);
@@ -54,8 +55,18 @@ export const BookTemplate = ({ state, actions }) => {
   const [hasEmailError, setErrorEmail] = useState(false);
   const [hasPrivaty, setErrorPrivaty] = useState(false);
 
+  const { acf : acfOptions = {} } = state.options;
+  const {
+    bookFileDesctop = "",
+    bookFileMobile = "",
+  } = acfOptions;
+
+  const data = state.source.get(state.router.link);
   const handleChangeTextInput = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
+  };
+  const formHandleClose = () => {
+    actions.theme.changeFormGuide();
   };
 
   const handleFocusInput = (e) => {
@@ -128,6 +139,12 @@ export const BookTemplate = ({ state, actions }) => {
 
   return (
     <BookPage>
+      <Modal
+        title="Thank you for your request"
+        text={"You can download your <a target='_blank' class='desctop' href='" + bookFileDesctop + "'>Book</a> <a target='_blank' class='mobile' href='" + bookFileMobile + "'>Book</a>"}
+        isOpen={state.customSettings.sendFormGuide}
+        handleClose={formHandleClose}
+      />
       <BookSpace>
         <Book>
           <BookContent>

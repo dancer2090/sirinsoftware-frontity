@@ -24,6 +24,10 @@ import CollapseList from '../FaqTemplate/CollapseList';
 import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const CaseStudies = ({ state, actions, libraries }) => {
+
+  const [items, setItem] = useState([]);
+  const [active, setActive] = useState(-1);
+
   const data = [];
   const dataCat = [];
   dataCat[0] = 'All';
@@ -33,58 +37,50 @@ const CaseStudies = ({ state, actions, libraries }) => {
 
   const dataList = state.source.get(state.router.link);
   const { totalPages } = state.source.get(state.router.link);
-  let megaItems = dataList.items;
-  let currentData;
-  
-  for (let i = 2; i <= totalPages; i++) {
-    currentData = state.source.get(`${state.router.link}page/${i}`);
-    if (currentData.isReady) {
-      megaItems = megaItems.concat(currentData.items);
-    }
-  }
+  let megaItems = [];
+  megaItems = state.theme.cases;
+  if(megaItems.length>0){
+    megaItems.map((item, k) => {
+      const post = state.source.get(`${item.link}`);
+      const p_item = state.source[post.type][post.id];
+      const { acf = {} } = p_item;
+      const {
+        category_for_green_line = '',
+        post_featured_image = '',
+        short_description = '',
+      } = acf;
+      let check = true;
+      let keyCat = dataCat.length;
 
-  megaItems.map((item, k) => {
-    const post = state.source.get(`${item.link}`);
-    const p_item = state.source[post.type][post.id];
-    const { acf = {} } = p_item;
-    const {
-      category_for_green_line = '',
-      post_featured_image = '',
-      short_description = '',
-    } = acf;
-    let check = true;
-    let keyCat = dataCat.length;
-
-    dataCat.map((catItem, k) => {
-      if (catItem.toUpperCase() === category_for_green_line.toUpperCase()) {
-        check = false;
-        keyCat = k;
+      dataCat.map((catItem, k) => {
+        if (catItem.toUpperCase() === category_for_green_line.toUpperCase()) {
+          check = false;
+          keyCat = k;
+        }
+      });
+      if (check) {
+        dataCat.push(category_for_green_line);
       }
+      data.push({
+        src: post_featured_image,
+        title: category_for_green_line,
+        key: keyCat,
+        content: p_item.title.rendered,
+        link: p_item.link,
+        back: {
+          label: category_for_green_line,
+          title: p_item.title.rendered,
+          content: short_description,
+        },
+      });
     });
-    if (check) {
-      dataCat.push(category_for_green_line);
-    }
-    data.push({
-      src: post_featured_image,
-      title: category_for_green_line,
-      key: keyCat,
-      content: p_item.title.rendered,
-      link: p_item.link,
-      back: {
-        label: category_for_green_line,
-        title: p_item.title.rendered,
-        content: short_description,
-      },
-    });
-  });
+  }
 
   const catNull = [];
   dataCat.map((item, k) => {
     if (item !== '') catNull.push({ title: item, key: k });
   });
 
-  const [items, setItem] = useState(data);
-  const [active, setActive] = useState(-1);
   // const [filter, setFilter] = useState(catNull);
 
   const filters = (item, index) => {
@@ -104,11 +100,12 @@ const CaseStudies = ({ state, actions, libraries }) => {
   };
 
   useEffect(() => {
-    const { totalPages } = state.source.get(state.router.link);
-    for(let i = 2; i <= totalPages; i++){
-      actions.source.fetch('/case-studies/page/'+i+'/');
-    }
+    actions.source.fetch("caseHandler");
   }, []);
+
+  useEffect(() => {
+    setItem(data);
+  }, [data]);
 
   const faqArray = filterQuestions(state, data.id);
 
@@ -129,7 +126,10 @@ const CaseStudies = ({ state, actions, libraries }) => {
       }
       </HeaderFilter>
       <CaseWrapper>
-        { items.map((item, index) => (
+        { items.map((item, index) => {
+          const { back = {} } = item;
+          const { label : bLabel = "", title : bTitle = "", content : bContent = "" } = back;
+          return(
           <ItemBlock
             key={index}
             link={item.link}
@@ -147,17 +147,17 @@ const CaseStudies = ({ state, actions, libraries }) => {
 
             <ItemWrapper>
               <ItemLabel>
-                { item.back.label }
+                { bLabel }
               </ItemLabel>
               <ItemTitle link={item.link}>
-                { item.back.title }
+                { bTitle }
               </ItemTitle>
               <ItemDescription>
-                { item.back.content }
+                { bContent }
               </ItemDescription>
             </ItemWrapper>
           </ItemBlock>
-        ))}
+        )})}
         {items.length % 2 !== 0 && (
           <LastItem>
             <LastItemFrame src={CaseBox} />

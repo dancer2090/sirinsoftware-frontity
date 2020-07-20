@@ -38,6 +38,25 @@ const newHandler = {
   },
 };
 
+const caseHandler = {
+  name: 'CaseStudies',
+  priority: 19,
+  pattern: 'caseHandler',
+  func: async ({
+    route, params, state, libraries,
+  }) => {
+    const postsResponse = await libraries.source.api.get({
+      endpoint: "portfolio",
+      params: { per_page: "9999", _embed: true }
+    });
+    const items = await libraries.source.populate({
+      response: postsResponse,
+      state,
+    });
+    state.theme.cases = items;
+  },
+};
+
 const marsTheme = {
   name: '@frontity/mars-theme',
   roots: {
@@ -59,12 +78,14 @@ const marsTheme = {
       isSubscribeSend: false,
       isFormSend: false,
       isCommentSend: false,
+      sendFormGuide: false,
       isThanksOpen: true,
       blogLoadMore: false,
     },
     theme: {
       menu: {},
       cases: {},
+      teammembers: {},
       recaptchaToken: null,
       isMobileMenuOpen: false,
       featured: {
@@ -102,6 +123,9 @@ const marsTheme = {
       changeFormSend: ({ state }) => {
         state.customSettings.isFormSend = !state.customSettings.isFormSend;
       },
+      changeFormGuide: ({ state }) => {
+        state.customSettings.sendFormGuide = !state.customSettings.sendFormGuide;
+      },
       sendForm: ({ state }) => async (data) => {
         const dataForm = data.formData;
         dataForm.append('recaptchaToken', state.theme.recaptchaToken);
@@ -128,21 +152,6 @@ const marsTheme = {
         ).then((response) => {
           console.log(response);
         });
-        /*
-        try {
-          const result = await axios.post(
-            `${state.source.api}/frontity-api/sendbookdata`,
-            dataForm,
-            { headers: { 'content-type': 'application/json' } },
-          ).then((response) => {
-            console.log(response);
-          });
-          console.log(result);
-          return result;
-        } catch(error) {
-          console.log(error)
-        }
-        */
 
         state.customSettings.sendFormGuide = true;
       },
@@ -180,8 +189,7 @@ const marsTheme = {
           }
         });
       },
-      beforeSSR: async ({ state, actions, libraries }) => {
-
+      beforeSSR: async ({ route, state, actions, libraries }) => {
 
         actions.theme.alternativeUrlForImage();
 
@@ -192,7 +200,7 @@ const marsTheme = {
         state.customSettings.categories = categories.data;
 
         await actions.source.fetch('/about/faq');
-        
+
         if (state.router.link.includes('/services/')) {
           await actions.source.fetch('/case-studies/');
         }
@@ -210,17 +218,20 @@ const marsTheme = {
         }
 
         if (state.router.link === '/case-studies/') {
-          const { totalPages } = state.source.get(state.router.link);
-          for(let i = 2; i <= totalPages; i++){
-            await actions.source.fetch('/case-studies/page/'+i+'/');
-          }
+          await actions.source.fetch("caseHandler");
         }
 
         if (state.router.link === '/teammembers/') {
-          const { totalPages } = state.source.get(state.router.link);
-          for(let i = 2; i <= totalPages; i++){
-            await actions.source.fetch('/teammembers/page/'+i+'/');
-          }
+          const teammembersResponse = await libraries.source.api.get({
+            endpoint: "teammembers",
+            params: { per_page: "9999", _embed: true }
+          });
+          const teammembersItems = await libraries.source.populate({
+            state,
+            response: teammembersResponse
+          });
+
+          state.theme.teammembers = teammembersItems;
         }
 
         if (
@@ -256,7 +267,7 @@ const marsTheme = {
       imageUrlCheck: linkImageReplace,
     },
     source: {
-      handlers: [newHandler],
+      handlers: [newHandler, caseHandler],
     },
     html2react: {
       /**

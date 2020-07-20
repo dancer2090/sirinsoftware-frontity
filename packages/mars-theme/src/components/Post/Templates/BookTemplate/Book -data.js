@@ -83,7 +83,7 @@ export const Book = () => {
                                             </table>
                                         </label>
                                     </div>
-                                    <p className="error-text"><?php echo __('Please, accept privacy policy', 'sirinsoftware')?></p>
+                                    <p className="error-text">Please, accept privacy policy</p>
                                 </div>
                             </div>
                             <div className="accept-news">

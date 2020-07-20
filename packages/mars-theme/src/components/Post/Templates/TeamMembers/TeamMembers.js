@@ -10,24 +10,20 @@ import Items from './TeamMembersItem';
 import bg from '../../../../img/engenners-bg.jpg';
 import CollapseList from '../FaqTemplate/CollapseList';
 import { filterQuestions } from '../../../../utils/filterQuestions';
+import PasswordProtected from '../../../PasswordProtected';
 
-const TeamMembers = ({ state }) => {
+const TeamMembers = ({ state, actions, libraries }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showTeams, setShowTeams] = useState([]);
+  const [checkPassword, setCheckPassword] = useState(0);
   const data = state.source.get(state.router.link);
   const { items = {} } = data;
   const { totalPages } = data;
+  const password = "dreamteam";
 
   const faqArray = filterQuestions(state, data.id);
 
-  let fullTeams = items;
-  let currentData;
-  for(let i = 2; i <= totalPages; i++){
-    currentData = state.source.get(`${state.router.link}page/${i}`);
-    if (currentData.isReady) {
-      fullTeams = fullTeams.concat(currentData.items);
-    }
-  }
+  let fullTeams = state.theme.teammembers;
 
   const categories = new Set();
 
@@ -51,7 +47,15 @@ const TeamMembers = ({ state }) => {
 
   useEffect(() => {
     setShowTeams(teams);
+  }, [teams]);
+
+  useEffect(() => {
+    actions.source.fetch("teamHandler");
   }, []);
+
+  const sendPassword = (value) => {
+    setCheckPassword(1);
+  };
 
   const findElements = id => {
     let hasId = teams.filter(item => {
@@ -106,41 +110,51 @@ const TeamMembers = ({ state }) => {
 
   return (
     <Wrapper>
-      <Banner url={bg} >
-        <div className="container">
-          <h1>
-            Our Engineers 
-          </h1>
-        </div>
-      </Banner>
-      <div className="container">
-        <FilterContainer>
-          <ul>
-            {
-              renderCategory.map((item, index) => {
-                return (
-                  <li key={index}>
-                    <span
-                      onClick={(event) => filterElements(event, item)}
-                      className={activeIndex === item.id ? 'selected' : null}
-                      >
-                      { item.name } ({item.counter})
-                    </span>
-                  </li>
-                )
-              })
-            }
-          </ul>
-        </FilterContainer>
-      </div>
+      {!checkPassword ? 
+        (
+          <PasswordProtected submitForm={sendPassword} passwordOrigin={password} />
+        )
+        :
+        (
+          <>
+            <Banner url={bg} >
+              <div className="container">
+                <h1>
+                  Our Engineers 
+                </h1>
+              </div>
+            </Banner>
+            <div className="container">
+              <FilterContainer>
+                <ul>
+                  {
+                    renderCategory.map((item, index) => {
+                      return (
+                        <li key={index}>
+                          <span
+                            onClick={(event) => filterElements(event, item)}
+                            className={activeIndex === item.id ? 'selected' : null}
+                            >
+                            { item.name } ({item.counter})
+                          </span>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </FilterContainer>
+            </div>
 
-      <div className="container">
-        <Items teams={showTeams} />
-      </div>
+            <div className="container">
+              <Items teams={showTeams} />
+            </div>
 
-      <Container>
-        <CollapseList elements={faqArray} libraries={libraries} />
-      </Container>
+            <Container>
+              <CollapseList elements={faqArray} libraries={libraries} />
+            </Container>
+          </>
+        )
+      }
     </Wrapper>
   )
 }

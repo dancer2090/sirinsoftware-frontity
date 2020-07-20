@@ -26,12 +26,31 @@ export const ModalTitle = styled.h2`
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
+  color: #a6c950;
 `;
 export const ModalText = styled.div`
   font-size: 16px;
   line-height: 28px;
   margin-bottom: 30px;
   text-align: center;
+  & a{
+    color: #a6c950;
+    font-weight: 700;
+  }
+  & .desctop{
+    display: inline-block;
+  }
+  & .mobile{
+    display: none;
+  }
+  @media (max-width: 991px){
+    & .desctop{
+    display: none;
+    }
+    & .mobile{
+      display: inline-block;
+    }
+  }
 `;
 export const ModalButtonWrapper = styled.div`
     padding-top: 24px;
