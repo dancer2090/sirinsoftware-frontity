@@ -33,6 +33,8 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
     : [];
 
   const { acf = {} } = post;
+  const { mBackground = {} } = acf;
+  const { mImage = {} } = acf;
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
@@ -41,12 +43,13 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   return (
     <Wrapper>
       <Banner
-        url={acf.mBackground.link}
+        url={mBackground.link}
         button={acf.mButton}
         title={acf.mTitle}
-        iconUrl={acf.mImage.link}
+        iconUrl={mImage.link}
         scrollRef={scrollRef}
       />
+
       <Container>
         <Breadcrumbs links={[
           { name: 'Services', link: '/services' },

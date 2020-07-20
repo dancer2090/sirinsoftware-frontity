@@ -11,7 +11,7 @@ import {
 } from './styles';
 
 const MainFrameBlock = ({
-  url, title, button, iconUrl, scrollRef = null, className
+  url = '', title, button, iconUrl, scrollRef = null, className
 }) => {
   const scrollToRef = () => {
     if (scrollRef) {
