@@ -26,7 +26,6 @@ import { exists } from "fs";
 import { promisify } from "util";
 
 export default ({ packages }): ReturnType<Koa["callback"]> => {
-  const router = require('koa-router');
   const app = new Koa();
 
   // Serve static files.

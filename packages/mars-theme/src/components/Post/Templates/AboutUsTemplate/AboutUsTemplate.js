@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect, styled } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import BigTitle from '../../../BigTitle';
-import Link from '../../../Link';
+import Link from '../../../link';
 import Image from '../../../../img/service.jpg';
 import {
   GlobalContainer,
