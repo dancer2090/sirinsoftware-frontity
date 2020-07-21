@@ -1,7 +1,5 @@
 export const filterQuestions = (state, id) => {
-  const dataFaq = state.source.get('/about/faq');
-  const postFaq = state.source[dataFaq.type][dataFaq.id];
-  const allFaq = postFaq.acf.categories;
+  const allFaq = state.theme.faq;
 
   const data = []
 

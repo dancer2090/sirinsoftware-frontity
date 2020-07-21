@@ -209,7 +209,7 @@ const MainTemplate = ({
       </ClientsGlobalContainer>
     
       <Container>
-        <CollapseList elements={faqArray} libraries={libraries} />
+        {/*<CollapseList elements={faqArray} libraries={libraries} />*/}
       </Container>
     </GlobalContainer>
   );
