@@ -218,7 +218,7 @@ const marsTheme = {
 
         const globalOptions = await axios.get(`${state.source.api}/frontity-api/get-options`);
         const footerData = { items : globalOptions.data.footer_menu || {} };
-        const optionPage =  { acf : globalOptions.data.options || {} };;
+        const optionPage =  { acf : globalOptions.data.options || {} };
         const mainMenu = { items : globalOptions.data.head_menu || {} };
 
         state.theme.menu.footer_menu = footerData;
