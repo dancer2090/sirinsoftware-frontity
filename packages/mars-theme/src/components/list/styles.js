@@ -74,6 +74,8 @@ export const Container = styled.section`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
+    padding: 0 15px;
+    margin-top: 0;
   }
 `;
 
