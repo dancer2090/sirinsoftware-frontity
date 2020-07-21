@@ -312,6 +312,19 @@ export const CardSet = styled(CardCase)`
   @media screen and (max-width: 767px) {
     margin-bottom: 40px;
   }
+
+  p {
+    color: white;
+  }
+
+  .wp-video {
+    width: 100% !important;
+  }
+
+  video {
+    width: 100% !important;
+    height: 380px !important;
+  }
 `;
 
 export const Title = styled(CaseTitle)`
@@ -346,7 +359,7 @@ export const Text = styled.div`
     height: auto !important;
     padding: 0 !important;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   
   li span {
