@@ -35,9 +35,6 @@ const PostContent = ({ state, scrollRef = null }) => {
     }
   }, []);
 
-  console.log(template);
-  console.log(checkPassword);
-
   return (
     <>
       {!checkPassword
