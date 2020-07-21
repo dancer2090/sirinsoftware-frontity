@@ -27,6 +27,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
 
   const [items, setItem] = useState([]);
   const [active, setActive] = useState(-1);
+  const [filter, setFilter] = useState({});
 
   const data = [];
   const dataCat = [];
@@ -34,9 +35,6 @@ const CaseStudies = ({ state, actions, libraries }) => {
 
   const { acf: optionsAcf = {} } = state.options;
   const { cs_text = '', cs_title = '' } = optionsAcf;
-
-  const dataList = state.source.get(state.router.link);
-  const { totalPages } = state.source.get(state.router.link);
   let megaItems = [];
   megaItems = state.theme.cases;
   if(megaItems.length>0){
@@ -81,33 +79,23 @@ const CaseStudies = ({ state, actions, libraries }) => {
     if (item !== '') catNull.push({ title: item, key: k });
   });
 
-  // const [filter, setFilter] = useState(catNull);
-
   const filters = (item, index) => {
-    let filterData = data;
-    if (index !== 0) {
-      if (active === index) {
-        setActive(-1);
-        setItem(data);
-
-        return;
-      }
-      filterData = data.filter((el) => el.key === item.key);
+    if (index === 0) {
+      setActive(-1);
+      setFilter({});
+    } else {
+      setFilter(item);
+      setActive(index);
     }
-
-    setItem(filterData);
-    setActive(index);
   };
 
   useEffect(() => {
-    actions.source.fetch("caseHandler");
+    actions.source.fetch('caseHandler');
   }, []);
 
-  useEffect(() => {
-    setItem(data);
-  }, [data]);
-
   const faqArray = filterQuestions(state, data.id);
+
+  const filterData = filter.key ? data.filter((el) => el.key === filter.key) : data;
 
   return (
     <Container>
@@ -126,7 +114,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
       }
       </HeaderFilter>
       <CaseWrapper>
-        { items.map((item, index) => {
+        { filterData.map((item, index) => {
           const { back = {} } = item;
           const { label : bLabel = "", title : bTitle = "", content : bContent = "" } = back;
           return(
@@ -158,7 +146,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
             </ItemWrapper>
           </ItemBlock>
         )})}
-        {items.length % 2 !== 0 && (
+        {filterData.length % 2 !== 0 && (
           <LastItem>
             <LastItemFrame src={CaseBox} />
             <LastItemTitle>{cs_title}</LastItemTitle>
