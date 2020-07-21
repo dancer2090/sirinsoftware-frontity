@@ -188,6 +188,10 @@ export const Send = styled.div`
           box-shadow: none;
         }
       }
+      
+      @media screen and (max-width: 767px) {
+        max-width: 100%;
+      }
   }
   label::before{
       content:'';

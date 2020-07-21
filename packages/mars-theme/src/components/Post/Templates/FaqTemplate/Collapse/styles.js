@@ -5,10 +5,10 @@ export const Container = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Item = styled.div.attrs(props => ({
+export const Item = styled.div.attrs((props) => ({
   itemType: props.propType,
   itemProp: props.prop,
-  itemScope: props.scope
+  itemScope: props.scope,
 }))`
   width: 100%;
 `;
@@ -27,8 +27,8 @@ export const ItemHeader = styled.div`
   }
 `;
 
-export const ItemTitle = styled.div.attrs(props => ({
-  itemProp: props.prop
+export const ItemTitle = styled.div.attrs((props) => ({
+  itemProp: props.prop,
 }))`
   font-size: 18px;
   line-height: 36px;
@@ -43,6 +43,7 @@ export const ItemTitle = styled.div.attrs(props => ({
 
 export const ItemIcon = styled.div`
   width: 20px;
+  min-width: 20px;
   height: 20px;
   cursor: pointer;
   position: relative;
@@ -83,10 +84,10 @@ export const ItemBody = styled.div`
   transition: all .3s ease-in-out;
 `;
 
-export const ItemContent = styled.div.attrs(props => ({
+export const ItemContent = styled.div.attrs((props) => ({
   itemType: props.propType,
   itemProp: props.prop,
-  itemScope: props.scope
+  itemScope: props.scope,
 }))`
   padding: 33px 16px 14px 20px;
   font-family: 'Open Sans';
@@ -103,6 +104,6 @@ export const ItemContent = styled.div.attrs(props => ({
   }
 `;
 
-export const ItemText = styled.div.attrs(props => ({
-  itemProp: props.prop
+export const ItemText = styled.div.attrs((props) => ({
+  itemProp: props.prop,
 }))``;

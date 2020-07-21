@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'frontity';
-import Breadcrumbs from '../../../Breadcrumbs';
 import {
   Container,
   Wrapper,
@@ -12,6 +11,7 @@ import {
   TableWrapper,
   CollapseBlock,
   CollapseTitle,
+  Crumbs,
 } from './styles';
 import CollapseList from './CollapseList';
 
@@ -87,7 +87,7 @@ const Faq = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Breadcrumbs links={[{ name: 'Faq', link: '#' }]} />
+      <Crumbs links={[{ name: 'Faq', link: '#' }]} />
       <Wrapper>
         <CollapseContainer ref={collapseContainer}>
           {
