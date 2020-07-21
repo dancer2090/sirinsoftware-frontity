@@ -15,7 +15,6 @@ const AllCategories = ({ items, state, onChange }) => {
   const [activeItem, setActiveItem] = useState(nullActiveItem);
   const handleItem = (id, name) => {
     setActiveItem(id);
-    console.log(name);
     onChange(name);
     setIsOpen(false);
     // go to the new url here;

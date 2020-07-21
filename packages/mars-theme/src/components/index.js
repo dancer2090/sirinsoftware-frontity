@@ -26,8 +26,6 @@ const Theme = ({ state, actions }) => {
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
 
-  console.log(state);
-
   const formHandleClose = () => {
     actions.theme.changeFormSend();
   };

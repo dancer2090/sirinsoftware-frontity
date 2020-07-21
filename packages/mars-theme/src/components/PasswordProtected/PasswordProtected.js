@@ -23,7 +23,6 @@ const PasswordProtected = ({ submitForm, passwordOrigin = "" }) => {
     const getPasswordError = validateFieldName(password);
     setPasswordError(getPasswordError);
     if(password !== passwordOrigin) setPasswordError("Wrong Password");
-    console.log(passwordOrigin);
     return getPasswordError.length === 0 &&
     password === passwordOrigin;
   }
