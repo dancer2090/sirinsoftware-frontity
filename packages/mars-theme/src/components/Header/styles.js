@@ -31,6 +31,11 @@ export const Header = styled.div`
     padding: 0px;
     height: 46px;
   }
+  
+  @media screen and (max-width: 767px) {
+    padding: 0 10px;
+  }
+  
   ul {
     li {
       list-style-type: none;
@@ -164,8 +169,13 @@ export const Mobilemenu = styled.div`
   cursor: pointer;
   min-width: 40px;
   justify-content: center;
+  
   @media(min-width: 1000px) {
     display: none;
+  }
+  
+  @media screen and (max-width: 767px) {
+    min-width: 24px;
   }
 `;
 
