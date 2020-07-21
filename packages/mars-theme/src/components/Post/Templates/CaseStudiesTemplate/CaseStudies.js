@@ -20,12 +20,8 @@ import {
 } from './styles';
 import CaseBox from '../../../../img/case-box.svg';
 import Breadcrumbs from '../../../Breadcrumbs';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
-const CaseStudies = ({ state, actions, libraries }) => {
-
-  const [items, setItem] = useState([]);
+const CaseStudies = ({ state, actions }) => {
   const [active, setActive] = useState(-1);
   const [filter, setFilter] = useState({});
 
@@ -37,7 +33,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
   const { cs_text = '', cs_title = '' } = optionsAcf;
   let megaItems = [];
   megaItems = state.theme.cases;
-  if(megaItems.length>0){
+  if (megaItems.length > 0) {
     megaItems.map((item, k) => {
       const post = state.source.get(`${item.link}`);
       const p_item = state.source[post.type][post.id];
@@ -93,8 +89,6 @@ const CaseStudies = ({ state, actions, libraries }) => {
     actions.source.fetch('caseHandler');
   }, []);
 
-  const faqArray = filterQuestions(state, data.id);
-
   const filterData = filter.key ? data.filter((el) => el.key === filter.key) : data;
 
   return (
@@ -116,36 +110,37 @@ const CaseStudies = ({ state, actions, libraries }) => {
       <CaseWrapper>
         { filterData.map((item, index) => {
           const { back = {} } = item;
-          const { label : bLabel = "", title : bTitle = "", content : bContent = "" } = back;
-          return(
-          <ItemBlock
-            key={index}
-            link={item.link}
-          >
-            <CaseItemWrapper
-              src={item.src}
+          const { label: bLabel = '', title: bTitle = '', content: bContent = '' } = back;
+          return (
+            <ItemBlock
+              key={index}
+              link={item.link}
             >
-              <CaseItemTitle>
-                { item.title }
-              </CaseItemTitle>
-              <CaseContent>
-                { item.content }
-              </CaseContent>
-            </CaseItemWrapper>
+              <CaseItemWrapper
+                src={item.src}
+              >
+                <CaseItemTitle>
+                  { item.title }
+                </CaseItemTitle>
+                <CaseContent>
+                  { item.content }
+                </CaseContent>
+              </CaseItemWrapper>
 
-            <ItemWrapper>
-              <ItemLabel>
-                { bLabel }
-              </ItemLabel>
-              <ItemTitle link={item.link}>
-                { bTitle }
-              </ItemTitle>
-              <ItemDescription>
-                { bContent }
-              </ItemDescription>
-            </ItemWrapper>
-          </ItemBlock>
-        )})}
+              <ItemWrapper>
+                <ItemLabel>
+                  { bLabel }
+                </ItemLabel>
+                <ItemTitle link={item.link}>
+                  { bTitle }
+                </ItemTitle>
+                <ItemDescription>
+                  { bContent }
+                </ItemDescription>
+              </ItemWrapper>
+            </ItemBlock>
+          );
+        })}
         {filterData.length % 2 !== 0 && (
           <LastItem>
             <LastItemFrame src={CaseBox} />
@@ -156,8 +151,6 @@ const CaseStudies = ({ state, actions, libraries }) => {
           </LastItem>
         )}
       </CaseWrapper>
-
-      <CollapseList elements={faqArray} libraries={libraries} />
     </Container>
   );
 };

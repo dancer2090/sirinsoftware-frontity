@@ -26,8 +26,6 @@ import {
   validateFieldCompany,
   validateCheckbox,
 } from '../../../FeedbackForm/Form/utils/validate';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const DEFAULT_FIELDS = {
   firstName: '',
@@ -43,7 +41,7 @@ const DEFAULT_FIELDS_CLASSES = {
   email: [],
 };
 
-export const BookTemplate = ({ state, actions, libraries }) => {
+export const BookTemplate = ({ state, actions }) => {
   const [fields, setFields] = useState(DEFAULT_FIELDS);
   const [fieldsClasses, setFieldsClasses] = useState(DEFAULT_FIELDS_CLASSES);
   const [privacy, setPrivacy] = useState(false);
@@ -134,8 +132,6 @@ export const BookTemplate = ({ state, actions, libraries }) => {
       actions.theme.sendFormGuide(formData2);
     }
   };
-
-  const faqArray = filterQuestions(state, data.id);
 
   return (
     <BookPage>
@@ -321,10 +317,6 @@ export const BookTemplate = ({ state, actions, libraries }) => {
           </FormContent>
         </BookForm>
       </BookSpace>
-      
-      <Container>
-        <CollapseList elements={faqArray} libraries={libraries} />
-      </Container>
     </BookPage>
   );
 };
