@@ -8,6 +8,7 @@ export const BigTitleContainer = styled.div`
   width: 100%;
   height: 176px;
   text-align: center;
+  overflow: hidden;
 
   @media screen and (max-width: 991px) {
     height: 117px;

@@ -65,6 +65,14 @@ const Form = ({ submitForm }) => {
       formData.append('nda',nda);
       formData.append('subscribe',trackNews);
       submitForm({formData});
+      setName('');
+      setCompany('');
+      setEmail('');
+      setPrivacy(false);
+      setSelectFile('');
+      setMessage('');
+      setNda(false);
+      setTrackNews(false);
     }
   }
 
