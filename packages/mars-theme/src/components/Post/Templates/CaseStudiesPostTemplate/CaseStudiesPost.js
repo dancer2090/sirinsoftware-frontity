@@ -26,8 +26,8 @@ import {
   CaseLink,
   CaseItemTitle,
   CaseContent,
+  Crumbs,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
 import CollapseList from '../FaqTemplate/CollapseList';
 import { filterQuestions } from '../../../../utils/filterQuestions';
 
@@ -85,7 +85,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
       </ContainerFrame>
 
       <Container>
-        <Breadcrumbs links={[
+        <Crumbs links={[
           { name: 'Case Studies', link: '/case-studies' },
           { name: <Html2React html={post.title.rendered} />, link: '#' }]}
         />

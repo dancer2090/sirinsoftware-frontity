@@ -15,12 +15,12 @@ import {
   WrapperPage,
   BusinessButton,
   PostList,
+  Crumbs,
 } from './styles';
 import Link from '../../../link';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
 import Image from '../../../../img/image.jpg';
-import Breadcrumbs from '../../../Breadcrumbs';
 import CollapseList from '../FaqTemplate/CollapseList';
 import { filterQuestions } from '../../../../utils/filterQuestions';
 import logo from '../../../../img/logo.svg';
@@ -81,7 +81,7 @@ const StandartTemplate = ({ state, libraries }) => {
         </Container>
       </BigFrame>
       <Container>
-        <Breadcrumbs links={[
+        <Crumbs links={[
           { name: 'Blog', link: '/blog' },
           { name: category.name, link: `/blog/${category.name.toLocaleLowerCase()}` },
           { name: <Html2React html={post.title.rendered} />, link: '#' }]}

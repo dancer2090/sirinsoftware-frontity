@@ -1,4 +1,13 @@
 import { styled, css } from 'frontity';
+import Breadcrumbs from '../../../Breadcrumbs';
+
+export const Crumbs = styled(Breadcrumbs)`
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const Container = styled.div`
   padding: 41px 0 115px 0;
@@ -88,16 +97,16 @@ export const TableWrapper = styled.div`
   max-width: 300px;
   position: relative;
 
-  ${({fixeds, top}) => (
+  ${({ fixeds, top }) => (
     fixeds
-    ? css`position: fixed; top: ${top}px;`
-    : null
+      ? css`position: fixed; top: ${top}px;`
+      : null
   )}
 
-  ${({bottom}) => (
+  ${({ bottom }) => (
     bottom
-    ? 'position: relative; top: 0;'
-    : null
+      ? 'position: relative; top: 0;'
+      : null
   )}
 
   @media screen and (max-width: 991px) {
@@ -106,11 +115,11 @@ export const TableWrapper = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
-    ${({fixeds, top}) => (
-      fixeds
+    ${({ fixeds }) => (
+    fixeds
       ? css`position: relative; top: 0;`
       : null
-    )}
+  )}
   }
 `;
 
@@ -150,11 +159,11 @@ export const TableItem = styled.div`
     background-color: #f3f3f3;
   }
 
-  ${({active}) => (
+  ${({ active }) => (
     active
-    ? css`background: linear-gradient(277.36deg, #3FA54A 3.6%, #216628 97.69%);
+      ? css`background: linear-gradient(277.36deg, #3FA54A 3.6%, #216628 97.69%);
       color: white`
-    : css``
+      : css``
   )}
 
   @media screen and (max-width: 991px) {

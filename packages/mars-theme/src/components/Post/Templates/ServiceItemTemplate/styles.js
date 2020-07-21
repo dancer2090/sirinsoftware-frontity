@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import MainFrameBlock from '../../../MainFrameBlock';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 export const Banner = styled(MainFrameBlock)`
   margin-bottom: 20px;
 `;
+
+export const Crumbs = styled(Breadcrumbs)``;
 
 export const Wrapper = styled.div`
   padding: 0;
