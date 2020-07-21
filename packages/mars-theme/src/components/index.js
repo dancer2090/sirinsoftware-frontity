@@ -40,8 +40,8 @@ const Theme = ({ state, actions }) => {
 
   return (
     <>
-      {/* <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey}>
-        <Recaptcha />. */}
+      <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey}>
+        <Recaptcha />
         {/* Add some metatags to the <head> of the HTML. */}
         <Title />
         <Head>
@@ -67,7 +67,7 @@ const Theme = ({ state, actions }) => {
           handleClose={subscribeHandleClose}
         />
 
-        {/* <Header scrollRef={formRef} transparent={transparent} /> */}
+        <Header scrollRef={formRef} transparent={transparent} />
         <Space transparent={transparent} />
 
         {/* Add the main section. It renders a different component depending
@@ -85,10 +85,10 @@ const Theme = ({ state, actions }) => {
         <div ref={formRef}>
           <FeedbackForm />
         </div>
-        {/* <Footer /> */}
+        <Footer />
 
         <UseCookiesModal />
-      {/*</GoogleReCaptchaProvider> */}
+      </GoogleReCaptchaProvider>
     </>
   );
 };

@@ -42,7 +42,7 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
         (
           <Switch>
               <MainTemplate scrollRef={scrollRef} when={state.router.link === '/'} />
-              {/* <CaseStudiesPost when={dataP.type === 'portfolio'} />
+              <CaseStudiesPost when={dataP.type === 'portfolio'} />
               <FaqTemplate when={template === 'page-faq.php'} />
               <StandartTemplate when={dataP.type === 'post' && template === 'standart' && state.router.link !== '/'} />
               <ServicesTemplate when={template === 'page-services-null.php'} />
@@ -52,7 +52,7 @@ const PostContent = ({ state, actions, scrollRef = null }) => {
               <ContactsTemplate when={template === 'contacts.php'} />
               <FullPageTemplate when={template === 'page-full.php'} />
               <BookTemplate when={template === 'page-book.php'} />
-              <OtherTempalate />  */}
+              <OtherTempalate />
           </Switch>
         )
       }

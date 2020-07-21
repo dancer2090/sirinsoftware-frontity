@@ -106,6 +106,7 @@ const marsTheme = {
       menu: {},
       cases: {},
       teammembers: {},
+      faq: {},
       recaptchaToken: null,
       isMobileMenuOpen: false,
       featured: {
@@ -210,16 +211,26 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ route, state, actions, libraries }) => {
-/*
+        let seconds = 0;
+        const timer = setInterval(() => {
+          seconds = seconds + 100;
+        }, 100);
+
+        const globalOptions = await axios.get(`${state.source.api}/frontity-api/get-options`);
+        const footerData = { items : globalOptions.data.footer_menu || {} };
+        const optionPage =  { acf : globalOptions.data.options || {} };;
+        const mainMenu = { items : globalOptions.data.head_menu || {} };
+
+        state.theme.menu.footer_menu = footerData;
+
         actions.theme.alternativeUrlForImage();
 
-        const optionPage = await axios.get(`${state.source.api}/acf/v3/options/options`);
-        state.options = optionPage.data;
+        state.options = optionPage;
+
+        state.theme.faq = globalOptions.data.faq.categories || {};
 
         const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
         state.customSettings.categories = categories.data;
-
-        await actions.source.fetch('/about/faq');
 
         if (state.router.link.includes('/services/')) {
           await actions.source.fetch('/case-studies/');
@@ -231,7 +242,7 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/case-studies/');
         }
-        
+
         if (
           state.router.link === '/'
         ) {
@@ -255,8 +266,7 @@ const marsTheme = {
 
         const { urlCheck } = libraries.func;
         const replaces = [state.frontity.url, state.frontity.adminUrl];
-        const mainMenu = await axios.get(`${state.source.api}/menus/v1/menus/100`);
-        state.theme.menu.main = mainMenu.data || {};
+        state.theme.menu.main = mainMenu || {};
         state.theme.menu.main.items.map((item) => {
           item.urlFrontity = urlCheck(item.url, replaces);
           if (item.child_items) {
@@ -268,9 +278,9 @@ const marsTheme = {
           return item;
         });
 
-        const footerData = await axios.get(`${state.source.api}/menus/v1/menus/4`);
-        state.theme.menu.footer_menu = footerData.data;
-*/
+
+        clearInterval(timer);
+        console.log(seconds);
       },
     },
   },
