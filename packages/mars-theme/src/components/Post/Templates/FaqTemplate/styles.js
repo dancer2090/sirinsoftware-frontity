@@ -3,8 +3,9 @@ import Breadcrumbs from '../../../Breadcrumbs';
 
 export const Crumbs = styled(Breadcrumbs)`
   @media screen and (max-width: 767px) {
-    padding-left: 15px;
-    padding-right: 15px;
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 

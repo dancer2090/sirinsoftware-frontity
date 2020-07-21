@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'frontity';
-import Breadcrumbs from '../../../Breadcrumbs';
 import {
   Wrapper,
   Container,
@@ -13,6 +12,7 @@ import {
   CartAddress,
   CardInfo,
   Icon,
+  Crumbs,
 } from './styles';
 import oneBg from '../../../../img/kiyv.svg';
 import twoBg from '../../../../img/usa.svg';
@@ -35,7 +35,7 @@ const ContactsTemplate = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Breadcrumbs links={[{ name: 'Contacts', link: '#' }]} />
+      <Crumbs links={[{ name: 'Contacts', link: '#' }]} />
       <Wrapper>
         <Description>
           <Html2React html={post.content.rendered} />

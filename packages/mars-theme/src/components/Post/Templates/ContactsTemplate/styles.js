@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 import SvgSprite from '../StandartTemplate/SvgSprite';
+import Breadcrumbs from '../../../Breadcrumbs';
+
+export const Crumbs = styled(Breadcrumbs)`
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const Wrapper = styled.div`
   padding: 57px 0 100px 0;

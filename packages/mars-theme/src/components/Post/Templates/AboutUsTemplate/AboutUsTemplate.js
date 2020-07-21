@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { connect, styled } from 'frontity';
+import React from 'react';
+import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import BigTitle from '../../../BigTitle';
 import Link from '../../../link';
@@ -32,8 +32,8 @@ import {
   GalleryItem,
   GalleryImageContainer,
   GalleryImage,
+  Crumbs,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
 import CollapseList from '../FaqTemplate/CollapseList';
 import { filterQuestions } from '../../../../utils/filterQuestions';
 
@@ -74,7 +74,7 @@ const AboutUsTemplate = ({ state, libraries, actions }) => {
     <GlobalContainer>
       <BigFrameContainer title={post.content.rendered} image={bgImg} />
       <Container style={{ padding: 0 }}>
-        <Breadcrumbs links={[{
+        <Crumbs links={[{
           name: 'About',
           link: '#',
         }]}

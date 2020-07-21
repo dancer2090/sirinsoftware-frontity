@@ -1,5 +1,14 @@
-import { styled, css } from 'frontity';
+import { styled } from 'frontity';
 import Slider from './AboutUsSlider';
+import Breadcrumbs from '../../../Breadcrumbs';
+
+export const Crumbs = styled(Breadcrumbs)`
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const GlobalContainer = styled.div`
   display: block;
