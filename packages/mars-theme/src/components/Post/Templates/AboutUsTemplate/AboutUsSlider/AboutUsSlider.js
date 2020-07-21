@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Container,
-  Swiper
+  Swiper,
 } from './styles';
 
 const AboutUsSlider = ({ className, children }) => {
@@ -11,18 +11,18 @@ const AboutUsSlider = ({ className, children }) => {
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     spaceBetween: 0,
-  }
+  };
 
   return (
-    <Container>
+    <Container className={className}>
       <Swiper {...params}>
         { children }
       </Swiper>
     </Container>
-  )
-}
+  );
+};
 
 export default AboutUsSlider;

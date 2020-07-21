@@ -408,6 +408,10 @@ export const GalleryImageContainer = styled.div`
   margin-bottom: 10px;
   overflow: hidden;
   height: 600px;
+  background-image: url(${({ url }) => url});
+  background-size: cover;
+  background-repeat: no-repeat;
+  
   @media screen and (max-width: 991px) {
     width: calc(50% - 4px);
     height: 400px;
@@ -421,14 +425,21 @@ export const GalleryImageContainer = styled.div`
   &:after{
     content:' ';
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
     background: linear-gradient(0deg, rgba(6, 6, 6, 0.5), rgba(6, 6, 6, 0.5)), url(girls-smiling-park-sunset_1153-171.jpg);
+    transition: all .3s;
   }
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
 
+  &:hover {
+    &:after {
+      opacity: 0;
+    }
+  }
   @media screen and (max-width: 767px) {
     margin-right: 0px;
   }
