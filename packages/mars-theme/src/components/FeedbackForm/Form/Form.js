@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable quote-props */
 import React, { useState, useRef } from 'react';
 import Link from '../../link';
 import {
@@ -54,7 +56,10 @@ const Form = ({ submitForm }) => {
   };
 
   const sendForm = () => {
-    if(validateForm()) {
+    gtag('event', 'ClickHeaderActionButton', {
+      'event_category': 'ClickHeaderActionButton',
+    });
+    if (validateForm()) {
       const formData = new FormData();
       formData.append('userfile',fileInput.current.files[0]);
       formData.append('name',name);

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable quote-props */
 /* eslint-disable no-param-reassign */ 
 import image from '@frontity/html2react/processors/image';
 import iframe from '@frontity/html2react/processors/iframe';
@@ -159,6 +161,9 @@ const marsTheme = {
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           state.customSettings.isFormSend = true;
+          gtag('event', 'SendEmailFromFooterForm', {
+            'event_category': 'SendEmailFromFooterForm',
+          });
         });
       },
       sendFormGuide: ({ state }) => async (data) => {
