@@ -36,7 +36,18 @@ const Input = styled(TextField)`
     padding: 7px 19px;
     font-size: 14px;
     line-height: 22px;
-    
+    &::placeholder{
+      font-size: 14px;
+      line-height: 22px;
+      @media screen and (max-width: 991px) {
+        font-size: 12px;
+        line-height: 22px;
+      }
+    }
+    @media screen and (max-width: 991px) {
+      font-size: 12px;
+      line-height: 22px;
+    }
     @media screen and (max-width: 767px) {
         width: 100%;
         margin-bottom: 10px;
@@ -56,6 +67,11 @@ const TextArea = styled.textarea`
     font-size: 14px;
     line-height: 22px;
     font-family: 'Open Sans';
+
+    @media screen and (max-width: 991px) {
+      font-size: 12px;
+      line-height: 22px;
+    }
 
     @media screen and (max-width: 767px) {
         margin-top: 0;

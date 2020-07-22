@@ -97,7 +97,6 @@ const CommentsForm = ({ libraries, state, actions }) => {
         {loading && (<div>Loading...</div>)}
         {!loading && (
             <div>
-                {comments.length === 0 && (<p>Comment not found</p>)}
                 {comments.length > 0 && (
                     <>
                         {comments.map(item => {

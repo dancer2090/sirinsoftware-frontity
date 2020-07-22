@@ -60,6 +60,10 @@ export const FormControl = styled.input`
     background-color: white;
   }
 
+  @media screen and (max-width: 991px) {
+    font-size: 12px;
+  }
+
   @media screen and (max-width: 785px) {
     margin: 0;
     margin-bottom: 10px;
@@ -97,6 +101,10 @@ export const Textarea = styled.textarea`
 
   @media (max-width: 1100px) {
     width: 728px;
+  }
+
+  @media screen and (max-width: 991px) {
+    font-size: 12px;
   }
 
   @media screen and (max-width: 785px) {

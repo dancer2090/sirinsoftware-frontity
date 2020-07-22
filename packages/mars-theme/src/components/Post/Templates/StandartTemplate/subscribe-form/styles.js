@@ -88,6 +88,16 @@ const Input = styled(Field)`
           background-color: #ffebeb;
         }
     `}
+    font-size: 14px;
+    @media screen and (max-width: 991px) {
+      font-size: 12px;
+    }
+    &::placeholder{
+      font-size: 14px;
+      @media screen and (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
 `;
 
 export const FText = styled.div`
