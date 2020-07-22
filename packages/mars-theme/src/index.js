@@ -124,7 +124,7 @@ const marsTheme = {
   actions: {
     theme: {
       ipDetect: ({ state }) => async () => {
-        const res = await axios.get(`http://api.sypexgeo.net/json/${state.frontity.ip}`);
+        const res = await axios.get(`https://api.sypexgeo.net/json/${state.frontity.ip}`);
         if (res.data) {
           const { data } = res;
           const countriesLock = ['IN', 'PK', 'BD'];
