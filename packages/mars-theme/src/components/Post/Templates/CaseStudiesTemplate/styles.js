@@ -336,6 +336,7 @@ export const FilterItem = styled.div`
   @media screen and (max-width: 767px) {
     margin-bottom: 10px;
     padding: 0 24px;
+    flex-grow: 2;
 
     &:first-child {
       flex-grow: 2;
@@ -351,6 +352,7 @@ export const FilterItem = styled.div`
 
     &:last-child {
       flex-grow: 2;
+      margin-right: 10px;
     }
 
     br {
