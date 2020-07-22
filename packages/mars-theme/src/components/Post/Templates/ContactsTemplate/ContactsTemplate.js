@@ -11,6 +11,7 @@ import {
   CardItem,
   CartAddress,
   CardInfo,
+  IconContainer,
   Icon,
   Crumbs,
 } from './styles';
@@ -52,7 +53,9 @@ const ContactsTemplate = ({ state, libraries }) => {
               <CardList>
                 <CartAddress itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                   <CardItem>
-                    <Icon name="location" />
+                    <IconContainer>
+                      <Icon name="location" />
+                    </IconContainer>
                     <span>
                       <Html2React html={item.office_address} />
                     </span>
@@ -60,13 +63,17 @@ const ContactsTemplate = ({ state, libraries }) => {
                 </CartAddress>
                 <CardInfo>
                   <CardItem itemprop="telephone">
-                    <Icon name="phone" />
+                    <IconContainer>
+                      <Icon name="phone" />
+                    </IconContainer>
                     <a href={item.office_phone1} >
                       <Html2React html={item.office_phone1} />
                     </a>
                   </CardItem>
                   <CardItem itemprop="email">
-                    <Icon name="message" />
+                    <IconContainer>
+                      <Icon name="message" />
+                    </IconContainer>
                     <a href={item.office_email}>
                       <Html2React html={item.office_email} />
                     </a>

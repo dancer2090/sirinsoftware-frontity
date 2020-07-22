@@ -231,10 +231,14 @@ export const CardItem = styled.div.attrs(props => ({
     }
   }
 `;
-
-export const Icon = styled(SvgSprite)`
+export const IconContainer = styled.div`
   width: 30px;
+  text-align: center;
+  display: flex;
+  margin-right: 19px;
+`;
+export const Icon = styled(SvgSprite)`
   height: 22px;
   fill: #F8710F;
-  margin-right: 19px;
+  display: block;
 `;

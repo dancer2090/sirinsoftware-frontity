@@ -10,7 +10,7 @@ import Breadcrumbs from '../../../Breadcrumbs';
 
 export const Crumbs = styled(Breadcrumbs)`
   @media screen and (max-width: 767px) {
-    max-width: calc(100% - 30px);
+    max-width: calc(100% - 20px);
     margin-left: auto;
     margin-right: auto;
   }

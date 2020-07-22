@@ -57,7 +57,7 @@ export const Text = styled.button`
 export const Container = styled.section`
   width: 960px;
   margin: 30px auto 0 auto;
-  padding: 1.75rem 0;
+  padding: 20px 0;
   list-style: none;
   display: flex;
   justify-content:space-between;
@@ -74,7 +74,7 @@ export const Container = styled.section`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     margin-top: 0;
   }
 `;

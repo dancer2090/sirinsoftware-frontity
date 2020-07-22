@@ -64,6 +64,18 @@ export const AwardsImageContainer = styled.div`
     width: 50%;
   }
 `;
+export const AwardsImage = styled.img`
+  display: block;
+
+  @media screen and (max-width: 991px) {
+    max-width: 150px;
+    max-height: 136px;
+  }
+  @media screen and (max-width: 767px) {
+    max-width: 75px;
+    max-height: 75px;
+  }
+`;
 export const AwardsItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -117,6 +129,12 @@ export const AwardsItem = styled.div`
     @media screen and (max-width: 767px) {
       height: 132px;
     }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 90px;
+        max-height: 90px;
+      }
+    }
   }
   & ${AwardsImageContainer}:nth-child(5) {
     height: 240px;
@@ -125,6 +143,12 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 150px;
+    }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 90px;
+        max-height: 90px;
+      }
     }
   }
   & ${AwardsImageContainer}:nth-child(6) {
@@ -136,6 +160,12 @@ export const AwardsItem = styled.div`
     @media screen and (max-width: 767px) {
       height: 150px;
     }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 90px;
+        max-height: 90px;
+      }
+    }
   }
   & ${AwardsImageContainer}:nth-child(7) {
     height: 210px;
@@ -145,6 +175,12 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 132px;
+    }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 100px;
+        max-height: 100px;
+      }
     }
   }
   & ${AwardsImageContainer}:nth-child(8) {
@@ -173,18 +209,6 @@ export const AwardsItem = styled.div`
     @media screen and (max-width: 767px) {
       height: 93px;
     }
-  }
-`;
-export const AwardsImage = styled.img`
-  display: block;
-
-  @media screen and (max-width: 991px) {
-    max-width: 150px;
-    max-height: 136px;
-  }
-  @media screen and (max-width: 767px) {
-    max-width: 125px;
-    max-height: 113px;
   }
 `;
 
