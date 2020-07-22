@@ -8,7 +8,7 @@ const Link = ({
   actions,
   link,
   className,
-  itemprop,
+  itemProp,
   children,
   afterClick = () => { console.log('after click'); },
   'aria-current': ariaCurrent,
@@ -38,7 +38,7 @@ const Link = ({
       onClick={onClick}
       className={className}
       aria-current={ariaCurrent}
-      itemprop={itemprop}
+      itemProp={itemProp}
     >
       {children}
     </a>

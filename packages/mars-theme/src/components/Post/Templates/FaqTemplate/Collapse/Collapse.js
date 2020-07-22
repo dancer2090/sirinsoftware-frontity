@@ -1,13 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Container,
-  Item,
   ItemHeader,
   ItemIcon,
-  ItemTitle,
   ItemBody,
-  ItemContent,
-  ItemText,
 } from './styles';
 
 const Collapse = ({
@@ -27,11 +23,19 @@ const Collapse = ({
 
   return (
     <Container>
-      <Item scope prop="mainEntity" propType="https://schema.org/Question">
+      <div
+        className="item-card"
+        itemScope
+        itemProp="mainEntity"
+        itemType="https://schema.org/Question"
+      >
         <ItemHeader>
-          <ItemTitle prop="name">
+          <div
+            className="item-title"
+            itemProp="name"
+          >
             {data.question}
-          </ItemTitle>
+          </div>
           <ItemIcon
             onClick={toggleCollapse}
             active={active}
@@ -39,13 +43,21 @@ const Collapse = ({
           />
         </ItemHeader>
         <ItemBody ref={content} style={{ maxHeight: height }}>
-          <ItemContent scope prop="acceptedAnswer" propType="https://schema.org/Answer">
-            <ItemText prop="text">
+          <div
+            className="item-content"
+            itemScope
+            itemProp="acceptedAnswer"
+            itemType="https://schema.org/Answer"
+          >
+            <div
+              className="item-text"
+              itemProp="text"
+            >
               <Html2React html={data.description} />
-            </ItemText>
-          </ItemContent>
+            </div>
+          </div>
         </ItemBody>
-      </Item>
+      </div>
     </Container>
   );
 };

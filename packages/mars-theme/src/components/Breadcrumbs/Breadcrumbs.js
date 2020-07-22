@@ -1,47 +1,49 @@
 import React from 'react';
 import {
-  Container,
+  Wrapper,
   Item,
-  Li,
-  Name,
 } from './styles';
 
-const Breadcrumbs = ({ links = [], className }) => (
-  <Container
-    itemscope
-    className={className}
-    itemtype="https://schema.org/BreadcrumbList"
-  >
-    <Li
-      itemprop="itemListElement"
-      itemscope
-      itemtype="https://schema.org/ListItem"
+const Breadcrumbs = ({ links = [], className = '' }) => (
+  <Wrapper>
+    <ol
+      itemScope
+      className={`container ${className}`}
+      itemType="https://schema.org/BreadcrumbList"
     >
-      <Item itemprop="item" link="/">
-        <Name itemprop="name">
-          Main
-        </Name>
-      </Item>
-      <meta itemProp="position" content="1" />
-    </Li>
-    {
+      <li
+        className="link-item"
+        itemProp="itemListElement"
+        itemScope
+        itemType="https://schema.org/ListItem"
+      >
+        <Item itemProp="item" link="/">
+          <span itemProp="name">
+            Main
+          </span>
+        </Item>
+        <meta itemProp="position" content="1" />
+      </li>
+      {
         links.map((item, index) => (
-          <Li
+          <li
+            className="link-item"
             key={index}
-            itemprop="itemListElement"
-            itemscope
-            itemtype="https://schema.org/ListItem"
+            itemProp="itemListElement"
+            itemScope
+            itemType="https://schema.org/ListItem"
           >
-            <Item itemprop="item" link={item.link === '#' ? null : item.link}>
-              <Name itemprop="name">
+            <Item itemProp="item" link={item.link === '#' ? null : item.link}>
+              <span itemProp="name">
                 {item.name}
-              </Name>
+              </span>
             </Item>
             <meta itemProp="position" content={index + 2} />
-          </Li>
+          </li>
         ))
       }
-  </Container>
+    </ol>
+  </Wrapper>
 );
 
 export default Breadcrumbs;

@@ -16,6 +16,7 @@ import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
+import CollapsePage from './CollapsePage/CollapsePage';
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -83,6 +84,8 @@ const Theme = ({ state, actions }) => {
         <div ref={formRef}>
           <FeedbackForm />
         </div>
+
+        <CollapsePage />
 
         <Footer />
 
