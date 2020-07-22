@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-undef */
@@ -54,8 +55,10 @@ const HeaderComponent = ({
         behavior: 'smooth',
       });
     }
+    gtag('event', 'Click header action button', {
+      'event_category': 'Click header action button',
+    });
   };
-  const logoImg = (transparent ? logoWhite : logo);
 
   const [height, setHeight] = useState(0);
   const ref = useRef();

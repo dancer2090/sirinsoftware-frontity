@@ -39,6 +39,9 @@ import {
   CaseContent,
   CaseItemWrapper,
   CaseLink,
+  ServicesTitle,
+  CaseTitle,
+  ClientTitle,
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
 import Triangle from '../../../../img/main_triangle.svg';
@@ -83,7 +86,7 @@ const MainTemplate = ({
         scrollRef={scrollRef}
       />
       <ServicesGlobalContainer>
-        <BigTitle title="Services" />
+        <ServicesTitle title="Services" />
         <Container>
           <ServicesList>
             {services && services.map((service, k) => {
@@ -144,7 +147,7 @@ const MainTemplate = ({
         </Container>
       </PartnerShip>
       <CaseStudiesGlobalContainer>
-        <BigTitle title="case studies" />
+        <CaseTitle title="case studies" />
         <Container>
           <CaseStudiesList>
             {case_studies && case_studies.map((item, index) => {
@@ -189,7 +192,7 @@ const MainTemplate = ({
         </Container>
       </CaseStudiesGlobalContainer>
       <ClientsGlobalContainer>
-        <BigTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)" />
+        <ClientTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)" />
         <Container>
           <ClientsGallery>
             {clients && clients.map((client, key) => {

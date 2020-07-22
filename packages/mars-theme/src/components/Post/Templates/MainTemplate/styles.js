@@ -1,7 +1,51 @@
 import { styled, css } from 'frontity';
 import Slider from './MainSlider';
-import Button from '../../../Button';
 import Link from '../../../link';
+
+import BigTitle from '../../../BigTitle/BigTitle';
+
+export const ServicesTitle = styled(BigTitle)`
+  @media screen and (max-width: 767px) {
+    height: 59px;
+
+    div {
+      font-size: 48px;
+      line-height: 59px;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+`;
+
+export const CaseTitle = styled(BigTitle)`
+  @media screen and (max-width: 767px) {
+    height: 49px;
+
+    div {
+      font-size: 40px;
+      line-height: 49px;
+    }
+  }
+`;
+
+export const ClientTitle = styled(BigTitle)`
+  @media screen and (max-width: 767px) {
+    height: 59px;
+
+    div {
+      font-size: 48px;
+      line-height: 59px;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+`;
 
 export const GlobalContainer = styled.div`
   display: block;

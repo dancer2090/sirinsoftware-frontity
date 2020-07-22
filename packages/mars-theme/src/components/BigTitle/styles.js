@@ -31,7 +31,7 @@ export const BigTitleBackground = styled.div`
   line-height: 176px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: ${(props) => (props.bigTitleBackgroundColor ? props.bigTitleBackgroundColor : "#F3F3F3")};
+  color: ${(props) => (props.bigTitleBackgroundColor ? props.bigTitleBackgroundColor : '#F3F3F3')};
   z-index: 0;
   overflow: hidden;
 
@@ -56,7 +56,7 @@ export const BigTitleText = styled.h2`
   margin: 0;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${(props) => (props.bigTitleTextColor ? props.bigTitleTextColor : "#222222")};
+  color: ${(props) => (props.bigTitleTextColor ? props.bigTitleTextColor : '#222222')};
   position: relative;
   z-index: 1;
 
