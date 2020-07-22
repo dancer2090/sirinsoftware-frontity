@@ -6,8 +6,8 @@ import {
   Banner,
   ContentWrapper,
   Content,
+  Crumbs,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
 import {
   CaseContainer,
   CaseContent,
@@ -17,8 +17,6 @@ import {
   CaseSlider,
   CaseTitle,
 } from '../ServicesTemplate/styles';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   // Get information about the current URL.
@@ -38,8 +36,6 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const faqArray = filterQuestions(state, data.id);
-
   return (
     <Wrapper>
       <Banner
@@ -51,7 +47,7 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
       />
 
       <Container>
-        <Breadcrumbs links={[
+        <Crumbs links={[
           { name: 'Services', link: '/services' },
           { name: <Html2React html={post.title.rendered} />, link: '#' },
         ]}
@@ -92,8 +88,6 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
             </CaseSlider>
           </CaseContainer>
         )}
-
-        <CollapseList elements={faqArray} libraries={libraries} />
       </Container>
     </Wrapper>
   );

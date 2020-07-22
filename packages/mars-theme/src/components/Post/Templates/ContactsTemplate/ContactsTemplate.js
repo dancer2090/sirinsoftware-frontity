@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'frontity';
-import Breadcrumbs from '../../../Breadcrumbs';
 import {
   Wrapper,
   Container,
@@ -12,12 +11,12 @@ import {
   CardItem,
   CartAddress,
   CardInfo,
+  IconContainer,
   Icon,
+  Crumbs,
 } from './styles';
 import oneBg from '../../../../img/kiyv.svg';
 import twoBg from '../../../../img/usa.svg';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const ContactsTemplate = ({ state, libraries }) => {
   // Get information about the current URL.
@@ -31,11 +30,9 @@ const ContactsTemplate = ({ state, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const faqArray = filterQuestions(state, dataContent.id);
-
   return (
     <Container>
-      <Breadcrumbs links={[{ name: 'Contacts', link: '#' }]} />
+      <Crumbs links={[{ name: 'Contacts', link: '#' }]} />
       <Wrapper>
         <Description>
           <Html2React html={post.content.rendered} />
@@ -52,7 +49,9 @@ const ContactsTemplate = ({ state, libraries }) => {
               <CardList>
                 <CartAddress itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                   <CardItem>
-                    <Icon name="location" />
+                    <IconContainer>
+                      <Icon name="location" />
+                    </IconContainer>
                     <span>
                       <Html2React html={item.office_address} />
                     </span>
@@ -60,13 +59,17 @@ const ContactsTemplate = ({ state, libraries }) => {
                 </CartAddress>
                 <CardInfo>
                   <CardItem itemprop="telephone">
-                    <Icon name="phone" />
+                    <IconContainer>
+                      <Icon name="phone" />
+                    </IconContainer>
                     <a href={item.office_phone1} >
                       <Html2React html={item.office_phone1} />
                     </a>
                   </CardItem>
                   <CardItem itemprop="email">
-                    <Icon name="message" />
+                    <IconContainer>
+                      <Icon name="message" />
+                    </IconContainer>
                     <a href={item.office_email}>
                       <Html2React html={item.office_email} />
                     </a>
@@ -76,8 +79,6 @@ const ContactsTemplate = ({ state, libraries }) => {
             </Card>
           ))}
         </Row>
-
-        <CollapseList elements={faqArray} libraries={libraries} />
       </Wrapper>
     </Container>
   );

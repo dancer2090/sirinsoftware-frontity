@@ -16,8 +16,6 @@ export const InputTextBlock = styled.div`
     flex-wrap: wrap;
     padding: 0;
   }
-
-  
 `;
 
 export const InputGroup = styled.div`
@@ -181,6 +179,8 @@ export const Send = styled.div`
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
+      display: flex;
+      max-width: calc(100% - 300px);
 
       &.error {
         &::before {
@@ -188,12 +188,17 @@ export const Send = styled.div`
           box-shadow: none;
         }
       }
+      
+      @media screen and (max-width: 767px) {
+        max-width: 100%;
+      }
   }
   label::before{
       content:'';
       text-align: center;
       display:inline-block;
       width:24px;
+      min-width: 24px;
       height:24px;
       background: #FFFFFF;
       box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2);
@@ -234,6 +239,10 @@ export const BtnSend = styled.div`
   @media (max-width: 1100px) {
     padding-right: 5px;
   }
+  
+  @media screen and (max-width: 767px) {
+    text-align: center;
+  }
 
   button{
     width: 300px;
@@ -262,6 +271,11 @@ export const BtnSend = styled.div`
 
     &:active, &:focus {
       outline: none;
+    }
+    
+    @media screen and (max-width: 767px) {
+      max-width: 450px;
+      width: 100%;
     }
   }
 

@@ -8,8 +8,6 @@ import {
   NotContent,
 } from './styles';
 import Breadcrumbs from '../../../Breadcrumbs';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const Other = ({ state, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -18,14 +16,13 @@ const Other = ({ state, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const faqArray = filterQuestions(state, data.id);
-
   return (
     <Wrapper>
       <Container>
         <Breadcrumbs links={[
-          { name: <Html2React html={post.title.rendered} />, link: '#' }
-        ]} />
+          { name: <Html2React html={post.title.rendered} />, link: '#' },
+        ]}
+        />
       </Container>
       <Container>
         <PostTitle>
@@ -34,16 +31,13 @@ const Other = ({ state, libraries }) => {
         <Content>
           {
             post.content.rendered.length === 0
-            ? <NotContent>No content</NotContent>
-            : <Html2React html={post.content.rendered} />
+              ? <NotContent>No content</NotContent>
+              : <Html2React html={post.content.rendered} />
           }
         </Content>
       </Container>
-      <Container>
-        <CollapseList elements={faqArray} libraries={libraries} />
-      </Container>
     </Wrapper>
-  )
-}
-  
+  );
+};
+
 export default connect(Other);

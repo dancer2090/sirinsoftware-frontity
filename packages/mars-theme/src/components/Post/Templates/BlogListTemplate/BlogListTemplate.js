@@ -1,17 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { connect, decode } from 'frontity';
 import Loader from 'react-spinners/ClipLoader';
 import Item from '../../../list/Item';
 import AllCAtegories from '../../../list/AllCategories';
 import {
-  Container, Header, PaginationContainer, Text,
+  Container,
+  Header,
+  PaginationContainer,
+  Text,
 } from '../../../list/styles';
 import Breadcrumbs from '../../../Breadcrumbs';
 import { Wrapper, ContainerWrapper } from './styles';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
-const BlogListTemplate = ({ state, actions, libraries }) => {
+const BlogListTemplate = ({ state, actions }) => {
   const [categoryName, setCategoryName] = useState('All categories');
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
@@ -45,8 +46,6 @@ const BlogListTemplate = ({ state, actions, libraries }) => {
       if (cat.parent === 1) categories.push(cat);
     });
   }
-
-  const faqArray = filterQuestions(state, data.id);
 
   return (
     <Wrapper>
@@ -84,8 +83,6 @@ const BlogListTemplate = ({ state, actions, libraries }) => {
           />
           <Text hidden={loadMoreHidden} onClick={() => loadMore1()}>Load more</Text>
         </PaginationContainer>
-
-        <CollapseList elements={faqArray} libraries={libraries} />
       </Container>
     </Wrapper>
   );

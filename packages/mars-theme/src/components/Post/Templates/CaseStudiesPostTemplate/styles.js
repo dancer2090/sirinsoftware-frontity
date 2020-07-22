@@ -6,6 +6,15 @@ import CaseTitle from './CaseTitle';
 import CaseBussines from './BusinesCard';
 import Slider from '../ServicesTemplate/CaseSlider';
 import LinkComponent from '../../../link';
+import Breadcrumbs from '../../../Breadcrumbs';
+
+export const Crumbs = styled(Breadcrumbs)`
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const Wrapper = styled.div`
   width: 100%;

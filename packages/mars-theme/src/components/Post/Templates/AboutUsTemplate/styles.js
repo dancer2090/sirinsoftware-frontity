@@ -1,5 +1,14 @@
-import { styled, css } from 'frontity';
+import { styled } from 'frontity';
 import Slider from './AboutUsSlider';
+import Breadcrumbs from '../../../Breadcrumbs';
+
+export const Crumbs = styled(Breadcrumbs)`
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const GlobalContainer = styled.div`
   display: block;
@@ -55,6 +64,18 @@ export const AwardsImageContainer = styled.div`
     width: 50%;
   }
 `;
+export const AwardsImage = styled.img`
+  display: block;
+
+  @media screen and (max-width: 991px) {
+    max-width: 150px;
+    max-height: 136px;
+  }
+  @media screen and (max-width: 767px) {
+    max-width: 75px;
+    max-height: 75px;
+  }
+`;
 export const AwardsItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -108,6 +129,12 @@ export const AwardsItem = styled.div`
     @media screen and (max-width: 767px) {
       height: 132px;
     }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 90px;
+        max-height: 90px;
+      }
+    }
   }
   & ${AwardsImageContainer}:nth-child(5) {
     height: 240px;
@@ -116,6 +143,12 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 150px;
+    }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 90px;
+        max-height: 90px;
+      }
     }
   }
   & ${AwardsImageContainer}:nth-child(6) {
@@ -127,6 +160,12 @@ export const AwardsItem = styled.div`
     @media screen and (max-width: 767px) {
       height: 150px;
     }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 90px;
+        max-height: 90px;
+      }
+    }
   }
   & ${AwardsImageContainer}:nth-child(7) {
     height: 210px;
@@ -136,6 +175,12 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 132px;
+    }
+    & ${AwardsImage}{
+      @media screen and (max-width: 767px) {
+        max-width: 100px;
+        max-height: 100px;
+      }
     }
   }
   & ${AwardsImageContainer}:nth-child(8) {
@@ -164,18 +209,6 @@ export const AwardsItem = styled.div`
     @media screen and (max-width: 767px) {
       height: 93px;
     }
-  }
-`;
-export const AwardsImage = styled.img`
-  display: block;
-
-  @media screen and (max-width: 991px) {
-    max-width: 150px;
-    max-height: 136px;
-  }
-  @media screen and (max-width: 767px) {
-    max-width: 125px;
-    max-height: 113px;
   }
 `;
 
@@ -399,6 +432,10 @@ export const GalleryImageContainer = styled.div`
   margin-bottom: 10px;
   overflow: hidden;
   height: 600px;
+  background-image: url(${({ url }) => url});
+  background-size: cover;
+  background-repeat: no-repeat;
+  
   @media screen and (max-width: 991px) {
     width: calc(50% - 4px);
     height: 400px;
@@ -412,14 +449,21 @@ export const GalleryImageContainer = styled.div`
   &:after{
     content:' ';
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
     background: linear-gradient(0deg, rgba(6, 6, 6, 0.5), rgba(6, 6, 6, 0.5)), url(girls-smiling-park-sunset_1153-171.jpg);
+    transition: all .3s;
   }
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
 
+  &:hover {
+    &:after {
+      opacity: 0;
+    }
+  }
   @media screen and (max-width: 767px) {
     margin-right: 0px;
   }

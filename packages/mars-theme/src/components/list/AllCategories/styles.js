@@ -6,8 +6,10 @@ export const AllCategoriesContainer = styled.div`
     right:1rem;
     z-index: 1;
     @media (max-width: 767px) {
-        left:1rem;
-        top:-30px;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
 `;
 export const AllCategoriesHeader = styled.div`
@@ -57,7 +59,8 @@ export const AllCategoriesHeader = styled.div`
         @media (max-width: 767px) {
             position:absolute;
             right:5%;
-            transform: rotate(${(props) => (props.isOpen ? '45deg' : '-135deg')});
+            transform: translateY(-31%) rotate(${(props) => (props.isOpen ? '45deg' : '-135deg')});
+            top: 42%;
         }
     }
 `;

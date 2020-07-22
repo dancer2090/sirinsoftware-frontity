@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import MainFrameBlock from '../../../MainFrameBlock';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 export const Banner = styled(MainFrameBlock)`
   margin-bottom: 20px;
 `;
+
+export const Crumbs = styled(Breadcrumbs)``;
 
 export const Wrapper = styled.div`
   padding: 0;
@@ -22,7 +25,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   * {

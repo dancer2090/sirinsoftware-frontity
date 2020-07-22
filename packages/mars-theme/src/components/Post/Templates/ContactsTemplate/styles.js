@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 import SvgSprite from '../StandartTemplate/SvgSprite';
+import Breadcrumbs from '../../../Breadcrumbs';
+
+export const Crumbs = styled(Breadcrumbs)`
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const Wrapper = styled.div`
   padding: 57px 0 100px 0;
@@ -222,10 +231,14 @@ export const CardItem = styled.div.attrs(props => ({
     }
   }
 `;
-
-export const Icon = styled(SvgSprite)`
+export const IconContainer = styled.div`
   width: 30px;
+  text-align: center;
+  display: flex;
+  margin-right: 19px;
+`;
+export const Icon = styled(SvgSprite)`
   height: 22px;
   fill: #F8710F;
-  margin-right: 19px;
+  display: block;
 `;
