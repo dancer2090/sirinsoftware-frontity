@@ -16,14 +16,6 @@ const settings = {
   },
   "packages": [
     {
-      name: "@frontity/google-tag-manager-analytics",
-      state: {
-        googleTagManagerAnalytics: {
-          containerId: "GTM-PN5W3K4",
-        },
-      },
-    },
-    {
       "name": "@frontity/mars-theme",
       "state": {
         "theme": {

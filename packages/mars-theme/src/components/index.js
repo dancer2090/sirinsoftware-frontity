@@ -16,6 +16,8 @@ import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
+import Analytics from 'analytics'
+import googleTagManager from '@analytics/google-tag-manager'
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -35,6 +37,16 @@ const Theme = ({ state, actions }) => {
 
   const formRef = useRef(null);
   const transparent = (state.router.link === '/');
+
+  const analytics = Analytics({
+    app: 'awesome-app',
+    plugins: [
+      googleTagManager({
+        containerId: 'GTM-PN5W3K4'
+      })
+    ]
+  });
+  analytics.page();
 
   return (
     <>
