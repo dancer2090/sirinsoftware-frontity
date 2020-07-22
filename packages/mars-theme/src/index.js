@@ -161,9 +161,17 @@ const marsTheme = {
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           state.customSettings.isFormSend = true;
-          gtag('event', 'SendEmailFromFooterForm', {
-            'event_category': 'SendEmailFromFooterForm',
+          gtag('event', 'Send Email from footer form', {
+            'event_category': 'Send Email from footer form',
           });
+          if (__insp) {
+            __insp.push(['identify', dataForm.get('email')]);
+            __insp.push(['tagSession', {
+              email: $dataForm.get('email'),
+              name: $dataForm.get('name'),
+              company: $dataForm.get('company'),
+            }]);
+          }
         });
       },
       sendFormGuide: ({ state }) => async (data) => {

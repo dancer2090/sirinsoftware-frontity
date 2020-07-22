@@ -55,8 +55,8 @@ const HeaderComponent = ({
         behavior: 'smooth',
       });
     }
-    gtag('event', 'ClickHeaderActionButton', {
-      'event_category': 'ClickHeaderActionButton',
+    gtag('event', 'Click header action button', {
+      'event_category': 'Click header action button',
     });
   };
 

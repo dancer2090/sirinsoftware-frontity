@@ -56,8 +56,8 @@ const Form = ({ submitForm }) => {
   };
 
   const sendForm = () => {
-    gtag('event', 'ClickHeaderActionButton', {
-      'event_category': 'ClickHeaderActionButton',
+    gtag('event', 'Click Send in footer form', {
+      'event_category': 'Click Send in footer form'
     });
     if (validateForm()) {
       const formData = new FormData();
