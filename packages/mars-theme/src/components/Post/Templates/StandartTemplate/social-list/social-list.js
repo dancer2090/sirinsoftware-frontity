@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'frontity';
 import {
   Container,
   Label,
@@ -12,14 +13,12 @@ import {
   CopyButton,
 } from './styles';
 
-const SocialList = ({ className, title = '' }) => {
+const SocialList = ({ className, title = '', state }) => {
   const [show, setShow] = useState(false);
 
-  let href
+  const href = `${state.frontity.url}${state.router.link}`;
   const copyLink = () => {
-    href = location.href;
     navigator.clipboard.writeText(href);
-
     setShow(true);
     setTimeout(() => {
       setShow(false);
@@ -62,4 +61,4 @@ const SocialList = ({ className, title = '' }) => {
   );
 };
 
-export default SocialList;
+export default connect(SocialList);
