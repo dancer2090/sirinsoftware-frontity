@@ -7,7 +7,7 @@ import {
   ItemTitle,
   ItemBody,
   ItemContent,
-  ItemText
+  ItemText,
 } from './styles';
 
 const Collapse = ({

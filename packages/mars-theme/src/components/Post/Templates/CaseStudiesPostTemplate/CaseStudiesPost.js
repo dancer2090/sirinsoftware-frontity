@@ -28,8 +28,7 @@ import {
   CaseContent,
   Crumbs,
 } from './styles';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -42,16 +41,16 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const post = state.source[data.type][data.id];
   const { acf = {} } = post;
   const {
-    post_featured_image = "",
+    post_featured_image = '',
     archive_featured_image = {},
-    portfolio_client_title = "",
-    portfolio_business_area = "",
-    portfolio_geography = "",
+    portfolio_client_title = '',
+    portfolio_business_area = '',
+    portfolio_geography = '',
     embedded_linux_technology_list = [],
-    portfolio_client_background = "",
-    portfolio_business_challenge = "",
-    portfolio_solution = "",
-    portfolio_value_delivered = "",
+    portfolio_client_background = '',
+    portfolio_business_challenge = '',
+    portfolio_solution = '',
+    portfolio_value_delivered = '',
   } = acf;
 
   let category_id = 0; // значение по умолчанию
@@ -72,8 +71,6 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
 
   const postsRight = items.map((item) => state.source[item.type][item.id]);
 
-  const faqArray = filterQuestions(state, data.id);
-
   return (
     <Wrapper>
       <ContainerFrame src={post_featured_image}>
@@ -85,7 +82,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
       </ContainerFrame>
 
       <Container>
-        <Crumbs links={[
+        <Breadcrumbs links={[
           { name: 'Case Studies', link: '/case-studies' },
           { name: <Html2React html={post.title.rendered} />, link: '#' }]}
         />
@@ -168,10 +165,10 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               postsRight.map((item, index) => {
                 const {
                   acf = {},
-                  link = "",
-                  title = { rendered : "" },
+                  link = '',
+                  title = { rendered: '' },
                 } = item;
-                const { category_for_green_line = "" } = acf;
+                const { category_for_green_line = '' } = acf;
                 return (
                   <Post
                     title={category_for_green_line}
@@ -181,8 +178,8 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
                   >
                     <Html2React html={title.rendered} />
                   </Post>
-                )
-               })
+                );
+              })
             }
           </PostsContent>
         </ContentWrapper>
@@ -192,8 +189,8 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             { slidesStudies.map((item, index) => {
               const {
                 acf = {},
-                title = { rendered : "" },
-                link = "",
+                title = { rendered: '' },
+                link = '',
               } = item;
               const { post_featured_image = {} } = acf;
               return (
@@ -212,8 +209,6 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               );
             })}
           </CaseStudiesSlider>
-
-          <CollapseList elements={faqArray} libraries={libraries} />
         </ContainerSlider>
       </Container>
     </Wrapper>

@@ -21,8 +21,7 @@ import Link from '../../../link';
 import SubscribeForm from './subscribe-form/subscribe-form';
 import CommentsForm from './comments-form';
 import Image from '../../../../img/image.jpg';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
+import Breadcrumbs from '../../../Breadcrumbs';
 import logo from '../../../../img/logo.svg';
 
 const StandartTemplate = ({ state, libraries }) => {
@@ -49,7 +48,6 @@ const StandartTemplate = ({ state, libraries }) => {
   const category = state.source.category[category_id];
 
   const dataMore = state.source.get('/blog/');
-  const faqArray = filterQuestions(state, data.id);
 
   return (
     <WrapperPage>
@@ -81,7 +79,7 @@ const StandartTemplate = ({ state, libraries }) => {
         </Container>
       </BigFrame>
       <Container>
-        <Crumbs links={[
+        <Breadcrumbs links={[
           { name: 'Blog', link: '/blog' },
           { name: category.name, link: `/blog/${category.name.toLocaleLowerCase()}` },
           { name: <Html2React html={post.title.rendered} />, link: '#' }]}
@@ -119,8 +117,6 @@ const StandartTemplate = ({ state, libraries }) => {
             <SubscribeForm />
           </Posts>
         </Wrapper>
-
-        <CollapseList elements={faqArray} libraries={libraries} />
       </Container>
     </WrapperPage>
   );

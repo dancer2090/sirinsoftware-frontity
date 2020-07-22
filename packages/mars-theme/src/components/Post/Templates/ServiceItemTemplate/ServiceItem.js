@@ -17,8 +17,6 @@ import {
   CaseSlider,
   CaseTitle,
 } from '../ServicesTemplate/styles';
-import CollapseList from '../FaqTemplate/CollapseList';
-import { filterQuestions } from '../../../../utils/filterQuestions';
 
 const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   // Get information about the current URL.
@@ -37,8 +35,6 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   const { mImage = {} } = acf;
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
-
-  const faqArray = filterQuestions(state, data.id);
 
   return (
     <Wrapper>
@@ -92,8 +88,6 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
             </CaseSlider>
           </CaseContainer>
         )}
-
-        <CollapseList elements={faqArray} libraries={libraries} />
       </Container>
     </Wrapper>
   );
