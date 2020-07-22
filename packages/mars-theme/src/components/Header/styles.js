@@ -268,10 +268,13 @@ export const MobileOption = styled.div`
 `;
 
 export const LogoBlock = styled.div`
+  margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 11px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 19px;
+  width: 300px;
 `;
 
 
@@ -315,7 +318,7 @@ export const MobileGetButton = styled.div`
 export const CrossBlock = styled.div`
     width: 10%;
     position: absolute;
-    top: 17px;
+    top: 12px;
     right: 20px;
     cursor: pointer;
 `;
