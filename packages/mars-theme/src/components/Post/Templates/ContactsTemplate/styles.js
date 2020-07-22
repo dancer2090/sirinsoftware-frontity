@@ -105,6 +105,8 @@ export const Description = styled.div`
     @media screen and (max-width: 767px) {
       font-size: 18px;
       line-height: 18px;
+      width: 270px;
+      margin: 0 auto;
       margin-bottom: 25px;
     }
   }
