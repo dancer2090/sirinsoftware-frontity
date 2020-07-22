@@ -107,7 +107,10 @@ export const FormText = styled.div`
 
   @media screen and (max-width: 785px) {
     height: fit-content;
-    margin-top: 25px;
+    margin: 0 auto;
+    margin-top: 7px;
+    line-height: 18px;
+    max-width: 235px;
   }
 `;
 
