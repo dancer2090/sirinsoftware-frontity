@@ -325,9 +325,12 @@ export const CardSet = styled(CardCase)`
   margin-bottom: 66px;
   text-align: left;
   color: white;
-  
+
   @media screen and (max-width: 767px) {
     margin-bottom: 40px;
+    font-size: 12px;
+    line-height: 17px;
+    min-height: 0px;
   }
 
   p {

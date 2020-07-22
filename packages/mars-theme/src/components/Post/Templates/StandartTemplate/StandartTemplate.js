@@ -30,12 +30,16 @@ const StandartTemplate = ({ state, libraries }) => {
   // Get the data of the post.
   const post = state.source[data.type][data.id];
   // Get a human readable date.
+  const months = ['January', 'February', 'March',
+    'April', 'May', 'June',
+    'July', 'August', 'September',
+    'October', 'November', 'December'];
   const date = new Date(post.date);
   const monthDay = (date.getDate() < 10) ? (`0${date.getDate()}`) : date.getDate();
   const month = date.getMonth() + 1;
-  const mothValue = month < 10 ? `0${month}` : month;
+  const mothValue = months[month-1];
 
-  const strDate = `${monthDay}.${mothValue}.${date.getFullYear()}`;
+  const strDate = `${mothValue} ${monthDay}, ${date.getFullYear()}`;
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
