@@ -1,16 +1,41 @@
-// import { styled } from 'frontity';
-import styled from 'styled-components';
+import { styled } from 'frontity';
 
 export const Container = styled.div`
   margin-bottom: 10px;
-`;
-
-export const Item = styled.div.attrs((props) => ({
-  itemType: props.propType,
-  itemProp: props.prop,
-  itemScope: props.scope,
-}))`
-  width: 100%;
+  
+  .item-card {
+    width: 100%;
+  }
+  
+  .item-title {
+    font-size: 18px;
+    line-height: 36px;
+    color: #222222;
+    margin-right: 10px;
+  
+    @media screen and (max-width: 767px) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+  
+  .item-content {
+    padding: 33px 16px 14px 20px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    line-height: 22px;
+    color: #222222;
+  
+    @media screen and (max-width: 991px) {
+      padding: 35px 0 43px 0;
+    } 
+  
+    @media screen and (max-width: 767px) {
+      padding: 35px 10px;
+    }
+  }
+  
+  .item-text {}
 `;
 
 export const ItemHeader = styled.div`
@@ -24,20 +49,6 @@ export const ItemHeader = styled.div`
   @media screen and (max-width: 767px) {
     padding: 13px 10px 4px 11px;
     min-height: 46px;
-  }
-`;
-
-export const ItemTitle = styled.div.attrs((props) => ({
-  itemProp: props.prop,
-}))`
-  font-size: 18px;
-  line-height: 36px;
-  color: #222222;
-  margin-right: 10px;
-
-  @media screen and (max-width: 767px) {
-    font-size: 14px;
-    line-height: 16px;
   }
 `;
 
@@ -83,27 +94,3 @@ export const ItemBody = styled.div`
   overflow: hidden;
   transition: all .3s ease-in-out;
 `;
-
-export const ItemContent = styled.div.attrs((props) => ({
-  itemType: props.propType,
-  itemProp: props.prop,
-  itemScope: props.scope,
-}))`
-  padding: 33px 16px 14px 20px;
-  font-family: 'Open Sans';
-  font-size: 14px;
-  line-height: 22px;
-  color: #222222;
-
-  @media screen and (max-width: 991px) {
-    padding: 35px 0 43px 0;
-  } 
-
-  @media screen and (max-width: 767px) {
-    padding: 35px 10px;
-  }
-`;
-
-export const ItemText = styled.div.attrs((props) => ({
-  itemProp: props.prop,
-}))``;

@@ -223,9 +223,16 @@ export const ClientDescription = styled.div`
   }
 `;
 
+export const ClientFrameWrapper = styled.div`
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ClientFrame = styled.img`
-  height: 100px;
   width: auto;
+  max-width: 100%;
   object-fit: contain;
 
   @media screen and (max-width: 991px) {
@@ -317,7 +324,8 @@ export const Post = styled(PostItem)`
 export const CardSet = styled(CardCase)`
   margin-bottom: 66px;
   text-align: left;
-
+  color: white;
+  
   @media screen and (max-width: 767px) {
     margin-bottom: 40px;
   }

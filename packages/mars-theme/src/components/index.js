@@ -18,6 +18,8 @@ import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
 import Analytics from 'analytics'
 import googleTagManager from '@analytics/google-tag-manager'
+import CollapsePage from './CollapsePage/CollapsePage';
+
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -95,6 +97,8 @@ const Theme = ({ state, actions }) => {
         <div ref={formRef}>
           <FeedbackForm />
         </div>
+
+        <CollapsePage />
 
         <Footer />
 

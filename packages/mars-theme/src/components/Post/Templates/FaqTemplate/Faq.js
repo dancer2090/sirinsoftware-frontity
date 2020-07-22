@@ -88,7 +88,7 @@ const Faq = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Breadcrumbs links={[{ name: 'Faq', link: '#' }]} />
+      <Crumbs links={[{ name: 'Faq', link: '#' }]} />
       <Wrapper>
         <CollapseContainer ref={collapseContainer}>
           {
