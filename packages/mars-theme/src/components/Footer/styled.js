@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'frontity';
 import Sprite from '../Post/Templates/StandartTemplate/SvgSprite';
 import LinkComponent from '../link';
 
@@ -32,6 +32,18 @@ export const Container = styled.div`
 
   @media screen and (max-width: 991px) {
     max-width: 100%;
+  }
+  
+  .info {
+    margin-right: 50px;
+
+    @media screen and (max-width: 991px) {
+      margin-right: 0;
+    }
+  
+    @media screen and (max-width: 576px) {
+      margin: 0 auto 23px auto;
+    }
   }
 `;
 
@@ -123,21 +135,6 @@ export const LinkItem = styled.div`
         margin-bottom: 0;
       }
     }
-  }
-`;
-
-export const Info = styled.div.attrs(props => ({
-  itemScope: props.itemscope,
-  itemType: props.itemtype
-}))`
-  margin-right: 50px;
-
-  @media screen and (max-width: 991px) {
-    margin-right: 0;
-  }
-
-  @media screen and (max-width: 576px) {
-    margin: 0 auto 23px auto;
   }
 `;
 

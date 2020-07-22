@@ -26,9 +26,10 @@ import {
   CaseLink,
   CaseItemTitle,
   CaseContent,
+  ClientFrame,
+  ClientFrameWrapper,
   Crumbs,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
   const data = state.source.get(state.router.link);
@@ -43,6 +44,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
   const {
     post_featured_image = '',
     archive_featured_image = {},
+    portfolio_client_logo = '',
     portfolio_client_title = '',
     portfolio_business_area = '',
     portfolio_geography = '',
@@ -82,7 +84,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
       </ContainerFrame>
 
       <Container>
-        <Breadcrumbs links={[
+        <Crumbs links={[
           { name: 'Case Studies', link: '/case-studies' },
           { name: <Html2React html={post.title.rendered} />, link: '#' }]}
         />
@@ -91,9 +93,19 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
             <ClientTitle>
               Client
             </ClientTitle>
-            <ClientDescription>
-              <Html2React html={portfolio_client_title} />
-            </ClientDescription>
+            {
+              portfolio_client_logo
+                ? (
+                  <ClientFrameWrapper>
+                    <ClientFrame src={portfolio_client_logo} />
+                  </ClientFrameWrapper>
+                )
+                : (
+                  <ClientDescription>
+                    <Html2React html={portfolio_client_title} />
+                  </ClientDescription>
+                )
+            }
           </ClientItem>
           <ClientItem>
             <ClientTitle>

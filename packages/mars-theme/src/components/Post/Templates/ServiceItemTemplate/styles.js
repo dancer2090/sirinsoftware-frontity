@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'frontity';
 import MainFrameBlock from '../../../MainFrameBlock';
 import Breadcrumbs from '../../../Breadcrumbs';
 

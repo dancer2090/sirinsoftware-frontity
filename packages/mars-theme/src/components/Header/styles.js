@@ -3,7 +3,7 @@ import { styled, css } from 'frontity';
 export const HeadBlock = styled.div`
   width: 100%;
   position: fixed;
-  z-index: 10;
+  z-index: 30;
   box-shadow: ${(props) => (props.transparent ? 'none' : '0px 5px 10px rgba(0, 0, 0, 0.1)')};
   background-color: ${(props) => (props.transparent ? 'transparent' : '#FFFFFF')};
 

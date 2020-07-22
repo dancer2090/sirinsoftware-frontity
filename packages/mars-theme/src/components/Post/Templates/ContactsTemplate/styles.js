@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'frontity';
 import SvgSprite from '../StandartTemplate/SvgSprite';
 import Breadcrumbs from '../../../Breadcrumbs';
 
@@ -20,6 +20,18 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 767px) {
     padding: 29px 10px 80px 10px;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    
+    @media screen and (max-width: 767px) {
+      margin: 0 -10px;
+    }
   }
 `;
 
@@ -98,21 +110,6 @@ export const Description = styled.div`
   }
 `;
 
-export const Row = styled.div.attrs(props => ({
-  itemScope: props.itemscope,
-  itemType: props.itemtype,
-}))`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 60px;
-  
-  @media screen and (max-width: 767px) {
-    margin: 0 -10px;
-  }
-`;
-
 export const Card = styled.div`
   background: #F2F2F2;
   min-height: 330px;
@@ -164,6 +161,33 @@ export const Card = styled.div`
       bottom: 20px;
     }
   }
+  
+  .card-address {
+    @media (min-width: 767px) and (max-width: 991px) {
+      max-width: 270px;
+      width: 100%;
+      margin-right: 70px;
+    }
+  }
+  
+  .card-item {
+    display: flex;
+    margin-bottom: 15px;
+  
+    span, a {
+      font-family: 'Open Sans';
+      font-size: 18px;
+      line-height: 24px;
+      color: #222222;
+    }
+  
+    a {
+      transition: all .3s;
+      &:hover {
+        color: #444;
+      }
+    }
+  }
 `;
 
 export const CardTitle = styled.h2`
@@ -197,46 +221,15 @@ export const CardList = styled.div`
   }
 `;
 
-export const CartAddress = styled.div.attrs(props => ({
-  itemScope: props.itemscope,
-  itemType: props.itemtype,
-  itemProp: props.itemprop
-}))`
-   @media (min-width: 767px) and (max-width: 991px) {
-    max-width: 270px;
-    width: 100%;
-    margin-right: 70px;
-  }
-`;
-
 export const CardInfo = styled.div``;
 
-export const CardItem = styled.div.attrs(props => ({
-  itemProp: props.itemprop
-}))`
-  display: flex;
-  margin-bottom: 15px;
-
-  span, a {
-    font-family: 'Open Sans';
-    font-size: 18px;
-    line-height: 24px;
-    color: #222222;
-  }
-
-  a {
-    transition: all .3s;
-    &:hover {
-      color: #444;
-    }
-  }
-`;
 export const IconContainer = styled.div`
   width: 30px;
   text-align: center;
   display: flex;
   margin-right: 19px;
 `;
+
 export const Icon = styled(SvgSprite)`
   height: 22px;
   fill: #F8710F;

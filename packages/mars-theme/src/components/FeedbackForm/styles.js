@@ -6,38 +6,13 @@ export const Block = styled.div`
   }
 `;
 
-
-export const Container = styled.div`
-  max-width: 960px;
-  width: 100%;
-  margin: 0 auto;
-  padding-bottom: 30px;
-
-  @media screen and (max-width: 991px) {
-    max-width: 728px;
-  }
-
-  @media screen and (max-width: 767px) {
-    max-width: 100%;
-    padding: 0 15px 20px 15px;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-`;
-
 export const FormBlock = styled.div`
   position:relative;
   max-width: 100%;
-  height: 550px;
+  padding-bottom: 20px;
   margin: 0 auto;
   background: linear-gradient(272.07deg, #3FA44A 3.6%, #216628 97.69%);
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
-
-  @media (max-width: 1100px) {
-    height: 502px;
-  }
 
   @media screen and (max-width: 785px) {
     max-width: 100%;
