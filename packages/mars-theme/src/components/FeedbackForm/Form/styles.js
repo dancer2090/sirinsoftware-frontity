@@ -4,6 +4,9 @@ import check from '../../../img/check_mark.svg';
 export const FormTemplate = styled.form`
   padding-top:21px;
   text-align:center;
+  @media screen and (max-width: 785px) {
+    padding-top: 15px;
+  }
 `;
 
 export const InputTextBlock = styled.div`
@@ -61,6 +64,7 @@ export const FormControl = styled.input`
     margin: 0;
     margin-bottom: 10px;
     width: 100%;
+    font-size: 12px;
   }
 `;
 
@@ -96,7 +100,8 @@ export const Textarea = styled.textarea`
   }
 
   @media screen and (max-width: 785px) {
-    width: 100%
+    width: 100%;
+    font-size: 12px;
   }
 
   &:focus {
@@ -188,9 +193,11 @@ export const Send = styled.div`
           box-shadow: none;
         }
       }
-      
       @media screen and (max-width: 767px) {
         max-width: 100%;
+      }
+      & a span{
+        color: #FFB03A;
       }
   }
   label::before{
@@ -256,6 +263,10 @@ export const BtnSend = styled.div`
     color: #FFFFFF;
     transition: all .3s;
     position: relative;
+    letter-spacing: 0.08em;
+    @media screen and (max-width: 767px) {
+      font-size: 16px;
+    }
 
     &:after {
       content: "";

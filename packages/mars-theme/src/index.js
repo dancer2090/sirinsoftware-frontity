@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable quote-props */
 /* eslint-disable no-param-reassign */ 
 import image from '@frontity/html2react/processors/image';
 import iframe from '@frontity/html2react/processors/iframe';
@@ -159,6 +161,17 @@ const marsTheme = {
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           state.customSettings.isFormSend = true;
+          gtag('event', 'Send Email from footer form', {
+            'event_category': 'Send Email from footer form',
+          });
+          if (__insp) {
+            __insp.push(['identify', dataForm.get('email')]);
+            __insp.push(['tagSession', {
+              email: dataForm.get('email'),
+              name: dataForm.get('name'),
+              company: dataForm.get('company'),
+            }]);
+          }
         });
       },
       sendFormGuide: ({ state }) => async (data) => {
@@ -202,7 +215,8 @@ const marsTheme = {
           }
         });
       },
-      beforeSSR: async ({ route, state, actions, libraries }) => {
+      beforeSSR: async ({ state, actions, libraries }) => {
+        
         let seconds = 0;
         const timer = setInterval(() => {
           seconds = seconds + 100;
