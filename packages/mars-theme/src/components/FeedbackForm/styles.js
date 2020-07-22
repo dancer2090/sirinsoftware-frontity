@@ -69,7 +69,7 @@ export const Question = styled.h2`
   align-items: center;
   text-align: center;
   color: #FFFFFF;
-
+  
   @media (max-width: 785px) {
     position: absolute;
     left: 24.22%;
