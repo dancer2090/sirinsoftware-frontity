@@ -194,6 +194,9 @@ export const Logo = styled.div`
   @media(max-width: 700px) {
     margin-right: 0px;
     margin-left: 0px;
+    & img{
+      height: 26px;
+    }
   }
   @media(max-width: 320px) {
     margin-left: 10px;
