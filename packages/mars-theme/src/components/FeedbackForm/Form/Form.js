@@ -192,9 +192,6 @@ const Form = ({ submitForm }) => {
           </div>
         </Send>
       </FormTemplate>
-      <BtnSend>
-        <button onClick={sendForm}>SEND</button>
-      </BtnSend>
       <RecaptchaText>
         This site is protected by reCAPTCHA and the Google
         {' '}
@@ -206,6 +203,9 @@ const Form = ({ submitForm }) => {
         {' '}
         apply.
       </RecaptchaText>
+      <BtnSend>
+        <button onClick={sendForm}>SEND</button>
+      </BtnSend>
     </>
   );
 };

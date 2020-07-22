@@ -9,14 +9,10 @@ export const Block = styled.div`
 export const FormBlock = styled.div`
   position:relative;
   max-width: 100%;
-  height: 550px;
+  padding-bottom: 20px;
   margin: 0 auto;
   background: linear-gradient(272.07deg, #3FA44A 3.6%, #216628 97.69%);
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
-
-  @media (max-width: 1100px) {
-    height: 502px;
-  }
 
   @media screen and (max-width: 785px) {
     max-width: 100%;
