@@ -101,6 +101,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 93px;
+      z-index: 10;
     }
   }
   & ${AwardsImageContainer}:nth-child(2) {
@@ -110,6 +111,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 93px;
+      z-index: 9;
     }
   }
   & ${AwardsImageContainer}:nth-child(3) {
@@ -119,6 +121,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 93px;
+      z-index: 8;
     }
   }
   & ${AwardsImageContainer}:nth-child(4) {
@@ -128,6 +131,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 132px;
+      z-index: 7;
     }
     & ${AwardsImage}{
       @media screen and (max-width: 767px) {
@@ -143,6 +147,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 150px;
+      z-index: 6;
     }
     & ${AwardsImage}{
       @media screen and (max-width: 767px) {
@@ -159,6 +164,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 150px;
+      z-index: 5;
     }
     & ${AwardsImage}{
       @media screen and (max-width: 767px) {
@@ -175,6 +181,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 132px;
+      z-index: 4;
     }
     & ${AwardsImage}{
       @media screen and (max-width: 767px) {
@@ -190,6 +197,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 93px;
+      z-index: 3;
     }
   }
   & ${AwardsImageContainer}:nth-child(9) {
@@ -199,6 +207,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 93px;
+      z-index: 2;
     }
   }
   & ${AwardsImageContainer}:nth-child(10) {
@@ -208,6 +217,7 @@ export const AwardsItem = styled.div`
     }
     @media screen and (max-width: 767px) {
       height: 93px;
+      z-index: 1;
     }
   }
 `;
@@ -215,6 +225,12 @@ export const AwardsItem = styled.div`
 export const TestimonialsGlobalContainer = styled.div`
   display: block;
 
+  & ${Container}{
+    @media screen and (max-width: 767px) {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
   @media screen and (max-width: 767px) {
     margin-right: 0px;
   }
@@ -229,6 +245,10 @@ export const TestimonialsLeft = styled.div`
   background: #F2F2F2;
   padding-top: 33px;
   padding-bottom: 32px;
+  @media screen and (max-width: 767px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `;
 export const TestimonialsLogo = styled.img`
   display: block;
@@ -250,7 +270,8 @@ export const TestimonialsPhoto = styled.img`
     margin-top: 26px;
   }
   @media screen and (max-width: 767px) {
-    height: 118px;
+    width: 100%;
+    height: auto;
     margin-top: 14px;
   }
 `;
@@ -468,10 +489,15 @@ export const GalleryImageContainer = styled.div`
     margin-right: 0px;
   }
 `;
-export const GalleryImage = styled.img`
+export const GalleryImage = styled.div`
   display: block;
   position: relative;
   width: 100%;
+  height: 100%;
+  background: url(${(props) => props.background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 
   @media screen and (max-width: 767px) {
     margin-right: 0px;

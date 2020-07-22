@@ -163,7 +163,7 @@ const AboutUsTemplate = ({ state, libraries }) => {
                     const subItemUrl = imageUrlCheck(subitem.url, urlsWithLocal);
                     return (
                       <GalleryImageContainer key={k + subitem.url}>
-                        <GalleryImage src={subItemUrl} />
+                        <GalleryImage background={subItemUrl} />
                       </GalleryImageContainer>
                     );
                   })}
