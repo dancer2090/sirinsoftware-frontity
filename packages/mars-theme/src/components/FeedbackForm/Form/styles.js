@@ -323,8 +323,16 @@ export const RecaptchaText = styled.div`
   margin: 20px;
   margin-top: 15px;
   font-size: 14px;
+  max-width: 500px;
   & a{
     color: #FFFFFF;
     font-weight: 700;
+  }
+  @media (max-width: 1100px) {
+    max-width: 400px
+  }
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin: 20px 5px;
   }
 `;
