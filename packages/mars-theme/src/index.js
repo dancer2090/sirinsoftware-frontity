@@ -167,9 +167,9 @@ const marsTheme = {
           if (__insp) {
             __insp.push(['identify', dataForm.get('email')]);
             __insp.push(['tagSession', {
-              email: $dataForm.get('email'),
-              name: $dataForm.get('name'),
-              company: $dataForm.get('company'),
+              email: dataForm.get('email'),
+              name: dataForm.get('name'),
+              company: dataForm.get('company'),
             }]);
           }
         });
