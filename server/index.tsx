@@ -27,7 +27,7 @@ import { promisify } from "util";
 
 export default ({ packages }): ReturnType<Koa["callback"]> => {
   const app = new Koa();
-
+  app.proxy = true;
   // Serve static files.
   app.use(async (ctx, next) => {
     const moduleStats = await getStats({ target: "module" });
@@ -95,6 +95,9 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
 
     // Create the store.
     const store = createStore({ settings, packages, url: ctx.URL });
+    // const ip = ctx.req.connection.remoteAddress;
+    const current_ip = ctx.ips.length > 0 ? ctx.ips[ctx.ips.length - 1] : ctx.ip;
+    store.state.frontity.ip = current_ip;
 
     // Run init actions.
     await Promise.all(

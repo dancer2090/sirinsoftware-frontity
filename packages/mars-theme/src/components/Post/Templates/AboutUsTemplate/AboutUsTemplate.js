@@ -71,7 +71,7 @@ const AboutUsTemplate = ({ state, libraries }) => {
     <GlobalContainer>
       <BigFrameContainer title={post.content.rendered} image={bgImg} />
       <Container style={{ padding: 0 }}>
-        <Breadcrumbs links={[{
+        <Crumbs links={[{
           name: 'About',
           link: '#',
         }]}

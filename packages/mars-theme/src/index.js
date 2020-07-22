@@ -123,6 +123,18 @@ const marsTheme = {
    */
   actions: {
     theme: {
+      ipDetect: ({ state }) => async () => {
+        const res = await axios.get(`http://api.sypexgeo.net/json/${state.frontity.ip}`);
+        if (res.data) {
+          const { data } = res;
+          const countriesLock = ['IN', 'PK', 'BD'];
+          const { country = {} } = data;
+          const { iso = '' } = country || {};
+          if (countriesLock.indexOf(iso) !== -1) {
+            window.location.href = 'https://google.com';
+          }
+        }
+      },
       alternativeUrlForImage: ({ state }) => () => {
         const urls = {
           urlFrom : state.frontity.adminUrl,
@@ -215,7 +227,8 @@ const marsTheme = {
           }
         });
       },
-      beforeSSR: async ({ route, state, actions, libraries }) => {
+      beforeSSR: async ({ state, actions, libraries }) => {
+        
         let seconds = 0;
         const timer = setInterval(() => {
           seconds = seconds + 100;

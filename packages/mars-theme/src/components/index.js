@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   Global, connect, Head,
 } from 'frontity';
 import Switch from '@frontity/components/switch';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import Analytics from 'analytics';
+import googleTagManager from '@analytics/google-tag-manager';
 import Header from './Header';
 import Footer from './Footer';
 import List from './list';
@@ -16,8 +18,6 @@ import { Space, globalStyles, Main } from './globalStyles';
 import FeedbackForm from './FeedbackForm';
 import Recaptcha from './Recaptcha';
 import UseCookiesModal from './UseCookiesModal';
-import Analytics from 'analytics'
-import googleTagManager from '@analytics/google-tag-manager'
 import CollapsePage from './CollapsePage/CollapsePage';
 
 
@@ -26,6 +26,7 @@ import CollapsePage from './CollapsePage/CollapsePage';
  * in roots.
  */
 const Theme = ({ state, actions }) => {
+  console.log(state);
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
@@ -49,6 +50,10 @@ const Theme = ({ state, actions }) => {
     ]
   });
   analytics.page();
+
+  useEffect(() => {
+    actions.theme.ipDetect();
+  }, []);
 
   return (
     <>
