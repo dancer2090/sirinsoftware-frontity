@@ -59,8 +59,10 @@ export const ItemBlock = styled(CaseItem)`
     transition: all 0.5s ease;
   }
  
-  & > div:first-child {
+  & > a:first-child {
     z-index: 3;
+    backface-visibility: hidden;
+    transition: all 0.5s ease;
   }
 
   & > div:last-child {
@@ -68,12 +70,18 @@ export const ItemBlock = styled(CaseItem)`
   }
 
   &:hover {
-    div:first-child {
-      transform: rotateY(180deg);    
+    a:first-child {
+      transform: rotateY(180deg);
+      @media screen and (max-width: 767px) {
+        transform: rotateY(0deg);
+      }
     }
 
-    div:first-child + div {
-      transform: rotateY(0deg);    
+    a:first-child + div {
+      transform: rotateY(0deg);
+      @media screen and (max-width: 767px) {
+        transform: rotateY(180deg);
+      }
     }
   }
 
@@ -164,7 +172,7 @@ export const ItemLabel = styled.span`
   }
 `;
 
-export const ItemTitle = styled(Link)`
+export const ItemTitle = styled.div`
   display: block;
   font-weight: bold;
   font-size: 30px;
@@ -362,7 +370,7 @@ export const FilterItem = styled.div`
 `;
 
 
-export const CaseItemWrapper = styled.div`
+export const CaseItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   flex-grow: 2;

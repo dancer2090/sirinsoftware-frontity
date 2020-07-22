@@ -1,5 +1,4 @@
 import { styled } from 'frontity';
-
 export const Item = styled.div`
   display: flex;
   align-items: center;

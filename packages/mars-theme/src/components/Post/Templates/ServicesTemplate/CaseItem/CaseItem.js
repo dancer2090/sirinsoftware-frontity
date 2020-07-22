@@ -11,6 +11,7 @@ const CaseItem = ({
   <CaseItemBlock
     src={src}
     className={className}
+    link={link}
   >
     {
         React.Children.map(children, (child) => React.cloneElement(child, {}))

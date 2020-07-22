@@ -20,6 +20,7 @@ import {
 } from './styles';
 import CaseBox from '../../../../img/case-box.svg';
 import Breadcrumbs from '../../../Breadcrumbs';
+import Link from '../../../link';
 
 const CaseStudies = ({ state, actions }) => {
   const [active, setActive] = useState(-1);
@@ -112,33 +113,33 @@ const CaseStudies = ({ state, actions }) => {
           const { back = {} } = item;
           const { label: bLabel = '', title: bTitle = '', content: bContent = '' } = back;
           return (
-            <ItemBlock
-              key={index}
-              link={item.link}
-            >
-              <CaseItemWrapper
-                src={item.src}
+              <ItemBlock
+                key={index}
               >
-                <CaseItemTitle>
-                  { item.title }
-                </CaseItemTitle>
-                <CaseContent>
-                  { item.content }
-                </CaseContent>
-              </CaseItemWrapper>
+                <CaseItemWrapper
+                  src={item.src}
+                  link={item.link}
+                >
+                  <CaseItemTitle>
+                    { item.title }
+                  </CaseItemTitle>
+                  <CaseContent>
+                    { item.content }
+                  </CaseContent>
+                </CaseItemWrapper>
 
-              <ItemWrapper>
-                <ItemLabel>
-                  { bLabel }
-                </ItemLabel>
-                <ItemTitle link={item.link}>
-                  { bTitle }
-                </ItemTitle>
-                <ItemDescription>
-                  { bContent }
-                </ItemDescription>
-              </ItemWrapper>
-            </ItemBlock>
+                <ItemWrapper>
+                  <ItemLabel>
+                    { bLabel }
+                  </ItemLabel>
+                  <ItemTitle>
+                    { bTitle }
+                  </ItemTitle>
+                  <ItemDescription>
+                    { bContent }
+                  </ItemDescription>
+                </ItemWrapper>
+              </ItemBlock>
           );
         })}
         {filterData.length % 2 !== 0 && (

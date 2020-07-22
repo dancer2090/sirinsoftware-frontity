@@ -5,11 +5,12 @@ import {
   Frame
 } from './styles';
 
-const ServicesItem = ({ className, reverse = false, children, color, src }) => {
+const ServicesItem = ({ className, reverse = false, children, color, src, }) => {
   return (
     <Item 
       className={className} 
-      reverse={reverse}>
+      reverse={reverse}
+    >
       <Content color={color}>
         { children }
       </Content>
