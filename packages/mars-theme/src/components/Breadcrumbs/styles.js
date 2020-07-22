@@ -32,6 +32,10 @@ export const Wrapper = styled.div`
         color: #777777;
       }
     }
+
+    @media screen and (max-width: 767px) {
+      font-size: 14px;
+    }
   }
 `;
 
