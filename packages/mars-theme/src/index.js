@@ -215,7 +215,8 @@ const marsTheme = {
           }
         });
       },
-      beforeSSR: async ({ route, state, actions, libraries }) => {
+      beforeSSR: async ({ state, actions, libraries }) => {
+        
         let seconds = 0;
         const timer = setInterval(() => {
           seconds = seconds + 100;
