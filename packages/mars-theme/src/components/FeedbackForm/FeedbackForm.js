@@ -16,24 +16,16 @@ import CollapseList from '../Post/Templates/FaqTemplate/CollapseList';
 
 const FeedbackForm = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
-  const [faqArray, setFaqArray] = useState([]);
 
   const submitForm = (value) => {
     actions.theme.sendForm(value);
   };
-
-  useEffect(() => {
-    const result = filterQuestions(state.theme.faq, data.id);
-    console.log(result);
-    setFaqArray(result);
-  }, [state.router.link]);
+  const result = filterQuestions(state.theme.faq, data.id);
+  const faqArray = result
 
   console.log(faqArray);
   return (
     <>
-      <Container>
-        <CollapseList elements={faqArray} libraries={libraries} />
-      </Container>
       <Block>
         <FormBlock>
           <QuestionBlock>
@@ -54,6 +46,9 @@ const FeedbackForm = ({ state, actions, libraries }) => {
           </InputBlock>
         </FormBlock>
       </Block>
+      {/*<Container>
+        <CollapseList elements={faqArray} libraries={libraries} />
+      </Container>*/}
     </>
   );
 };

@@ -14,6 +14,7 @@ import {
   Crumbs,
 } from './styles';
 import CollapseList from './CollapseList';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 const Faq = ({ state, libraries }) => {
   // create refs
@@ -87,7 +88,7 @@ const Faq = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Crumbs links={[{ name: 'Faq', link: '#' }]} />
+      <Breadcrumbs links={[{ name: 'Faq', link: '#' }]} />
       <Wrapper>
         <CollapseContainer ref={collapseContainer}>
           {

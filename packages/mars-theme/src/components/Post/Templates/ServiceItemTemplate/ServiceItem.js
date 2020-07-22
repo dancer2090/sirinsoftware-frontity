@@ -17,6 +17,7 @@ import {
   CaseSlider,
   CaseTitle,
 } from '../ServicesTemplate/styles';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   // Get information about the current URL.
@@ -47,7 +48,7 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
       />
 
       <Container>
-        <Crumbs links={[
+        <Breadcrumbs links={[
           { name: 'Services', link: '/services' },
           { name: <Html2React html={post.title.rendered} />, link: '#' },
         ]}

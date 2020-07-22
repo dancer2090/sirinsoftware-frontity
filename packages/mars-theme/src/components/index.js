@@ -83,6 +83,7 @@ const Theme = ({ state, actions }) => {
         <div ref={formRef}>
           <FeedbackForm />
         </div>
+
         <Footer />
 
         <UseCookiesModal />

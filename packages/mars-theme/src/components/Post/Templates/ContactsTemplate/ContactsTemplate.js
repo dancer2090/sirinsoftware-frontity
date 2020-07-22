@@ -17,6 +17,7 @@ import {
 } from './styles';
 import oneBg from '../../../../img/kiyv.svg';
 import twoBg from '../../../../img/usa.svg';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 const ContactsTemplate = ({ state, libraries }) => {
   // Get information about the current URL.
@@ -32,7 +33,7 @@ const ContactsTemplate = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Crumbs links={[{ name: 'Contacts', link: '#' }]} />
+      <Breadcrumbs links={[{ name: 'Contacts', link: '#' }]} />
       <Wrapper>
         <Description>
           <Html2React html={post.content.rendered} />
