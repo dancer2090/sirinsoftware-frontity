@@ -18,7 +18,7 @@ import {
   NavigationLine,
 } from './styled';
 
-const Footer = ({ state, libraries }) => {
+const Footer = ({ state }) => {
   const { footer_menu = {} } = state.theme.menu;
   const { items = [] } = footer_menu;
   const { acf = {} } = state.options;
@@ -86,7 +86,7 @@ const Footer = ({ state, libraries }) => {
             <SocialLink href={acf.linkedin_link} target="__blank">
               <Icon name="linkedin-footer" />
             </SocialLink>
-            <SocialLink href={acf.twitter__link} target="__blank">
+            <SocialLink href={acf.twitter_link} target="__blank">
               <Icon name="twitter-footer" />
             </SocialLink>
           </Social>

@@ -15,6 +15,7 @@ import {
   WrapperPage,
   BusinessButton,
   PostList,
+  Crumbs,
 } from './styles';
 import Link from '../../../link';
 import SubscribeForm from './subscribe-form/subscribe-form';

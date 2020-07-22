@@ -32,6 +32,7 @@ import {
   GalleryItem,
   GalleryImageContainer,
   GalleryImage,
+  Crumbs,
 } from './styles';
 import Breadcrumbs from '../../../Breadcrumbs';
 

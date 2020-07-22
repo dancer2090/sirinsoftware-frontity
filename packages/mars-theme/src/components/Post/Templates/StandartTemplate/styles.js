@@ -2,6 +2,7 @@ import { styled } from 'frontity';
 import Post from './post';
 import Socials from './social-list';
 import Button from './button';
+import Breadcrumbs from '../../../Breadcrumbs';
 
 export const WrapperPage = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
@@ -12,6 +13,8 @@ export const WrapperPage = styled.div`
         box-sizing: border-box;
     }
 `;
+
+export const Crumbs = styled(Breadcrumbs)``;
 
 export const BigFrame = styled.div`
     width: 100%;
@@ -61,9 +64,9 @@ export const Container = styled.div`
         max-width: 728px;
     }
 
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0 15px;
     }
 `;
 

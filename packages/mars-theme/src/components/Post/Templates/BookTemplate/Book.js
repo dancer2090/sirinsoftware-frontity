@@ -128,6 +128,7 @@ export const BookTemplate = ({ state, actions }) => {
       formData2.append('email', fields.email);
       formData2.append('accept-with-news', news);
       formData2.append('privacy', privacy);
+      setFields(DEFAULT_FIELDS);
 
       actions.theme.sendFormGuide(formData2);
     }

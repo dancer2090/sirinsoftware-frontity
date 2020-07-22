@@ -30,7 +30,7 @@ const Theme = ({ state, actions }) => {
     actions.theme.changeFormSend();
   };
   const subscribeHandleClose = () => {
-    actions.theme.changeFormSend();
+    actions.theme.changeSubscribeSend();
   };
 
   const formRef = useRef(null);

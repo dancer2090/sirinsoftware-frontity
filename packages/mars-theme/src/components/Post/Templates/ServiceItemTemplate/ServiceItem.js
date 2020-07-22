@@ -6,8 +6,8 @@ import {
   Banner,
   ContentWrapper,
   Content,
+  Crumbs,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
 import {
   CaseContainer,
   CaseContent,
@@ -47,7 +47,7 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
       />
 
       <Container>
-        <Breadcrumbs links={[
+        <Crumbs links={[
           { name: 'Services', link: '/services' },
           { name: <Html2React html={post.title.rendered} />, link: '#' },
         ]}

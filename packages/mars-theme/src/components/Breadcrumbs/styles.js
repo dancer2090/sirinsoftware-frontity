@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import Link from '../link';
 
-export const Container = styled.ol.attrs(props => ({
+export const Container = styled.ol.attrs((props) => ({
   itemScope: props.itemscope,
-  itemType: props.itemtype
+  itemType: props.itemtype,
 }))`
   width: 100%;
   padding: 15px 0;
@@ -13,10 +13,10 @@ export const Container = styled.ol.attrs(props => ({
   margin-bottom: 30px;
 `;
 
-export const Li = styled.li.attrs(props => ({
+export const Li = styled.li.attrs((props) => ({
   itemProp: props.itemprop,
   itemScope: props.itemscope,
-  itemType: props.itemtype
+  itemType: props.itemtype,
 }))`
   padding: 0;
   margin: 0;
@@ -40,7 +40,7 @@ export const Li = styled.li.attrs(props => ({
   }
 `;
 
-export const Item = styled(Link).attrs(props => ({
+export const Item = styled(Link).attrs((props) => ({
   itemProp: props.itemprop,
 }))`
   color: black;
@@ -51,6 +51,6 @@ export const Item = styled(Link).attrs(props => ({
   }
 `;
 
-export const Name = styled.span.attrs(props => ({
+export const Name = styled.span.attrs((props) => ({
   itemProp: props.itemprop,
 }))``;

@@ -144,6 +144,9 @@ const marsTheme = {
       changeFormSend: ({ state }) => {
         state.customSettings.isFormSend = !state.customSettings.isFormSend;
       },
+      changeSubscribeSend: ({ state }) => {
+        state.customSettings.isSubscribeSend = !state.customSettings.isSubscribeSend;
+      },
       changeFormGuide: ({ state }) => {
         state.customSettings.sendFormGuide = !state.customSettings.sendFormGuide;
       },
@@ -156,33 +159,23 @@ const marsTheme = {
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           state.customSettings.isFormSend = true;
-          console.log(response);
         });
       },
       sendFormGuide: ({ state }) => async (data) => {
-        console.log(state);
         const dataForm = data;
-        console.log(state.theme.recaptchaToken);
-        console.log(dataForm);
-        console.log(data);
         dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         await axios.post(
           `${state.source.api}/frontity-api/sendbookdata`,
           dataForm,
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
-          console.log(response);
+
         });
 
         state.customSettings.sendFormGuide = true;
       },
       sendComment: ({ state }) => async (data) => {
         const dataForm = data.formData;
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
         dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         state.customSettings.isCommentSend = true;
         await axios.post(
@@ -190,7 +183,6 @@ const marsTheme = {
           dataForm,
           {headers: {'content-type': 'application/json'}},
         ).then((response) => {
-          console.log(response);
           if (response.status === 200) {
             state.customSettings.isCommentSend = false;
           }
@@ -198,7 +190,7 @@ const marsTheme = {
       },
 
       sendSubscribe: ({ state }) => async (data) => {
-        const dataForm = data.formData;
+        const dataForm = data;
         dataForm.append('recaptchaToken', state.theme.recaptchaToken);
         await axios.post(
           `${state.source.api}/frontity-api/send-subscribe`,
@@ -280,7 +272,7 @@ const marsTheme = {
 
 
         clearInterval(timer);
-        console.log(seconds);
+        //console.log(seconds);
       },
     },
   },

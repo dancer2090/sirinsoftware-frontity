@@ -26,6 +26,7 @@ import {
   CaseLink,
   CaseItemTitle,
   CaseContent,
+  Crumbs,
 } from './styles';
 import Breadcrumbs from '../../../Breadcrumbs';
 
