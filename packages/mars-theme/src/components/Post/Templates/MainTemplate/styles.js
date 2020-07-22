@@ -199,11 +199,14 @@ export const BoxText = styled.div`
   line-height: 18px;
   margin-top: 6px;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
   color: #222222;
+  
   @media screen and (max-width: 767px) {
     font-size: 12px;
     line-height: 14px;
     margin-top: 0px;
+    padding: 0 12px 0 7px;
   }
 `;
 export const Box = styled.div`
@@ -381,7 +384,8 @@ export const TText = styled.div`
   @media screen and (max-width: 767px) {
     font-size: 14px;
     line-height: 16px;
-    bottom: 15px;
+    bottom: -2px;
+    padding: 0 15px;
   }
 `;
 export const CaseStudiesGlobalContainer = styled.div`

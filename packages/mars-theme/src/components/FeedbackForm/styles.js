@@ -58,8 +58,9 @@ export const QuestionShadow = styled.div`
 `;
 
 
-export const Question = styled.div`
+export const Question = styled.h2`
   height: 22px;
+  margin: 0;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 800;

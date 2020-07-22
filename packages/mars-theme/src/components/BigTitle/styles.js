@@ -15,7 +15,8 @@ export const BigTitleContainer = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    height: 59px;
+    height: 80px;
+    padding: 0 10px;
   }
 `;
 
@@ -41,16 +42,18 @@ export const BigTitleBackground = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 48px;
-    line-height: 59px;
+    font-size: 40px;
+    line-height: 40px;
+    height: 80px;
   }
 `;
 
 
-export const BigTitleText = styled.div`
+export const BigTitleText = styled.h2`
   font-weight: 700;
   font-size: 48px;
   line-height: 59px;
+  margin: 0;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: ${(props) => (props.bigTitleTextColor ? props.bigTitleTextColor : "#222222")};
@@ -65,5 +68,6 @@ export const BigTitleText = styled.div`
   @media screen and (max-width: 767px) {
     font-size: 24px;
     line-height: 29px;
+    
   }
 `;

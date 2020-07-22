@@ -119,6 +119,7 @@ export const MainBlockRight = styled.div`
     left: 0px;
     right: 0px;
     z-index: 0;
+    opacity: .5;
   }
 `;
 export const MainBlockIcon = styled.img`
