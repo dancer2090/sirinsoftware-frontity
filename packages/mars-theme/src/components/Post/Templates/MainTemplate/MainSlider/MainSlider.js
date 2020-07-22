@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Container,
   Swiper,
@@ -8,6 +8,10 @@ const MainSlider = ({ className, children }) => {
   const params = {
     slidesPerView: 1,
     slidesPerGroup: 1,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
