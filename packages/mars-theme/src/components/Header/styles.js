@@ -277,6 +277,9 @@ export const LogoBlock = styled.div`
 
 export const MobileLogo = styled.div`
   padding-left: 0;
+  & img{
+    height: 39px;
+  }
 `;
 
 export const MobileTopMenu = styled.div`
