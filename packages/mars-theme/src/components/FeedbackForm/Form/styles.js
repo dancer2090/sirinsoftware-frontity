@@ -193,9 +193,11 @@ export const Send = styled.div`
           box-shadow: none;
         }
       }
-      
       @media screen and (max-width: 767px) {
         max-width: 100%;
+      }
+      & a span{
+        color: #FFB03A;
       }
   }
   label::before{
@@ -261,6 +263,7 @@ export const BtnSend = styled.div`
     color: #FFFFFF;
     transition: all .3s;
     position: relative;
+    letter-spacing: 0.08em;
     @media screen and (max-width: 767px) {
       font-size: 16px;
     }
