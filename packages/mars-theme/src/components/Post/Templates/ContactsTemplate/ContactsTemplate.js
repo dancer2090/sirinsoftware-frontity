@@ -4,12 +4,9 @@ import {
   Wrapper,
   Container,
   Description,
-  Row,
   Card,
   CardTitle,
   CardList,
-  CardItem,
-  CartAddress,
   CardInfo,
   IconContainer,
   Icon,
@@ -33,12 +30,16 @@ const ContactsTemplate = ({ state, libraries }) => {
 
   return (
     <Container>
-      <Breadcrumbs links={[{ name: 'Contacts', link: '#' }]} />
+      <Crumbs links={[{ name: 'Contacts', link: '#' }]} />
       <Wrapper>
         <Description>
           <Html2React html={post.content.rendered} />
         </Description>
-        <Row itemscope itemtype="http://schema.org/Organization">
+        <div
+          className="row"
+          itemScope
+          itemType="http://schema.org/Organization"
+        >
           { acf.offices_locations.map((item, index) => (
             <Card
               src={index === 0 ? oneBg : twoBg}
@@ -48,38 +49,49 @@ const ContactsTemplate = ({ state, libraries }) => {
                 <Html2React html={item.office_header} />
               </CardTitle>
               <CardList>
-                <CartAddress itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                  <CardItem>
+                <div
+                  className="card-address"
+                  itemProp="address"
+                  itemScope
+                  itemType="http://schema.org/PostalAddress"
+                >
+                  <div className="card-item">
                     <IconContainer>
                       <Icon name="location" />
                     </IconContainer>
                     <span>
                       <Html2React html={item.office_address} />
                     </span>
-                  </CardItem>
-                </CartAddress>
+                  </div>
+                </div>
                 <CardInfo>
-                  <CardItem itemprop="telephone">
+                  <div
+                    className="card-item"
+                    itemProp="telephone"
+                  >
                     <IconContainer>
                       <Icon name="phone" />
                     </IconContainer>
-                    <a href={item.office_phone1} >
+                    <a href={`tel:${item.office_phone1}`}>
                       <Html2React html={item.office_phone1} />
                     </a>
-                  </CardItem>
-                  <CardItem itemprop="email">
+                  </div>
+                  <div
+                    className="card-item"
+                    itemProp="email"
+                  >
                     <IconContainer>
                       <Icon name="message" />
                     </IconContainer>
-                    <a href={item.office_email}>
+                    <a href={`mailto:${item.office_email}`}>
                       <Html2React html={item.office_email} />
                     </a>
-                  </CardItem>
+                  </div>
                 </CardInfo>
               </CardList>
             </Card>
           ))}
-        </Row>
+        </div>
       </Wrapper>
     </Container>
   );

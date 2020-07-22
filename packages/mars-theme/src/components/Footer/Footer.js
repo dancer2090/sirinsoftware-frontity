@@ -7,7 +7,6 @@ import {
   Navigation,
   LinkItem,
   Link,
-  Info,
   InfoTitle,
   InfoItem,
   InfoLabel,
@@ -28,7 +27,6 @@ const Footer = ({ state }) => {
       <Container>
         <Header>
           <Navigation>
-
             <NavigationLine>
               {
                 items.map((item, index) => (
@@ -58,7 +56,11 @@ const Footer = ({ state }) => {
               }
             </NavigationLine>
           </Navigation>
-          <Info itemscope itemtype="http://schema.org/Organization">
+          <div
+            className="info"
+            itemScope
+            itemType="http://schema.org/Organization"
+          >
             <InfoTitle>
               CONTACT US:
             </InfoTitle>
@@ -66,7 +68,7 @@ const Footer = ({ state }) => {
               <InfoLabel>
                 Phone:
               </InfoLabel>
-              <Link href={`tel:${acf.main_phone_number}`} itemprop="telephone">
+              <Link href={`tel:${acf.main_phone_number}`} itemProp="telephone">
                 { acf.main_phone_number }
               </Link>
             </InfoItem>
@@ -74,11 +76,11 @@ const Footer = ({ state }) => {
               <InfoLabel>
                 Email:
               </InfoLabel>
-              <Link href={`mailto:${acf.main_email}`} itemprop="email">
+              <Link href={`mailto:${acf.main_email}`} itempProp="email">
                 { acf.main_email }
               </Link>
             </InfoItem>
-          </Info>
+          </div>
           <Social>
             <SocialLink href={acf.facebook_link} target="__blank">
               <Icon name="facebook-footer" />
