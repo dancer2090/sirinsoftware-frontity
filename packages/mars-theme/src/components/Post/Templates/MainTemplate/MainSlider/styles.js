@@ -29,7 +29,9 @@ export const Container = styled.div`
       }
     }
   }
-  
+  .swiper-slide{
+    height: 95px;
+  }
   .swiper-button-next,
   .swiper-button-prev {
     display: none !important;
@@ -39,6 +41,7 @@ export const Container = styled.div`
     justify-content: center;
     background-color: #216628;
     outline: none;
+    top: calc(50% - 12px);
 
     &:after {
       position: absolute;

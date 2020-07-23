@@ -34,6 +34,7 @@ export const BigTitleBackground = styled.div`
   color: ${(props) => (props.bigTitleBackgroundColor ? props.bigTitleBackgroundColor : '#F3F3F3')};
   z-index: 0;
   overflow: hidden;
+  pointer-events: none;
 
   @media screen and (max-width: 991px) {
     height: 117px;
@@ -42,8 +43,8 @@ export const BigTitleBackground = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 48px;
+    line-height: 80px;
     height: 80px;
   }
 `;
