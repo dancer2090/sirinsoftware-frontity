@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
       margin: 0 5px;
     }
   
-    &:last-child {
+    &:last-of-type {
       &:after {
         display: none;
       }

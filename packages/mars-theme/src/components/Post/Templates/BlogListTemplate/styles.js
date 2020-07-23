@@ -59,35 +59,35 @@ export const ItemBlock = styled(CaseItem)`
     transition: all 0.5s ease;
   }
  
-  & > div:first-child {
+  & > div:first-of-type {
     z-index: 3;
   }
 
-  & > div:last-child {
+  & > div:last-of-type {
     transform: rotateY(180deg);
   }
 
   &:hover {
-    div:first-child {
+    div:first-of-type {
       transform: rotateY(180deg);    
     }
 
-    div:first-child + div {
+    div:first-of-type + div {
       transform: rotateY(0deg);    
     }
   }
 
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     margin-right: 0;
     margin-top: 40px;
   }
 
-  &:nth-child(even) + * {
+  &:nth-of-type(even) + * {
     position: relative;
     top: -10px;
   }
 
-  &:nth-child(even) + * + * {
+  &:nth-of-type(even) + * + * {
     margin-top: 30px;
   }
 
@@ -100,12 +100,12 @@ export const ItemBlock = styled(CaseItem)`
   @media screen and (max-width: 991px) {
     height: 354px;
 
-    &:nth-child(even) + * {
+    &:nth-of-type(even) + * {
       position: relative;
       top: -20px;
     }
 
-    &:nth-child(even) + * + * {
+    &:nth-of-type(even) + * + * {
       margin-top: 20px !important;
     }
   }
@@ -117,7 +117,7 @@ export const ItemBlock = styled(CaseItem)`
     margin-top: 0 !important;
     margin-bottom: 20px;
 
-    &:nth-child(even) + * + * {
+    &:nth-of-type(even) + * + * {
       margin-top: 0 !important;
     }
   }
@@ -303,7 +303,7 @@ export const FilterItem = styled.div`
     display: none;
   }
 
-  &:last-child {
+  &:last-of-type {
     margin-right: 0;
 
     br {
@@ -327,19 +327,19 @@ export const FilterItem = styled.div`
     margin-bottom: 10px;
     padding: 0 25px;
 
-    &:first-child {
+    &:first-of-type {
       flex-grow: 2;
     }
 
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       flex-grow: 2;
     }
 
-    &:nth-child(3) {
+    &:nth-of-type(3) {
       flex-grow: 2;
     }
 
-    &:last-child {
+    &:last-of-type {
       flex-grow: 2;
     }
 

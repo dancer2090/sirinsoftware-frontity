@@ -188,7 +188,7 @@ export const Form = styled.div`
         width: 100%;
         margin-bottom: 15px;
 
-        &:last-child {
+        &:last-of-type {
           margin-bottom: 0;
         }
       }
@@ -331,7 +331,7 @@ export const FormGroup = styled.div`
   margin-top: 16px;
   position: relative;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 

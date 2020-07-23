@@ -36,7 +36,7 @@ export const ServicesList = styled.div`
 export const ServicesItem = styled(ItemList)`
   margin-bottom: 49px;
 
-  &:last-child {
+  &:last-of-type {
     margin-bottom: 0;
   }
 
@@ -131,7 +131,7 @@ export const CaseItem = styled.div`
   background-size: cover;
   padding-top: 30px;
 
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     margin-top: 43px;
   }
 
@@ -139,7 +139,7 @@ export const CaseItem = styled.div`
     padding-top: 18px;
     min-height: 354px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-top: 40px;
     }
   }
@@ -148,7 +148,7 @@ export const CaseItem = styled.div`
     padding-top: 16px;
     min-height: 300px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-top: 0;
     }
   }

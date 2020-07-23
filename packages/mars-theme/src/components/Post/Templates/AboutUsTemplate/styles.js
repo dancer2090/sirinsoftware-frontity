@@ -91,10 +91,10 @@ export const AwardsItem = styled.div`
   @media screen and (max-width: 767px) {
     height: 575px;
   }
-  & ${AwardsImageContainer}:nth-child(2n) {
+  & ${AwardsImageContainer}:nth-of-type(2n) {
     background: #FFFFFF;
   }
-  & ${AwardsImageContainer}:nth-child(1) {
+  & ${AwardsImageContainer}:nth-of-type(1) {
     height: 150px;
     @media screen and (max-width: 991px) {
       height: 113px;
@@ -104,7 +104,7 @@ export const AwardsItem = styled.div`
       z-index: 10;
     }
   }
-  & ${AwardsImageContainer}:nth-child(2) {
+  & ${AwardsImageContainer}:nth-of-type(2) {
     height: 150px;
     @media screen and (max-width: 991px) {
       height: 113px;
@@ -114,7 +114,7 @@ export const AwardsItem = styled.div`
       z-index: 9;
     }
   }
-  & ${AwardsImageContainer}:nth-child(3) {
+  & ${AwardsImageContainer}:nth-of-type(3) {
     height: 150px;
     @media screen and (max-width: 991px) {
       height: 113px;
@@ -124,7 +124,7 @@ export const AwardsItem = styled.div`
       z-index: 8;
     }
   }
-  & ${AwardsImageContainer}:nth-child(4) {
+  & ${AwardsImageContainer}:nth-of-type(4) {
     height: 210px;
     @media screen and (max-width: 991px) {
       height: 159px;
@@ -140,7 +140,7 @@ export const AwardsItem = styled.div`
       }
     }
   }
-  & ${AwardsImageContainer}:nth-child(5) {
+  & ${AwardsImageContainer}:nth-of-type(5) {
     height: 240px;
     @media screen and (max-width: 991px) {
       height: 180px;
@@ -156,7 +156,7 @@ export const AwardsItem = styled.div`
       }
     }
   }
-  & ${AwardsImageContainer}:nth-child(6) {
+  & ${AwardsImageContainer}:nth-of-type(6) {
     height: 240px;
     background: #F2F2F2;
     @media screen and (max-width: 991px) {
@@ -173,7 +173,7 @@ export const AwardsItem = styled.div`
       }
     }
   }
-  & ${AwardsImageContainer}:nth-child(7) {
+  & ${AwardsImageContainer}:nth-of-type(7) {
     height: 210px;
     background: #FFFFFF;
     @media screen and (max-width: 991px) {
@@ -190,7 +190,7 @@ export const AwardsItem = styled.div`
       }
     }
   }
-  & ${AwardsImageContainer}:nth-child(8) {
+  & ${AwardsImageContainer}:nth-of-type(8) {
     height: 150px;
     @media screen and (max-width: 991px) {
       height: 113px;
@@ -200,7 +200,7 @@ export const AwardsItem = styled.div`
       z-index: 3;
     }
   }
-  & ${AwardsImageContainer}:nth-child(9) {
+  & ${AwardsImageContainer}:nth-of-type(9) {
     height: 150px;
     @media screen and (max-width: 991px) {
       height: 113px;
@@ -210,7 +210,7 @@ export const AwardsItem = styled.div`
       z-index: 2;
     }
   }
-  & ${AwardsImageContainer}:nth-child(10) {
+  & ${AwardsImageContainer}:nth-of-type(10) {
     height: 150px;
     @media screen and (max-width: 991px) {
       height: 113px;
@@ -345,7 +345,7 @@ export const TestimonialsItem = styled.div`
 export const TestimonialsContainer = styled.div`
   display: block;
   margin-top: 30px;
-  & ${TestimonialsItem}:nth-child(2n){
+  & ${TestimonialsItem}:nth-of-type(2n){
     flex-direction: row-reverse;
     & ${TestimonialsRight}{
       background: linear-gradient(271.47deg, #FFB03A 3.6%, #FF9233 97.69%);
@@ -507,7 +507,7 @@ export const GalleryContainer = styled.div`
   display: block;
   position: relative;
   margin-top: 40px;
-  & ${GalleryImageContainer}:nth-child(2n){
+  & ${GalleryImageContainer}:nth-of-type(2n){
     height: 300px;
     @media screen and (max-width: 991px) {
       height: 200px;
@@ -516,7 +516,7 @@ export const GalleryContainer = styled.div`
       height: 85px;
     }
   }
-  & ${GalleryImageContainer}:nth-child(n+4){
+  & ${GalleryImageContainer}:nth-of-type(n+4){
     height: 300px;
     margin-left: 6px;
     @media screen and (max-width: 991px) {
@@ -528,7 +528,7 @@ export const GalleryContainer = styled.div`
       height: 85px;
     }
   }
-  & ${GalleryImageContainer}:nth-child(2n+4){
+  & ${GalleryImageContainer}:nth-of-type(2n+4){
     height: 600px;
     margin-left: 6px;
     @media screen and (max-width: 991px) {
@@ -540,7 +540,7 @@ export const GalleryContainer = styled.div`
       height: 166px;
     }
   }
-  & ${GalleryImageContainer}:nth-child(4){
+  & ${GalleryImageContainer}:nth-of-type(4){
     height: 300px;
     margin-left: 0px;
     @media screen and (max-width: 991px) {

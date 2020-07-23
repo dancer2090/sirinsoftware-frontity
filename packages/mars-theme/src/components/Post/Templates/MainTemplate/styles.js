@@ -145,11 +145,11 @@ export const ServicesList = styled(Link)`
   @media screen and (max-width: 767px) {
     margin-top: 0px;
   }
-  & ${ServicesItem}:nth-child(2n) {
+  & ${ServicesItem}:nth-of-type(2n) {
     align-items: flex-start;
     justify-content: flex-start;
   }
-  & ${ServicesItem}:nth-child(2n) ${ServicesItemTitle} {
+  & ${ServicesItem}:nth-of-type(2n) ${ServicesItemTitle} {
     text-align: left;
   }
 `;
@@ -284,7 +284,7 @@ export const PartnerShipLeft = styled.div`
   @media screen and (max-width: 767px) {
     width: 100%;
   }
-  & ${Box}:nth-child(2):after{
+  & ${Box}:nth-of-type(2):after{
     content:' ';
     position: absolute;
     width: 80px;
@@ -301,7 +301,7 @@ export const PartnerShipLeft = styled.div`
       width: 1px;
     }
   }
-  & ${Box}:nth-child(3):after{
+  & ${Box}:nth-of-type(3):after{
     content:' ';
     position: absolute;
     width: 80px;
@@ -318,14 +318,14 @@ export const PartnerShipLeft = styled.div`
       width: 1px;
     }
   }
-  & ${Box}:nth-child(3){
+  & ${Box}:nth-of-type(3){
     background: #FB9B2B;
     margin-left: 136px;
     @media screen and (max-width: 767px) {
       margin-left: auto;
     }
   }
-  & ${Box}:nth-child(4){
+  & ${Box}:nth-of-type(4){
     background: #FF8D23;
   }
 `;
@@ -573,25 +573,25 @@ export const ItemBlock = styled.div`
     transition: all 0.5s ease;
   }
  
-  & > div:first-child {
+  & > div:first-of-type {
     z-index: 3;
   }
 
-  & > div:last-child {
+  & > div:last-of-type {
     transform: rotateY(180deg);
   }
 
   &:hover {
-    div:first-child {
+    div:first-of-type {
       transform: rotateY(180deg);    
     }
 
-    div:first-child + div {
+    div:first-of-type + div {
       transform: rotateY(0deg);    
     }
   }
 
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     margin-right: 0;
     margin-top: 40px;
     @media (max-width:991px){
@@ -599,12 +599,12 @@ export const ItemBlock = styled.div`
     }
   }
 
-  &:nth-child(even) + * {
+  &:nth-of-type(even) + * {
     position: relative;
     top: -10px;
   }
 
-  &:nth-child(even) + * + * {
+  &:nth-of-type(even) + * + * {
     margin-top: 30px;
   }
 
@@ -617,13 +617,13 @@ export const ItemBlock = styled.div`
   @media screen and (max-width: 991px) {
     height: 354px;
 
-    &:nth-child(even) + * {
+    &:nth-of-type(even) + * {
       position: relative;
       top: 0px;
       margin-top: 20px;
     }
 
-    &:nth-child(even) + * + * {
+    &:nth-of-type(even) + * + * {
       margin-top: 20px !important;
     }
   }
@@ -636,7 +636,7 @@ export const ItemBlock = styled.div`
     margin-bottom: 20px;
     margin-right: 0px;
 
-    &:nth-child(even) + * + * {
+    &:nth-of-type(even) + * + * {
       margin-top: 0 !important;
     }
   }

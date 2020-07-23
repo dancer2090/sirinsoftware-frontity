@@ -84,7 +84,7 @@ export const NavigationLine = styled.div`
   @media screen and (max-width: 576px) {
     flex-direction: column;
     width: fit-content;
-    &:first-child {
+    &:first-of-type {
       flex-grow: 2;
     }
   }
@@ -119,18 +119,18 @@ export const Link = styled(LinkComponent)`
 export const LinkItem = styled.div`
   width: calc(100% / 4);
   
-  &:nth-child(4) {
+  &:nth-of-type(4) {
     text-align: center;
   }
 
   @media screen and (max-width: 576px) {
     width: 100%;
 
-    &:nth-child(4) {
+    &:nth-of-type(4) {
       text-align: left;
     }
 
-    &:last-child {
+    &:last-of-type {
       a {
         margin-bottom: 0;
       }
@@ -201,7 +201,7 @@ export const Social = styled.div`
 export const SocialLink = styled.a`
   margin-right: 10px;
 
-  &:last-child {
+  &:last-of-type {
     margin-right: 0;
   }
 

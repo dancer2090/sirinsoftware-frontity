@@ -139,7 +139,7 @@ export const Card = styled.div`
     padding: 28px 28px 28px 38px;
     min-height: 250px;
 
-    &:last-child {
+    &:last-of-type {
       margin-bottom: 0;
     }
 

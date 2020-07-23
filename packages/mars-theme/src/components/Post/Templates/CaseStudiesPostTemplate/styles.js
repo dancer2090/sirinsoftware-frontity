@@ -168,7 +168,7 @@ export const ClientItem = styled.div`
     padding: 10px 20px 10px 20px;
     box-shadow: none;
 
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       background-color: white;
     }
   }
@@ -415,7 +415,7 @@ export const CaseItem = styled.div`
   background-size: cover;
   padding-top: 30px;
 
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     margin-top: 43px;
   }
 
@@ -423,7 +423,7 @@ export const CaseItem = styled.div`
     padding-top: 18px;
     min-height: 354px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-top: 40px;
     }
   }
@@ -432,7 +432,7 @@ export const CaseItem = styled.div`
     padding-top: 16px;
     min-height: 300px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-top: 0;
     }
   }

@@ -70,7 +70,7 @@ export const Description = styled.div`
     span {
       margin-bottom: 19px;
 
-      &:last-child {
+      &:last-of-type {
         max-width: 218px;
         width: 100%;
         margin: 0 auto;

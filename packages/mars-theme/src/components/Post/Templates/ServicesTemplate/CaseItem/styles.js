@@ -7,14 +7,14 @@ export const CaseItemBlock = styled.div`
   display: flex;
   flex-direction: column;
 
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     margin-top: 43px;
   }
 
   @media screen and (max-width: 992px) {
     min-height: 354px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-top: 40px;
     }
   }
@@ -22,7 +22,7 @@ export const CaseItemBlock = styled.div`
   @media screen and (max-width: 767px) {
     min-height: 300px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-top: 0;
     }
   }

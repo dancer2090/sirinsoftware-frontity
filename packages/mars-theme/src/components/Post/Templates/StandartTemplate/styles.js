@@ -205,17 +205,17 @@ export const PostList = styled.div`
 
 export const PostItem = styled(Post)`
     margin-bottom: 10px;
-    &:last-child {
+    &:last-of-type {
         margin-bottom: 50px;
     }
-    a:last-child {
+    a:last-of-type {
       text-align: right;
     }
 
     @media screen and (max-width: 767px) {
         margin-bottom: 5px;
 
-        &:last-child {
+        &:last-of-type {
             margin-bottom: 41px;
         }
     }
