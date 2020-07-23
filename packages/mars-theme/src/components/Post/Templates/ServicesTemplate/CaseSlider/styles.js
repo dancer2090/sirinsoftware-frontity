@@ -30,6 +30,28 @@ export const Container = styled.div`
     }
   }
 
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    background-color: #216628;
+    outline: none;
+    top: initial;
+    bottom: 0;
+
+    &:after {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: white;
+      font-size: 14px;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
   @media screen and (max-width: 991px) {
     .swiper-pagination {
       margin-top: 41px;
@@ -42,13 +64,23 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 767px) {
+    .swiper-container {
+      padding-bottom: 40px;
+    }
+    
     .swiper-pagination {
       margin-top: 41px;
+      display: none;
       .swiper-pagination-bullet {
         width: 14px;
         height: 14px;
         margin: 0 13px !important;
       }
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: block !important;
     }
   }
 `;
