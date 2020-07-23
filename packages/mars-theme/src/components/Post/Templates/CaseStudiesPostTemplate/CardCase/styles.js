@@ -2,7 +2,7 @@ import { styled } from 'frontity';
 import SvgSprite from '../../StandartTemplate/SvgSprite';
 
 const styledLiTag = `
-font-family: 'Open Sans';
+  font-family: 'Open Sans';
   font-size: 14px;
   line-height: 26px;
   color: #FFFFFF;
@@ -67,6 +67,22 @@ export const Card = styled.div`
 
     li {
       ${styledLiTag}
+    }
+  }
+  
+  p {
+    margin-top: 0;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    line-height: 26px;
+    
+    @media screen and (max-width: 991px) {
+      line-height: 18px;
+    }
+  
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+      line-height: 17px;
     }
   }
   
