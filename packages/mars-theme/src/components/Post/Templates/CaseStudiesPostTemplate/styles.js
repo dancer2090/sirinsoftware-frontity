@@ -379,6 +379,8 @@ export const Text = styled.div`
     height: auto !important;
     padding: 0 !important;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
   }
   
@@ -386,6 +388,7 @@ export const Text = styled.div`
     height: auto !important;
     padding: 0 !important;
     display: flex;
+    flex-direction: column;
   }
 
   @media screen and (max-width: 767px) {
