@@ -176,6 +176,7 @@ const marsTheme = {
           gtag('event', 'Send Email from footer form', {
             'event_category': 'Send Email from footer form',
           });
+
           if (__insp) {
             __insp.push(['identify', dataForm.get('email')]);
             __insp.push(['tagSession', {

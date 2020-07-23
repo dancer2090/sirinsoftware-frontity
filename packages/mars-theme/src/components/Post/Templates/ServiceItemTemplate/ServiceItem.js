@@ -20,6 +20,8 @@ import {
 import Breadcrumbs from '../../../Breadcrumbs';
 
 const ServiceItem = ({ state, libraries, scrollRef = null }) => {
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
@@ -40,10 +42,10 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   return (
     <Wrapper>
       <Banner
-        url={mBackground.link}
+        url={imageUrlCheck(mBackground.link, urlsWithLocal)}
         button={acf.mButton}
         title={acf.mTitle}
-        iconUrl={mImage.link}
+        iconUrl={imageUrlCheck(mImage.link, urlsWithLocal)}
         scrollRef={scrollRef}
       />
 
@@ -74,7 +76,7 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
                 return (
                   <CaseItem
                     key={index}
-                    src={post_featured_image}
+                    src={imageUrlCheck(post_featured_image, urlsWithLocal)}
                   >
                     <CaseItemTitle>
                       <Html2React html={acf.portfolio_business_area} />

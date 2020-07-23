@@ -19,7 +19,7 @@ import {
   Box,
   PartnerShipContainer,
   PartnerShipRightContainer,
-  PartnerShipRight,
+  PartnerShipRight, 
   PartnerShipRightTitle,
   GreenTitle,
   OrangeTitle,
@@ -49,6 +49,8 @@ import Triangle from '../../../../img/main_triangle.svg';
 const MainTemplate = ({
   state, libraries, actions, scrollRef = null,
 }) => {
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
 
@@ -93,8 +95,9 @@ const MainTemplate = ({
               const {
                 bg = { url: '' },
               } = service;
+              const serviceBackground = imageUrlCheck(bg.url, urlsWithLocal);
               return (
-                <ServicesItem src={bg.url} link="/services" key={service.url+k}>
+                <ServicesItem src={serviceBackground} link="/services" key={service.url+k}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
               );
@@ -161,7 +164,8 @@ const MainTemplate = ({
               return (
                 <ItemBlock key={index}>
                   <CaseItemWrapper
-                    src={post_featured_image}
+                    src={imageUrlCheck(post_featured_image, urlsWithLocal)}
+                    link={p_item.link}
                   >
                     <CaseItemTitle>
                       {category_for_green_line}
@@ -199,7 +203,7 @@ const MainTemplate = ({
               const { image = { url: '' } } = client;
               return (
                 <ClientContainer link={client.url} key={client.url + key}>
-                  <Client src={image.url} />
+                  <Client src={imageUrlCheck(image.url, urlsWithLocal)} />
                 </ClientContainer>
               );
             })}

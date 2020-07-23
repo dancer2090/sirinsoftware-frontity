@@ -17,6 +17,8 @@ import {
 } from './styles';
 
 const ServicesTemplate = ({ state, actions, libraries }) => {
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
   // case data
@@ -33,7 +35,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
   } = acf;
 
   const bigFrameTitle = main_text;
-  const bigFrameImage = main_image.url;
+  const bigFrameImage = imageUrlCheck(main_image.url, urlsWithLocal);
 
   useEffect(() => {
     actions.source.fetch('/case-studies/');
@@ -47,7 +49,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
         <ServicesList>
           { acf.services.map((item, index) => (
             <ServicesItem
-              src={item.image.url}
+              src={imageUrlCheck(item.image.url, urlsWithLocal)}
               key={index}
               reverse={index % 2 !== 0}
               color={index % 2 !== 0 ? 'yellow' : ''}
@@ -66,10 +68,11 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
               { slidesStudies.map((item, index) => {
                 const { acf: acfItem = {} } = item;
                 const { post_featured_image = {} } = acfItem;
+                const checkPostFeaturedImage = imageUrlCheck(post_featured_image, urlsWithLocal);
                 return (
                   <CaseItem
                     key={index}
-                    src={post_featured_image}
+                    src={checkPostFeaturedImage}
                   >
                     <CaseItemTitle>
                       <Html2React html={acfItem.portfolio_business_area} />

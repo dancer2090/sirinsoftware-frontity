@@ -13,7 +13,7 @@ const linkUrls = {
   test: ({ node, state }) => node.component === 'a' && node.props.href.indexOf(state.frontity.adminUrl) !== -1,
   processor: ({ node, state }) => {
     const link = node.props.href.replace(state.frontity.adminUrl, state.frontity.url);
-    if (!node.props['data-lightbox']) {
+    if (!node.props['data-lightbox'] && node.props.href) {
       node.props.link = link;
       node.component = LinkReplace;
     }

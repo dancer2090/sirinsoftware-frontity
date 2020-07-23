@@ -32,6 +32,8 @@ import {
 } from './styles';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
   const data = state.source.get(state.router.link);
   const caseStudies = state.source.data['/case-studies/'];
   // Get the html2react component.
@@ -75,7 +77,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
 
   return (
     <Wrapper>
-      <ContainerFrame src={post_featured_image}>
+      <ContainerFrame src={imageUrlCheck(post_featured_image, urlsWithLocal)}>
         <FrameContent>
           <FrameTitle>
             <Html2React html={post.title.rendered} />
@@ -97,7 +99,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               portfolio_client_logo
                 ? (
                   <ClientFrameWrapper>
-                    <ClientFrame src={portfolio_client_logo} />
+                    <ClientFrame src={imageUrlCheck(portfolio_client_logo, urlsWithLocal)} />
                   </ClientFrameWrapper>
                 )
                 : (
@@ -208,7 +210,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
               return (
                 <CaseItem
                   key={index}
-                  src={post_featured_image}
+                  src={imageUrlCheck(post_featured_image, urlsWithLocal)}
                 >
                   <CaseItemTitle>
                     <Html2React html={portfolio_business_area} />

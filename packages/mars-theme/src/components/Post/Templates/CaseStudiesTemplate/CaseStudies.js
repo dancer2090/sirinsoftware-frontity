@@ -22,9 +22,11 @@ import CaseBox from '../../../../img/case-box.svg';
 import Breadcrumbs from '../../../Breadcrumbs';
 import Link from '../../../link';
 
-const CaseStudies = ({ state, actions }) => {
+const CaseStudies = ({ state, actions, libraries }) => {
   const [active, setActive] = useState(-1);
   const [filter, setFilter] = useState({});
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
 
   const data = [];
   const dataCat = [];
@@ -118,7 +120,7 @@ const CaseStudies = ({ state, actions }) => {
                 link={item.link}
               >
                 <CaseItemWrapper
-                  src={item.src}
+                  src={imageUrlCheck(item.src, urlsWithLocal)}
                   link={item.link}
                 >
                   <CaseItemTitle>
@@ -130,12 +132,14 @@ const CaseStudies = ({ state, actions }) => {
                 </CaseItemWrapper>
 
                 <ItemWrapper>
-                  <ItemLabel>
+                  <ItemLabel> 
                     { bLabel }
                   </ItemLabel>
-                  <ItemTitle>
-                    { bTitle }
-                  </ItemTitle>
+                  <Link link={item.link}>
+                    <ItemTitle>
+                      { bTitle }
+                    </ItemTitle>
+                  </Link>
                   <ItemDescription>
                     { bContent }
                   </ItemDescription>

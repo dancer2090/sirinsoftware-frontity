@@ -134,7 +134,7 @@ export const ServicesItemTitle = styled.div`
     line-height: 24px;
   }
 `;
-export const ServicesList = styled(Link)`
+export const ServicesList = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -441,7 +441,7 @@ export const CaseStudiesGlobalContainer = styled.div`
     padding-bottom: 24px;
   }
 `;
-export const CaseItemWrapper = styled.div`
+export const CaseItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   flex-grow: 2;
@@ -573,8 +573,10 @@ export const ItemBlock = styled.div`
     transition: all 0.5s ease;
   }
  
-  & > div:first-of-type {
+  & > a:first-of-type {
     z-index: 3;
+    backface-visibility: hidden;
+    transition: all 0.5s ease;
   }
 
   & > div:last-of-type {
@@ -582,11 +584,11 @@ export const ItemBlock = styled.div`
   }
 
   &:hover {
-    div:first-of-type {
+    a:first-of-type {
       transform: rotateY(180deg);    
     }
 
-    div:first-of-type + div {
+    a:first-of-type + div {
       transform: rotateY(0deg);    
     }
   }
