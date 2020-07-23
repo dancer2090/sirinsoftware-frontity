@@ -57,18 +57,18 @@ const Form = ({ submitForm }) => {
 
   const sendForm = () => {
     gtag('event', 'Click Send in footer form', {
-      'event_category': 'Click Send in footer form'
+      'event_category': 'Click Send in footer form',
     });
     if (validateForm()) {
       const formData = new FormData();
-      formData.append('userfile',fileInput.current.files[0]);
-      formData.append('name',name);
-      formData.append('email',email);
-      formData.append('company',company);
-      formData.append('description',message);
-      formData.append('nda',nda);
-      formData.append('subscribe',trackNews);
-      submitForm({formData});
+      formData.append('userfile', fileInput.current.files[0]);
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('company', company);
+      formData.append('description', message);
+      formData.append('nda', nda);
+      formData.append('subscribe', trackNews);
+      submitForm({ formData });
       setName('');
       setCompany('');
       setEmail('');
@@ -178,9 +178,9 @@ const Form = ({ submitForm }) => {
               htmlFor="accept"
               className={hasErrorPrivacy ? 'error' : null}
             >
-              I accept Sirin software
+              I accept Sirin Software
               {' '}
-              <Link link="/privacy-policy"><span>&nbsp; Privacy policy </span></Link>
+              <Link link="/privacy-policy"><span>&nbsp; Privacy Policy </span></Link>
             </label>
           </div>
           <div className="box">
