@@ -94,7 +94,7 @@ const MainTemplate = ({
                 bg = { url: '' },
               } = service;
               return (
-                <ServicesItem src={bg.url} link="/services" key={service.url}>
+                <ServicesItem src={bg.url} link="/services" key={service.url+k}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
               );

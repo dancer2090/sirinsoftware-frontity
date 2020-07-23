@@ -83,7 +83,7 @@ const AboutUsTemplate = ({ state, libraries }) => {
           <AwardsContainer>
             <AboutUsSlider>
               {subawards && subawards.map((aitem, k) => (
-                <AwardsGalleryItem key={k}>
+                <AwardsGalleryItem key={`${k}aitem`}>
                   <AwardsItem>
                     {aitem && aitem.map((asubitem, k) => {
                       const awardsUrl = imageUrlCheck(asubitem.image.url, urlsWithLocal);
@@ -157,8 +157,8 @@ const AboutUsTemplate = ({ state, libraries }) => {
         <GalleryContainer>
           <AboutUsSlider>
             {subgallery && subgallery.length > 0 && subgallery.map((item, k) => (
-              <div>
-                <GalleryItem key={`${k}galleryItem`}>
+              <div key={`${k}galleryItem`}>
+                <GalleryItem>
                   {item && item.length > 0 && item.map((subitem, k) => {
                     const subItemUrl = imageUrlCheck(subitem.url, urlsWithLocal);
                     return (

@@ -115,6 +115,7 @@ const CaseStudies = ({ state, actions }) => {
           return (
               <ItemBlock
                 key={index}
+                link={item.link}
               >
                 <CaseItemWrapper
                   src={item.src}
