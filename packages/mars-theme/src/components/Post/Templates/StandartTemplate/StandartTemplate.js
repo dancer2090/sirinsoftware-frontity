@@ -23,8 +23,11 @@ import CommentsForm from './comments-form';
 import Image from '../../../../img/image.jpg';
 import Breadcrumbs from '../../../Breadcrumbs';
 import logo from '../../../../img/logo.svg';
+import imgSrc from '../../../list/Item/img-src';
 
 const StandartTemplate = ({ state, libraries }) => {
+  const { imageUrlCheck } = libraries.func;
+  const { urlsWithLocal = {} } = state.customSettings;
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
@@ -37,7 +40,7 @@ const StandartTemplate = ({ state, libraries }) => {
   const date = new Date(post.date);
   const monthDay = (date.getDate() < 10) ? (`0${date.getDate()}`) : date.getDate();
   const month = date.getMonth() + 1;
-  const mothValue = months[month-1];
+  const mothValue = months[month - 1];
 
   const strDate = `${mothValue} ${monthDay}, ${date.getFullYear()}`;
   // Get the html2react component.
@@ -52,6 +55,11 @@ const StandartTemplate = ({ state, libraries }) => {
   const category = state.source.category[category_id];
 
   const dataMore = state.source.get('/blog/');
+
+  const item_image = state.source.attachment[post.acf.blog_image];
+
+  let bgImg = imgSrc;
+  if (item_image) bgImg = imageUrlCheck(item_image.source_url, urlsWithLocal);
 
   return (
     <WrapperPage>
@@ -75,7 +83,7 @@ const StandartTemplate = ({ state, libraries }) => {
             `}
         </script>
       </Head>
-      <BigFrame image={Image}>
+      <BigFrame image={bgImg}>
         <Container>
           <h1>
             <Html2React html={post.title.rendered} />
