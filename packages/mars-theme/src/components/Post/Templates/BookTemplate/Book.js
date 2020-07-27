@@ -313,7 +313,7 @@ export const BookTemplate = ({ state, actions }) => {
               {' '}
               <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a>
               {' '}
-              apply.
+              .
             </RecaptchaText>
           </FormContent>
         </BookForm>

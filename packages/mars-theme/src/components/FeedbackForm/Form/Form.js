@@ -206,7 +206,7 @@ const Form = ({ submitForm }) => {
         {' '}
         <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a>
         {' '}
-        apply.
+        .
       </RecaptchaText>
       <BtnSend>
         <button onClick={sendForm}>SEND</button>
