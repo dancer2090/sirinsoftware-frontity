@@ -60,6 +60,7 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   // Ignore HMR if not in dev mode or old browser open.
   const return404 = (ctx: Context) => {
     ctx.status = 404;
+    ctx.redirect('/404');
   };
   const returnServices = (ctx: Context) => {
     ctx.status = 301;
@@ -69,6 +70,9 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   app.use(get("/static/([a-z0-9]+\\.hot-update\\.json)", return404));
   app.use(get("/services/rd-center/", returnServices));
   app.use(get("/services/it-staff-augmentation/", returnServices));
+  app.use(get("/blog/sirin-software-recognized-as-a-top-software-developer/attachment/sirin-clutch-site-2/", return404));
+  app.use(get("/blog/top-industrial-iot-products-of-early-2019/attachment/top-5-industrial-iot-products/", return404));
+  app.use(get("/blog/siring-software-has-been-honored-by-techreviewer-as-one-of-the-top-iot-devs-in-2019/attachment/techreviewer/", return404));
 
   // Return Frontity favicon for favicon.ico.
   app.use(get("/favicon.ico", serve("./")));

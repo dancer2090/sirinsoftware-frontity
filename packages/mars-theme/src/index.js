@@ -29,6 +29,7 @@ const newHandler = {
     } catch (e) {
       let hand_name = 'post type';
       if(params.type==="case-studies") hand_name = 'portfolio';
+      if(params.type==="teammembers") hand_name = 'teammembers';
       // It's not a category
       const postType = libraries.source.handlers.find(
         (handler) => handler.name === hand_name,
@@ -60,8 +61,8 @@ const caseHandler = {
 };
 
 const teamHandler = {
-  name: 'teamHandler',
-  priority: 19,
+  name: 'TeamHandler',
+  priority: 20,
   pattern: 'teamHandler',
   func: async ({
     route, params, state, libraries,
@@ -74,7 +75,6 @@ const teamHandler = {
       state,
       response: teammembersResponse
     });
-
     state.theme.teammembers = teammembersItems;
   },
 };
@@ -309,7 +309,7 @@ const marsTheme = {
       imageUrlCheck: linkImageReplace,
     },
     source: {
-      handlers: [newHandler, caseHandler],
+      handlers: [newHandler, caseHandler, teamHandler],
     },
     html2react: {
       /**
