@@ -47,7 +47,7 @@ const TeamMembers = ({ state, actions, libraries }) => {
 
   useEffect(() => {
     setShowTeams(teams);
-  }, [teams]);
+  }, []);
 
   useEffect(() => {
     actions.source.fetch("teamHandler");
