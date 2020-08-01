@@ -195,7 +195,7 @@ const marsTheme = {
           dataForm,
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
-
+          console.log(response);
         });
 
         state.customSettings.sendFormGuide = true;
