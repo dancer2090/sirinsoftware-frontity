@@ -172,6 +172,7 @@ const marsTheme = {
           dataForm,
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
+          console.log(response);
           state.customSettings.isFormSend = true;
           gtag('event', 'Send Email from footer form', {
             'event_category': 'Send Email from footer form',
@@ -211,6 +212,7 @@ const marsTheme = {
         ).then((response) => {
           if (response.status === 200) {
             state.customSettings.isCommentSend = false;
+            console.log(response);
           }
         });
       },
