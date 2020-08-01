@@ -138,7 +138,7 @@ export const BookTemplate = ({ state, actions }) => {
     <BookPage>
       <Modal
         title="Thank you for your request"
-        text={"You can download your <a target='_blank' class='desctop' href='" + bookFileDesctop + "'>Book</a> <a target='_blank' class='mobile' href='" + bookFileMobile + "'>Book</a>"}
+        text={"You can download your <a target='_blank' class='notRender desctop' href='" + bookFileDesctop + "'>Book</a> <a target='_blank' class='notRender mobile' href='" + bookFileMobile + "'>Book</a>"}
         isOpen={state.customSettings.sendFormGuide}
         handleClose={formHandleClose}
       />
