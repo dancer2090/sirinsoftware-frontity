@@ -60,7 +60,6 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   // Ignore HMR if not in dev mode or old browser open.
   const return404 = (ctx: Context) => {
     ctx.status = 404;
-    ctx.redirect('/404');
   };
   const returnServices = (ctx: Context) => {
     ctx.status = 301;

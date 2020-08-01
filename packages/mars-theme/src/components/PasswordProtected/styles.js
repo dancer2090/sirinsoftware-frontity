@@ -70,6 +70,8 @@ export const PasswordProtectedGlobal = styled.div`
   width: 100%;
   min-height: 400px;
   text-align:center;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 export const Label = styled.div`
   text-align: center;
