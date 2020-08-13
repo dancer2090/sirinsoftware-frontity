@@ -74,17 +74,11 @@ export const Banner = styled.div`
     padding-bottom: 65px;
     z-index: 1;
     pointer-events: none;
-  }
-
-​  @media screen and (max-width: 992px) {
-    h1 {
+    @media screen and (max-width: 992px) {
       font-size: 44px;
       line-height: 56px;
     }
-  }
-
-  @media screen and (max-width: 550px) {
-    h1 {
+    @media screen and (max-width: 550px) {
       font-size: 28px;
       line-height: 36px;
     }

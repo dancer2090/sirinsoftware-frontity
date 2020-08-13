@@ -48,7 +48,7 @@ const Item = ({
 
   const strDate = `${mothValue} ${monthDay}, ${date.getFullYear()}`;
   const title = item.title.rendered;
-  const item_image = state.source['attachment'][item.acf.blog_image];
+  const item_image = item.acf && item.acf.blog_image && item.acf.blog_image.sizes && item.acf.blog_image.sizes.large;
   const mediaObj = state.source.attachment[item.featured_media];
 
   let category_id = 1;
@@ -60,7 +60,8 @@ const Item = ({
     category = state.source['category'][category_id];
   }
   let bgImg = imgSrc;
-  if(item_image) bgImg = imageUrlCheck( item_image.source_url, urlsWithLocal );
+  
+  if(item_image) bgImg = imageUrlCheck( item_image, urlsWithLocal );
   else if(mediaObj) bgImg = imageUrlCheck( mediaObj.source_url, urlsWithLocal );
 
   return (

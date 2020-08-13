@@ -12,7 +12,7 @@ export const Items = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     width: 50%;
-  ​
+  
 
     .item-content-box {
       height: 100%;
@@ -95,7 +95,7 @@ export const Items = styled.div`
       background: #F8710F;
       box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
       border-radius: 6px;
-  ​
+  
       @media screen and (max-width: 480px) {
         top: 0;
       }
@@ -156,7 +156,7 @@ export const Items = styled.div`
       background-position: top center ;
       background-repeat: no-repeat;
       background-size: cover;
-  ​
+  
       @media screen and (max-width: 560px) {
         height: auto;
       }
@@ -166,7 +166,7 @@ export const Items = styled.div`
         height: 100px;
         margin-top: 70px;
       }
-  ​
+
     }
   }
 

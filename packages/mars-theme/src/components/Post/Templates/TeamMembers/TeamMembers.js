@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'frontity';
 import {
-  Wrapper, 
+  Wrapper,
   Container,
   Banner,
   FilterContainer,
@@ -17,32 +20,30 @@ const TeamMembers = ({ state, actions, libraries }) => {
   const [showTeams, setShowTeams] = useState([]);
   const [checkPassword, setCheckPassword] = useState(0);
   const data = state.source.get(state.router.link);
-  const { items = {} } = data;
-  const { totalPages } = data;
-  const password = "dreamteam";
+  const password = 'dreamteam';
 
   const faqArray = filterQuestions(state, data.id);
 
-  let fullTeams = state.theme.teammembers;
+  const fullTeams = state.theme.teammembers;
 
   const categories = new Set();
 
   categories.add({
     id: 0,
-    name: 'All categories'
+    name: 'All categories',
   });
 
-  const teams = fullTeams.map((item, index) => {
+  const teams = fullTeams.map((item) => {
     const result = state.source[item.type][item.id];
 
-    if(result.teammembers_cat[0]) {
-      categories.add(state.source['teammembers_cat'][result.teammembers_cat[0]]);
+    if (result.teammembers_cat[0]) {
+      categories.add(state.source.teammembers_cat[result.teammembers_cat[0]]);
     }
 
     return {
       ...result,
-      media: state.source.attachment[result.featured_media]
-    }
+      media: state.source.attachment[result.featured_media],
+    };
   });
 
   useEffect(() => {
@@ -50,77 +51,77 @@ const TeamMembers = ({ state, actions, libraries }) => {
   }, []);
 
   useEffect(() => {
-    actions.source.fetch("teamHandler");
+    actions.source.fetch('teamHandler');
   }, []);
 
-  const sendPassword = (value) => {
+  const sendPassword = () => {
     setCheckPassword(1);
   };
 
-  const findElements = id => {
-    let hasId = teams.filter(item => {
-      const result = item.teammembers_cat.find(item => item === id);
-
-      if(result) {
+  const findElements = (id) => {
+    const hasId = teams.filter((item) => {
+      const result = item.teammembers_cat.find((subIitem) => subIitem === id);
+      if (result) {
         return true;
       }
+      return false;
     });
-    
+
     return hasId.length;
-  }
+  };
 
   const renderCategory = [];
   categories.forEach((value) => {
-    if(value.id === 0) {
+    if (value.id === 0) {
       renderCategory.push({
         ...value,
-        counter: teams.length
-      })
+        counter: teams.length,
+      });
     } else {
       renderCategory.push({
         ...value,
         counter: findElements(value.id),
-      })
+      });
     }
   });
 
   const filterElements = (event, el) => {
     event.preventDefault();
-    
+
     setActiveIndex(el.id);
 
-    if(el.id === 0) {
+    if (el.id === 0) {
       setShowTeams(teams);
 
       return;
     }
 
-    const filterArray = teams.filter(item => {
-      if(item.teammembers_cat) {
-        const result = item.teammembers_cat.find(item => item === el.id);
+    const filterArray = teams.filter((item) => {
+      if (item.teammembers_cat) {
+        const result = item.teammembers_cat.find((subitem) => subitem === el.id);
 
-        if(result) {
-          return item;
+        if (result) {
+          return true;
         }
       }
+      return false;
     });
 
     setShowTeams(filterArray);
-  }
+  };
 
   return (
     <Wrapper>
-      {!checkPassword ? 
-        (
+      {!checkPassword
+        ? (
           <PasswordProtected submitForm={sendPassword} passwordOrigin={password} />
         )
-        :
-        (
+        : (
           <>
-            <Banner url={bg} >
+            <Banner url={bg}>
               <div className="container">
                 <h1>
-                  Our Engineers 
+                  Our Engineers
                 </h1>
               </div>
             </Banner>
@@ -128,18 +129,20 @@ const TeamMembers = ({ state, actions, libraries }) => {
               <FilterContainer>
                 <ul>
                   {
-                    renderCategory.map((item, index) => {
-                      return (
-                        <li key={index}>
-                          <span
-                            onClick={(event) => filterElements(event, item)}
-                            className={activeIndex === item.id ? 'selected' : null}
-                            >
-                            { item.name } ({item.counter})
-                          </span>
-                        </li>
-                      )
-                    })
+                    renderCategory.map((item, index) => (
+                      <li key={index}>
+                        <span
+                          onClick={(event) => filterElements(event, item)}
+                          className={activeIndex === item.id ? 'selected' : null}
+                        >
+                          { item.name }
+                          {' '}
+                          (
+                          {item.counter}
+                          )
+                        </span>
+                      </li>
+                    ))
                   }
                 </ul>
               </FilterContainer>
@@ -153,10 +156,9 @@ const TeamMembers = ({ state, actions, libraries }) => {
               <CollapseList elements={faqArray} libraries={libraries} />
             </Container>
           </>
-        )
-      }
+        )}
     </Wrapper>
-  )
-}
+  );
+};
 
 export default connect(TeamMembers);

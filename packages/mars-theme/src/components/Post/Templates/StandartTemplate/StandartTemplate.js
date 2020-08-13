@@ -56,10 +56,13 @@ const StandartTemplate = ({ state, libraries }) => {
 
   const dataMore = state.source.get('/blog/');
 
-  const item_image = state.source.attachment[post.acf.blog_image];
+  const item_image = post.acf && post.acf.blog_image && post.acf.blog_image.sizes && post.acf.blog_image.sizes.large;
+
+  console.log(item_image);
+  console.log(post);
 
   let bgImg = imgSrc;
-  if (item_image) bgImg = imageUrlCheck(item_image.source_url, urlsWithLocal);
+  if (item_image) bgImg = imageUrlCheck(item_image, urlsWithLocal);
 
   return (
     <WrapperPage>
