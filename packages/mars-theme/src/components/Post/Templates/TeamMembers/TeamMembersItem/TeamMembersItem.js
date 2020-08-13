@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react'
 import {
   Items
@@ -9,14 +10,20 @@ const TeamMembersItem = ({ teams }) => {
       {
         teams.map((item, index) => {
           const { acf = {} } = item;
-          const skills = acf.skills.split(',');
+          const skills = acf.skills ? acf.skills.split(',') : [];
 
           return (
             <div className="item" key={index}>
               <div className="item-content-box">
                 <div className="item-box">
                   <div className="info-box">
-                    <div className="image" style={{backgroundImage: `url(${item.media.source_url})`}}></div>
+                    <div 
+                      className="image" 
+                      style={{
+                        backgroundImage: `url(${item.media ? item.media.source_url : 'http://www.gravatar.com/avatar/?d=mp'})`,
+                      }}
+                    />
+
                     <div className="info">
                       <h3>{ acf.full_name }</h3>
                       <div className="exp">
@@ -50,10 +57,10 @@ const TeamMembersItem = ({ teams }) => {
                   <div className="skills">
                     <ul>
                       {
-                        skills.map((skill, index) => {
+                        skills.map((skill, indexS) => {
                           return (
-                            <li key={index}>
-                              { skill } 
+                            <li key={indexS}>
+                              { skill }
                             </li>
                           )
                         })
