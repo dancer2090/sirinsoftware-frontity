@@ -58,9 +58,6 @@ const StandartTemplate = ({ state, libraries }) => {
 
   const item_image = post.acf && post.acf.blog_image && post.acf.blog_image.sizes && post.acf.blog_image.sizes.large;
 
-  console.log(item_image);
-  console.log(post);
-
   let bgImg = imgSrc;
   if (item_image) bgImg = imageUrlCheck(item_image, urlsWithLocal);
 

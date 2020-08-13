@@ -103,10 +103,16 @@ export const ArticleLeft = styled.div`
 `;
 
 export const ArticleContent = styled.div`
+    
     margin-bottom: 50px;
     font-size: 14px;
     line-height: 24px;
     color: #222222;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
     p {
         margin-bottom: 15px;
@@ -166,6 +172,39 @@ export const ArticleContent = styled.div`
             line-height: 14px;
         }
     }
+
+:before{
+    content: "";
+    display: table;
+    table-layout: fixed;
+}
+:after{
+    content: "";
+    display: table;
+    table-layout: fixed;
+}
+
+/* Для подписей <figcaption> в теге <figure>. Нужно адаптировать под дизайн! */
+.wp-caption-text {
+    color: #767676;
+    font-size: 0.71111em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+/* Для изображений, видео, figure и т.д. */
+.alignright {float:right; margin:0 0 1em 1em}
+.alignleft {float:left; margin:0 1em 1em 0}
+.aligncenter {display: block; margin-left: auto; margin-right: auto}
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 `;
 
 export const Posts = styled.div`
