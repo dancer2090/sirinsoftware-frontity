@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable quote-props */
 /* eslint-disable no-param-reassign */ 
-import image from '@frontity/html2react/processors/image';
 import iframe from '@frontity/html2react/processors/iframe';
 import axios from 'axios';
 import Theme from './components';
@@ -318,7 +317,7 @@ const marsTheme = {
        * Add a processor to `html2react` so it processes the `<img>` tags
        * inside the content HTML. You can add your own processors too
        */
-      processors: [image, iframe, imageUrl, linkUrls],
+      processors: [iframe, imageUrl, linkUrls],
     },
   },
 };
