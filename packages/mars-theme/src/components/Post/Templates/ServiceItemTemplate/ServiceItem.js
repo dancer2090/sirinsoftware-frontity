@@ -39,13 +39,16 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
+  const pіctureBg = mBackground && mBackground.sizes && mBackground.sizes.medium;
+  const pіctureImg = mImage && mImage.sizes && mImage.sizes.medium;
+
   return (
     <Wrapper>
       <Banner
-        url={imageUrlCheck(mBackground.link, urlsWithLocal)}
+        url={imageUrlCheck(pіctureBg, urlsWithLocal)}
         button={acf.mButton}
         title={acf.mTitle}
-        iconUrl={imageUrlCheck(mImage.link, urlsWithLocal)}
+        iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
         scrollRef={scrollRef}
       />
 
