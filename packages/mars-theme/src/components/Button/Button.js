@@ -38,6 +38,10 @@ const StyledButton = styled.button`
     }
   `}
 
+  ${(props) => props.uppercase && css`
+    text-transform: uppercase;
+  `}
+
   &:after {
     content: "";
     position: absolute;

@@ -91,16 +91,11 @@ export const Content = styled.div`
   }
   
   p span {
-    height: auto !important;
-    padding: 0 !important;
-    display: flex;
-    justify-content: center;
+    
   }
   
   li span {
-    height: auto !important;
-    padding: 0 !important;
-    display: flex;
+
   }
 
   @media screen and  (max-width: 767px) {

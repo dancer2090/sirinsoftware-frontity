@@ -3,6 +3,10 @@ import ItemList from './ServicesItem';
 import Slider from './CaseSlider';
 import LinkComponent from '../../../link';
 
+export const LinkBox = styled.div`
+  padding-top: 20px;
+`;
+
 export const Wrapper = styled.div`
   display: block;
   width: 100%;

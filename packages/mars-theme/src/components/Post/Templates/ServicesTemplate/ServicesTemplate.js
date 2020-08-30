@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import Breadcrumbs from '../../../Breadcrumbs';
+import Button from '../../../Button';
+import Link from '../../../link';
 import {
   Wrapper,
   Container,
@@ -14,6 +16,7 @@ import {
   CaseLink,
   CaseItemTitle,
   CaseContent,
+  LinkBox,
 } from './styles';
 
 const ServicesTemplate = ({ state, actions, libraries }) => {
@@ -41,6 +44,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
     actions.source.fetch('/case-studies/');
   }, []);
 
+  console.log(acf.services);
   return (
     <Wrapper>
       <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
@@ -56,6 +60,13 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
             >
               <h2>{item.name}</h2>
               <p>{item.text}</p>
+              {item.link && item.link.url && (
+                <LinkBox>
+                  <Link link={item.link.url}>
+                    <Button uppercase>{(item.link && item.link.title) ? item.link.title : 'Reacd more'}</Button>
+                  </Link>
+                </LinkBox>
+              )}
             </ServicesItem>
           ))}
         </ServicesList>
