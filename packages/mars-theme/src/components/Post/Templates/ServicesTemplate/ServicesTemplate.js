@@ -58,8 +58,21 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
               reverse={index % 2 !== 0}
               color={index % 2 !== 0 ? 'yellow' : ''}
             >
-              <h2>{item.name}</h2>
+              
+                {item.link && item.link.url 
+                  ? (
+                  <h2>
+                    <Link link={item.link.url}>
+                      {item.name}
+                    </Link>
+                  </h2>
+                  ) : (
+                  <h2>{item.name}</h2>
+                  )
+                }
+              
               <p>{item.text}</p>
+            {/*
               {item.link && item.link.url && (
                 <LinkBox>
                   <Link link={item.link.url}>
@@ -67,6 +80,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
                   </Link>
                 </LinkBox>
               )}
+            */}
             </ServicesItem>
           ))}
         </ServicesList>

@@ -31,6 +31,19 @@ export const Content = styled.div`
     };
     margin-bottom: 16px;
     margin-top: 0;
+    & a{
+      transition: all 0.3s ease-in-out;
+      color: ${(props) => (props.color === 'yellow'
+        ? '#F8710F;'
+        : '#216628;')
+      };
+      &:hover{
+        color: ${(props) => (props.color === 'yellow'
+          ? '#216628;'
+          : '#F8710F;')
+        };
+      }
+    }
   }
 
   p {
