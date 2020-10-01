@@ -26,12 +26,13 @@ import logo from '../../../../img/logo.svg';
 import imgSrc from '../../../list/Item/img-src';
 
 const StandartTemplate = ({ state, libraries }) => {
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const post = state.source[data.type][data.id];
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
   // Get a human readable date.
   const months = ['January', 'February', 'March',
     'April', 'May', 'June',
@@ -99,7 +100,7 @@ const StandartTemplate = ({ state, libraries }) => {
         <Wrapper>
           <ArticleLeft>
             <ArticleLeftHeader>
-              <Link link={category.link}>
+              <Link link={urlCheck(category.link, replaces)}>
                 <BusinessButton size="large">{category.name}</BusinessButton>
               </Link>
               <DateBlock>{ strDate }</DateBlock>

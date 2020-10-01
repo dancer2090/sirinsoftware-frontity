@@ -25,8 +25,10 @@ const Item = ({
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
+
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   const n = Math.floor(index / 2);
   const isOdd = (index === 1) ? true : index % 2 !== 0;
@@ -72,7 +74,7 @@ const Item = ({
         </ImgContainer>
         <ArtCategory isOdd={isOdd} n={n} isClGreen={isClGreen}>{category.name}</ArtCategory>
         <ArtDate isOdd={isOdd} n={n}>{strDate}</ArtDate>
-        <Link link={item.link}>
+        <Link link={urlCheck(item.link, replaces)}>
           <Title
             isClGreen={isClGreen}
             isOdd={isOdd}
@@ -81,7 +83,7 @@ const Item = ({
             <Html2React html={title} />
           </Title>
         </Link>
-        <Link link={item.link}>
+        <Link link={urlCheck(item.link, replaces)}>
           <BtnRead isClGreen={isClGreen}>Read</BtnRead>
         </Link>
       </ArtContainer>

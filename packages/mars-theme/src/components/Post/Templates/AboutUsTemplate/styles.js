@@ -79,8 +79,9 @@ export const AwardsImage = styled.img`
 export const AwardsItem = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
   height: 462px;
   width: 100%;

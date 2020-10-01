@@ -20,7 +20,7 @@ import {
 } from './styles';
 
 const ServicesTemplate = ({ state, actions, libraries }) => {
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
@@ -36,6 +36,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
     main_image = { url : "" },
     main_text = "",
   } = acf;
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   const bigFrameTitle = main_text;
   const bigFrameImage = imageUrlCheck(main_image.url, urlsWithLocal);
@@ -44,7 +45,6 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
     actions.source.fetch('/case-studies/');
   }, []);
 
-  console.log(acf.services);
   return (
     <Wrapper>
       <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
@@ -62,7 +62,7 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
                 {item.link && item.link.url 
                   ? (
                   <h2>
-                    <Link link={item.link.url}>
+                    <Link link={urlCheck(item.link.url, replaces)}>
                       {item.name}
                     </Link>
                   </h2>
@@ -102,10 +102,10 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
                     <CaseItemTitle>
                       <Html2React html={acfItem.portfolio_business_area} />
                     </CaseItemTitle>
-                    <CaseContent link={item.link}>
+                    <CaseContent link={urlCheck(item.link, replaces)}>
                       <Html2React html={item.title.rendered} />
                     </CaseContent>
-                    <CaseLink link={item.link}>Learn more</CaseLink>
+                    <CaseLink link={urlCheck(item.link, replaces)}>Learn more</CaseLink>
                   </CaseItem>
                 );
               })}

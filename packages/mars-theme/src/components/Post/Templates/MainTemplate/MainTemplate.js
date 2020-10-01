@@ -49,10 +49,12 @@ import Triangle from '../../../../img/main_triangle.svg';
 const MainTemplate = ({
   state, libraries, actions, scrollRef = null,
 }) => {
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
+
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   const { acf = {} } = post;
   const {
@@ -165,7 +167,7 @@ const MainTemplate = ({
                 <ItemBlock key={index}>
                   <CaseItemWrapper
                     src={imageUrlCheck(post_featured_image, urlsWithLocal)}
-                    link={p_item.link}
+                    link={urlCheck(p_item.link, replaces)}
                   >
                     <CaseItemTitle>
                       {category_for_green_line}
@@ -179,7 +181,7 @@ const MainTemplate = ({
                     <ItemLabel>
                       {category_for_green_line}
                     </ItemLabel>
-                    <Link link={p_item.link}>
+                    <Link link={urlCheck(p_item.link, replaces)}>
                       <ItemTitle>
                         {p_item.title.rendered}
                       </ItemTitle>
@@ -188,7 +190,7 @@ const MainTemplate = ({
                       {short_description}
                     </ItemDescription>
                   </ItemWrapper>
-                  <CaseLink link={p_item.link}>Learn more</CaseLink>
+                  <CaseLink link={urlCheck(p_item.link, replaces)}>Learn more</CaseLink>
                 </ItemBlock>
               );
             })}
@@ -202,7 +204,7 @@ const MainTemplate = ({
             {clients && clients.map((client, key) => {
               const { image = { url: '' } } = client;
               return (
-                <ClientContainer link={client.url} key={client.url + key}>
+                <ClientContainer link={urlCheck(client.url, replaces)} key={client.url + key}>
                   <Client src={imageUrlCheck(image.url, urlsWithLocal)} />
                 </ClientContainer>
               );

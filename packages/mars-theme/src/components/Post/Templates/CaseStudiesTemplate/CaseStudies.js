@@ -25,8 +25,10 @@ import Link from '../../../link';
 const CaseStudies = ({ state, actions, libraries }) => {
   const [active, setActive] = useState(-1);
   const [filter, setFilter] = useState({});
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
+
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   const data = [];
   const dataCat = [];
@@ -117,11 +119,11 @@ const CaseStudies = ({ state, actions, libraries }) => {
           return (
               <ItemBlock
                 key={index}
-                link={item.link}
+                link={urlCheck(item.link, replaces)}
               >
                 <CaseItemWrapper
                   src={imageUrlCheck(item.src, urlsWithLocal)}
-                  link={item.link}
+                  link={urlCheck(item.link, replaces)}
                 >
                   <CaseItemTitle>
                     { item.title }
@@ -135,7 +137,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
                   <ItemLabel> 
                     { bLabel }
                   </ItemLabel>
-                  <Link link={item.link}>
+                  <Link link={urlCheck(item.link, replaces)}>
                     <ItemTitle>
                       { bTitle }
                     </ItemTitle>

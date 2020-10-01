@@ -32,12 +32,14 @@ import {
 } from './styles';
 
 const CaseStudiesPost = ({ actions, state, libraries }) => {
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   const data = state.source.get(state.router.link);
   const caseStudies = state.source.data['/case-studies/'];
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
+
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   const slidesStudies = caseStudies.items.map((item) => state.source[item.type][item.id]);
 
@@ -215,10 +217,10 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
                   <CaseItemTitle>
                     <Html2React html={portfolio_business_area} />
                   </CaseItemTitle>
-                  <CaseContent link={link}>
+                  <CaseContent link={urlCheck(link, replaces)}>
                     <Html2React html={title.rendered} />
                   </CaseContent>
-                  <CaseLink link={link}>Learn more</CaseLink>
+                  <CaseLink link={urlCheck(link, replaces)}>Learn more</CaseLink>
                 </CaseItem>
               );
             })}

@@ -17,10 +17,13 @@ import {
   NavigationLine,
 } from './styled';
 
-const Footer = ({ state }) => {
+const Footer = ({ state, libraries }) => {
   const { footer_menu = {} } = state.theme.menu;
   const { items = [] } = footer_menu;
   const { acf = {} } = state.options;
+
+  const { urlCheck } = libraries.func;
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   return (
     <Wrapper>
@@ -33,7 +36,7 @@ const Footer = ({ state }) => {
                   index < 4
                       && (
                       <LinkItem key={index}>
-                        <Link link={item.url}>
+                        <Link link={urlCheck(item.url, replaces)}>
                           { item.title }
                         </Link>
                       </LinkItem>
@@ -47,7 +50,7 @@ const Footer = ({ state }) => {
                   index >= 4
                       && (
                       <LinkItem key={index}>
-                        <Link link={item.url}>
+                        <Link link={urlCheck(item.url, replaces)}>
                           { item.title }
                         </Link>
                       </LinkItem>

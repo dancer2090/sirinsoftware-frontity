@@ -20,12 +20,14 @@ import {
 import Breadcrumbs from '../../../Breadcrumbs';
 
 const ServiceItem = ({ state, libraries, scrollRef = null }) => {
-  const { imageUrlCheck } = libraries.func;
+  const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const post = state.source[data.type][data.id];
+
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   // case data
   const caseStudies = state.source.data['/case-studies/'];
@@ -87,7 +89,7 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
                     <CaseContent>
                       <Html2React html={item.title.rendered} />
                     </CaseContent>
-                    <CaseLink link={item.link}>Learn more</CaseLink>
+                    <CaseLink link={urlCheck(item.link, replaces)}>Learn more</CaseLink>
                   </CaseItem>
                 );
               })}

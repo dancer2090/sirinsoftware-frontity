@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'frontity';
 import {
   Wrapper,
   Item,
 } from './styles';
 
-const Breadcrumbs = ({ links = [], className = '' }) => (
+const Breadcrumbs = ({ links = [], className = '', libraries, state }) => {
+  const { urlCheck } = libraries.func;
+  const replaces = [state.frontity.url, state.frontity.adminUrl];
+  return (
   <Wrapper>
     <ol
       itemScope
@@ -33,7 +37,7 @@ const Breadcrumbs = ({ links = [], className = '' }) => (
             itemScope
             itemType="https://schema.org/ListItem"
           >
-            <Item itemProp="item" link={item.link === '#' ? null : item.link}>
+            <Item itemProp="item" link={item.link === '#' ? null : urlCheck(item.link, replaces)}>
               <span itemProp="name">
                 {item.name}
               </span>
@@ -44,6 +48,6 @@ const Breadcrumbs = ({ links = [], className = '' }) => (
       }
     </ol>
   </Wrapper>
-);
+  )};
 
-export default Breadcrumbs;
+export default connect(Breadcrumbs);
