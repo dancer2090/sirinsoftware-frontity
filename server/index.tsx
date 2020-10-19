@@ -45,6 +45,7 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   });
   // added static files for the wordpress urls
   app.use(mount('/wp-content/uploads', serve("../admin.sirinsoftware.com/wp-content/uploads")))
+  app.use(mount('/sitemap.xml', serve("../admin.sirinsoftware.com/sitemap.xml")))
   // Serve robots.txt from root or default if it doesn't exists.
   app.use(
     get("/robots.txt", async (ctx, next) => {
