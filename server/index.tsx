@@ -50,7 +50,7 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   app.use(
     get("/sitemap.txt", async (ctx, next) => {
       if (await promisify(exists)("../admin.sirinsoftware.com/sitemap.xml")) {
-        await serve("../admin.sirinsoftware.com")(ctx, next);
+        await serve("../admin.sirinsoftware.com/")(ctx, next);
       } else {
         ctx.type = "text/plain";
         ctx.body = "User-agent: *\nAllow: /";
