@@ -27,7 +27,7 @@ import { promisify } from "util";
 
 export default ({ packages }): ReturnType<Koa["callback"]> => {
   const app = new Koa();
-  app.proxy = true;
+
   // Serve static files.
   app.use(async (ctx, next) => {
     const moduleStats = await getStats({ target: "module" });
@@ -43,20 +43,8 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
     // Serve the static files.
     return mount(publicPath, serve("build/static"))(ctx, next);
   });
-  // added static files for the wordpress urls
-  app.use(mount('/wp-content/uploads', serve("../admin.sirinsoftware.com/wp-content/uploads")))
+
   // Serve robots.txt from root or default if it doesn't exists.
-  // Serve robots.txt from root or default if it doesn't exists.
-  app.use(
-    get("/sitemap.txt", async (ctx, next) => {
-      if (await promisify(exists)("../admin.sirinsoftware.com/sitemap.xml")) {
-        await serve("../admin.sirinsoftware.com/")(ctx, next);
-      } else {
-        ctx.type = "text/plain";
-        ctx.body = "User-agent: *\nAllow: /";
-      }
-    })
-  );
   app.use(
     get("/robots.txt", async (ctx, next) => {
       if (await promisify(exists)("./robots.txt")) {
@@ -72,17 +60,8 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   const return404 = (ctx: Context) => {
     ctx.status = 404;
   };
-  const returnServices = (ctx: Context) => {
-    ctx.status = 301;
-    ctx.redirect('/services');
-  };
   app.use(get("/__webpack_hmr", return404));
   app.use(get("/static/([a-z0-9]+\\.hot-update\\.json)", return404));
-  app.use(get("/services/rd-center/", returnServices));
-  app.use(get("/services/it-staff-augmentation/", returnServices));
-  app.use(get("/blog/sirin-software-recognized-as-a-top-software-developer/attachment/sirin-clutch-site-2/", return404));
-  app.use(get("/blog/top-industrial-iot-products-of-early-2019/attachment/top-5-industrial-iot-products/", return404));
-  app.use(get("/blog/siring-software-has-been-honored-by-techreviewer-as-one-of-the-top-iot-devs-in-2019/attachment/techreviewer/", return404));
 
   // Return Frontity favicon for favicon.ico.
   app.use(get("/favicon.ico", serve("./")));
@@ -109,9 +88,6 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
 
     // Create the store.
     const store = createStore({ settings, packages, url: ctx.URL });
-    // const ip = ctx.req.connection.remoteAddress;
-    const current_ip = ctx.ips.length > 0 ? ctx.ips[ctx.ips.length - 1] : ctx.ip;
-    store.state.frontity.ip = current_ip;
 
     // Run init actions.
     await Promise.all(

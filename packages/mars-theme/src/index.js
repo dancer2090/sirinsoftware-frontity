@@ -16,6 +16,7 @@ const newHandler = {
     route, params, state, libraries,
   }) => {
     // 1. try with category.
+    const newRoute = route.toLowerCase();
     try {
       let hand_name = 'category';
       if(params.type==="case-studies-cat") hand_name = 'case-studies-cat';
@@ -23,7 +24,7 @@ const newHandler = {
         (handler) => handler.name === hand_name,
       );
       await category.func({
-        route, params, state, libraries,
+        newRoute, params, state, libraries,
       });
     } catch (e) {
       let hand_name = 'post type';
@@ -34,7 +35,7 @@ const newHandler = {
         (handler) => handler.name === hand_name,
       );
       await postType.func({
-        link: route, params, state, libraries,
+        link: newRoute, params, state, libraries,
       });
     }
   },
