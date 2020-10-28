@@ -45,10 +45,12 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   });
   // added static files for the wordpress urls
   app.use(mount('/wp-content/uploads', serve("../admin.sirinsoftware.com/wp-content/uploads")))
+  //app.use(mount('/sitemap.xml', serve("../admin.sirinsoftware.com")))
   // Serve robots.txt from root or default if it doesn't exists.
   // Serve robots.txt from root or default if it doesn't exists.
+  
   app.use(
-    get("/sitemap.txt", async (ctx, next) => {
+    get("/sitemap.xml", async (ctx, next) => {
       if (await promisify(exists)("../admin.sirinsoftware.com/sitemap.xml")) {
         await serve("../admin.sirinsoftware.com/")(ctx, next);
       } else {
@@ -57,7 +59,8 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
       }
     })
   );
-  app.use(
+
+ app.use(
     get("/robots.txt", async (ctx, next) => {
       if (await promisify(exists)("./robots.txt")) {
         await serve("./")(ctx, next);
