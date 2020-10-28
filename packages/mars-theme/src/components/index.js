@@ -45,10 +45,11 @@ const Theme = ({ state, actions }) => {
     app: 'awesome-app',
     plugins: [
       googleTagManager({
-        containerId: 'GTM-PN5W3K4'
+        containerId: 'GTM-K4SP88L'
       })
     ]
   });
+  // old - GTM-PN5W3K4
   analytics.page();
 
   useEffect(() => {

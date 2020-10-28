@@ -70,7 +70,6 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
       }
     })
   );
-
   // Ignore HMR if not in dev mode or old browser open.
   const return404 = (ctx: Context) => {
     ctx.status = 404;
@@ -83,6 +82,7 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   app.use(get("/static/([a-z0-9]+\\.hot-update\\.json)", return404));
   app.use(get("/services/rd-center/", returnServices));
   app.use(get("/services/it-staff-augmentation/", returnServices));
+  app.use(get("/services/it-staff-augmentation1/", returnServices));
   app.use(get("/blog/sirin-software-recognized-as-a-top-software-developer/attachment/sirin-clutch-site-2/", return404));
   app.use(get("/blog/top-industrial-iot-products-of-early-2019/attachment/top-5-industrial-iot-products/", return404));
   app.use(get("/blog/siring-software-has-been-honored-by-techreviewer-as-one-of-the-top-iot-devs-in-2019/attachment/techreviewer/", return404));
@@ -92,6 +92,43 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
 
   // Frontity server rendering.
   app.use(async (ctx, next) => {
+    const url = ctx.href;
+    let newUrl = url;
+    if(url.indexOf('https://fonts.googleapis.') === -1){
+      if(url.indexOf('//www.') !== -1){
+        newUrl = newUrl.replace('//www.','//');
+      }
+
+      let character = '';
+      let i = 0;
+      let checkUpperCase = false;
+
+      while (i <= newUrl.length){
+        character = newUrl.charAt(i);
+        if (
+          character === character.toUpperCase() && isNaN(character * 1) &&
+          character !== '/' && character !== '?' && character !== '=' &&
+          character !== '-' && character !== ':'
+        ) {
+          checkUpperCase = true;
+        }
+        i++;
+      }
+
+      if(checkUpperCase){
+        newUrl = newUrl.toLowerCase();
+      }
+
+      if(newUrl.charAt(newUrl.length - 1) !== '/' && newUrl.charAt(newUrl.length - 2) !== '/'){
+        newUrl = newUrl + '/';
+      }
+
+      if(newUrl !== url) {
+        ctx.status = 301;
+        ctx.redirect(newUrl);
+      }
+    }
+
     // Get module chunk stats.
     const moduleStats = await getStats({ target: "module" });
     // Get es5 chunk stats.

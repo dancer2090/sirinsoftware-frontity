@@ -6,13 +6,22 @@ import { connect } from 'frontity';
 const Link = ({
   state,
   actions,
-  link,
+  link : oldLink,
   className,
   itemProp,
   children,
   afterClick = () => { console.log('after click'); },
   'aria-current': ariaCurrent,
 }) => {
+  let link = oldLink;
+  if(
+    link && link.length > 0 &&
+    link.substr(link.length - 1) !== '/' &&
+    link.indexOf('?') === -1
+  ) {
+    link = `${link}/`;
+  }
+
   const onClick = (event) => {
     // Do nothing if it's an external link
     if (link.startsWith(state.frontity.url)) {
