@@ -96,10 +96,11 @@ const MainTemplate = ({
             {services && services.map((service, k) => {
               const {
                 bg = { url: '' },
+                link = ''
               } = service;
               const serviceBackground = imageUrlCheck(bg.url, urlsWithLocal);
               return (
-                <ServicesItem src={serviceBackground} link="/services" key={service.url+k}>
+                <ServicesItem src={serviceBackground} link={link} key={service.url+k}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
               );
