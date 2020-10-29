@@ -82,7 +82,7 @@ const MainTemplate = ({
 
   return (
     <GlobalContainer>
-      {/*
+      
       <MainFrameBlock
         url={main_bg.url}
         title={main_title}
@@ -215,7 +215,7 @@ const MainTemplate = ({
           </ClientsGallery>
         </Container>
       </ClientsGlobalContainer>
-      */}
+      
     </GlobalContainer>
   );
 };
