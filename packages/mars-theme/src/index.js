@@ -231,7 +231,7 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ state, actions, libraries }) => {
-
+/*
         const globalOptions = await axios.get(`${state.source.api}/frontity-api/get-options`);
         const footerData = { items : globalOptions.data.footer_menu || {} };
         const optionPage =  { acf : globalOptions.data.options || {} };
@@ -293,7 +293,7 @@ const marsTheme = {
           }
           return item;
         });
-
+*/
         //console.log(seconds);
       },
     },
