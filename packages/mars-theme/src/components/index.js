@@ -45,7 +45,7 @@ const Theme = ({ state, actions }) => {
     app: 'awesome-app',
     plugins: [
       googleTagManager({
-        containerId: 'GTM-PN5W3K4'
+        containerId: 'GTM-5XT9QQ'
       })
     ]
   });
