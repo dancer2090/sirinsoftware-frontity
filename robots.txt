@@ -1,6 +1,29 @@
 User-agent: *
-Disallow: /wp-admin
-Disallow: /teammembers
 
-Host: sirinsoftware.com
+Disallow: /teammembers
+Disallow: /wp-login.php
+Disallow: /wp-register.php
+Disallow: /xmlrpc.php
+Disallow: /template.html
+Disallow: /wp-admin
+Disallow: /wp-includes
+Disallow: /wp-content
+Disallow: /tag
+Disallow: /category
+Disallow: /archive
+Disallow: */trackback/
+Disallow: */feed/
+Disallow: */comments/
+Disallow: */attachment/
+Disallow: /?feed=
+Disallow: /?s=
+Disallow: /?c
+Allow: /wp-admin/admin-ajax.php
+Allow: /wp-content/uploads/
+Allow: /static/*.js
+Allow: /cdn-cgi/scripts/*.js
+Allow: /cdn-cgi/styles/*.css
+Allow: /static/images/*.svg
+
+
 Sitemap: https://sirinsoftware.com/sitemap.xml
