@@ -199,7 +199,7 @@ const MainTemplate = ({
           </CaseStudiesList>
         </Container>
       </CaseStudiesGlobalContainer>
-      */}
+
       <ClientsGlobalContainer>
         <ClientTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)" />
         <Container>
@@ -215,6 +215,7 @@ const MainTemplate = ({
           </ClientsGallery>
         </Container>
       </ClientsGlobalContainer>
+      */}
     </GlobalContainer>
   );
 };
