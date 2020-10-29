@@ -82,6 +82,7 @@ const MainTemplate = ({
 
   return (
     <GlobalContainer>
+      {/*
       <MainFrameBlock
         url={main_bg.url}
         title={main_title}
@@ -198,6 +199,7 @@ const MainTemplate = ({
           </CaseStudiesList>
         </Container>
       </CaseStudiesGlobalContainer>
+      */}
       <ClientsGlobalContainer>
         <ClientTitle title="Clients" bigTitleBackgroundColor="rgba(63, 165, 74, 0.1)" />
         <Container>
