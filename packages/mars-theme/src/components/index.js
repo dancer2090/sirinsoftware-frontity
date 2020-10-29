@@ -94,7 +94,7 @@ const Theme = ({ state, actions }) => {
           handleClose={subscribeHandleClose}
         />
 
-        <Header scrollRef={formRef} transparent={transparent} />
+        {/*<Header scrollRef={formRef} transparent={transparent} />*/}
         <Space transparent={transparent} />
 
         {/* Add the main section. It renders a different component depending
@@ -115,7 +115,7 @@ const Theme = ({ state, actions }) => {
 
         <CollapsePage />
 
-        <Footer />
+        {/*<Footer />*/}
 
         <UseCookiesModal />
       </GoogleReCaptchaProvider>

@@ -231,28 +231,23 @@ const marsTheme = {
         });
       },
       beforeSSR: async ({ state, actions, libraries }) => {
-        
-        let seconds = 0;
-        const timer = setInterval(() => {
-          seconds = seconds + 100;
-        }, 100);
-
+/*
         const globalOptions = await axios.get(`${state.source.api}/frontity-api/get-options`);
         const footerData = { items : globalOptions.data.footer_menu || {} };
         const optionPage =  { acf : globalOptions.data.options || {} };
         const mainMenu = { items : globalOptions.data.head_menu || {} };
 
         state.theme.menu.footer_menu = footerData;
-
+*/
         actions.theme.alternativeUrlForImage();
-
+/*
         state.options = optionPage;
 
         state.theme.faq = globalOptions.data.faq.categories || {};
 
         const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
         state.customSettings.categories = categories.data;
-
+*/
         if (state.router.link.includes('/services/')) {
           await actions.source.fetch('/case-studies/');
         }
@@ -263,13 +258,13 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/case-studies/');
         }
-
+/*
         if (
           state.router.link === '/'
         ) {
           await actions.source.fetch('/case-studies/');
         }
-
+*/
         if (state.router.link === '/case-studies/') {
           await actions.source.fetch("caseHandler");
         }
@@ -284,7 +279,7 @@ const marsTheme = {
         ) {
           await actions.source.fetch('/blog');
         }
-
+/*
         const { urlCheck } = libraries.func;
         const replaces = [state.frontity.url, state.frontity.adminUrl];
         state.theme.menu.main = mainMenu || {};
@@ -298,9 +293,7 @@ const marsTheme = {
           }
           return item;
         });
-
-
-        clearInterval(timer);
+*/
         //console.log(seconds);
       },
     },
