@@ -23,7 +23,6 @@ import Breadcrumbs from '../../../Breadcrumbs';
 import Link from '../../../link';
 
 const CaseStudies = ({ state, actions, libraries }) => {
-  console.log(state);
   const [active, setActive] = useState(-1);
   const [filter, setFilter] = useState({});
   const { imageUrlCheck, urlCheck } = libraries.func;
