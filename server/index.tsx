@@ -94,7 +94,13 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
   app.use(async (ctx, next) => {
     const url = ctx.href;
     let newUrl = url;
-    if(url.indexOf('https://fonts.googleapis.') === -1){
+    if(url.indexOf('https://fonts.googleapis.') === -1 && url.indexOf('css') === -1 && url.indexOf('.jpg') === -1){
+
+      const options = readFileSync("api/public/res-json/options/index.json", "utf8");
+      if(options && options.length > 0) ctx.state.options = JSON.parse(options);
+
+      const categories = readFileSync("api/public/res-json/categories/index.json", "utf8");
+      if(categories && categories.length > 0) ctx.state.categories = JSON.parse(categories);
 
       if(ctx.url === '/'){
         /*
@@ -107,9 +113,7 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
         */
         const json = readFileSync("api/public/res-json/portfolio/index.json", "utf8");
         if(json && json.length > 0) ctx.state.cases = JSON.parse(json);
-        console.log('----ccheck')
       }
-      ctx.state.users = {nn:'aaaa'};
 
       if(url.indexOf('//www.') !== -1){
         newUrl = newUrl.replace('//www.','//');
