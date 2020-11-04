@@ -22,7 +22,7 @@ import getHeadTags from "./utils/head";
 import App from "../app";
 import { FrontityTags } from "../../types";
 import createStore from "./store";
-import { exists } from "fs";
+import { exists, readFile, readFileSync } from "fs";
 import { promisify } from "util";
 
 export default ({ packages }): ReturnType<Koa["callback"]> => {
@@ -95,6 +95,22 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
     const url = ctx.href;
     let newUrl = url;
     if(url.indexOf('https://fonts.googleapis.') === -1){
+
+      if(ctx.url === '/'){
+        /*
+        readFile("api/public/res-json/portfolio/index.json", "utf8", 
+        function(error,data){
+          if(error) throw error; // если возникла ошибка
+          ctx.state.cases = JSON.parse(data);
+          console.log('----ccheck')
+        });
+        */
+        const json = readFileSync("api/public/res-json/portfolio/index.json", "utf8");
+        if(json && json.length > 0) ctx.state.cases = JSON.parse(json);
+        console.log('----ccheck')
+      }
+      ctx.state.users = {nn:'aaaa'};
+
       if(url.indexOf('//www.') !== -1){
         newUrl = newUrl.replace('//www.','//');
       }

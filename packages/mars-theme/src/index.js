@@ -6,7 +6,7 @@ import axios from 'axios';
 import Theme from './components';
 import imageUrl from './processors/imageUrl';
 import linkUrls from './processors/linkUrls';
-import { linkReplace, linkImageReplace } from './utils/func';
+import { linkReplace, linkImageReplace, popReadyObjectArchive, generateCases } from './utils/func';
 
 const newHandler = {
   name: 'categoryOrPostType',
@@ -172,7 +172,6 @@ const marsTheme = {
           dataForm,
           { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
-          console.log(response);
           state.customSettings.isFormSend = true;
           gtag('event', 'Send Email from footer form', {
             'event_category': 'Send Email from footer form',
@@ -230,70 +229,95 @@ const marsTheme = {
           }
         });
       },
-      beforeSSR: async ({ state, actions, libraries }) => {
-/*
-        const globalOptions = await axios.get(`${state.source.api}/frontity-api/get-options`);
-        const footerData = { items : globalOptions.data.footer_menu || {} };
-        const optionPage =  { acf : globalOptions.data.options || {} };
-        const mainMenu = { items : globalOptions.data.head_menu || {} };
+      beforeSSR: ({ state, actions, libraries }) => async ({ ctx }) => {
+        const url = ctx.href;
+        let newUrl = url;
+        if(url.indexOf('https://fonts.googleapis.') === -1 && url.indexOf('css') === -1 && url.indexOf('.jpg') === -1){
+          const { state : ctxState = {} } = ctx;
+          const {
+            cases : ctxCases = [],
+            options : ctxOptions = {},
+            categories : ctxCategories = []
+          } = ctxState;
+          const globalOptions = ctxOptions && ctxOptions.options ? ctxOptions : await axios.get(`${state.source.api}/frontity-api/get-options`);
+          const footerData = { items : globalOptions.footer_menu || {} };
+          const optionPage =  { acf : globalOptions.options || {} };
+          const mainMenu = { items : globalOptions.head_menu || {} };
 
-        state.theme.menu.footer_menu = footerData;
+          state.theme.menu.footer_menu = footerData;
+  
+          actions.theme.alternativeUrlForImage();
 
-        actions.theme.alternativeUrlForImage();
+          state.options = optionPage;
 
-        state.options = optionPage;
+          state.theme.faq = globalOptions.faq.categories || {};
 
-        state.theme.faq = globalOptions.data.faq.categories || {};
+          const categories = ctxCategories ? ctxCategories : await axios.get(`${state.source.api}/wp/v2/categories`);
+          state.customSettings.categories = categories;
 
-        const categories = await axios.get(`${state.source.api}/wp/v2/categories`);
-        state.customSettings.categories = categories.data;
-
-        if (state.router.link.includes('/services/')) {
-          await actions.source.fetch('/case-studies/');
-        }
-
-        if (
-          state.router.link.includes('/case-studies/')
-          && state.router.link !== '/case-studies/'
-        ) {
-          await actions.source.fetch('/case-studies/');
-        }
-
-        if (
-          state.router.link === '/'
-        ) {
-          await actions.source.fetch('/case-studies/');
-        }
-
-        if (state.router.link === '/case-studies/') {
-          await actions.source.fetch("caseHandler");
-        }
-
-        if (state.router.link === '/teammembers/') {
-          await actions.source.fetch("teamHandler");
-        }
-
-        if (
-          !state.router.link.indexOf('/blog/')
-          && state.router.link !== '/blog/'
-        ) {
-          await actions.source.fetch('/blog');
-        }
-
-        const { urlCheck } = libraries.func;
-        const replaces = [state.frontity.url, state.frontity.adminUrl];
-        state.theme.menu.main = mainMenu || {};
-        state.theme.menu.main.items.map((item) => {
-          item.urlFrontity = urlCheck(item.url, replaces);
-          if (item.child_items) {
-            item.child_items = item.child_items.map((cItem) => {
-              cItem.urlFrontity = urlCheck(cItem.url, replaces);
-              return cItem;
-            });
+          if (state.router.link.includes('/services/')) {
+            if(ctxCases.length > 0) {
+              generateCases(state, ctxCases);
+            } else {
+              await actions.source.fetch('/case-studies/');
+            }
           }
-          return item;
-        });
-*/
+
+          if (
+            state.router.link.includes('/case-studies/')
+            && state.router.link !== '/case-studies/'
+          ) {
+            if(ctxCases.length > 0) {
+              generateCases(state, ctxCases);
+            } else {
+              await actions.source.fetch('/case-studies/');
+            }
+          }
+
+          if (
+            state.router.link === '/'
+          ) {
+            if(ctxCases.length > 0) {
+              generateCases(state, ctxCases);
+            } else {
+              await actions.source.fetch('/case-studies/');
+            }
+          }
+
+          if (state.router.link === '/case-studies/') {
+            if(ctxCases.length > 0) {
+              generateCases(state, ctxCases);
+            } else {
+              await actions.source.fetch('/case-studies/');
+            }
+          }
+
+          if (state.router.link === '/teammembers/') {
+            await actions.source.fetch("teamHandler");
+          }
+
+          if (
+            !state.router.link.indexOf('/blog/')
+            && state.router.link !== '/blog/'
+          ) {
+            await actions.source.fetch('/blog');
+          }
+
+          const { urlCheck } = libraries.func;
+          const replaces = [state.frontity.url, state.frontity.adminUrl];
+          state.theme.menu.main = mainMenu || {};
+          state.theme.menu.main.items.map((item) => {
+            item.urlFrontity = urlCheck(item.url, replaces);
+            if (item.child_items) {
+              item.child_items = item.child_items.map((cItem) => {
+                cItem.urlFrontity = urlCheck(cItem.url, replaces);
+                return cItem;
+              });
+            }
+            return item;
+          });
+        }
+
         //console.log(seconds);
       },
     },
