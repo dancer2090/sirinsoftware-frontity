@@ -20,7 +20,8 @@ import {
 const Footer = ({ state, libraries }) => {
   const { footer_menu = {} } = state.theme.menu;
   const { items = [] } = footer_menu;
-  const { acf = {} } = state.options;
+  const { options = {} } = state;
+  const { acf = {} } = options;
 
   const { urlCheck } = libraries.func;
   const replaces = [state.frontity.url, state.frontity.adminUrl];

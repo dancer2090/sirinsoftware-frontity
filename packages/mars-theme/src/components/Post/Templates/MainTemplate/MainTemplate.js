@@ -49,7 +49,6 @@ import Triangle from '../../../../img/main_triangle.svg';
 const MainTemplate = ({
   state, libraries, actions, scrollRef = null,
 }) => {
-  console.log(state);
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   const dataP = state.source.get(state.router.link);
