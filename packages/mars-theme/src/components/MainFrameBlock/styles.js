@@ -47,7 +47,7 @@ export const MainBlock = styled.div`
     right: 0px;
     bottom: 0px;
     top: 0px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(22957.jpg);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)); 
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     z-index: 1;
   }

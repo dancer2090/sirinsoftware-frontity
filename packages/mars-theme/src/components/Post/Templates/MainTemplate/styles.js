@@ -3,6 +3,7 @@ import Slider from './MainSlider';
 import Link from '../../../link';
 
 import BigTitle from '../../../BigTitle/BigTitle';
+import Image from "@frontity/components/image";
 
 export const ServicesTitle = styled(BigTitle)`
   @media screen and (max-width: 767px) {
@@ -106,7 +107,7 @@ export const ServicesItem = styled(Link)`
   }
   &:before{
     content:' ';
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(900.jpg);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
     position: absolute;
     top: 0px;
@@ -535,7 +536,7 @@ export const ClientContainer = styled.div`
   align-items: center;
   height: 95px;
 `;
-export const Client = styled.img`
+export const Client = styled(Image)`
   display: block;
   max-width: 100%;
   max-height: 100%;
