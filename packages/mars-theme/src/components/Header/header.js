@@ -116,14 +116,12 @@ const HeaderComponent = ({
               ))}
             </Menu>
             <MobileButton>
-              <a onClick={() => scrollToRef()}>GET A FREE QUOTE</a>
+              <a href="#" onClick={() => scrollToRef()}>GET A FREE QUOTE</a>
             </MobileButton>
             <GetButton transparent={!!((scrollTop < height && transparent))}>
-              <a>
-                <Button onClick={() => scrollToRef()}>
-                  GET A FREE QUOTE
-                </Button>
-              </a>
+              <Button>
+                <a href="#" onClick={() => scrollToRef()}> GET A FREE QUOTE</a>
+              </Button>
             </GetButton>
           </Header>
         )}

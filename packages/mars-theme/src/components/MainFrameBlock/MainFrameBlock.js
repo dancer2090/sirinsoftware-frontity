@@ -32,7 +32,7 @@ const MainFrameBlock = ({
             <MainBlockButton onClick={() => scrollToRef()}>{button}</MainBlockButton>
           </MainBlockLeft>
           <MainBlockRight>
-            <MainBlockIcon src={iconUrl} />
+            <MainBlockIcon alt={title} src={iconUrl} />
           </MainBlockRight>
         </MainBlockContainer>
       </Container>

@@ -3,7 +3,7 @@ import Slider from './MainSlider';
 import Link from '../../../link';
 
 import BigTitle from '../../../BigTitle/BigTitle';
-import Image from "@frontity/components/image";
+import Image from "../../../image";
 
 export const ServicesTitle = styled(BigTitle)`
   @media screen and (max-width: 767px) {
@@ -90,7 +90,7 @@ export const ServicesItem = styled(Link)`
   align-items: flex-end;
   width: calc(50% - 10px);
   height: 470px;
-  background-image: url(${(props) => props.src});
+  background-image: url(${(props) => props.bg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -343,7 +343,7 @@ export const PartnerShipRightContainer = styled.div`
   margin-top: 55px;
   height: 615px;
   width: 458px;
-  background-image: url(${(props) => props.src});
+  background-image: url(${(props) => props.bg});
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: contain;
@@ -451,11 +451,11 @@ export const CaseItemWrapper = styled(Link)`
   transition: all .3s;
   height: calc(100% - 46px);
 
-  ${({ src }) => (
-    src
+  ${({ bg }) => (
+    bg
     ? css`background: 
       linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-      url(${src});`
+      url(${bg});`
     : css`background: linear-gradient(270.99deg, #3FA54A 3.6%, #216628 97.69%);`
   )}
   background-size: cover;
@@ -567,7 +567,7 @@ export const ItemBlock = styled.div`
   height: 470px;
   margin-right: 20px;
   position: relative;
-  perspective: 10000;   
+  perspective: 10000px;   
 
   & > div {
     backface-visibility: hidden;

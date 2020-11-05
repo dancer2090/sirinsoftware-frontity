@@ -101,7 +101,7 @@ const MainTemplate = ({
               } = service;
               const serviceBackground = imageUrlCheck(bg.url, urlsWithLocal);
               return (
-                <ServicesItem src={serviceBackground} link={link} key={service.url+k}>
+                <ServicesItem bg={serviceBackground} link={link} key={service.url+k}>
                   <ServicesItemTitle>{service.title}</ServicesItemTitle>
                 </ServicesItem>
               );
@@ -144,7 +144,7 @@ const MainTemplate = ({
                 <Html2React html={right_text} />
                 {' '}
               </PartnerShipRightTitle>
-              <PartnerShipRightContainer src={Triangle}>
+              <PartnerShipRightContainer bg={Triangle}>
                 <GreenTitle><Html2React html={t_green} /></GreenTitle>
                 <OrangeTitle><Html2React html={t_orange} /></OrangeTitle>
                 <TText>{t_after}</TText>
@@ -168,7 +168,7 @@ const MainTemplate = ({
               return (
                 <ItemBlock key={index}>
                   <CaseItemWrapper
-                    src={imageUrlCheck(post_featured_image, urlsWithLocal)}
+                    bg={imageUrlCheck(post_featured_image, urlsWithLocal)}
                     link={urlCheck(p_item.link, replaces)}
                   >
                     <CaseItemTitle>
@@ -208,7 +208,7 @@ const MainTemplate = ({
               const { image = { url: '' } } = client;
               return (
                 <ClientContainer link={urlCheck(client.url, replaces)} key={client.url + key}>
-                  <Client src={imageUrlCheck(image.url, urlsWithLocal)} />
+                  <Client alt="sirin software client" src={imageUrlCheck(image.url, urlsWithLocal)} />
                 </ClientContainer>
               );
             })}

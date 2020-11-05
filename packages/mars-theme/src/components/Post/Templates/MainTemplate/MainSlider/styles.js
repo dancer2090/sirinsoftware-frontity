@@ -1,6 +1,6 @@
 import { styled } from 'frontity';
 import Slider from 'react-id-swiper';
-import Style from 'swiper/css/swiper.css';
+import Style from '../../../../swiper/css/swiper.css';
 
 export const Container = styled.div`
   ${Style}

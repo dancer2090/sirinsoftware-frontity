@@ -172,7 +172,7 @@ export const Send = styled.div`
     height:24px;
     width:24px;
     margin: 5px;
-    box-shadow: iwnset 2px 2px 8px rgba(0, 0, 0, 0.2);  
+    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2);  
   }
   .box {
     height: 33px;

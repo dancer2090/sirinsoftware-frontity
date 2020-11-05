@@ -15,7 +15,7 @@
     "y-build": "frontity build",
     "y-dev": "frontity dev",
     "y-serve": "frontity serve",
-    "api-cache-start" : "nodemon api/bin/www",
+    "api-cache-start": "nodemon api/bin/www",
     "all": "npm-run-all --parallel api-cache-start serve"
   },
   "prettier": {},

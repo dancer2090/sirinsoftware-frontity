@@ -72,7 +72,7 @@ const Footer = ({ state, libraries }) => {
               <InfoLabel>
                 Phone:
               </InfoLabel>
-              <Link href={`tel:${acf.main_phone_number}`} itemProp="telephone">
+              <Link link={`tel:${acf.main_phone_number}`} itemProp="telephone">
                 { acf.main_phone_number }
               </Link>
             </InfoItem>
@@ -80,20 +80,20 @@ const Footer = ({ state, libraries }) => {
               <InfoLabel>
                 Email:
               </InfoLabel>
-              <Link href={`mailto:${acf.main_email}`} itempProp="email">
+              <Link link={`mailto:${acf.main_email}`} itempProp="email">
                 { acf.main_email }
               </Link>
             </InfoItem>
           </div>
           <Social>
-            <SocialLink href={acf.facebook_link} target="__blank">
-              <Icon name="facebook-footer" />
+            <SocialLink href={acf.facebook_link} target="_blank">
+              <Icon dataName="facebook-footer" />
             </SocialLink>
-            <SocialLink href={acf.linkedin_link} target="__blank">
-              <Icon name="linkedin-footer" />
+            <SocialLink href={acf.linkedin_link} target="_blank">
+              <Icon dataName="linkedin-footer" />
             </SocialLink>
-            <SocialLink href={acf.twitter_link} target="__blank">
-              <Icon name="twitter-footer" />
+            <SocialLink href={acf.twitter_link} target="_blank">
+              <Icon dataName="twitter-footer" />
             </SocialLink>
           </Social>
         </Header>
