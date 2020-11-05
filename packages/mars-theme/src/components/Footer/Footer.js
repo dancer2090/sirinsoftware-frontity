@@ -22,6 +22,7 @@ const Footer = ({ state, libraries }) => {
   const { items = [] } = footer_menu;
   const { options = {} } = state;
   const { acf = {} } = options;
+  const { main_phone_number = '' } = acf;
 
   const { urlCheck } = libraries.func;
   const replaces = [state.frontity.url, state.frontity.adminUrl];
@@ -72,8 +73,8 @@ const Footer = ({ state, libraries }) => {
               <InfoLabel>
                 Phone:
               </InfoLabel>
-              <Link link={`tel:+${acf.main_phone_number.replaceAll(' ','')}`} itemProp="telephone">
-                { acf.main_phone_number }
+              <Link link={`tel:+${main_phone_number.replace(/\s/g, '')}`} itemProp="telephone">
+                { main_phone_number }
               </Link>
             </InfoItem>
             <InfoItem>
