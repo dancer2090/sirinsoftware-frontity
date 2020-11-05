@@ -115,8 +115,8 @@ const HeaderComponent = ({
                 </li>
               ))}
             </Menu>
-            <MobileButton onClick={() => scrollToRef()}>
-              GET A FREE QUOTE
+            <MobileButton>
+              <a href="#" onClick={() => scrollToRef()}>GET A FREE QUOTE</a>
             </MobileButton>
             <GetButton transparent={!!((scrollTop < height && transparent))}>
               <Button onClick={() => scrollToRef()}>

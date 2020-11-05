@@ -38,7 +38,7 @@ const SocialList = ({ className, title = '', state }) => {
         <SocialItem
           name="linkedin"
           target="__blank"
-          href={`https://www.linkedin.com/cws/share?url=${href}`}
+          href={`https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%3Furl%3D${href}`}
         >
           <SocialIcon name="linkedin" />
         </SocialItem>

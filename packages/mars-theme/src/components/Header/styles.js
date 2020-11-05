@@ -170,7 +170,7 @@ export const Mobilemenu = styled.div`
   min-width: 40px;
   justify-content: center;
   
-  @media(min-width: 1000px) {
+  @media (min-width: 1000px) {
     display: none;
   }
   

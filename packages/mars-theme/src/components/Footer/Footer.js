@@ -88,13 +88,13 @@ const Footer = ({ state, libraries }) => {
           </div>
           <Social>
             <SocialLink href={acf.facebook_link} target="_blank">
-              <Icon dataName="facebook-footer" />
+              <Icon name="facebook-footer" />
             </SocialLink>
             <SocialLink href={acf.linkedin_link} target="_blank">
-              <Icon dataName="linkedin-footer" />
+              <Icon name="linkedin-footer" />
             </SocialLink>
             <SocialLink href={acf.twitter_link} target="_blank">
-              <Icon dataName="twitter-footer" />
+              <Icon name="twitter-footer" />
             </SocialLink>
           </Social>
         </Header>
