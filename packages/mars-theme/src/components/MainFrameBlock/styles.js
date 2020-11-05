@@ -24,7 +24,7 @@ export const Container = styled.div`
 
 export const MainBlock = styled.div`
   display: block;
-  background-image: url(${(props) => props.src});
+  background-image: url(${(props) => props.bg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

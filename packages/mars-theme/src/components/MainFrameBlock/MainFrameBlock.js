@@ -24,7 +24,7 @@ const MainFrameBlock = ({
   };
 
   return (
-    <MainBlock src={url} className={className}>
+    <MainBlock bg={url} className={className}>
       <Container>
         <MainBlockContainer>
           <MainBlockLeft>
