@@ -148,7 +148,7 @@ const Form = ({ submitForm }) => {
           { nameSelectFile.length > 0
             ? <span>{ nameSelectFile }</span>
             : null}
-          <img src={clipImg} />
+          <img alt="upload image" src={clipImg} />
         </PictureIcon>
         <Send>
           <div className="box">
