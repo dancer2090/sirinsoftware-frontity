@@ -72,7 +72,7 @@ const Footer = ({ state, libraries }) => {
               <InfoLabel>
                 Phone:
               </InfoLabel>
-              <Link link={`tel:+${acf.main_phone_number.replace(' ','')}`} itemProp="telephone">
+              <Link link={`tel:+${acf.main_phone_number.replaceAll(' ','')}`} itemProp="telephone">
                 { acf.main_phone_number }
               </Link>
             </InfoItem>
