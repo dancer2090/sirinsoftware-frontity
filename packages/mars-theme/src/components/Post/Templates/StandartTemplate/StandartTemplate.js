@@ -68,19 +68,19 @@ const StandartTemplate = ({ state, libraries }) => {
         <script type="application/ld+json">
           {`
               {
-                '@context': 'http://schema.org',
-                '@type': 'NewsArticle',
-                'url': '${state.frontity.url}${state.router.link}',
-                'publisher': {
-                  '@type': 'Organization',
-                  'name': 'Sirin Software',
-                  'logo': '${logo}'
+                "@context": "http://schema.org",
+                "@type": "NewsArticle",
+                "url": "${state.frontity.url}${state.router.link}",
+                "publisher": {
+                   "@type": "Organization",
+                   "name": "Sirin Software",
+                   "logo": "${logo}"
                 },
-                'headline': '${post.title.rendered}',
-                'articleBody': '${post.content.rendered.toString()}',
-                'datePublished': '${post.date}',
-                'dateModified': '${post.modified}'
-              }
+                "headline": "${post.title.rendered}",
+                "articleBody": "${post.content.rendered.toString()}",
+                "datePublished": "${post.date}",
+                "dateModified": "${post.modified}"
+             }
         `}
         </script>
       </Head>
