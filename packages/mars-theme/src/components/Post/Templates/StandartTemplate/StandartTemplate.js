@@ -62,6 +62,8 @@ const StandartTemplate = ({ state, libraries }) => {
   let bgImg = imgSrc;
   if (item_image) bgImg = imageUrlCheck(item_image, urlsWithLocal);
 
+  const reg = new RegExp('"', 'g');
+  const jsoncontent = post && post.content && post.content.rendered ? post.content.rendered.toString().replace(reg, "'") : '';
   return (
     <WrapperPage>
       <Head>
@@ -77,7 +79,7 @@ const StandartTemplate = ({ state, libraries }) => {
                    "logo": "${logo}"
                 },
                 "headline": "${post.title.rendered}",
-                "articleBody": "${post.content.rendered.toString()}",
+                "articleBody": "${jsoncontent}",
                 "datePublished": "${post.date}",
                 "dateModified": "${post.modified}"
              }
