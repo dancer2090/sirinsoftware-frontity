@@ -44,11 +44,12 @@ const Theme = ({ state, actions }) => {
     app: 'awesome-app',
     plugins: [
       googleTagManager({
-        containerId: 'GTM-5XT9QQ'
+        containerId: 'GTM-PN5W3K4',
       })
     ]
   });
   // old - GTM-PN5W3K4
+  // old - GTM-5XT9QQ
   analytics.page();
 
   useEffect(() => {
