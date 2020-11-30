@@ -74,14 +74,14 @@ const StandartTemplate = ({ state, libraries }) => {
                 'publisher': {
                   '@type': 'Organization',
                   'name': 'Sirin Software',
-                  'logo': '${logo}',
+                  'logo': '${logo}'
                 },
                 'headline': '${post.title.rendered}',
                 'articleBody': '${post.content.rendered.toString()}',
                 'datePublished': '${post.date}',
                 'dateModified': '${post.modified}'
               }
-            `}
+        `}
         </script>
       </Head>
       <BigFrame image={bgImg}>
