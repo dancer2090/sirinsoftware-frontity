@@ -19,7 +19,7 @@ import {
   Box,
   PartnerShipContainer,
   PartnerShipRightContainer,
-  PartnerShipRight, 
+  PartnerShipRight,
   PartnerShipRightTitle,
   GreenTitle,
   OrangeTitle,
@@ -42,9 +42,25 @@ import {
   ServicesTitle,
   CaseTitle,
   ClientTitle,
+  WhiteBlock,
+  WhiteBlockTextTop,
+  WhiteBlockTextBottom,
+  WhyUs,
+  WhyUsTitle,
+  WhyUsBlocks,
+  WhyUsBlock,
+  WhyUsIcon,
+  WhyUsText,
+  PreFooter,
+  PreFooterTopText,
+  PreFooterBottomText,
+  CaseStudiesText,
+  WhyUsBottomText
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
+import WhoWeAre from '../../../WhoWeAre';
 import Triangle from '../../../../img/main_triangle.svg';
+import WhiteBlockBG from '../../../../img/whiteBlockBg.svg';
 
 const MainTemplate = ({
   state, libraries, actions, scrollRef = null,
@@ -70,7 +86,21 @@ const MainTemplate = ({
     t_green = '',
     t_orange = '',
     clients = {},
+    whiteBlock = {},
+    whoWeAre = {},
+    whyUs = {},
+    whyUsText = '',
+    caseStudiesText = '',
+    footerBg = {},
+    footerTextTop = {},
+    footerTextBottom = {},
+    whyUsBottomText = ''
   } = acf;
+
+  const {
+    topText : whiteTopText = '',
+    bottomText : whiteBottomText = ''
+  } = whiteBlock;
 
   useEffect(() => {
     actions.source.fetch('/case-studies/');
@@ -90,6 +120,13 @@ const MainTemplate = ({
         iconUrl={main_icon.url}
         scrollRef={scrollRef}
       />
+      <WhiteBlock url={WhiteBlockBG}>
+        <Container>
+          <WhiteBlockTextTop>{whiteTopText}</WhiteBlockTextTop>
+          <WhiteBlockTextBottom>{whiteBottomText}</WhiteBlockTextBottom>
+        </Container>
+      </WhiteBlock>
+      <WhoWeAre items={whoWeAre} />
       <ServicesGlobalContainer>
         <ServicesTitle title="Services" />
         <Container>
@@ -109,52 +146,31 @@ const MainTemplate = ({
           </ServicesList>
         </Container>
       </ServicesGlobalContainer>
-      <PartnerShip>
-        <BigTitle title="Partnership types" bigTitleBackgroundColor="rgba(255,255,255,0.06)" bigTitleTextColor="#FFFFFF" />
+      <WhyUs>
         <Container>
-          <PartnerShipContainer>
-            <PartnerShipLeft>
-              <PartnerShipLeftTitle>
-                {' '}
-                <Html2React html={left_text} />
-                {' '}
-              </PartnerShipLeftTitle>
-              {boxes && boxes.map((box) => (
-                <Box key={box.title}>
-                  {box.title !== '' && (
-                    <BoxTitle>
-                      {' '}
-                      {box.title}
-                      {' '}
-                    </BoxTitle>
-                  )}
-                  {box.text !== '' && (
-                    <BoxText>
-                      {' '}
-                      {box.text}
-                      {' '}
-                    </BoxText>
-                  )}
-                </Box>
-              ))}
-            </PartnerShipLeft>
-            <PartnerShipRight>
-              <PartnerShipRightTitle>
-                {' '}
-                <Html2React html={right_text} />
-                {' '}
-              </PartnerShipRightTitle>
-              <PartnerShipRightContainer bg={Triangle}>
-                <GreenTitle><Html2React html={t_green} /></GreenTitle>
-                <OrangeTitle><Html2React html={t_orange} /></OrangeTitle>
-                <TText>{t_after}</TText>
-              </PartnerShipRightContainer>
-            </PartnerShipRight>
-          </PartnerShipContainer>
+          <WhyUsTitle title="Why Us" />
+          <WhyUsBlocks>
+            {whyUs && whyUs.map((item, k) => {
+              const {
+                icon = {},
+                text = ''
+              } = item;
+              return (
+                <WhyUsBlock key={`${k}_${text.slice(0,4)}`}>
+                  <WhyUsIcon src={icon.url} />
+                  <WhyUsText> {text} </WhyUsText>
+                </WhyUsBlock>
+              )
+            })}
+            <WhyUsBottomText>
+              {whyUsBottomText}
+            </WhyUsBottomText>
+          </WhyUsBlocks>
         </Container>
-      </PartnerShip>
+      </WhyUs>
       <CaseStudiesGlobalContainer>
         <CaseTitle title="case studies" />
+        <CaseStudiesText>{caseStudiesText}</CaseStudiesText>
         <Container>
           <CaseStudiesList>
             {case_studies && case_studies.map((item, index) => {
@@ -216,6 +232,10 @@ const MainTemplate = ({
         </Container>
       </ClientsGlobalContainer>
 
+      <PreFooter bg={footerBg}>
+        <PreFooterTopText>{footerTextTop}</PreFooterTopText>
+        <PreFooterBottomText>{footerTextBottom}</PreFooterBottomText>
+      </PreFooter>
     </GlobalContainer>
   );
 };

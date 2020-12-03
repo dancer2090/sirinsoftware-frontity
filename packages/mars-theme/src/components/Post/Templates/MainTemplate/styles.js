@@ -246,7 +246,7 @@ export const BoxText = styled.div`
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   color: #222222;
-  
+
   @media screen and (max-width: 767px) {
     font-size: 12px;
     line-height: 14px;
@@ -453,8 +453,8 @@ export const CaseItemWrapper = styled(Link)`
 
   ${({ bg }) => (
     bg
-    ? css`background: 
-      linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    ? css`background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(${bg});`
     : css`background: linear-gradient(270.99deg, #3FA54A 3.6%, #216628 97.69%);`
   )}
@@ -567,13 +567,13 @@ export const ItemBlock = styled.div`
   height: 470px;
   margin-right: 20px;
   position: relative;
-  perspective: 10000px;   
+  perspective: 10000px;
 
   & > div {
     backface-visibility: hidden;
     transition: all 0.5s ease;
   }
- 
+
   & > a:first-of-type {
     z-index: 3;
     backface-visibility: hidden;
@@ -586,11 +586,11 @@ export const ItemBlock = styled.div`
 
   &:hover {
     a:first-of-type {
-      transform: rotateY(180deg);    
+      transform: rotateY(180deg);
     }
 
     a:first-of-type + div {
-      transform: rotateY(0deg);    
+      transform: rotateY(0deg);
     }
   }
 
@@ -650,7 +650,7 @@ export const ItemWrapper = styled.div`
   flex-grow: 2;
   padding: 16px 50px 10px 58px;
   background: linear-gradient(270.99deg, #3FA54A 3.6%, #216628 97.69%);
-  transform: rotateY(180deg);    
+  transform: rotateY(180deg);
   position: absolute;
   height: calc(100% - 46px);
   top: 0;
@@ -765,3 +765,18 @@ export const CaseLink = styled(Link)`
     }
   }
 `;
+
+export const WhiteBlock = styled.div``;
+export const WhiteBlockTextTop = styled.div``;
+export const WhiteBlockTextBottom = styled.div``;
+export const WhyUs = styled.div``;
+export const WhyUsTitle = styled(BigTitle)``;
+export const WhyUsBlocks = styled.div``;
+export const WhyUsBlock = styled.div``;
+export const WhyUsIcon = styled.img``;
+export const WhyUsText = styled.div``;
+export const WhyUsBottomText = styled.div``;
+export const PreFooter = styled.div``;
+export const PreFooterTopText = styled.div``;
+export const PreFooterBottomText = styled.div``;
+export const CaseStudiesText = styled.div``;
