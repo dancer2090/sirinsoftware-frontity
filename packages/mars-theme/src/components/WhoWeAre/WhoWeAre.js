@@ -17,7 +17,6 @@ const WhoWeAre = ({ items= {} }) => (
     />
     <WhoWeAreBlocks>
       {items && items.map((item, key) => {
-        console.log(item);
         const {
           image = {},
           text = ''

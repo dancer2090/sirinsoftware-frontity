@@ -5,6 +5,9 @@ export const WhoWeAreContainer = styled.div`
     padding-top: 70px;
     background: linear-gradient(271.79deg, #40A74A 0%, #216628 100%);
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+    @media screen and (max-width: 767px) {
+        padding-top: 40px;
+    }
 `;
 export const WhyWeAreTitle = styled(BigTitle)`
     margin-top: 72px;
