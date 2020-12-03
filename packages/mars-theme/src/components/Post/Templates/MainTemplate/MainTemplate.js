@@ -55,7 +55,8 @@ import {
   PreFooterTopText,
   PreFooterBottomText,
   CaseStudiesText,
-  WhyUsBottomText
+  WhyUsBottomText,
+  WhiteBlockContainer
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
 import WhoWeAre from '../../../WhoWeAre';
@@ -120,12 +121,14 @@ const MainTemplate = ({
         iconUrl={main_icon.url}
         scrollRef={scrollRef}
       />
-      <WhiteBlock url={WhiteBlockBG}>
-        <Container>
-          <WhiteBlockTextTop>{whiteTopText}</WhiteBlockTextTop>
-          <WhiteBlockTextBottom>{whiteBottomText}</WhiteBlockTextBottom>
-        </Container>
-      </WhiteBlock>
+      <Container>
+        <WhiteBlock url={WhiteBlockBG}>
+          <WhiteBlockContainer>
+            <WhiteBlockTextTop>{whiteTopText}</WhiteBlockTextTop>
+            <WhiteBlockTextBottom>{whiteBottomText}</WhiteBlockTextBottom>
+          </WhiteBlockContainer>
+        </WhiteBlock>
+      </Container>
       <WhoWeAre items={whoWeAre} />
       <ServicesGlobalContainer>
         <ServicesTitle title="Services" />

@@ -1,25 +1,30 @@
 import React from 'react';
 import {
   WhoWeAreContainer,
-  Title,
+  WhyWeAreTitle,
   WhoWeAreBlocks,
   WhoWeAreBlock,
-  ImageBlock,
+  ImageBlock, 
   TextBlock
 } from './styles';
 
 const WhoWeAre = ({ items= {} }) => (
   <WhoWeAreContainer>
-    <Title title={`Who we are`} />
+    <WhyWeAreTitle
+      bigTitleBackgroundColor={'rgba(255,255,255,0.06)'}
+      bigTitleTextColor={'#FFFFFF'}
+      title={`Who we are`}
+    />
     <WhoWeAreBlocks>
       {items && items.map((item, key) => {
+        console.log(item);
         const {
-          icon = {},
+          image = {},
           text = ''
         } = item;
         return (
           <WhoWeAreBlock key={`${key}_${text.slice(1,4)}`}>
-            <ImageBlock src={icon.url} />
+            <ImageBlock src={image.url} />
             <TextBlock> {text} </TextBlock>
           </WhoWeAreBlock>
         )

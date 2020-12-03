@@ -766,9 +766,60 @@ export const CaseLink = styled(Link)`
   }
 `;
 
-export const WhiteBlock = styled.div``;
-export const WhiteBlockTextTop = styled.div``;
-export const WhiteBlockTextBottom = styled.div``;
+export const WhiteBlock = styled.div`
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 85px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: #216628;
+
+  @media screen and (max-width: 991px) {
+    font-size: 16px;
+    padding-top: 60px;
+    padding-bottom: 65px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    padding-top: 50px;
+    padding-bottom: 55px;
+    text-align: center;
+  }
+  &:after{
+    content: ' ';
+    width: 1020px;
+    max-width: 100%;
+    height: 598px;
+    position: absolute;
+    bottom: 0px;
+    right: -13px;
+    background: url(${({url}) => url}) 0px 0px / 1020px auto no-repeat;
+    z-index: 100;
+  }
+`;
+export const WhiteBlockContainer = styled.div`
+  width: 780px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;
+export const WhiteBlockTextTop = styled.div`
+  width: 461px;
+  max-width: 100%;
+  align-self: flex-end;
+`;
+export const WhiteBlockTextBottom = styled.div`
+  width: 461px;
+  max-width: 100%;
+  margin-top: 50px;
+  @media screen and (max-width: 767px) {
+    margin-top: 35px;
+  }
+`;
 export const WhyUs = styled.div``;
 export const WhyUsTitle = styled(BigTitle)``;
 export const WhyUsBlocks = styled.div``;
@@ -779,4 +830,20 @@ export const WhyUsBottomText = styled.div``;
 export const PreFooter = styled.div``;
 export const PreFooterTopText = styled.div``;
 export const PreFooterBottomText = styled.div``;
-export const CaseStudiesText = styled.div``;
+export const CaseStudiesText = styled.div`
+  margin: 0 auto;
+  margin-top: 18px;
+  margin-bottom: 70px;
+  max-width: 438px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+`;
