@@ -17,7 +17,6 @@ const BlogListTemplate = ({ state, actions }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
   const { totalPages } = state.source.get(state.router.link);
-
   const [loadMoreHidden, setLoadMoreHidden] = useState(false);
 
   let megaItems = data.items;

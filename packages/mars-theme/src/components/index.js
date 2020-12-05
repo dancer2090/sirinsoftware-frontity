@@ -26,7 +26,6 @@ import CollapsePage from './CollapsePage/CollapsePage';
  * in roots.
  */
 const Theme = ({ state, actions }) => {
-
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);

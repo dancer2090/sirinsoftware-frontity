@@ -65,8 +65,7 @@ const CaseStudiesPost = ({ actions, state, libraries }) => {
       category_id = item; // перебираем массив с таксономиями поста
     });
   }
-
-  const category = state.source['portfolio-cat'][category_id]; // берем таксономию
+  const category = state.source['portfolio-cat'][category_id] || {}; // берем таксономию
   const category_slug = (category && category !== {} ? category.slug : '');
 
   useEffect(() => {

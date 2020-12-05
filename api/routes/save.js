@@ -109,13 +109,25 @@ router.get('/teammembers', function(req, res, next) {
 });
 
 /* GET categories. */
-router.get('/cases', function(req, res, next) {
+router.get('/categories', function(req, res, next) {
   fetch('https://admin.sirinsoftware.com/wp-json/wp/v2/categories')
     .then(res => res.json())
     .then(json => {
       let data = JSON.stringify(json);
       fs.writeFileSync('public/res-json/categories/index.json', data);
       fs.writeFileSync('../build/static/res-json/categories/index.json', data);
+    });
+  res.json({'res':'ok'})
+});
+
+/* GET portfolio-cat. */
+router.get('/portfolio-cat', function(req, res, next) {
+  fetch('https://admin.sirinsoftware.com/wp-json/wp/v2/portfolio-cat')
+    .then(res => res.json())
+    .then(json => {
+      let data = JSON.stringify(json);
+      fs.writeFileSync('public/res-json/portfolio-cat/index.json', data);
+      fs.writeFileSync('../build/static/res-json/portfolio-cat/index.json', data);
     });
   res.json({'res':'ok'})
 });

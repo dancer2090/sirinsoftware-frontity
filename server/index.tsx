@@ -102,6 +102,9 @@ export default ({ packages }): ReturnType<Koa["callback"]> => {
       const categories = readFileSync("api/public/res-json/categories/index.json", "utf8");
       if(categories && categories.length > 0) ctx.state.categories = JSON.parse(categories);
 
+      const catPortfolio = readFileSync("api/public/res-json/portfolio-cat/index.json", "utf8");
+      if(catPortfolio && catPortfolio.length > 0) ctx.state.categories = JSON.parse(catPortfolio);
+
       if(ctx.url === '/'){
         /*
         readFile("api/public/res-json/portfolio/index.json", "utf8", 

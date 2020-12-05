@@ -24,7 +24,7 @@ const newHandler = {
         (handler) => handler.name === hand_name,
       );
       await category.func({
-        newRoute, params, state, libraries,
+        link: newRoute, params, state, libraries,
       });
     } catch (e) {
       let hand_name = 'post type';
@@ -237,13 +237,13 @@ const marsTheme = {
           const {
             cases : ctxCases = [],
             options : ctxOptions = {},
-            categories : ctxCategories = []
+            categories : ctxCategories = [],
+            catPortfolio : ctxCatPortfolio = {}
           } = ctxState;
           const globalOptions = ctxOptions && ctxOptions.options ? ctxOptions : await axios.get(`${state.source.api}/frontity-api/get-options`);
           const footerData = { items : globalOptions.footer_menu || {} };
           const optionPage =  { acf : globalOptions.options || {} };
           const mainMenu = { items : globalOptions.head_menu || {} };
-
           state.theme.menu.footer_menu = footerData;
   
           actions.theme.alternativeUrlForImage();
@@ -254,10 +254,10 @@ const marsTheme = {
 
           const categories = ctxCategories ? ctxCategories : await axios.get(`${state.source.api}/wp/v2/categories`);
           state.customSettings.categories = categories;
-
           if (state.router.link.includes('/services/')) {
             if(ctxCases.length > 0) {
               generateCases(state, ctxCases);
+              state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
               await actions.source.fetch('/case-studies/');
             }
@@ -269,6 +269,7 @@ const marsTheme = {
           ) {
             if(ctxCases.length > 0) {
               generateCases(state, ctxCases);
+              state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
               await actions.source.fetch('/case-studies/');
             }
@@ -279,6 +280,7 @@ const marsTheme = {
           ) {
             if(ctxCases.length > 0) {
               generateCases(state, ctxCases);
+              state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
               await actions.source.fetch('/case-studies/');
             }
@@ -287,6 +289,7 @@ const marsTheme = {
           if (state.router.link === '/case-studies/') {
             if(ctxCases.length > 0) {
               generateCases(state, ctxCases);
+              state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
               await actions.source.fetch('/case-studies/');
             }
@@ -302,7 +305,6 @@ const marsTheme = {
           ) {
             await actions.source.fetch('/blog');
           }
-
           const { urlCheck } = libraries.func;
           const replaces = [state.frontity.url, state.frontity.adminUrl];
           state.theme.menu.main = mainMenu || {};
