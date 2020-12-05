@@ -17,7 +17,7 @@ import {
   NavigationLine,
 } from './styled';
 
-const Footer = ({ state, libraries }) => {
+const Footer = ({ state, libraries, isPreFooter }) => {
   const { footer_menu = {} } = state.theme.menu;
   const { items = [] } = footer_menu;
   const { options = {} } = state;
@@ -28,7 +28,7 @@ const Footer = ({ state, libraries }) => {
   const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   return (
-    <Wrapper>
+    <Wrapper isPreFooter={isPreFooter}>
       <Container>
         <Header>
           <Navigation>

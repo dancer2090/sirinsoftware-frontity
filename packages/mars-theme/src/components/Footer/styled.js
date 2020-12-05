@@ -9,7 +9,13 @@ export const Wrapper = styled.div`
   background: #404040;
   padding: 34px 0 39px 0;
   box-sizing: border-box;
-  margin-top: 100px;
+  ${
+    ({isPreFooter}) => {
+      !isPreFooter
+      ? `margin-top: 100px;`
+      : null
+    }
+  }
 
   * {
     box-sizing: border-box;

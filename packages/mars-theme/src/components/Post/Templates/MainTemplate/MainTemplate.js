@@ -51,12 +51,14 @@ import {
   WhyUsBlock,
   WhyUsIcon,
   WhyUsText,
-  PreFooter,
-  PreFooterTopText,
-  PreFooterBottomText,
   CaseStudiesText,
   WhyUsBottomText,
-  WhiteBlockContainer
+  WhiteBlockContainer,
+  ServicesWrapper,
+  ServicesBack,
+  ServicesBackTitle,
+  ServicesBackText,
+  ServicesLink
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
 import WhoWeAre from '../../../WhoWeAre';
@@ -91,11 +93,7 @@ const MainTemplate = ({
     whoWeAre = {},
     whyUs = {},
     whyUsText = '',
-    caseStudiesText = '',
-    footerBg = {},
-    footerTextTop = {},
-    footerTextBottom = {},
-    whyUsBottomText = ''
+    caseStudiesText = ''
   } = acf;
 
   const {
@@ -141,15 +139,22 @@ const MainTemplate = ({
               } = service;
               const serviceBackground = imageUrlCheck(bg.url, urlsWithLocal);
               return (
-                <ServicesItem bg={serviceBackground} link={link} key={service.url+k}>
-                  <ServicesItemTitle>{service.title}</ServicesItemTitle>
-                </ServicesItem>
+                <ServicesWrapper>
+                  <ServicesItem bg={serviceBackground} link={link} key={`${serviceBackground}_${k}`}>
+                    <ServicesItemTitle>{service.title}</ServicesItemTitle>
+                  </ServicesItem>
+                  <ServicesBack>
+                    <ServicesBackTitle link={link}>{service.title}</ServicesBackTitle>
+                    <ServicesBackText>{service.text}</ServicesBackText>
+                    <ServicesLink link={link}>Learn more</ServicesLink>
+                  </ServicesBack>
+                </ServicesWrapper>
               );
             })}
           </ServicesList>
         </Container>
       </ServicesGlobalContainer>
-      <WhyUs>
+      <WhyUs> 
         <Container>
           <WhyUsTitle title="Why Us" />
           <WhyUsBlocks>
@@ -159,16 +164,18 @@ const MainTemplate = ({
                 text = ''
               } = item;
               return (
-                <WhyUsBlock key={`${k}_${text.slice(0,4)}`}>
-                  <WhyUsIcon src={icon.url} />
+                <WhyUsBlock key={`${k}_${text}`}>
+                  <WhyUsIcon>
+                    <img alt={text} src={icon.url} />
+                  </WhyUsIcon>
                   <WhyUsText> {text} </WhyUsText>
                 </WhyUsBlock>
               )
             })}
-            <WhyUsBottomText>
-              {whyUsBottomText}
-            </WhyUsBottomText>
           </WhyUsBlocks>
+          <WhyUsBottomText>
+            {whyUsText}
+          </WhyUsBottomText>
         </Container>
       </WhyUs>
       <CaseStudiesGlobalContainer>
@@ -234,11 +241,6 @@ const MainTemplate = ({
           </ClientsGallery>
         </Container>
       </ClientsGlobalContainer>
-
-      <PreFooter bg={footerBg}>
-        <PreFooterTopText>{footerTextTop}</PreFooterTopText>
-        <PreFooterBottomText>{footerTextBottom}</PreFooterBottomText>
-      </PreFooter>
     </GlobalContainer>
   );
 };

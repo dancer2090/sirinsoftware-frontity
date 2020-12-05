@@ -88,15 +88,21 @@ export const ServicesItem = styled(Link)`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  width: calc(50% - 10px);
-  height: 470px;
+  width: 100%;
   background-image: url(${(props) => props.bg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 35px;
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  z-index: 3;
+  transition: all 0.5s ease;
+  backface-visibility: hidden;
   @media (max-width: 991px) {
     height: 354px;
     padding: 20px;
@@ -820,16 +826,84 @@ export const WhiteBlockTextBottom = styled.div`
     margin-top: 35px;
   }
 `;
-export const WhyUs = styled.div``;
+export const WhyUs = styled.div`
+  margin-top: 150px;
+  padding-top: 74px;
+  padding-bottom: 92px;
+  background: #F2F2F2;
+`;
 export const WhyUsTitle = styled(BigTitle)``;
-export const WhyUsBlocks = styled.div``;
-export const WhyUsBlock = styled.div``;
-export const WhyUsIcon = styled.img``;
-export const WhyUsText = styled.div``;
-export const WhyUsBottomText = styled.div``;
-export const PreFooter = styled.div``;
-export const PreFooterTopText = styled.div``;
-export const PreFooterBottomText = styled.div``;
+export const WhyUsBlocks = styled.div`
+  margin-top: 5px;
+`;
+export const WhyUsText = styled.div`
+  max-width: 402px;
+  @media (max-width: 550px){
+    margin-top: 25px;
+  }
+`;
+export const WhyUsBlock = styled.div`
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 26px;
+  padding-left: 30px;
+  background: linear-gradient(270.99deg, #FFB03A 3.6%, #FF9233 97.69%);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+  max-width: 662px;
+  width: 100%;
+  font-size: 14.5px;
+  line-height: 23px;
+  color: #FFFFFF;
+  min-height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 550px){
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  &:nth-of-type(2n){
+    background: linear-gradient(271.79deg, #40A74A 0%, #216628 100%);
+    padding-right: 30px;
+    padding-left: 77px;
+    flex-direction: row-reverse;
+    & ${WhyUsText}{
+      max-width: 360px;
+    }
+    @media (max-width: 550px){
+      text-align: center;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+`;
+export const WhyUsIcon = styled.div`
+  width: 185px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const WhyUsBottomText = styled.div`
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  max-width: 423px;
+  margin: 0 auto;
+  margin-top: 85px;
+  @media (max-width: 550px){
+    margin-top: 35px;
+    font-size: 14px;
+  }
+`;
 export const CaseStudiesText = styled.div`
   margin: 0 auto;
   margin-top: 18px;
@@ -845,5 +919,99 @@ export const CaseStudiesText = styled.div`
   }
   @media screen and (max-width: 767px) {
     font-size: 12px;
+    text-align: center;
+  }
+`;
+export const ServicesBack = styled.div`
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(270.99deg, #3FA54A 3.6%, #216628 97.69%);
+  padding-top: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: #ffffff;
+`;
+export const ServicesWrapper = styled.div`
+  width: calc(50% - 10px);
+  max-width: 100%;
+  height: 470px;
+  position: relative;
+  margin-top: 20px;
+  @media (max-width: 991px) {
+    height: 354px;
+    padding: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    height: 250px;
+  }
+  &:hover{
+    & ${ServicesBack}{
+      transform: rotateY(0deg);
+      @media screen and (max-width: 767px) {
+        transform: rotateY(180deg);
+      }
+    }
+    & ${ServicesItem}{
+      transform: rotateY(180deg);
+      @media screen and (max-width: 767px) {
+        transform: rotateY(0deg);
+      }
+    }
+  }
+`;
+export const ServicesBackTitle = styled(Link)`
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: right;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    color: #FFB03A;
+  }
+`;
+export const ServicesBackText = styled.div`
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 24px;
+`;
+export const ServicesLink = styled(Link)`
+  background: linear-gradient(270.99deg, #FFB03A 3.6%, #FF9233 97.69%);
+  height: 46px;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .3s ease-in-out;
+  }
+  &:hover:after{
+    opacity: 0.05;
   }
 `;

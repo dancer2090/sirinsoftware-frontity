@@ -22,7 +22,7 @@ const WhoWeAre = ({ items= {} }) => (
           text = ''
         } = item;
         return (
-          <WhoWeAreBlock key={`${key}_${text.slice(1,4)}`}>
+          <WhoWeAreBlock key={`${key}_${text}`}>
             <ImageBlock src={image.url} />
             <TextBlock> {text} </TextBlock>
           </WhoWeAreBlock>

@@ -8,6 +8,7 @@ import Analytics from 'analytics';
 import googleTagManager from '@analytics/google-tag-manager';
 import Header from './Header';
 import Footer from './Footer';
+import PreFooter from './PreFooter';
 import List from './list';
 import Post from './post';
 import Loader from './Loader';
@@ -29,6 +30,15 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
+  let post = {};
+  if(data.isPage || data.isPost){
+    post = state.source[data.type][data.id];
+  }
+  const { acf = {} } = post;
+  const {
+    preFooter = {}
+  } = acf;
+  const isPreFooter = preFooter && preFooter.bg ? 1 : null;
 
   const formHandleClose = () => {
     actions.theme.changeFormSend();
@@ -48,8 +58,6 @@ const Theme = ({ state, actions }) => {
       })
     ]
   });
-  // old - GTM-PN5W3K4
-  // old - GTM-5XT9QQ
   analytics.page();
 
   useEffect(() => {
@@ -112,7 +120,9 @@ const Theme = ({ state, actions }) => {
 
         <CollapsePage />
 
-        <Footer />
+        {preFooter && preFooter.bg && <PreFooter data={preFooter} />}
+
+        <Footer mt={isPreFooter} />
 
         <UseCookiesModal />
     </>
