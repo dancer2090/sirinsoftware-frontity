@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   padding-right: 15px;
   ${ ({bg}) => (
     bg
-    ? `background: url(${bg}) 50% 50% / auto 100%;`
+    ? `background: url(${bg}) 50% 50% / 100% auto;`
     : null
   ) }
   position: relative;
