@@ -781,6 +781,7 @@ export const WhiteBlock = styled.div`
   line-height: 1.3;
   letter-spacing: 0.02em;
   color: #216628;
+  z-index: 2;
 
   @media screen and (max-width: 991px) {
     font-size: 16px;
