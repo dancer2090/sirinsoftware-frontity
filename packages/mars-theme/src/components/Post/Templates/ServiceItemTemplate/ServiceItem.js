@@ -78,7 +78,6 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
               { slidesStudies.map((item, index) => {
                 const { acf = {} } = item;
                 const { post_featured_image = {} } = acf;
-                console.log(acf);
                 return (
                   <CaseItem
                     key={index}
