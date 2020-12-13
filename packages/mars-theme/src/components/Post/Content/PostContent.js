@@ -12,6 +12,7 @@ import FullPageTemplate from '../Templates/FullPageTemplate';
 import BookTemplate from '../Templates/BookTemplate';
 import OtherTempalate from '../Templates/OtherTemplate';
 import ServiceItemTemplate from '../Templates/ServiceItemTemplate';
+import ServiceItemNewTemplate from '../Templates/ServiceItemNewTemplate';
 import PasswordProtected from '../../PasswordProtected';
 
 const PostContent = ({ state, scrollRef = null }) => {
@@ -47,6 +48,7 @@ const PostContent = ({ state, scrollRef = null }) => {
             <FaqTemplate when={template === 'page-faq.php'} />
             <StandartTemplate when={dataP.type === 'post' && template === 'standart' && state.router.link !== '/'} />
             <ServicesTemplate when={template === 'page-services-null.php'} />
+            <ServiceItemNewTemplate when={post.slug === 'hardware_development'} />
             <ServiceItemTemplate scrollRef={scrollRef} when={template === 'services.php'} />
             <FullPageTemplate when={template === 'page-full.php'} />
             <AboutUsTemplate when={template === 'about-us.php'} />

@@ -81,7 +81,7 @@ const ServiceItem = ({ state, libraries, scrollRef = null }) => {
                 return (
                   <CaseItem
                     key={index}
-                    src={imageUrlCheck(post_featured_image, urlsWithLocal)}
+                    bg={imageUrlCheck(post_featured_image, urlsWithLocal)}
                   >
                     <CaseItemTitle>
                       <Html2React html={acf.portfolio_business_area} />
