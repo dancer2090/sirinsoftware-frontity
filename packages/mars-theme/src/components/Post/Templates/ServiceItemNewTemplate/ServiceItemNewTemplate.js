@@ -58,7 +58,6 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
 
   const pіctureBg = mBackground && mBackground.sizes && mBackground.sizes.medium;
   const pіctureImg = mImage && mImage.sizes && mImage.sizes.medium;
-
   return (
     <Wrapper>
       <Banner
