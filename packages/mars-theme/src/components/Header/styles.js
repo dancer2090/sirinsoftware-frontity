@@ -287,6 +287,10 @@ export const MobileLogo = styled.div`
 
 export const MobileTopMenu = styled.div`
     padding:0;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
     ul li {      
       a, span {
         text-decoration: none;

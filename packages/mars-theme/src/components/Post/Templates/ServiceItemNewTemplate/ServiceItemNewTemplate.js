@@ -33,14 +33,17 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
 
   // case data
   const caseStudies = state.source.data['/case-studies/'];
-  const slidesStudies = post.cases.map((item,k)=>{
-    const resCase = {
-      acf : {...item.acf},
-      link : item.link,
-      ...item.post
-    }
-    return resCase;
-  });
+  let slidesStudies = [];
+  if(post && post.cases){
+    slidesStudies = post.cases.map((item,k)=>{
+      const resCase = {
+        acf : {...item.acf},
+        link : item.link,
+        ...item.post
+      }
+      return resCase;
+    });
+  }
   
   caseStudies && caseStudies.items
     ? caseStudies.items.map((item) => state.source[item.type][item.id])
