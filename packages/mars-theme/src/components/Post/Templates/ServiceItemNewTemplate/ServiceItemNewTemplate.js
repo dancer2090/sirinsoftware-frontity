@@ -20,6 +20,7 @@ import {
   CaseLink
 } from './styles';
 import Block from './Block';
+import GreenBlock from './GreenBlock';
 import Breadcrumbs from '../../../Breadcrumbs';
 
 const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
@@ -54,7 +55,8 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     mBackground = {},
     mImage = {},
     greenText = '',
-    blocks = {}
+    blocks = {},
+    greenBlock = {}
   } = acf;
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -118,6 +120,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
             )}
           </CasesContainer>
         </ServicesContainer>
+        <GreenBlock greenBlock={greenBlock}/>
       </Container>
     </Wrapper>
   );

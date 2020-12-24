@@ -12,6 +12,7 @@ export const Crumbs = styled(Breadcrumbs)``;
 export const Wrapper = styled.div`
   padding: 0;
   width: 100%;
+  margin-bottom: 80px;
 `;
 
 export const Container = styled.div`
@@ -36,7 +37,6 @@ export const Container = styled.div`
 
 export const ContentWrapper = styled.div`
   width: 100%;
-  margin-bottom: 80px;
   flex: 1;
   @media (max-width: 720px){
     margin-bottom: 0px;
