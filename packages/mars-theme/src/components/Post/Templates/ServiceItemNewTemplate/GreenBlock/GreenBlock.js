@@ -22,7 +22,9 @@ const GreenBlock = ({
   const {
     image = {},
     text = '',
-    title = ''
+    title = '',
+    paddingLeft = '50',
+    paddingRight = '50',
   } = greenBlock;
   const {
     url : imageUrl = '',
@@ -32,14 +34,12 @@ const GreenBlock = ({
     medium = ''
   } = imageSizes;
 
-  console.log(greenBlock)
-
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
   return (
     <>
     <Wrapper>
-      <ContentWrapper>
+      <ContentWrapper paddingLeft={paddingLeft} paddingRight={paddingRight}>
         {title && <Title>{title}</Title>}
         <Content>
           <Html2React html={text} />

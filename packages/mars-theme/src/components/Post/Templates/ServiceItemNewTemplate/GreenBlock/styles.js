@@ -19,11 +19,13 @@ export const Title = styled.div`
   }
 `;
 export const ContentImageWrapper = styled.div`
-  width: 45%;
+  width: 100%;
+  flex: 1;
   position: relative;
   @media (max-width: 776px){
     width: 100%;
     height: 420px;
+    flex: auto;
   }
 `;
 export const ContentImage = styled(Image)`
@@ -37,15 +39,15 @@ export const ContentWrapper = styled.div`
   display: block;
   padding-top: 40px;
   padding-bottom: 40px;
-  padding-left: 50px;
-  padding-right: 50px;
-  max-width: 486px;
-  flex: 1;
+  padding-left: ${ ({paddingLeft}) => paddingLeft }px;
+  padding-right: ${ ({paddingRight}) => paddingRight }px;
+  width: 486px;
   @media (max-width: 776px){
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    width: 100%;
   }
 `;
 export const Content = styled.div`
@@ -84,7 +86,7 @@ export const Content = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: stretch;
   margin-top: 38px;
   background: #216628;

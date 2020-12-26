@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'frontity';
+import ReactResizeDetector from 'react-resize-detector';
 import {
   Wrapper,
   Container,
@@ -24,6 +25,7 @@ import GreenBlock from './GreenBlock';
 import Breadcrumbs from '../../../Breadcrumbs';
 
 const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
+  const [checkMobile, setCheckMobile] = useState(false);
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
   // Get information about the current URL.
@@ -63,66 +65,74 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
 
   const pіctureBg = mBackground && mBackground.sizes && mBackground.sizes.medium;
   const pіctureImg = mImage && mImage.sizes && mImage.sizes.medium;
-  return (
-    <Wrapper>
-      <Banner
-        url={imageUrlCheck(pіctureBg, urlsWithLocal)}
-        button={acf.mButton}
-        title={acf.mTitle}
-        iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
-        scrollRef={scrollRef}
-      />
 
-      <Container>
-        <Breadcrumbs links={[
-          { name: 'Services', link: '/services' },
-          { name: <Html2React html={post.title.rendered} />, link: '#' },
-        ]}
+  const onWidth = (width) => {
+    if(width < 760) setCheckMobile(true);
+    else  setCheckMobile(false);
+  }
+  return (
+    <ReactResizeDetector handleWidth onResize={onWidth}>
+      <Wrapper>
+        <Banner
+          url={imageUrlCheck(pіctureBg, urlsWithLocal)}
+          button={acf.mButton}
+          title={acf.mTitle}
+          iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
+          scrollRef={scrollRef}
         />
-        <ServicesContainer>
-          <ContentWrapper>
-            <GreenText>
-              <Html2React html={greenText} />
-            </GreenText>
-            <BlocksWrapper>
-              {blocks && blocks.map((block, key) => (
-                <Block {...block} key={`${block.title}_${key}`} />
-              ))}
-            </BlocksWrapper>
-          </ContentWrapper>
-          <CasesContainer>
-            {slidesStudies && slidesStudies.length > 0 && (
-              <CaseContainer>
-                <CaseTitle>
-                  <span>case studies</span>
-                </CaseTitle>
-                <CasesWrapper>
-                  { slidesStudies.map((item, index) => {
-                    const { acf = {} } = item;
-                    const { post_featured_image = {} } = acf;
-                    return (
-                      <CaseItem
-                        key={index}
-                        bg={imageUrlCheck(post_featured_image, urlsWithLocal)}
-                      >
-                        <CaseItemTitle>
-                          <Html2React html={acf.portfolio_business_area} />
-                        </CaseItemTitle>
-                        <CaseContent>
-                          <Html2React html={item.post_title} />
-                        </CaseContent>
-                        <CaseLink link={urlCheck(item.link, replaces)}>Learn more</CaseLink>
-                      </CaseItem>
-                    );
-                  })}
-                </CasesWrapper>
-              </CaseContainer>
-            )}
-          </CasesContainer>
-        </ServicesContainer>
-        <GreenBlock greenBlock={greenBlock}/>
-      </Container>
-    </Wrapper>
+
+        <Container>
+          <Breadcrumbs links={[
+            { name: 'Services', link: '/services' },
+            { name: <Html2React html={post.title.rendered} />, link: '#' },
+          ]}
+          />
+          <ServicesContainer>
+            <ContentWrapper>
+              <GreenText>
+                <Html2React html={greenText} />
+              </GreenText>
+              <BlocksWrapper>
+                {blocks && blocks.map((block, key) => (
+                  <Block {...block} key={`${block.title}_${key}`} />
+                ))}
+              </BlocksWrapper>
+            </ContentWrapper>
+            {checkMobile && <GreenBlock greenBlock={greenBlock}/>}
+            <CasesContainer>
+              {slidesStudies && slidesStudies.length > 0 && (
+                <CaseContainer>
+                  <CaseTitle>
+                    <span>case studies</span>
+                  </CaseTitle>
+                  <CasesWrapper>
+                    { slidesStudies.map((item, index) => {
+                      const { acf = {} } = item;
+                      const { post_featured_image = {} } = acf;
+                      return (
+                        <CaseItem
+                          key={index}
+                          bg={imageUrlCheck(post_featured_image, urlsWithLocal)}
+                        >
+                          <CaseItemTitle>
+                            <Html2React html={acf.portfolio_business_area} />
+                          </CaseItemTitle>
+                          <CaseContent>
+                            <Html2React html={item.post_title} />
+                          </CaseContent>
+                          <CaseLink link={urlCheck(item.link, replaces)}>Learn more</CaseLink>
+                        </CaseItem>
+                      );
+                    })}
+                  </CasesWrapper>
+                </CaseContainer>
+              )}
+            </CasesContainer>
+          </ServicesContainer>
+          {!checkMobile && <GreenBlock greenBlock={greenBlock}/>}
+        </Container>
+      </Wrapper>
+    </ReactResizeDetector>
   );
 };
 
