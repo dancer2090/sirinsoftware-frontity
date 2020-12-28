@@ -149,6 +149,13 @@ export const GreenText = styled.div`
   font-size: 14px;
   line-height: 24px;
   color: #216628;
+  & a{
+    color: #FF8D23;
+    &:hover{
+      color: #c75e11;
+      text-decoration: none;
+    }
+  }
   & p{
     margin-bottom: 20px;
     &:last-child{

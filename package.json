@@ -16,7 +16,8 @@
     "y-dev": "frontity dev",
     "y-serve": "frontity serve",
     "api-cache-start": "nodemon api/bin/www",
-    "all": "npm-run-all --parallel api-cache-start serve"
+    "all": "npm-run-all --parallel api-cache-start serve",
+    "test": "jest"
   },
   "prettier": {},
   "dependencies": {
@@ -47,6 +48,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.5.0"
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "jest": "^26.6.3"
   }
 }

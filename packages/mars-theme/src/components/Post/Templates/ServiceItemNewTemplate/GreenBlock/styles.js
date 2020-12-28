@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import { styled, css } from 'frontity';
 import Image from "../../../../image";
 
 export const Title = styled.div`
@@ -19,8 +19,11 @@ export const Title = styled.div`
   }
 `;
 export const ContentImageWrapper = styled.div`
-  width: 100%;
-  flex: 1;
+  ${ ({widthImage}) => {
+    let res = `width:${widthImage};`;
+    res = widthImage === '100%' ? res + `flex: 1;` : res;
+    return css`${res}`;
+  } };
   position: relative;
   @media (max-width: 776px){
     width: 100%;
@@ -41,7 +44,11 @@ export const ContentWrapper = styled.div`
   padding-bottom: 40px;
   padding-left: ${ ({paddingLeft}) => paddingLeft }px;
   padding-right: ${ ({paddingRight}) => paddingRight }px;
-  width: 486px;
+  ${ ({widthText}) => {
+    let res = `width:${widthText};`;
+    res = widthText === '100%' ? res + `flex: 1;` : res;
+    return css`${res}`;
+  } };
   @media (max-width: 776px){
     padding-top: 10px;
     padding-bottom: 10px;

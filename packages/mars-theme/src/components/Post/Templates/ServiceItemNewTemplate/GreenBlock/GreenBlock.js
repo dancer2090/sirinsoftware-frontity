@@ -12,7 +12,9 @@ import {
 const GreenBlock = ({
   state,
   libraries,
-  greenBlock
+  greenBlock,
+  widthText='100%',
+  widthImage='100%',
 }) => {
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
@@ -39,14 +41,14 @@ const GreenBlock = ({
   return (
     <>
     <Wrapper>
-      <ContentWrapper paddingLeft={paddingLeft} paddingRight={paddingRight}>
+      <ContentWrapper widthText={widthText} paddingLeft={paddingLeft} paddingRight={paddingRight}>
         {title && <Title>{title}</Title>}
         <Content>
           <Html2React html={text} />
         </Content>
       </ContentWrapper>
       {image && imageUrl && (
-        <ContentImageWrapper>
+        <ContentImageWrapper widthImage={widthImage}>
           <ContentImage width={image.width} height={image.height} src={imageUrlCheck(imageUrl, urlsWithLocal)}/>
         </ContentImageWrapper>
        )}

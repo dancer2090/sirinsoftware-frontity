@@ -6,7 +6,11 @@ import {
   Title,
   Icon,
   ContentImage,
-  Content
+  Content,
+  WrapCard,
+  TitleCard,
+  TextCard,
+  CardsWrapper
 } from './styles';
 
 const Block = ({
@@ -17,6 +21,8 @@ const Block = ({
   image = {},
   title = '',
   text = '',
+  cards = [],
+  textAlignPush = null,
   titleLeftOffset = 0,
   titleRightOffset = 0,
   iconLeftOffset = 0,
@@ -71,11 +77,8 @@ const Block = ({
   }
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
-
-
-
   return (
-    <Wrapper blockType={types[type]}>
+    <Wrapper blockType={types[type]} textAlignPush={textAlignPush}>
       <Header minHeight={icon.height}>
         <Title marginLeft={titleLeftOffset} marginRight={titleRightOffset}>{title}</Title>
         {icon && (
@@ -92,6 +95,22 @@ const Block = ({
       <Content>
         <Html2React html={text} />
       </Content>
+      {cards && (
+        <CardsWrapper>
+          {cards.map((item, key) => {
+            const {
+              title = '',
+              text = ''
+            } = item;
+            return (
+              <WrapCard key={`${title}_${key}`}>
+                <TitleCard>{title}</TitleCard>
+                <TextCard>{text}</TextCard>
+              </WrapCard>
+            )
+          })}
+        </CardsWrapper>
+      )}
     </Wrapper>
   );
 };

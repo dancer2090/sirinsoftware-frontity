@@ -52,14 +52,25 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     ? caseStudies.items.map((item) => state.source[item.type][item.id])
     : [];
 
-  const { acf = {} } = post;
+  const { 
+    acf = {},
+    slug = ''
+  } = post;
+  
   const {
     mBackground = {},
     mImage = {},
     greenText = '',
     blocks = {},
-    greenBlock = {}
+    greenBlock = {},
+    casesTitle = 'CASE STUDIES'
   } = acf;
+
+  const bannerType = (slug === 'mobile-application-development-services' || slug === 'embedded-software-development-services' || slug === 'web-development-services') ? 'full' : 'short';
+  let widthGreenBlockImage = (slug === 'mobile-application-development-services') ? '359px' : '100%';
+  widthGreenBlockImage = (slug === 'web-development-services') ? '398px' : widthGreenBlockImage;
+  let widthGreenBlockText = (slug === 'mobile-application-development-services' || slug === 'web-development-services') ? '100%' : '486px';
+  
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
@@ -79,6 +90,8 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
           title={acf.mTitle}
           iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
           scrollRef={scrollRef}
+          type={bannerType}
+          marginTop='57'
         />
 
         <Container>
@@ -93,9 +106,10 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
                 <Html2React html={greenText} />
               </GreenText>
               <BlocksWrapper>
-                {blocks && blocks.map((block, key) => (
-                  <Block {...block} key={`${block.title}_${key}`} />
-                ))}
+                {blocks && blocks.map((block, key) => {
+                  const textAlignPush = (slug === 'web-development-services' && key === 1) ? 'left' : null;
+                  return <Block textAlignPush={textAlignPush} key={`${block.title}_${key}`} {...block} />
+                })}
               </BlocksWrapper>
             </ContentWrapper>
             {checkMobile && <GreenBlock greenBlock={greenBlock}/>}
@@ -103,7 +117,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               {slidesStudies && slidesStudies.length > 0 && (
                 <CaseContainer>
                   <CaseTitle>
-                    <span>case studies</span>
+                    <span>{casesTitle}</span>
                   </CaseTitle>
                   <CasesWrapper>
                     { slidesStudies.map((item, index) => {
@@ -129,7 +143,13 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               )}
             </CasesContainer>
           </ServicesContainer>
-          {!checkMobile && <GreenBlock greenBlock={greenBlock}/>}
+          {!checkMobile && (
+            <GreenBlock
+              widthImage={widthGreenBlockImage}
+              widthText={widthGreenBlockText}
+              greenBlock={greenBlock}
+            />
+          )}
         </Container>
       </Wrapper>
     </ReactResizeDetector>

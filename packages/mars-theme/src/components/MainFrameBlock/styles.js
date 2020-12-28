@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import { styled, css } from 'frontity';
 import Button from '../Button';
 
 export const Container = styled.div`
@@ -78,7 +78,14 @@ export const MainBlockTitle = styled.h1`
   line-height: 64px;
   text-transform: uppercase;
   color: #FFFFFF;
-  width: 550px;
+  margin: 0;
+  ${
+    ({type}) => (
+      type === 'full'
+        ? css`width: 100%`
+        : css`width: 550px`
+    )
+  }
   @media (max-width: 991px) {
     font-size: 48px;
     line-height: 48px;
@@ -93,7 +100,7 @@ export const MainBlockTitle = styled.h1`
 `;
 export const MainBlockButton = styled(Button)`
   display: block;
-  margin-top: 31px;
+  margin-top: ${({marginTop}) => marginTop}px;
   padding-left: 35px;
   padding-right: 35px;
   background: linear-gradient(275.56deg, #3FA54A 3.6%, #216628 97.69%);

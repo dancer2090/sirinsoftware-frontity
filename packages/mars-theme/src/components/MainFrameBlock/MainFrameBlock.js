@@ -11,7 +11,7 @@ import {
 } from './styles';
 
 const MainFrameBlock = ({
-  url = '', title, button, iconUrl, scrollRef = null, className
+  url = '', title, button, iconUrl, scrollRef = null, className, type = 'short', marginTop = '31'
 }) => {
   const scrollToRef = () => {
     if (scrollRef) {
@@ -28,8 +28,8 @@ const MainFrameBlock = ({
       <Container>
         <MainBlockContainer>
           <MainBlockLeft>
-            <MainBlockTitle>{title}</MainBlockTitle>
-            <MainBlockButton onClick={() => scrollToRef()}>{button}</MainBlockButton>
+            <MainBlockTitle type={type}>{title}</MainBlockTitle>
+            <MainBlockButton onClick={() => scrollToRef()} marginTop={marginTop}>{button}</MainBlockButton>
           </MainBlockLeft>
           <MainBlockRight>
             {iconUrl && <MainBlockIcon alt={title} src={iconUrl} />}
