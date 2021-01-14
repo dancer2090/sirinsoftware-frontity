@@ -65,6 +65,9 @@ export const Content = styled.div`
   & p{
     margin-top: 16px;
   }
+  & p:first-of-type{
+    margin-top: 0px;
+  }
   & ul{
     margin-top: 16px;
     padding-left: 0px;
