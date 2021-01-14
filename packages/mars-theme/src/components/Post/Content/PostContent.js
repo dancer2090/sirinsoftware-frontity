@@ -52,7 +52,8 @@ const PostContent = ({ state, scrollRef = null }) => {
               post.slug === 'mechanical_engineering' ||
               post.slug === 'mobile-application-development-services' ||
               post.slug === 'embedded-software-development-services' ||
-              post.slug === 'web-development-services'
+              post.slug === 'web-development-services' ||
+              post.slug === 'cloud_solutions'
             } />
             <ServiceItemTemplate scrollRef={scrollRef} when={template === 'services.php'} />
             <FullPageTemplate when={template === 'page-full.php'} />

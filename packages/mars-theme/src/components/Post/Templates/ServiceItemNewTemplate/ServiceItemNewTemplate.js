@@ -106,9 +106,11 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
                 <Html2React html={greenText} />
               </GreenText>
               <BlocksWrapper>
-                {blocks && blocks.map((block, key) => {
+                {blocks && blocks.length > 0 && blocks.map((block, key) => {
                   const textAlignPush = (slug === 'web-development-services' && key === 1) ? 'left' : null;
-                  return <Block textAlignPush={textAlignPush} key={`${block.title}_${key}`} {...block} />
+                  const lastCloud = (slug === 'cloud_solutions' && key === blocks.length - 1) ? 'flex-end' : 'space-between';
+                  const lastCloudSpan = (slug === 'cloud_solutions' && key === 1) ? '400' : null;
+                  return <Block titleAlign={lastCloud} lastCloudSpan={lastCloudSpan} textAlignPush={textAlignPush} key={`${block.title}_${key}`} {...block} />
                 })}
               </BlocksWrapper>
             </ContentWrapper>

@@ -3,12 +3,14 @@ import Image from "../../../../image";
 
 export const Header = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-top: 15px;
   padding-bottom: 15px;
   padding-right: 12px;
   position: relative;
+  ${({titleAlign}) => (
+    titleAlign ? css`justify-content: ${titleAlign}` : null
+  )}
   @media (max-width: 720px){
     flex-direction: column-reverse;
     padding-right: 0px;
@@ -113,6 +115,13 @@ export const Content = styled.div`
     display: block;
     padding-left: 18px;
     padding-right: 18px;
+    ${({lastCloudSpan}) => (
+      lastCloudSpan ? css`
+        width: ${lastCloudSpan}px;
+        max-width: 100%;
+        margin: 0 auto;
+      ` : null
+    )}
   }
 `;
 

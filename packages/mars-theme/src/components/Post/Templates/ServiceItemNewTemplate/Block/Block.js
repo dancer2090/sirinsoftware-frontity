@@ -26,7 +26,9 @@ const Block = ({
   titleLeftOffset = 0,
   titleRightOffset = 0,
   iconLeftOffset = 0,
-  iconRightOffset = 0
+  iconRightOffset = 0,
+  titleAlign = null,
+  lastCloudSpan = null
 }) => {
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
@@ -77,9 +79,9 @@ const Block = ({
   }
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
-  return (
+  return ( 
     <Wrapper blockType={types[type]} textAlignPush={textAlignPush}>
-      <Header minHeight={icon.height}>
+      <Header titleAlign={titleAlign} minHeight={icon.height}>
         <Title marginLeft={titleLeftOffset} marginRight={titleRightOffset}>{title}</Title>
         {icon && (
           <Icon
@@ -92,7 +94,7 @@ const Block = ({
         )}
       </Header>
       {image && imageUrl && <ContentImage width={image.width} height={image.height} src={imageUrlCheck(imageUrl, urlsWithLocal)} />}
-      <Content>
+      <Content lastCloudSpan={lastCloudSpan}>
         <Html2React html={text} />
       </Content>
       {cards && (
