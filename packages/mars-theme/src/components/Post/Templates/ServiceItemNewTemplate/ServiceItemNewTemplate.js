@@ -69,7 +69,16 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
   const bannerType = (slug === 'mobile-application-development-services' || slug === 'embedded-software-development-services' || slug === 'web-development-services') ? 'full' : 'short';
   let widthGreenBlockImage = (slug === 'mobile-application-development-services') ? '359px' : '100%';
   widthGreenBlockImage = (slug === 'web-development-services') ? '398px' : widthGreenBlockImage;
-  let widthGreenBlockText = (slug === 'mobile-application-development-services' || slug === 'web-development-services') ? '100%' : '486px';
+  let widthGreenBlockText = (
+    slug === 'mobile-application-development-services' ||
+    slug === 'web-development-services'
+  )
+  ? '100%'
+  :
+    ( slug === 'iot-development' )
+      ? '545px'
+      : '486px';
+  let spanWidth = ( slug === 'iot-development' ) ? '321px' : null;
   
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -150,6 +159,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               widthImage={widthGreenBlockImage}
               widthText={widthGreenBlockText}
               greenBlock={greenBlock}
+              spanWidth={spanWidth}
             />
           )}
         </Container>

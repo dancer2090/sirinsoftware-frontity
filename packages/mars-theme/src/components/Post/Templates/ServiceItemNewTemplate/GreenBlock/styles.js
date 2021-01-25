@@ -88,6 +88,15 @@ export const Content = styled.div`
     display: block;
     padding-left: 18px;
     padding-right: 18px;
+    ${({spanWidth}) => (
+      spanWidth 
+        ? css`
+          width: ${spanWidth};
+          margin: 0 auto;
+          display: block;
+        `
+        : null
+    )}
   }
 `;
 

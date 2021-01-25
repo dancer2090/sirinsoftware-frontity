@@ -15,6 +15,7 @@ const GreenBlock = ({
   greenBlock,
   widthText='100%',
   widthImage='100%',
+  spanWidth=null
 }) => {
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
@@ -43,7 +44,7 @@ const GreenBlock = ({
     <Wrapper>
       <ContentWrapper widthText={widthText} paddingLeft={paddingLeft} paddingRight={paddingRight}>
         {title && <Title>{title}</Title>}
-        <Content>
+        <Content spanWidth={spanWidth}>
           <Html2React html={text} />
         </Content>
       </ContentWrapper>

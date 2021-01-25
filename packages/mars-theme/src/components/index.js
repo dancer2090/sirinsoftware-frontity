@@ -88,7 +88,7 @@ const Theme = ({ state, actions }) => {
         {/* Add the header of the site.  */}
         <Modal
           title="Done"
-          text="Thank you for feedback! <br> The confirmation email was sent to your address, please check your inbox."
+          text="Thank you for request! <br> The confirmation email was sent to your address, please check your inbox."
           isOpen={state.customSettings.isFormSend}
           handleClose={formHandleClose}
         />
