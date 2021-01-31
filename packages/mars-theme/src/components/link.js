@@ -16,12 +16,15 @@ const Link = ({
 
   const onClick = (event) => {
     // Do nothing if it's an external link
+    let isScroll = true;
     if (link.startsWith(state.frontity.url)) {
       event.preventDefault();
       actions.router.set(link.replace(state.frontity.url, ''));
     } else if (link.startsWith(state.frontity.adminUrl)) {
       event.preventDefault();
       actions.router.set(link.replace(state.frontity.adminUrl, ''));
+    } else if (link.startsWith('mailto:')) {
+      isScroll = false;
     } else {
       if (link.startsWith('http')) return;
       event.preventDefault();
@@ -30,7 +33,7 @@ const Link = ({
       // Scroll the page to the top
     }
     afterClick();
-    window.scrollTo(0, 0);
+    if (isScroll) window.scrollTo(0, 0);
   };
 
   return (

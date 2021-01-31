@@ -106,7 +106,7 @@ const Footer = ({ state, libraries, isPreFooter }) => {
           All Rights Reserved.
           {' '}
           <br />
-          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link link="/privacy-policy">Privacy Policy</Link>
         </Private>
       </Container>
     </Wrapper>
