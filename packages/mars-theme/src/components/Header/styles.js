@@ -86,11 +86,11 @@ export const Menu = styled.ul`
   }
   
   & > li {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 11px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -99,7 +99,7 @@ export const Menu = styled.ul`
     text-transform: uppercase;
 
     & > span {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       cursor: pointer;
       color: ${(props) => (props.transparent ? '#FFFFFF' : '#222222')};

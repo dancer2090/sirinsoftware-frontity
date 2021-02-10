@@ -66,20 +66,43 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     casesTitle = 'CASE STUDIES'
   } = acf;
 
-  const bannerType = (slug === 'mobile-application-development-services' || slug === 'embedded-software-development-services' || slug === 'web-development-services') ? 'full' : 'short';
-  let widthGreenBlockImage = (slug === 'mobile-application-development-services') ? '359px' : '100%';
-  widthGreenBlockImage = (slug === 'web-development-services') ? '398px' : widthGreenBlockImage;
-  let widthGreenBlockText = (
-    slug === 'mobile-application-development-services' ||
-    slug === 'web-development-services'
-  )
-  ? '100%'
-  :
-    ( slug === 'iot-development' )
-      ? '545px'
-      : '486px';
-  let spanWidth = ( slug === 'iot-development' ) ? '321px' : null;
   
+  const addGreenBlockProps = {
+    widthGreenBlockImage : '100%',
+    widthGreenBlockText : '486px',
+    spanWidth : null
+  };
+
+  switch(slug){
+    case 'mobile-application-development-services':
+      addGreenBlockProps.widthText ='100%';
+      break;
+    case 'embedded-software-development-services':
+      addGreenBlockProps.bannerType = 'full';
+      break;
+    case 'web-development-services':
+      addGreenBlockProps.widthText ='100%';
+      addGreenBlockProps.widthImage = '398px';
+      break;
+    case 'iot-development':
+      addGreenBlockProps.widthText = '545px';
+      addGreenBlockProps.spanWidth = '321px';
+      break;
+    case 'firmware_development':
+      addGreenBlockProps.widthText = '582px';
+      addGreenBlockProps.spanWidth = '378px'
+      break;
+  }
+
+  const bannerType = 
+    (
+      slug === 'mobile-application-development-services' 
+      || slug === 'embedded-software-development-services' 
+      || slug === 'web-development-services'
+    ) 
+    ? 'full' 
+    : 'short';
+
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
@@ -87,8 +110,8 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
   const pіctureImg = mImage && mImage.sizes && mImage.sizes.medium;
 
   const onWidth = (width) => {
-    if(width < 760) setCheckMobile(true);
-    else  setCheckMobile(false);
+    if (width < 760) setCheckMobile(true);
+    else setCheckMobile(false);
   }
   return (
     <ReactResizeDetector handleWidth onResize={onWidth}>
@@ -116,10 +139,21 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               </GreenText>
               <BlocksWrapper>
                 {blocks && blocks.length > 0 && blocks.map((block, key) => {
-                  const textAlignPush = (slug === 'web-development-services' && key === 1) ? 'left' : null;
-                  const lastCloud = (slug === 'cloud_solutions' && key === blocks.length - 1) ? 'flex-end' : 'space-between';
-                  const lastCloudSpan = (slug === 'cloud_solutions' && key === 1) ? '400' : null;
-                  return <Block titleAlign={lastCloud} lastCloudSpan={lastCloudSpan} textAlignPush={textAlignPush} key={`${block.title}_${key}`} {...block} />
+                  const blockAddProps = {
+                    textAlignPush : 
+                      (slug === 'web-development-services' && key === 1) 
+                        ? 'left' 
+                        : null,
+                    titleAlign : 
+                      (slug === 'cloud_solutions' && key === blocks.length - 1) 
+                      ? 'flex-end' 
+                      : 'space-between',
+                    lastCloudSpan : 
+                      (slug === 'cloud_solutions' && key === 1) 
+                      ? '400' 
+                      : null
+                  };
+                  return <Block {...blockAddProps} key={`${block.title}_${key}`} {...block} />
                 })}
               </BlocksWrapper>
             </ContentWrapper>
@@ -156,10 +190,8 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
           </ServicesContainer>
           {!checkMobile && (
             <GreenBlock
-              widthImage={widthGreenBlockImage}
-              widthText={widthGreenBlockText}
               greenBlock={greenBlock}
-              spanWidth={spanWidth}
+              {...addGreenBlockProps}
             />
           )}
         </Container>
