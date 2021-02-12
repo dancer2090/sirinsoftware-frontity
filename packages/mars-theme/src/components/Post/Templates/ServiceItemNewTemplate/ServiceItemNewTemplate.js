@@ -18,10 +18,12 @@ import {
   CaseContent,
   CaseItem,
   CaseItemTitle,
-  CaseLink
+  CaseLink,
+  BannerIndustry
 } from './styles';
 import Block from './Block';
 import GreenBlock from './GreenBlock';
+import FooterBg from './FooterBg';
 import Breadcrumbs from '../../../Breadcrumbs';
 
 const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
@@ -54,7 +56,8 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
 
   const { 
     acf = {},
-    slug = ''
+    slug = '',
+    parent = 0
   } = post;
   
   const {
@@ -63,7 +66,8 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     greenText = '',
     blocks = {},
     greenBlock = {},
-    casesTitle = 'CASE STUDIES'
+    casesTitle = 'CASE STUDIES',
+    fBg = {}
   } = acf;
 
   
@@ -113,22 +117,39 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     if (width < 760) setCheckMobile(true);
     else setCheckMobile(false);
   }
+  const breadcrumbParent = {
+    slug : (parent === 4259 ? 'Industries' : 'Services'),
+    url : (parent === 4259 ? '/industries' : '/services')
+  }
+
   return (
     <ReactResizeDetector handleWidth onResize={onWidth}>
       <Wrapper>
-        <Banner
-          url={imageUrlCheck(pіctureBg, urlsWithLocal)}
-          button={acf.mButton}
-          title={acf.mTitle}
-          iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
-          scrollRef={scrollRef}
-          type={bannerType}
-          marginTop='57'
-        />
+        {parent === 4259 
+        ? 
+          <BannerIndustry
+            url={imageUrlCheck(pіctureBg, urlsWithLocal)}
+            button={acf.mButton}
+            title={acf.mTitle}
+            iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
+            scrollRef={scrollRef}
+            marginTop='57'
+          />
+        :
+          <Banner
+            url={imageUrlCheck(pіctureBg, urlsWithLocal)}
+            button={acf.mButton}
+            title={acf.mTitle}
+            iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
+            scrollRef={scrollRef}
+            type={bannerType}
+            marginTop='57'
+          />
+        }
 
         <Container>
           <Breadcrumbs links={[
-            { name: 'Services', link: '/services' },
+            { name: breadcrumbParent.slug, link: breadcrumbParent.url },
             { name: <Html2React html={post.title.rendered} />, link: '#' },
           ]}
           />
@@ -157,7 +178,12 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
                 })}
               </BlocksWrapper>
             </ContentWrapper>
-            {checkMobile && <GreenBlock greenBlock={greenBlock}/>}
+            {checkMobile && parent !== 4259  && <GreenBlock greenBlock={greenBlock}/>}
+            {checkMobile && parent === 4259 && (
+              <FooterBg
+                {...fBg}
+              />
+            )}
             <CasesContainer>
               {slidesStudies && slidesStudies.length > 0 && (
                 <CaseContainer>
@@ -188,13 +214,18 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               )}
             </CasesContainer>
           </ServicesContainer>
-          {!checkMobile && (
+          {!checkMobile && parent !== 4259 && (
             <GreenBlock
               greenBlock={greenBlock}
               {...addGreenBlockProps}
             />
           )}
         </Container>
+        {!checkMobile && parent === 4259 && (
+            <FooterBg
+              {...fBg}
+            />
+        )}
       </Wrapper>
     </ReactResizeDetector>
   );

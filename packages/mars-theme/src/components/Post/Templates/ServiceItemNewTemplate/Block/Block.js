@@ -10,7 +10,11 @@ import {
   WrapCard,
   TitleCard,
   TextCard,
-  CardsWrapper
+  CardsWrapper,
+  InnerCard,
+  InnerCardTitle,
+  InnerCardText,
+  InnerCardWrapper
 } from './styles';
 
 const Block = ({
@@ -28,7 +32,8 @@ const Block = ({
   iconLeftOffset = 0,
   iconRightOffset = 0,
   titleAlign = null,
-  lastCloudSpan = null
+  lastCloudSpan = null,
+  dynamiContent = null
 }) => {
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
@@ -95,6 +100,44 @@ const Block = ({
       </Header>
       {image && imageUrl && <ContentImage width={image.width} height={image.height} src={imageUrlCheck(imageUrl, urlsWithLocal)} />}
       <Content lastCloudSpan={lastCloudSpan}>
+        {dynamiContent && dynamiContent.length > 0 && dynamiContent.map((item, key) => (
+          <>
+          {item && item.standart && <Html2React html={item.standart} />}
+          {item.cards && item.cards.length > 0 && (
+            <InnerCardWrapper>
+              {item.cards.map((item) => {
+                const {
+                  title = '',
+                  color = '',
+                  text = ''
+                } = item;
+                let textColor = '#fff';
+                let titleColor = '#fff';
+                let bgColor = '#216628';
+                if (color === 'grey-orange') {
+                  textColor = '#222';
+                  titleColor = '#F8710F';
+                  bgColor = '#F2F2F2';
+                } else if (color === 'grey-green'){
+                  textColor = '#222';
+                  titleColor = '#216628';
+                  bgColor = '#F2F2F2';
+                } else if (color === 'orange'){
+                  textColor = '#fff';
+                  titleColor = '#fff';
+                  bgColor = '#F8710F';
+                }
+                return (
+                  <InnerCard bgColor={bgColor}>
+                    <InnerCardTitle titleColor={titleColor}>{title}</InnerCardTitle>
+                    <InnerCardText textColor={textColor}>{text}</InnerCardText>
+                  </InnerCard>
+                )
+              })}
+            </InnerCardWrapper>
+          )}
+          </>
+        ))}
         <Html2React html={text} />
       </Content>
       {cards && (

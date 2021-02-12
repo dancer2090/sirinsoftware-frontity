@@ -259,3 +259,62 @@ export const CardsWrapper = styled.div`
     }
   }
 `;
+
+export const InnerCardText = styled.div`
+  color: ${(props) => props.textColor};
+  margin-top: 13px;
+`;
+export const InnerCardTitle = styled.div`
+  color: ${(props) => props.titleColor};
+  font-weight: 600;
+  text-align: center;
+`;
+export const InnerCard = styled.div`
+  width: 308px;
+  margin-top: 36px;
+  background: ${(props) => props.bgColor};
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  line-height: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding: 30px;
+  @media (max-width: 776px){
+    margin-top: 15px;
+    width: 100%;
+  }
+`;
+export const InnerCardWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    & ${InnerCard}:nth-of-type(1), & ${InnerCard}:nth-of-type(2n+1){
+      width: 322px;
+      margin-left: -35px;
+      padding-left: 40px;
+      padding-right: 40px;
+      @media (max-width: 776px){
+        margin-left: 0px;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    & ${InnerCard}:nth-of-type(1){
+      margin-top: 0px;
+    }
+    & ${InnerCard}:nth-of-type(2){
+      margin-top: 53px;
+      @media (max-width: 776px){
+        margin-top: 15px;
+      }
+    }
+    & ${InnerCard}:nth-of-type(3){
+      margin-top: -22px;
+      z-index: 100;
+      @media (max-width: 776px){
+        margin-top: 15px;
+      }
+    }
+`;

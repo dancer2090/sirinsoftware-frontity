@@ -31,10 +31,12 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
 
   const slidesStudies = caseStudies && caseStudies.items ? caseStudies.items.map((item) => state.source[item.type][item.id]) : [];
 
-  const { acf = {} } = post;
+  const { acf = {}, title = {} } = post;
+  const { rendered : mainTitle = "" } = title;
   const {
     main_image = { url : "" },
     main_text = "",
+    services = null
   } = acf;
   const replaces = [state.frontity.url, state.frontity.adminUrl];
 
@@ -49,12 +51,12 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
     <Wrapper>
       <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
       <Container>
-        <Breadcrumbs links={[{ name: 'Services', link: '#' }]} />
+        <Breadcrumbs links={[{ name: mainTitle, link: '#' }]} />
         <ServicesList>
-          { acf.services.map((item, index) => (
+          { services.map((item, index) => (
             <ServicesItem
               src={imageUrlCheck(item.image.url, urlsWithLocal)}
-              key={index}
+              key={`${index}_${item.name}`}
               reverse={index % 2 !== 0}
               color={index % 2 !== 0 ? 'yellow' : ''}
             >

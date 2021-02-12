@@ -29,7 +29,7 @@ const MainFrameBlock = ({
         <MainBlockContainer>
           <MainBlockLeft>
             <MainBlockTitle type={type}>{title}</MainBlockTitle>
-            <MainBlockButton onClick={() => scrollToRef()} marginTop={marginTop}>{button}</MainBlockButton>
+            {button && button !== '' && <MainBlockButton onClick={() => scrollToRef()} marginTop={marginTop}>{button}</MainBlockButton>}
           </MainBlockLeft>
           <MainBlockRight>
             {iconUrl && <MainBlockIcon alt={title} src={iconUrl} />}

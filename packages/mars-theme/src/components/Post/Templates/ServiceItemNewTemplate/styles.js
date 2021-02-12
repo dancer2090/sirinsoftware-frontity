@@ -7,6 +7,18 @@ export const Banner = styled(MainFrameBlock)`
   margin-bottom: 20px;
 `;
 
+export const BannerIndustry = styled(Banner)`
+  margin-bottom: 20px;
+  & h1{
+    max-width: 776px;
+    font-size: 36px;
+    line-height: 36px;
+    @media (max-width: 776px){
+      font-size: 28px;
+    }
+  }
+`;
+
 export const Crumbs = styled(Breadcrumbs)``;
 
 export const Wrapper = styled.div`
