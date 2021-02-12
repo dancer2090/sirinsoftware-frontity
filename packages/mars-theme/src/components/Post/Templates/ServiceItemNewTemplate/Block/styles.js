@@ -113,6 +113,14 @@ export const Content = styled.div`
   & img{
     width: 100%;
     height: auto;
+    &.wp-full-image {
+      margin-left: -35px;
+      width: auto;
+      margin-top: 15px;
+      @media (max-width: 776px){
+        margin-left: -45px;
+      }
+    }
   }
   & span{
     display: block;
@@ -312,7 +320,7 @@ export const InnerCardWrapper = styled.div`
     }
     & ${InnerCard}:nth-of-type(3){
       margin-top: -22px;
-      z-index: 100;
+      z-index: 10;
       @media (max-width: 776px){
         margin-top: 15px;
       }
