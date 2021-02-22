@@ -103,6 +103,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
       slug === 'mobile-application-development-services' 
       || slug === 'embedded-software-development-services' 
       || slug === 'web-development-services'
+      || slug === 'consumer-electronics-solutions'
     ) 
     ? 'full' 
     : 'short';
@@ -133,6 +134,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
             title={acf.mTitle}
             iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
             scrollRef={scrollRef}
+            type={bannerType}
             marginTop='57'
           />
         :

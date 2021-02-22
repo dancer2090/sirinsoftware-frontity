@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import { styled, css } from 'frontity';
 import MainFrameBlock from '../../../MainFrameBlock';
 import Breadcrumbs from '../../../Breadcrumbs';
 import Link from '../../../link';
@@ -10,7 +10,11 @@ export const Banner = styled(MainFrameBlock)`
 export const BannerIndustry = styled(Banner)`
   margin-bottom: 20px;
   & h1{
-    max-width: 776px;
+    ${({type}) => (
+      type === 'full'
+      ? css`max-width: 100%`
+      : css`max-width: 776px`
+    )}
     font-size: 36px;
     line-height: 36px;
     @media (max-width: 776px){
