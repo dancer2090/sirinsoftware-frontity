@@ -75,6 +75,10 @@ export const Content = styled.div`
     & li{
       position: relative;
       padding-left: 18px;
+      margin-top: 16px;
+      &:first-of-type{
+        margin-top: 0;
+      }
       &:before{
         content: '';
         position: absolute;
@@ -86,6 +90,9 @@ export const Content = styled.div`
         background: #FF8D23;
         border-radius: 99px;
       }
+    }
+    &.list-with-names li{
+      margin-top: 40px;
     }
   }
   & ol {
@@ -133,6 +140,13 @@ export const Content = styled.div`
         margin: 0 auto;
       ` : null
     )}
+    &.text-block{
+      padding: 0;
+    }
+  }
+  & .text-block-name{
+    text-transform: uppercase;
+    display: block;
   }
 `;
 
