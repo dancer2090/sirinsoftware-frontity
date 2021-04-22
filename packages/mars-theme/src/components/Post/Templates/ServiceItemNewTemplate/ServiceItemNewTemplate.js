@@ -67,9 +67,11 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     blocks = {},
     greenBlock = {},
     casesTitle = 'CASE STUDIES',
-    fBg = {}
+    fBg = {},
+    titleFullWidth = false
   } = acf;
 
+  console.log(acf);
   
   const addGreenBlockProps = {
     widthGreenBlockImage : '100%',
@@ -104,6 +106,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
       || slug === 'embedded-software-development-services' 
       || slug === 'web-development-services'
       || slug === 'consumer-electronics-solutions'
+      || titleFullWidth
     ) 
     ? 'full' 
     : 'short';

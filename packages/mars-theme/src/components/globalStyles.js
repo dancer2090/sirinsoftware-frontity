@@ -39,6 +39,14 @@ export const globalStyles = css`
     background: rgba(0, 0, 0, 0.1);
   }
   .grecaptcha-badge { visibility: hidden; }
+
+  .greentext-center {
+    max-width: 485px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 `;
 
 export const Space = styled.div`

@@ -143,10 +143,30 @@ export const Content = styled.div`
     &.text-block{
       padding: 0;
     }
+    &.greentext-sub-title {
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0;
+    }
+    &.greentext-green-center {
+      max-width: 390px;
+      margin: 0 auto;
+      color: #216628;
+      font-weight: 600;
+      text-align: center;
+    }
   }
   & .text-block-name{
     text-transform: uppercase;
     display: block;
+  }
+  & ul.greentext-ul-spacing{
+    & strong{
+      display: block;
+    }
+    & span{
+      padding: 0px;
+    }
   }
 `;
 

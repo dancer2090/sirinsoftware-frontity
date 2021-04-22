@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'frontity';
 import {
   Container,
   MainBlock,
@@ -11,8 +12,9 @@ import {
 } from './styles';
 
 const MainFrameBlock = ({
-  url = '', title, button, iconUrl, scrollRef = null, className, type = 'short', marginTop = '31'
+  url = '', title, button, iconUrl, scrollRef = null, className, type = 'short', marginTop = '31', libraries
 }) => {
+  const Html2React = libraries.html2react.Component;
   const scrollToRef = () => {
     if (scrollRef) {
       window.scrollTo({
@@ -28,7 +30,9 @@ const MainFrameBlock = ({
       <Container>
         <MainBlockContainer>
           <MainBlockLeft>
-            <MainBlockTitle type={type}>{title}</MainBlockTitle>
+            <MainBlockTitle type={type}>
+              <Html2React html={title} />
+            </MainBlockTitle>
             {button && button !== '' && <MainBlockButton onClick={() => scrollToRef()} marginTop={marginTop}>{button}</MainBlockButton>}
           </MainBlockLeft>
           <MainBlockRight>
@@ -40,4 +44,4 @@ const MainFrameBlock = ({
   );
 };
 
-export default MainFrameBlock;
+export default connect(MainFrameBlock);
