@@ -63,6 +63,9 @@ export const Content = styled.div`
   & ${Card}:nth-of-type(1){
     margin-top: 0px;
   }
+  & ${Card}:first-of-type:last-of-type {
+      margin: 0 auto;
+  }
   & ${Card}:nth-of-type(2n){
     align-self: flex-end;
   }

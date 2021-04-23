@@ -70,8 +70,6 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     fBg = {},
     titleFullWidth = false
   } = acf;
-
-  console.log(acf);
   
   const addGreenBlockProps = {
     widthGreenBlockImage : '100%',
