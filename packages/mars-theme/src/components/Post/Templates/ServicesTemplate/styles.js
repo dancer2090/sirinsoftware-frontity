@@ -2,9 +2,118 @@ import { styled } from 'frontity';
 import ItemList from './ServicesItem';
 import Slider from './CaseSlider';
 import LinkComponent from '../../../link';
+import intrFirstText from '../../../../img/intFirstText.svg';
 
 export const LinkBox = styled.div`
   padding-top: 20px;
+`;
+
+export const Introduction = styled.div`
+  max-width: 1150px;
+  margin:0 auto;
+  padding-top: 32px;
+  margin-top: 32px;
+  background: url(${intrFirstText}) 100% 0px no-repeat;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  padding-bottom: 70px;
+  position: relative;
+  p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  strong {
+    color: #216628;
+  }
+  @media (max-width: 767px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-top: 0px;
+    font-size: 14px;
+  }
+`;
+
+export const IntroductionContainer = styled.div`
+  max-width: 778px;
+  margin: 0 auto;
+`;
+
+export const IntroductionBlock = styled.div`
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: 0px;
+  max-width: 519px;
+  @media (max-width: 767px) {
+    margin-top: 15px;
+    text-align: justify;
+  }
+  
+  &:nth-child(2n){
+    margin-left: 0px;
+    margin-right: auto;
+  }
+`;
+export const Benefits = styled.div`
+  margint-top: 92px;
+  padding-top: 92px;
+  padding-bottom: 92px;
+  background: #F2F2F2;
+  @media (max-width: 767px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    margin-top: 30px;
+    padding-bottom: 0px;
+    margin-bottom: 30px;
+  }
+`;
+export const BenefitsBlock = styled.div`
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  min-height: 180px;
+  padding-left: 43px;
+  padding-right: 43px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(270.99deg, #FFB03A 3.6%, #FF9233 97.69%);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+  color: #fff;
+  font-size: 16.5px;
+  line-height: 23px;
+  font-family: Open Sans;
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+  }
+  &:nth-child(2n){
+    background: linear-gradient(271.79deg, #40A74A 0%, #216628 100%);
+    flex-direction: row-reverse;
+    @media (max-width: 767px) {
+      flex-direction: column-reverse;
+    }
+  }
+`;
+export const BenefitsIcon = styled.img`
+  display: block;
+`;
+export const BenefitsText = styled.div`
+  max-width: 450px;
+  @media (max-width: 767px) {
+    margin-bottom: 20px;
+    text-align: justify;
+    text-align-last: center;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -131,7 +240,7 @@ export const CaseItem = styled.div`
   flex-direction: column;
   background: 
     linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-    url(${props => props.src});
+    url(${(props) => props.src});
   background-size: cover;
   padding-top: 30px;
 

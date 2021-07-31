@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'frontity';
+import {connect, styled} from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import Breadcrumbs from '../../../Breadcrumbs';
 import Button from '../../../Button';
@@ -16,7 +16,13 @@ import {
   CaseLink,
   CaseItemTitle,
   CaseContent,
-  LinkBox,
+  Introduction,
+  IntroductionContainer,
+  IntroductionBlock,
+  BenefitsBlock,
+  BenefitsIcon,
+  BenefitsText,
+  Benefits,
 } from './styles';
 
 const ServicesTemplate = ({ state, actions, libraries }) => {
@@ -29,14 +35,18 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
 
-  const slidesStudies = caseStudies && caseStudies.items ? caseStudies.items.map((item) => state.source[item.type][item.id]) : [];
+  const slidesStudies = caseStudies && caseStudies.items
+    ? caseStudies.items.map((item) => state.source[item.type][item.id])
+    : [];
 
   const { acf = {}, title = {} } = post;
-  const { rendered : mainTitle = "" } = title;
+  const { rendered: mainTitle = '' } = title;
   const {
-    main_image = { url : "" },
-    main_text = "",
-    services = null
+    main_image = { url: '' },
+    main_text = '',
+    services = null,
+    introduction = [],
+    benefits = null
   } = acf;
   const replaces = [state.frontity.url, state.frontity.adminUrl];
 
@@ -52,6 +62,19 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
       <BigFrameContainer title={bigFrameTitle} image={bigFrameImage} />
       <Container>
         <Breadcrumbs links={[{ name: mainTitle, link: '#' }]} />
+      </Container>
+        {introduction && introduction.length > 0 && (
+          <Introduction>
+            <IntroductionContainer>
+              {introduction.map((item) => (
+                <IntroductionBlock>
+                  <Html2React html={item.text} />
+                </IntroductionBlock>
+              )) }
+            </IntroductionContainer>
+          </Introduction>
+        )}
+      <Container>
         <ServicesList>
           { services.map((item, index) => (
             <ServicesItem
@@ -60,21 +83,20 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
               reverse={index % 2 !== 0}
               color={index % 2 !== 0 ? 'yellow' : ''}
             >
-              
-                {item.link && item.link.url 
-                  ? (
+
+              {item.link && item.link.url
+                ? (
                   <h2>
                     <Link link={urlCheck(item.link.url, replaces)}>
                       {item.name}
                     </Link>
                   </h2>
-                  ) : (
+                ) : (
                   <h2>{item.name}</h2>
-                  )
-                }
-              
-              <p>{item.text}</p>
-            {/*
+                )}
+
+              <p><Html2React html={item.text} /></p>
+              {/*
               {item.link && item.link.url && (
                 <LinkBox>
                   <Link link={item.link.url}>
@@ -86,6 +108,24 @@ const ServicesTemplate = ({ state, actions, libraries }) => {
             </ServicesItem>
           ))}
         </ServicesList>
+      </Container>
+        {benefits && benefits.length > 0 && (
+          <Benefits>
+            <Container>
+              {benefits.map((item) => {
+                const { icon = {}, text = '' } = item;
+                const { url = '' } = icon;
+                return (
+                  <BenefitsBlock>
+                    <BenefitsIcon src={url} />
+                    <BenefitsText>{text}</BenefitsText>
+                  </BenefitsBlock>
+                )
+              })}
+            </Container>
+          </Benefits>
+        )}
+      <Container>
         {slidesStudies && slidesStudies.length > 0 && (
           <CaseContainer>
             <CaseTitle data-text="case studies">
