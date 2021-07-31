@@ -2,10 +2,10 @@ import { styled, css } from 'frontity';
 
 export const Title = styled.div`
   margin: 0 auto;
-  max-width:   ${({titleWidth}) => (
+  max-width:   ${({ titleWidth }) => (
     titleWidth
-    ? css`${titleWidth}px;`
-    : '391px;'
+      ? css`${titleWidth}px;`
+      : '391px;'
   )}
   font-weight: 800;
   font-size: 24px;
@@ -39,10 +39,10 @@ export const Card = styled.div`
     text-align: justify;
     text-align-last: center;
   }
-  ${({cardWidth}) => (
+  ${({ cardWidth }) => (
     cardWidth
-    ? css`max-width: ${cardWidth}px`
-    : null
+      ? css`max-width: ${cardWidth}px`
+      : null
   )}
   & a{
     color: #FF8D23;
@@ -72,12 +72,12 @@ export const Content = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  ${({bg}) => (
+  ${({ bg }) => (
     bg
-    ? css`
+      ? css`
       background: url(${bg}) 50% 50% / 100% auto;
     `
-    : null
+      : null
   )}
   padding-top: 40px;
   padding-bottom: 40px;
@@ -110,5 +110,17 @@ export const LastCard = styled.div`
   }
   & p{
     margin: 0;
+  }
+  .footer-education{
+    p:first-of-type{
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    p:last-of-type{
+      max-width: 440px;
+      margin: 0 auto;
+      margin-top: 20px;
+      font-weight: 400;
+    }
   }
 `;

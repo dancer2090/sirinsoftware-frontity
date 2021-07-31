@@ -14,7 +14,7 @@ import {
   InnerCard,
   InnerCardTitle,
   InnerCardText,
-  InnerCardWrapper
+  InnerCardWrapper,
 } from './styles';
 
 const Block = ({
@@ -24,6 +24,7 @@ const Block = ({
   icon = {},
   image = {},
   title = '',
+  titleFloat = 'default',
   text = '',
   cards = [],
   textAlignPush = null,
@@ -33,7 +34,9 @@ const Block = ({
   iconRightOffset = 0,
   titleAlign = null,
   lastCloudSpan = null,
-  dynamiContent = null
+  dynamiContent = null,
+  titleMarginTop = '0 15',
+  titleMarginBottom = '0 15',
 }) => {
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
@@ -41,52 +44,61 @@ const Block = ({
   const replaces = [state.frontity.url, state.frontity.adminUrl];
 
   const {
-    url : iconUrl = ''
+    url: iconUrl = '',
   } = icon;
   const {
-    url : imageUrl = '',
-    sizes : imageSizes = {}
+    url: imageUrl = '',
+    sizes: imageSizes = {},
   } = image;
   const types = {
-    grey : {
-      textColor : '#222',
-      titleColor : '#216628',
-      paddingLeft : '60px',
-      paddingRight : '50px',
-      paddingTop : '25px',
-      paddingBottom : '40px',
-      mobilePaddingLeft : '15px',
-      mobilePaddingRight : '15px',
-      background : '#F2F2F2'
+    grey: {
+      textColor: '#222',
+      titleColor: '#216628',
+      paddingLeft: '60px',
+      paddingRight: '50px',
+      paddingTop: '25px',
+      paddingBottom: '40px',
+      mobilePaddingLeft: '15px',
+      mobilePaddingRight: '15px',
+      background: '#F2F2F2',
     },
-    white : {
-      textColor : '#222',
-      titleColor : '#216628',
-      paddingLeft : '0px',
-      paddingRight : '0px',
-      paddingTop : '0px',
-      paddingBottom : '0px',
-      mobilePaddingLeft : '0px',
-      mobilePaddingRight : '0px',
-      background : 'transparent'
+    white: {
+      textColor: '#222',
+      titleColor: '#216628',
+      paddingLeft: '0px',
+      paddingRight: '0px',
+      paddingTop: '0px',
+      paddingBottom: '0px',
+      mobilePaddingLeft: '0px',
+      mobilePaddingRight: '0px',
+      background: 'transparent',
     },
-    green : {
-      textColor : '#fff',
-      titleColor : '#fff',
-      paddingLeft : '60px',
-      paddingRight : '50px',
-      paddingTop : '25px',
-      paddingBottom : '40px',
-      mobilePaddingLeft : '15px',
-      mobilePaddingRight : '15px',
-      background : '#216628'
-    }
-  }
+    green: {
+      textColor: '#fff',
+      titleColor: '#fff',
+      paddingLeft: '60px',
+      paddingRight: '50px',
+      paddingTop: '25px',
+      paddingBottom: '40px',
+      mobilePaddingLeft: '15px',
+      mobilePaddingRight: '15px',
+      background: '#216628',
+    },
+  };
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
-  return ( 
+  const resTitleAlign = titleFloat !== "default" ? titleFloat : titleAlign;
+  const titleOffsetTop = titleMarginTop.split(' ');
+  const titleOffsetBottom = titleMarginBottom.split(' ');
+  const titleOffset = {
+    marginTop: titleOffsetTop[0],
+    paddingTop: titleOffsetTop[1],
+    marginBottom: titleOffsetBottom[0],
+    paddingBottom: titleOffsetBottom[1],
+  };
+  return (
     <Wrapper blockType={types[type]} textAlignPush={textAlignPush}>
-      <Header titleAlign={titleAlign} minHeight={icon.height}>
+      <Header titleAlign={resTitleAlign} minHeight={icon.height} {...titleOffset}>
         <Title marginLeft={titleLeftOffset} marginRight={titleRightOffset}>{title}</Title>
         {icon && (
           <Icon
@@ -102,14 +114,14 @@ const Block = ({
       <Content lastCloudSpan={lastCloudSpan}>
         {dynamiContent && dynamiContent.length > 0 && dynamiContent.map((item, key) => (
           <>
-          {item && item.standart && <Html2React html={item.standart} />}
-          {item.cards && item.cards.length > 0 && (
+            {item && item.standart && <Html2React html={item.standart} />}
+            {item.cards && item.cards.length > 0 && (
             <InnerCardWrapper>
               {item.cards.map((item) => {
                 const {
                   title = '',
                   color = '',
-                  text = ''
+                  text = '',
                 } = item;
                 let textColor = '#fff';
                 let titleColor = '#fff';
@@ -118,11 +130,11 @@ const Block = ({
                   textColor = '#222';
                   titleColor = '#F8710F';
                   bgColor = '#F2F2F2';
-                } else if (color === 'grey-green'){
+                } else if (color === 'grey-green') {
                   textColor = '#222';
                   titleColor = '#216628';
                   bgColor = '#F2F2F2';
-                } else if (color === 'orange'){
+                } else if (color === 'orange') {
                   textColor = '#fff';
                   titleColor = '#fff';
                   bgColor = '#F8710F';
@@ -132,10 +144,10 @@ const Block = ({
                     <InnerCardTitle titleColor={titleColor}>{title}</InnerCardTitle>
                     <InnerCardText textColor={textColor}>{text}</InnerCardText>
                   </InnerCard>
-                )
+                );
               })}
             </InnerCardWrapper>
-          )}
+            )}
           </>
         ))}
         <Html2React html={text} />
@@ -145,14 +157,14 @@ const Block = ({
           {cards.map((item, key) => {
             const {
               title = '',
-              text = ''
+              text = '',
             } = item;
             return (
               <WrapCard key={`${title}_${key}`}>
                 <TitleCard>{title}</TitleCard>
                 <TextCard>{text}</TextCard>
               </WrapCard>
-            )
+            );
           })}
         </CardsWrapper>
       )}

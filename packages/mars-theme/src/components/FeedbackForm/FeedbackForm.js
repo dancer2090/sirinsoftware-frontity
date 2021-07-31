@@ -18,7 +18,7 @@ const FeedbackForm = ({ actions }) => {
 
   return (
     <>
-      <Block>
+      <Block id="contact_form">
         <FormBlock>
           <QuestionBlock>
             <QuestionShadow>

@@ -19,7 +19,7 @@ import {
   CaseItem,
   CaseItemTitle,
   CaseLink,
-  BannerIndustry
+  BannerIndustry,
 } from './styles';
 import Block from './Block';
 import GreenBlock from './GreenBlock';
@@ -39,27 +39,27 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
   // case data
   const caseStudies = state.source.data['/case-studies/'];
   let slidesStudies = [];
-  if(post && post.cases){
-    slidesStudies = post.cases.map((item,k)=>{
+  if (post && post.cases) {
+    slidesStudies = post.cases.map((item, k) => {
       const resCase = {
-        acf : {...item.acf},
-        link : item.link,
-        ...item.post
-      }
+        acf: { ...item.acf },
+        link: item.link,
+        ...item.post,
+      };
       return resCase;
     });
   }
-  
+
   caseStudies && caseStudies.items
     ? caseStudies.items.map((item) => state.source[item.type][item.id])
     : [];
 
-  const { 
+  const {
     acf = {},
     slug = '',
-    parent = 0
+    parent = 0,
   } = post;
-  
+
   const {
     mBackground = {},
     mImage = {},
@@ -68,24 +68,24 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
     greenBlock = {},
     casesTitle = 'CASE STUDIES',
     fBg = {},
-    titleFullWidth = false
+    titleFullWidth = false,
   } = acf;
-  
+
   const addGreenBlockProps = {
-    widthGreenBlockImage : '100%',
-    widthGreenBlockText : '486px',
-    spanWidth : null
+    widthGreenBlockImage: '100%',
+    widthGreenBlockText: '486px',
+    spanWidth: null,
   };
 
-  switch(slug){
+  switch (slug) {
     case 'mobile-application-development-services':
-      addGreenBlockProps.widthText ='100%';
+      addGreenBlockProps.widthText = '100%';
       break;
     case 'embedded-software-development-services':
       addGreenBlockProps.bannerType = 'full';
       break;
     case 'web-development-services':
-      addGreenBlockProps.widthText ='100%';
+      addGreenBlockProps.widthText = '100%';
       addGreenBlockProps.widthImage = '398px';
       break;
     case 'iot-development':
@@ -94,19 +94,18 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
       break;
     case 'firmware_development':
       addGreenBlockProps.widthText = '582px';
-      addGreenBlockProps.spanWidth = '378px'
+      addGreenBlockProps.spanWidth = '378px';
       break;
   }
 
-  const bannerType = 
-    (
-      slug === 'mobile-application-development-services' 
-      || slug === 'embedded-software-development-services' 
+  const bannerType = (
+    slug === 'mobile-application-development-services'
+      || slug === 'embedded-software-development-services'
       || slug === 'web-development-services'
       || slug === 'consumer-electronics-solutions'
       || titleFullWidth
-    ) 
-    ? 'full' 
+  )
+    ? 'full'
     : 'short';
 
   // Get the html2react component.
@@ -118,37 +117,38 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
   const onWidth = (width) => {
     if (width < 760) setCheckMobile(true);
     else setCheckMobile(false);
-  }
+  };
   const breadcrumbParent = {
-    slug : (parent === 4259 ? 'Industries' : 'Services'),
-    url : (parent === 4259 ? '/industries' : '/services')
-  }
+    slug: (parent === 4259 ? 'Industries' : 'Services'),
+    url: (parent === 4259 ? '/industries' : '/services'),
+  };
 
   return (
     <ReactResizeDetector handleWidth onResize={onWidth}>
       <Wrapper>
-        {parent === 4259 
-        ? 
-          <BannerIndustry
-            url={imageUrlCheck(pіctureBg, urlsWithLocal)}
-            button={acf.mButton}
-            title={acf.mTitle}
-            iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
-            scrollRef={scrollRef}
-            type={bannerType}
-            marginTop='57'
-          />
-        :
-          <Banner
-            url={imageUrlCheck(pіctureBg, urlsWithLocal)}
-            button={acf.mButton}
-            title={acf.mTitle}
-            iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
-            scrollRef={scrollRef}
-            type={bannerType}
-            marginTop='57'
-          />
-        }
+        {parent === 4259
+          ? (
+            <BannerIndustry
+              url={imageUrlCheck(pіctureBg, urlsWithLocal)}
+              button={acf.mButton}
+              title={acf.mTitle}
+              iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
+              scrollRef={scrollRef}
+              type={bannerType}
+              marginTop="57"
+            />
+          )
+          : (
+            <Banner
+              url={imageUrlCheck(pіctureBg, urlsWithLocal)}
+              button={acf.mButton}
+              title={acf.mTitle}
+              iconUrl={imageUrlCheck(pіctureImg, urlsWithLocal)}
+              scrollRef={scrollRef}
+              type={bannerType}
+              marginTop="57"
+            />
+          )}
 
         <Container>
           <Breadcrumbs links={[
@@ -164,24 +164,24 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               <BlocksWrapper>
                 {blocks && blocks.length > 0 && blocks.map((block, key) => {
                   const blockAddProps = {
-                    textAlignPush : 
-                      (slug === 'web-development-services' && key === 1) 
-                        ? 'left' 
+                    textAlignPush:
+                      (slug === 'web-development-services' && key === 1)
+                        ? 'left'
                         : null,
-                    titleAlign : 
-                      (slug === 'cloud_solutions' && key === blocks.length - 1) 
-                      ? 'flex-end' 
-                      : 'space-between',
-                    lastCloudSpan : 
-                      (slug === 'cloud_solutions' && key === 1) 
-                      ? '400' 
-                      : null
+                    titleAlign:
+                      (slug === 'cloud_solutions' && key === blocks.length - 1)
+                        ? 'flex-end'
+                        : 'space-between',
+                    lastCloudSpan:
+                      (slug === 'cloud_solutions' && key === 1)
+                        ? '400'
+                        : null,
                   };
-                  return <Block {...blockAddProps} key={`${block.title}_${key}`} {...block} />
+                  return <Block {...blockAddProps} key={`${block.title}_${key}`} {...block} />;
                 })}
               </BlocksWrapper>
             </ContentWrapper>
-            {checkMobile && parent !== 4259  && <GreenBlock greenBlock={greenBlock}/>}
+            {checkMobile && parent !== 4259 && <GreenBlock greenBlock={greenBlock} />}
             {checkMobile && parent === 4259 && (
               <FooterBg
                 {...fBg}
@@ -225,9 +225,9 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
           )}
         </Container>
         {!checkMobile && parent === 4259 && (
-            <FooterBg
-              {...fBg}
-            />
+        <FooterBg
+          {...fBg}
+        />
         )}
       </Wrapper>
     </ReactResizeDetector>

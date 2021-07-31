@@ -10,12 +10,12 @@ export const Banner = styled(MainFrameBlock)`
 export const BannerIndustry = styled(Banner)`
   margin-bottom: 20px;
   & h1{
-    ${({type}) => (
-      type === 'full'
+    ${({ type }) => (
+    type === 'full'
       ? css`max-width: 100%`
       : css`max-width: 776px`
-    )}
-    font-size: 36px;
+  )}
+    font-size: 35px;
     line-height: 36px;
     @media (max-width: 776px){
       font-size: 28px;
@@ -178,6 +178,14 @@ export const GreenText = styled.div`
       margin-bottom: 0px;
     }
   }
+  .green-center{
+    text-align: center;
+    width: 100%;
+    max-width: 460px;
+    margin:0 auto;
+    margin-top: 30px;
+    display: block;
+  }
 `;
 export const BlocksWrapper = styled.div`
   display: block;
@@ -216,7 +224,7 @@ export const CaseItem = styled.div`
   display: block;
   height: 300px;
   position: relative;
-  background: url(${({bg}) => bg}) 50% 50% / auto 100%;
+  background: url(${({ bg }) => bg}) 50% 50% / auto 100%;
   margin-top: 14px;
   &:before{
     content: ' ';

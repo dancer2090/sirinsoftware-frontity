@@ -1,14 +1,24 @@
 import { styled, css } from 'frontity';
-import Image from "../../../../image";
+import Image from '../../../../image';
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  ${({ marginTop }) => (
+    marginTop ? css`margin-top: ${marginTop}px` : null
+  )}
+  ${({ marginBottom }) => (
+    marginBottom ? css`margin-bottom: ${marginBottom}px` : null
+  )}
+  ${({ paddingTop }) => (
+    paddingTop ? css`padding-top: ${paddingTop}px` : null
+  )}
+  ${({ paddingBottom }) => (
+    paddingBottom ? css`padding-bottom: ${paddingBottom}px` : null
+  )}
   padding-right: 12px;
   position: relative;
-  ${({titleAlign}) => (
+  ${({ titleAlign }) => (
     titleAlign ? css`justify-content: ${titleAlign}` : null
   )}
   @media (max-width: 720px){
@@ -24,8 +34,8 @@ export const Title = styled.div`
   line-height: 36px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-left: ${({marginLeft}) => marginLeft}px;
-  margin-right: ${({marginRight}) => marginRight}px;
+  margin-left: ${({ marginLeft }) => marginLeft}px;
+  margin-right: ${({ marginRight }) => marginRight}px;
   color: #FFFFFF;
   @media (max-width: 720px){
     margin-left: 0px;
@@ -39,8 +49,8 @@ export const Title = styled.div`
 export const Icon = styled(Image)`
   display: block;
   max-width: 100%;
-  margin-left: ${({marginLeft}) => marginLeft}px;
-  margin-right: ${({marginRight}) => marginRight}px;
+  margin-left: ${({ marginLeft }) => marginLeft}px;
+  margin-right: ${({ marginRight }) => marginRight}px;
   @media (max-width: 720px){
     margin-left: 0px;
     margin-right: 0px;
@@ -133,15 +143,21 @@ export const Content = styled.div`
     display: block;
     padding-left: 18px;
     padding-right: 18px;
-    ${({lastCloudSpan}) => (
-      lastCloudSpan ? css`
+    ${({ lastCloudSpan }) => (
+    lastCloudSpan ? css`
         width: ${lastCloudSpan}px;
         max-width: 100%;
         margin: 0 auto;
       ` : null
-    )}
+  )}
     &.text-block{
       padding: 0;
+    }
+    &.li-inner-text-block-padding{
+      margin-top: 30px;
+      margin-bottom: 0px;
+      padding-left: 0px;
+      padding-bottom: 0px;
     }
     &.greentext-sub-title {
       font-weight: 600;
@@ -174,7 +190,7 @@ export const Wrapper = styled.div`
   display: block;
   margin-top: 38px;
   font-family: Open Sans;
-  ${({blockType}) => (
+  ${({ blockType }) => (
     `
       padding-left: ${blockType.paddingLeft};
       padding-top: ${blockType.paddingTop};
@@ -203,7 +219,7 @@ export const Wrapper = styled.div`
       flex-direction: row-reverse;
     }
   }
-  ${ ({textAlignPush}) => (
+  ${({ textAlignPush }) => (
     textAlignPush === 'left'
       ? css`
         &:nth-of-type(2){
@@ -213,7 +229,7 @@ export const Wrapper = styled.div`
         }
       `
       : null
-  ) }
+  )}
   @media (max-width: 720px){
     &:nth-of-type(2n){
       & ${Header}{
