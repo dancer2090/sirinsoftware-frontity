@@ -191,7 +191,7 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               {slidesStudies && slidesStudies.length > 0 && (
                 <CaseContainer>
                   <CaseTitle>
-                    <span>{casesTitle}</span>
+                    <span>Our cases</span>
                   </CaseTitle>
                   <CasesWrapper>
                     { slidesStudies.map((item, index) => {

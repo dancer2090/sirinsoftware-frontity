@@ -90,7 +90,7 @@ export const BenefitsBlock = styled.div`
   line-height: 23px;
   font-family: Open Sans;
   @media (max-width: 767px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding-bottom: 20px;
     padding-left: 15px;
     padding-right: 15px;
@@ -110,7 +110,7 @@ export const BenefitsIcon = styled.img`
 export const BenefitsText = styled.div`
   max-width: 450px;
   @media (max-width: 767px) {
-    margin-bottom: 20px;
+    margin-top: 20px;
     text-align: justify;
     text-align-last: center;
   }

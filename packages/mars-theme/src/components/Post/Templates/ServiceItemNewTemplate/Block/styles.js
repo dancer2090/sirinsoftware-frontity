@@ -126,6 +126,9 @@ export const Content = styled.div`
         top: 0px;
       }
     }
+    &.list-with-names li{
+      margin-top: 40px;
+    }
   }
   & img{
     width: 100%;
@@ -154,7 +157,7 @@ export const Content = styled.div`
       padding: 0;
     }
     &.li-inner-text-block-padding{
-      margin-top: 30px;
+      margin-top: 24px;
       margin-bottom: 0px;
       padding-left: 0px;
       padding-bottom: 0px;
