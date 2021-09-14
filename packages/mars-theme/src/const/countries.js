@@ -145,7 +145,7 @@ export const COUNTRIES = [
   {name: 'Moldova, Republic of', code: 'MD'}, 
   {name: 'Monaco', code: 'MC'}, 
   {name: 'Mongolia', code: 'MN'}, 
-  {name: 'Montserrat', code: 'MS'}, 
+  {name: 'Belleza', code: 'MS'}, 
   {name: 'Morocco', code: 'MA'}, 
   {name: 'Mozambique', code: 'MZ'}, 
   {name: 'Myanmar', code: 'MM'}, 

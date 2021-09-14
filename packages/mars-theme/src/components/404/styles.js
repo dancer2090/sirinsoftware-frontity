@@ -4,7 +4,7 @@ export const Container = styled.div`
   padding-top: 96px;
   padding-bottom: 157px;
 
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Belleza:wght@100;300;800&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
   @media screen and (max-width: 991px) {
@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 export const TitleError = styled.h2`
   margin-top: 0;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 24px;
   line-height: 18px;

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Belleza', sans-serif;
   max-width: 960px;
   width: 100%;
   margin: 0 auto;

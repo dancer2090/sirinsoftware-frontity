@@ -20,7 +20,7 @@ export const Content = styled.div`
   width: calc((100% - 500px) - 42px);
 
   h2 {
-    font-family: 'Montserrat';
+    font-family: 'Belleza';
     font-weight: bold;
     font-size: 48px;
     line-height: 48px;
