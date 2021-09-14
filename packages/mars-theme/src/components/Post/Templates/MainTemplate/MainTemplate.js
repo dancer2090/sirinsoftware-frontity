@@ -2,28 +2,10 @@
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import { connect } from 'frontity';
-import BigTitle from '../../../BigTitle';
 import Link from '../../../link';
 import {
   GlobalContainer,
   Container,
-  ServicesGlobalContainer,
-  ServicesList,
-  ServicesItem,
-  ServicesItemTitle,
-  PartnerShip,
-  PartnerShipLeft,
-  PartnerShipLeftTitle,
-  BoxTitle,
-  BoxText,
-  Box,
-  PartnerShipContainer,
-  PartnerShipRightContainer,
-  PartnerShipRight,
-  PartnerShipRightTitle,
-  GreenTitle,
-  OrangeTitle,
-  TText,
   CaseStudiesGlobalContainer,
   CaseStudiesList,
   ClientsGlobalContainer,
@@ -39,7 +21,6 @@ import {
   CaseContent,
   CaseItemWrapper,
   CaseLink,
-  ServicesTitle,
   CaseTitle,
   ClientTitle,
   WhiteBlock,
@@ -54,15 +35,10 @@ import {
   CaseStudiesText,
   WhyUsBottomText,
   WhiteBlockContainer,
-  ServicesWrapper,
-  ServicesBack,
-  ServicesBackTitle,
-  ServicesBackText,
-  ServicesLink
 } from './styles';
 import MainFrameBlock from '../../../MainFrameBlock';
 import WhoWeAre from '../../../WhoWeAre';
-import Triangle from '../../../../img/main_triangle.svg';
+import Services from './Services';
 import WhiteBlockBG from '../../../../img/whiteBlockBg.svg';
 
 const MainTemplate = ({
@@ -93,12 +69,12 @@ const MainTemplate = ({
     whoWeAre = {},
     whyUs = {},
     whyUsText = '',
-    caseStudiesText = ''
+    caseStudiesText = '',
   } = acf;
 
   const {
-    topText : whiteTopText = '',
-    bottomText : whiteBottomText = ''
+    topText: whiteTopText = '',
+    bottomText: whiteBottomText = '',
   } = whiteBlock;
 
   useEffect(() => {
@@ -128,49 +104,28 @@ const MainTemplate = ({
         </WhiteBlock>
       </Container>
       <WhoWeAre items={whoWeAre} />
-      <ServicesGlobalContainer>
-        <ServicesTitle title="Services" />
-        <Container>
-          <ServicesList>
-            {services && services.map((service, k) => {
-              const {
-                bg = { url: '' },
-                link = ''
-              } = service;
-              const serviceBackground = imageUrlCheck(bg.url, urlsWithLocal);
-              return (
-                <ServicesWrapper>
-                  <ServicesItem bg={serviceBackground} link={link} key={`${serviceBackground}_${k}`}>
-                    <ServicesItemTitle>{service.title}</ServicesItemTitle>
-                  </ServicesItem>
-                  <ServicesBack>
-                    <ServicesBackTitle link={link}>{service.title}</ServicesBackTitle>
-                    <ServicesBackText>{service.text}</ServicesBackText>
-                    <ServicesLink link={link}>Learn more</ServicesLink>
-                  </ServicesBack>
-                </ServicesWrapper>
-              );
-            })}
-          </ServicesList>
-        </Container>
-      </ServicesGlobalContainer>
-      <WhyUs> 
+      <Services services={services}>
+      <WhyUs>
         <Container>
           <WhyUsTitle title="Why Us" />
           <WhyUsBlocks>
             {whyUs && whyUs.map((item, k) => {
               const {
                 icon = {},
-                text = ''
+                text = '',
               } = item;
               return (
                 <WhyUsBlock key={`${k}_${text}`}>
                   <WhyUsIcon>
                     <img alt={text} src={icon.url} />
                   </WhyUsIcon>
-                  <WhyUsText> {text} </WhyUsText>
+                  <WhyUsText>
+                    {' '}
+                    {text}
+                    {' '}
+                  </WhyUsText>
                 </WhyUsBlock>
-              )
+              );
             })}
           </WhyUsBlocks>
           <WhyUsBottomText>

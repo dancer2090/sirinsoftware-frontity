@@ -34,7 +34,7 @@ import {
   GalleryImage,
   Crumbs,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
+import Services from '../MainTemplate/Services';
 
 const AboutUsTemplate = ({ state, libraries }) => {
   const dataP = state.source.get(state.router.link);
@@ -53,6 +53,11 @@ const AboutUsTemplate = ({ state, libraries }) => {
     awards = {},
     testimonials = {},
     gallery = {},
+    ourTeam = {},
+    factsAndFigures = {},
+    awardsText = '',
+    values = '',
+    services = '',
   } = acf;
 
   const subawards = [];
@@ -79,8 +84,40 @@ const AboutUsTemplate = ({ state, libraries }) => {
         }]}
         />
       </Container>
+      <OurTeam>
+        <Container>
+          <BigTitle title={ourTeam.title} />
+          {ourTeam.text && ourTeam.text.length > 0 && (
+            <OurTeamContainer>
+              {ourTeam.text.map((item) => (
+                <OurTeamText>{item.text}</OurTeamText>
+              ))}
+            </OurTeamContainer>
+          )}
+        </Container>
+      </OurTeam>
+      <Facts>
+        <Container>
+          <BigTitle title='Facts and Figures' />
+          {factsAndFigures.map(fact => {
+            const {
+              icon = {},
+              title = ''
+            } = fact;
+            const { url = '' } = icon;
+            return (
+              <Fact>
+                <FactIcon src={url} />
+                <FactText>{title}</FactText>
+              </Fact>
+            )
+          })}
+        </Container>
+      </Facts>
       <AwardsGlobalContainer>
         <BigTitle title="Awards" />
+        <AwardsText>{awardsText}</AwardsText>
+        <AwardsSubText>Today we have the following awards:</AwardsSubText>
         <Container>
           <AwardsContainer>
             <AboutUsSlider>
@@ -102,6 +139,26 @@ const AboutUsTemplate = ({ state, libraries }) => {
           </AwardsContainer>
         </Container>
       </AwardsGlobalContainer>
+      {values && values.length > 0 && (
+          <Values>
+            <Container>
+              <BigTitle title='Sirin Software Values'/>
+              {values.map(value => {
+                const {
+                  title = '',
+                  icon = {}
+                } = value;
+                const { url } = icon;
+                return (
+                  <Value>
+                    <ValueTitle>{title}</ValueTitle>
+                    <ValueIcon src={url} />
+                  </Value>
+                )
+              })}
+            </Container>
+          </Values>
+      )}
       <TestimonialsGlobalContainer>
         <BigTitle title="Testimonials" />
         <Container>
