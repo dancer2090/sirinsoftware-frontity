@@ -4,19 +4,19 @@ export const globalStyles = css`
 
   *, *:before, *:after {
     box-sizing: border-box;
-  } 
+  }
 
   body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Belleza', sans-serif;
   }
   button {
     font-weight: 800;
-    font-family: Montserrat, sans-serif;
+    font-family: Bellezaans-serif;
   }
   input, textarea {
     font-weight: 400;
-    font-family: Montserrat, sans-serif;
+    font-family: Belleza, sans-serif;
   }
   a {
     text-decoration: none;

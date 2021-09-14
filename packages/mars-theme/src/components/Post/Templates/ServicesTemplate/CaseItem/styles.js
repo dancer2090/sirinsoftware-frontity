@@ -39,7 +39,7 @@ export const CaseLink = styled(Link)`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #FFFFFF;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: 800;
   font-size: 16px;
   line-height: 22px;

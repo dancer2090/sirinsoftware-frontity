@@ -171,7 +171,7 @@ export const CaseContainer = styled.div`
 export const CaseTitle = styled.h2`
   text-align: center;
   position: relative;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 48px;
   line-height: 59px;
@@ -195,7 +195,7 @@ export const CaseTitle = styled.h2`
     top: 50%;
     white-space: nowrap;
     transform: translate(-50%, -50%);
-    font-family: 'Montserrat';
+    font-family: 'Belleza';
     font-weight: 800;
     font-size: 110px;
     line-height: 134px;
@@ -269,7 +269,7 @@ export const CaseItem = styled.div`
 
 export const CaseItemTitle = styled.span`
   display: block;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 22px;
   line-height: 22px;
@@ -287,7 +287,7 @@ export const CaseItemTitle = styled.span`
 export const CaseContent = styled(LinkComponent)`
   cursor: pointer;
   display: block;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 30px;
   text-align: left;
@@ -326,7 +326,7 @@ export const CaseLink = styled(LinkComponent)`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #FFFFFF;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: 800;
   font-size: 16px;
   line-height: 22px;

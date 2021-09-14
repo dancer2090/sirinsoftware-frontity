@@ -477,7 +477,7 @@ export const CaseItemWrapper = styled(Link)`
 
 export const CaseItemTitle = styled.span`
   display: block;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 22px;
   line-height: 22px;
@@ -493,7 +493,7 @@ export const CaseItemTitle = styled.span`
 `;
 
 export const CaseContent = styled.p`
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 30px;
   text-align: left;
@@ -746,7 +746,7 @@ export const CaseLink = styled(Link)`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #FFFFFF;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: 800;
   font-size: 16px;
   line-height: 22px;

@@ -5,7 +5,7 @@ const CL_TEXT_HOVER1 = '#57a64a';
 const CL_TEXT_HOVER2 = '#f9ab39';
 
 const Text = styled.div`
-  font-family: Montserrat;
+  font-family: Belleza;
   font-style: normal;
   font-weight: bold;
   color: ${CL_TEXT};
@@ -108,7 +108,7 @@ export const BtnRead = styled.button`
       ? 'linear-gradient(279.98deg, #3FA54A 3.6%, #216628 97.69%)'
       : 'linear-gradient(279.98deg, #FFB03A 3.6%, #FF9233 97.69%)'
   )};
-    font-family: Montserrat;
+    font-family: Belleza;
     font-style: normal;
     font-weight: 800;
     font-size: 16px;
@@ -148,7 +148,7 @@ export const Title = styled.h2`
     font-size: 30px;
     line-height: 30px;
     color: ${CL_TEXT};
-    font-family: Montserrat;
+    font-family: Belleza;
     font-style: normal;
     font-weight: bold;
     transition: all 0.3s ease-in-out;

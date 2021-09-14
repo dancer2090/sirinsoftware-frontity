@@ -27,7 +27,7 @@ export const Header = styled.div`
   }
 `;
 export const Title = styled.div`
-  font-family: Montserrat;
+  font-family: Belleza;
   display: block;
   font-weight: 800;
   font-size: 24px;
@@ -120,7 +120,7 @@ export const Content = styled.div`
         font-size: 32px;
         line-height: 24px;
         color: #FF8D23;
-        font-family: Montserrat;
+        font-family: Belleza;
         position: absolute;
         left: 0px;
         top: 0px;
@@ -266,7 +266,7 @@ export const TitleCard = styled.div`
   font-weight: 600;
   text-align: center;
   color: #F8710F;
-  font-family: Montserrat;
+  font-family: Belleza;
 `;
 export const TextCard = styled.div`
   color: #222222;

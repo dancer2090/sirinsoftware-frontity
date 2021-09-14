@@ -25,7 +25,7 @@ export const PaginationContainer = styled.div`
   `}
 `;
 export const Text = styled.button`
-  font-family: Montserrat;
+  font-family: Belleza;
   font-style: normal;
   font-weight: 800;
   font-size: 1rem;
