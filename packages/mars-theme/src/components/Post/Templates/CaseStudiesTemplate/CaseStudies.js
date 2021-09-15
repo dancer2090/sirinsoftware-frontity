@@ -36,7 +36,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
 
   const { acf: optionsAcf = {} } = state.options;
   const { cs_text = '', cs_title = '' } = optionsAcf;
-  let megaItems = [];
+  let megaItems;
   megaItems = state.theme.cases;
   if (megaItems.length > 0) {
     megaItems.map((item, k) => {
@@ -45,9 +45,11 @@ const CaseStudies = ({ state, actions, libraries }) => {
       const { acf = {} } = p_item;
       const {
         category_for_green_line = '',
-        post_featured_image = '',
+        post_featured_image: postFeaturedImage = '',
+        archive_featured_image: archiveFeaturedImage = '',
         short_description = '',
       } = acf;
+      const imgUrl = archiveFeaturedImage || postFeaturedImage;
       let check = true;
       let keyCat = dataCat.length;
 
@@ -61,7 +63,7 @@ const CaseStudies = ({ state, actions, libraries }) => {
         dataCat.push(category_for_green_line);
       }
       data.push({
-        src: post_featured_image,
+        src: imgUrl,
         title: category_for_green_line,
         key: keyCat,
         content: p_item.title.rendered,
@@ -117,36 +119,36 @@ const CaseStudies = ({ state, actions, libraries }) => {
           const { back = {} } = item;
           const { label: bLabel = '', title: bTitle = '', content: bContent = '' } = back;
           return (
-              <ItemBlock
-                key={index}
+            <ItemBlock
+              key={index}
+              link={urlCheck(item.link, replaces)}
+            >
+              <CaseItemWrapper
+                src={imageUrlCheck(item.src, urlsWithLocal)}
                 link={urlCheck(item.link, replaces)}
               >
-                <CaseItemWrapper
-                  src={imageUrlCheck(item.src, urlsWithLocal)}
-                  link={urlCheck(item.link, replaces)}
-                >
-                  <CaseItemTitle>
-                    { item.title }
-                  </CaseItemTitle>
-                  <CaseContent>
-                    { item.content }
-                  </CaseContent>
-                </CaseItemWrapper>
+                <CaseItemTitle>
+                  { item.title }
+                </CaseItemTitle>
+                <CaseContent>
+                  { item.content }
+                </CaseContent>
+              </CaseItemWrapper>
 
-                <ItemWrapper>
-                  <ItemLabel> 
-                    { bLabel }
-                  </ItemLabel>
-                  <Link link={urlCheck(item.link, replaces)}>
-                    <ItemTitle>
-                      { bTitle }
-                    </ItemTitle>
-                  </Link>
-                  <ItemDescription>
-                    { bContent }
-                  </ItemDescription>
-                </ItemWrapper>
-              </ItemBlock>
+              <ItemWrapper>
+                <ItemLabel>
+                  { bLabel }
+                </ItemLabel>
+                <Link link={urlCheck(item.link, replaces)}>
+                  <ItemTitle>
+                    { bTitle }
+                  </ItemTitle>
+                </Link>
+                <ItemDescription>
+                  { bContent }
+                </ItemDescription>
+              </ItemWrapper>
+            </ItemBlock>
           );
         })}
         {filterData.length % 2 !== 0 && (
