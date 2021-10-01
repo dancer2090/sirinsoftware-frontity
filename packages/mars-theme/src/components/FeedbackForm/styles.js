@@ -35,7 +35,7 @@ export const QuestionBlock = styled.div`
 export const QuestionShadow = styled.div`
   height: 22px;
   padding-top: 77px;
-  font-family: Montserrat;
+  font-family: Belleza;
   font-style: normal;
   font-weight: 800;
   font-size: 56px;
@@ -61,7 +61,7 @@ export const QuestionShadow = styled.div`
 export const Question = styled.h2`
   height: 22px;
   margin: 0;
-  font-family: Montserrat;
+  font-family: Belleza;
   font-style: normal;
   font-weight: 800;
   font-size: 36px;

@@ -97,7 +97,7 @@ export const NavigationLine = styled.div`
 `;
 
 export const Link = styled(LinkComponent)`
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;

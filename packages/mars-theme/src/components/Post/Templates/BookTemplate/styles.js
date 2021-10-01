@@ -345,7 +345,7 @@ export const FormGroup = styled.div`
     }
 
     &[type="text"] {
-      font-family: "Montserrat";
+      font-family: "Belleza";
       background: rgba(242, 242, 242, 0.9);
       border: 1px solid #C9C4C0;
       box-sizing: border-box;
@@ -562,7 +562,7 @@ export const FormGroup = styled.div`
       width: 100%;
     }
 
-    font-family: "Montserrat";
+    font-family: "Belleza";
     background: rgba(242, 242, 242, 0.9);
     border: 1px solid #C9C4C0;
     box-sizing: border-box;
@@ -636,7 +636,7 @@ export const FormGroup = styled.div`
     label {
       cursor: pointer;
       color: #77716D;
-      font-family: "Montserrat";
+      font-family: "Belleza";
       position: relative;
       z-index: 10;
       padding: 0;

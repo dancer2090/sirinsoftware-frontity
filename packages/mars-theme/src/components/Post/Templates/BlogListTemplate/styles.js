@@ -378,7 +378,7 @@ export const CaseItemWrapper = styled.div`
 
 export const CaseItemTitle = styled.span`
   display: block;
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 22px;
   line-height: 22px;
@@ -394,7 +394,7 @@ export const CaseItemTitle = styled.span`
 `;
 
 export const CaseContent = styled.p`
-  font-family: 'Montserrat';
+  font-family: 'Belleza';
   font-weight: bold;
   font-size: 30px;
   text-align: left;

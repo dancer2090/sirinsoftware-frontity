@@ -15,7 +15,7 @@ export const AllCategoriesContainer = styled.div`
 export const AllCategoriesHeader = styled.div`
     background: linear-gradient(273.94deg, #3FA54A 3.6%, #216628 97.69%);
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
-    font-family: Montserrat;
+    font-family: Belleza;
     font-style: normal;
     font-weight: bold;
     font-size: .875rem;
@@ -74,7 +74,7 @@ export const AllCategoriesContent = styled.div`
 `;
 
 export const AllCategoriesItem = styled.div`
-    font-family: Montserrat;
+    font-family: Belleza;
     font-style: normal;
     font-weight: bold;
     font-size: 0.875rem;

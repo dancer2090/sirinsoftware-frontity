@@ -5,7 +5,7 @@ import Button from './button';
 import Breadcrumbs from '../../../Breadcrumbs';
 
 export const WrapperPage = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Belleza:wght@100;300;800&display=swap');
     width: 100%;
     background-color: white;
 
@@ -55,7 +55,7 @@ export const BigFrame = styled.div`
 `;
 
 export const Container = styled.div`
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Belleza', sans-serif;
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
@@ -224,7 +224,7 @@ export const Posts = styled.div`
 `;
 
 export const PostTitle = styled.h2`
-    font-family: 'Montserrat';
+    font-family: 'Belleza';
     font-size: 18px;
     font-weight: normal;
     line-height: 18px;
