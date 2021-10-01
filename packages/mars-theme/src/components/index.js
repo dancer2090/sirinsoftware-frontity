@@ -30,12 +30,12 @@ const Theme = ({ state, actions }) => {
   const { recaptchaKey } = state.frontity;
   const data = state.source.get(state.router.link);
   let post = {};
-  if(data.isPage || data.isPost){
+  if (data.isPage || data.isPost) {
     post = state.source[data.type][data.id];
   }
   const { acf = {} } = post;
   const {
-    preFooter = {}
+    preFooter = {},
   } = acf;
   const isPreFooter = preFooter && preFooter.bg ? 1 : null;
 
@@ -54,8 +54,8 @@ const Theme = ({ state, actions }) => {
     plugins: [
       googleTagManager({
         containerId: 'GTM-PN5W3K4',
-      })
-    ]
+      }),
+    ],
   });
   analytics.page();
 
@@ -67,64 +67,64 @@ const Theme = ({ state, actions }) => {
 
   return (
     <>
-        {/* Add some metatags to the <head> of the HTML. */}
-        <Title />
-        <Head>
-          <meta name="description" content={state.frontity.description} />
-            {
-              state.router.link.indexOf('/faq') !== -1 ?
-              (
-                <html lang="en" itemscope itemtype="https://schema.org/FAQPage" />
-              ) : (
-                <html lang="en" itemscope itemtype="http://schema.org/WebPage"/>
-              )
-            } 
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
-        </Head>
-          {/* Add some global styles for the whole site, like body or a's.
+      {/* Add some metatags to the <head> of the HTML. */}
+      <Title />
+      <Head>
+        <meta name="description" content={state.frontity.description} />
+        {
+              state.router.link.indexOf('/faq') !== -1
+                ? (
+                  <html lang="en" itemScope itemType="https://schema.org/FAQPage" />
+                ) : (
+                  <html lang="en" itemScope itemType="http://schema.org/WebPage" />
+                )
+            }
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+      </Head>
+      {/* Add some global styles for the whole site, like body or a's.
           Not classes here because we use CSS-in-JS. Only global HTML tags. */}
-        <Global styles={globalStyles} />
-        {/* Add the header of the site.  */}
-        <Modal
-          title="Done"
-          text="Thank you for request! <br> The confirmation email was sent to your address, please check your inbox."
-          isOpen={state.customSettings.isFormSend}
-          handleClose={formHandleClose}
-        />
-        <Modal
-          title="Done"
-          text="Thank you for subscribing! <br> The confirmation email was sent to your address, please check your inbox."
-          isOpen={state.customSettings.isSubscribeSend}
-          handleClose={subscribeHandleClose}
-        />
+      <Global styles={globalStyles} />
+      {/* Add the header of the site.  */}
+      <Modal
+        title="Done"
+        text="Thank you for request! <br> The confirmation email was sent to your address, please check your inbox."
+        isOpen={state.customSettings.isFormSend}
+        handleClose={formHandleClose}
+      />
+      <Modal
+        title="Done"
+        text="Thank you for subscribing! <br> The confirmation email was sent to your address, please check your inbox."
+        isOpen={state.customSettings.isSubscribeSend}
+        handleClose={subscribeHandleClose}
+      />
 
-        <Header scrollRef={formRef} transparent={transparent} />
-        <Space transparent={transparent} />
+      <Header scrollRef={formRef} transparent={transparent} />
+      <Space transparent={transparent} />
 
-        {/* Add the main section. It renders a different component depending
+      {/* Add the main section. It renders a different component depending
         on the type of URL we are in. */}
 
-        <Main>
-          <Switch>
-            <Loader when={data.isFetching} />
-            <List when={data.isArchive} />
-            <Post scrollRef={formRef} when={data.isPostType} />
-            <PageError when={data.isError} />
-          </Switch>
-        </Main>
+      <Main>
+        <Switch>
+          <Loader when={data.isFetching} />
+          <List when={data.isArchive} />
+          <Post scrollRef={formRef} when={data.isPostType} />
+          <PageError when={data.isError} />
+        </Switch>
+      </Main>
 
-        <div ref={formRef}>
-          <FeedbackForm />
-        </div>
+      <div ref={formRef}>
+        <FeedbackForm />
+      </div>
 
-        <CollapsePage />
+      <CollapsePage />
 
-        {preFooter && preFooter.bg && <PreFooter data={preFooter} />}
+      {preFooter && preFooter.bg && <PreFooter data={preFooter} />}
 
-        <Footer mt={isPreFooter} />
+      <Footer mt={isPreFooter} />
 
-        <UseCookiesModal />
+      <UseCookiesModal />
     </>
   );
 };

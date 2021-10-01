@@ -87,7 +87,6 @@ const MainTemplate = ({
 
   return (
     <GlobalContainer>
-
       <MainFrameBlock
         url={main_bg.url}
         title={main_title}
@@ -104,7 +103,7 @@ const MainTemplate = ({
         </WhiteBlock>
       </Container>
       <WhoWeAre items={whoWeAre} />
-      <Services services={services}>
+      <Services services={services} />
       <WhyUs>
         <Container>
           <WhyUsTitle title="Why Us" />

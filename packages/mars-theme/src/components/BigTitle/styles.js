@@ -1,4 +1,4 @@
-import { styled } from 'frontity';
+import { css, styled } from 'frontity';
 
 export const BigTitleContainer = styled.div`
   position: relative;
@@ -6,7 +6,16 @@ export const BigTitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 176px;
+  ${({ size }) => (
+    size === 'small'
+      ? css`
+        height: auto;
+      ` : size === '70' ? css`
+        height: 85px;
+      ` : css`
+        height: 176px;
+      `
+  )}
   text-align: center;
   overflow: hidden;
 
@@ -27,8 +36,19 @@ export const BigTitleBackground = styled.div`
   top: 0px;
   bottom: 0px;
   font-weight: 800;
-  font-size: 144px;
-  line-height: 176px;
+  ${({ size }) => (
+    size === 'small'
+      ? css`
+        font-size: 100px;
+        line-height: 0.93;
+      ` : size === '70' ? css`
+        font-size: 70px;
+        line-height: 87px;
+      ` : css`
+        font-size: 144px;
+        line-height: 176px;
+      `
+  )}
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: ${(props) => (props.bigTitleBackgroundColor ? props.bigTitleBackgroundColor : '#F3F3F3')};
@@ -52,8 +72,19 @@ export const BigTitleBackground = styled.div`
 
 export const BigTitleText = styled.h2`
   font-weight: 700;
-  font-size: 48px;
-  line-height: 59px;
+  ${({ size }) => (
+    size === 'small'
+      ? css`
+        font-size: 48px;
+        line-height: 90px;
+      ` : size === '70' ? css`
+        font-size: 40px;
+        line-height: 49px;
+      ` : css`
+        font-size: 48px;
+        line-height: 59px;
+      `
+  )}
   margin: 0;
   letter-spacing: 0.1em;
   text-transform: uppercase;

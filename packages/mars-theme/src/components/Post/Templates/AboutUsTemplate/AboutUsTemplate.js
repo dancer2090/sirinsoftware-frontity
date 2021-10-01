@@ -33,14 +33,40 @@ import {
   GalleryImageContainer,
   GalleryImage,
   Crumbs,
+  OurTeam,
+  OurTeamContainer,
+  OurTeamText,
+  Facts,
+  Fact,
+  FactIcon,
+  FactText,
+  AwardsText,
+  AwardsSubText,
+  Values,
+  Value,
+  ValueTitle,
+  ValueIcon,
+  ContactsContainer,
+  ChoseText,
+  BeforeFormHeader,
+  BeforeFormText,
+  Wrapper,
 } from './styles';
 import Services from '../MainTemplate/Services';
+import Cards from '../ContactsTemplate/Cards';
 
 const AboutUsTemplate = ({ state, libraries }) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
+  const dataMain = state.source.get('/');
+  const main = state.source[dataMain.type][dataMain.id];
+  const contacts = state.options;
+  const { acf: mainAcf } = main;
+  const { services: servicesList = [] } = mainAcf;
+  const { acf: contactsAcf } = contacts;
+  const { offices_locations: officesLocations = [] } = contactsAcf;
 
   const replaces = [state.frontity.url, state.frontity.adminUrl];
 
@@ -53,7 +79,7 @@ const AboutUsTemplate = ({ state, libraries }) => {
     awards = {},
     testimonials = {},
     gallery = {},
-    ourTeam = {},
+    ourteam = {},
     factsAndFigures = {},
     awardsText = '',
     values = '',
@@ -86,19 +112,21 @@ const AboutUsTemplate = ({ state, libraries }) => {
       </Container>
       <OurTeam>
         <Container>
-          <BigTitle title={ourTeam.title} />
-          {ourTeam.text && ourTeam.text.length > 0 && (
+          <BigTitle size='small' title={ourteam.title} />
+          {ourteam.text && ourteam.text.length > 0 && (
             <OurTeamContainer>
-              {ourTeam.text.map((item) => (
-                <OurTeamText>{item.text}</OurTeamText>
+              {ourteam.text.map((item) => (
+                <OurTeamText>
+                  <Html2React html={item.text} />
+                </OurTeamText>
               ))}
             </OurTeamContainer>
           )}
         </Container>
       </OurTeam>
       <Facts>
+        <BigTitle title='Facts and Figures' />
         <Container>
-          <BigTitle title='Facts and Figures' />
           {factsAndFigures.map(fact => {
             const {
               icon = {},
@@ -108,7 +136,9 @@ const AboutUsTemplate = ({ state, libraries }) => {
             return (
               <Fact>
                 <FactIcon src={url} />
-                <FactText>{title}</FactText>
+                <FactText>
+                  <Html2React html={title} />
+                </FactText>
               </Fact>
             )
           })}
@@ -116,8 +146,12 @@ const AboutUsTemplate = ({ state, libraries }) => {
       </Facts>
       <AwardsGlobalContainer>
         <BigTitle title="Awards" />
-        <AwardsText>{awardsText}</AwardsText>
-        <AwardsSubText>Today we have the following awards:</AwardsSubText>
+        <AwardsText>
+          <Html2React html={awardsText} />
+        </AwardsText>
+        <AwardsSubText>
+          <Html2React html='Today we have the following awards:' />
+        </AwardsSubText>
         <Container>
           <AwardsContainer>
             <AboutUsSlider>
@@ -141,8 +175,8 @@ const AboutUsTemplate = ({ state, libraries }) => {
       </AwardsGlobalContainer>
       {values && values.length > 0 && (
           <Values>
+            <BigTitle bigTitle="values" title="Sirin Software Values"/>
             <Container>
-              <BigTitle title='Sirin Software Values'/>
               {values.map(value => {
                 const {
                   title = '',
@@ -151,16 +185,38 @@ const AboutUsTemplate = ({ state, libraries }) => {
                 const { url } = icon;
                 return (
                   <Value>
-                    <ValueTitle>{title}</ValueTitle>
                     <ValueIcon src={url} />
+                    <ValueTitle>
+                      <Html2React html={title} />
+                    </ValueTitle>
                   </Value>
                 )
               })}
             </Container>
           </Values>
       )}
+      <Services title={services.title} services={servicesList}>
+        <OurTeamContainer>
+          {services && services.text && services.text.map((item) => (
+            <OurTeamText>
+              <Html2React html={item.text} />
+            </OurTeamText>
+          ))}
+        </OurTeamContainer>
+        <AwardsSubText>
+          <Html2React html="Today, our expertise covers the following IT niches:" />
+        </AwardsSubText>
+      </Services>
       <TestimonialsGlobalContainer>
         <BigTitle title="Testimonials" />
+        <OurTeamContainer>
+          <OurTeamText>
+            Positive feedback from our clients is an indicator of a well-done job.
+          </OurTeamText>
+        </OurTeamContainer>
+        <AwardsSubText>
+          <Html2React html="Here are some reviews by our clients </br> whose projects have already been launched successfully:" />
+        </AwardsSubText>
         <Container>
           <TestimonialsContainer>
             {testimonials && testimonials.length > 0 && testimonials.map((item, k) => {
@@ -175,7 +231,11 @@ const AboutUsTemplate = ({ state, libraries }) => {
                 <TestimonialsItem key={k + logo.url}>
                   <TestimonialsLeft>
                     { (project !== '')
-                      ? <Link link={urlCheck(project, replaces)}><TestimonialsLogo src={logoUrl} /></Link>
+                      ? (
+                        <Link link={urlCheck(project, replaces)}>
+                          <TestimonialsLogo src={logoUrl} />
+                        </Link>
+                      )
                       : <TestimonialsLogo src={logoUrl} />}
                     <TestimonialsPhoto src={photoUrl} />
                   </TestimonialsLeft>
@@ -213,6 +273,11 @@ const AboutUsTemplate = ({ state, libraries }) => {
       </TestimonialsGlobalContainer>
       <GalleryGlobalContainer>
         <BigTitle title="Gallery" />
+        <OurTeamContainer>
+          <OurTeamText>
+            For each of us, the <Link link="/">Sirin Software</Link> team is a second family where we spend a lot of time both within projects and at informal events. Let’s take a look at some moments from the life of our team:
+          </OurTeamText>
+        </OurTeamContainer>
         <GalleryContainer>
           <AboutUsSlider>
             {subgallery && subgallery.length > 0 && subgallery.map((item, k) => (
@@ -232,6 +297,23 @@ const AboutUsTemplate = ({ state, libraries }) => {
           </AboutUsSlider>
         </GalleryContainer>
       </GalleryGlobalContainer>
+      <ContactsContainer>
+        <BigTitle title="Locations and Offices" size="70" />
+        <Container>
+          <Wrapper>
+            <Cards offices_locations={officesLocations} />
+          </Wrapper>
+          <ChoseText>
+            Thank you for choosing <Link link="/">Sirin Software</Link>!
+          </ChoseText>
+          <BeforeFormHeader>
+            <Html2React html="Fill out the form below <br> and tell us about your project plans!" />
+          </BeforeFormHeader>
+          <BeforeFormText>
+            Our staff will contact you as soon as possible to discuss your business solution in detail.
+          </BeforeFormText>
+        </Container>
+      </ContactsContainer>
     </GlobalContainer>
   );
 };

@@ -13,6 +13,7 @@ import BookTemplate from '../Templates/BookTemplate';
 import OtherTempalate from '../Templates/OtherTemplate';
 import ServiceItemTemplate from '../Templates/ServiceItemTemplate';
 import ServiceItemNewTemplate from '../Templates/ServiceItemNewTemplate';
+import WhyUs from '../Templates/WhyUs';
 import PasswordProtected from '../../PasswordProtected';
 
 const PostContent = ({ state, scrollRef = null }) => {
@@ -47,22 +48,26 @@ const PostContent = ({ state, scrollRef = null }) => {
             <FaqTemplate when={template === 'page-faq.php'} />
             <StandartTemplate when={dataP.type === 'post' && template === 'standart' && state.router.link !== '/'} />
             <ServicesTemplate when={template === 'page-services-null.php'} />
-            <ServiceItemNewTemplate scrollRef={scrollRef} when={
-              post.slug === 'hardware_development' ||
-              post.slug === 'mechanical_engineering' ||
-              post.slug === 'mobile-application-development-services' ||
-              post.slug === 'embedded-software-development-services' ||
-              post.slug === 'web-development-services' ||
-              post.slug === 'cloud_solutions' ||
-              post.slug === 'iot-development' ||
-              post.slug === 'firmware_development' ||
-              post.parent === 4259
-            } />
+            <ServiceItemNewTemplate
+              scrollRef={scrollRef}
+              when={
+              post.slug === 'hardware_development'
+              || post.slug === 'mechanical_engineering'
+              || post.slug === 'mobile-application-development-services'
+              || post.slug === 'embedded-software-development-services'
+              || post.slug === 'web-development-services'
+              || post.slug === 'cloud_solutions'
+              || post.slug === 'iot-development'
+              || post.slug === 'firmware_development'
+              || post.parent === 4259
+            }
+            />
             <ServiceItemTemplate scrollRef={scrollRef} when={template === 'services.php'} />
             <FullPageTemplate when={template === 'page-full.php'} />
             <AboutUsTemplate when={template === 'about-us.php'} />
             <ContactsTemplate when={template === 'contacts.php'} />
             <BookTemplate when={template === 'page-book.php'} />
+            <WhyUs when={template === 'page-why.php'} />
             <OtherTempalate />
           </Switch>
         )}
