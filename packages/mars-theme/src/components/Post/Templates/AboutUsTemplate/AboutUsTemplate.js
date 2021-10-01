@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import BigTitle from '../../../BigTitle';
@@ -55,17 +55,21 @@ import {
 import Services from '../MainTemplate/Services';
 import Cards from '../ContactsTemplate/Cards';
 
-const AboutUsTemplate = ({ state, libraries }) => {
+const AboutUsTemplate = ({ actions, state, libraries }) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
-  const dataMain = state.source.get('/');
-  const main = state.source[dataMain.type][dataMain.id];
+  const dataMain = state.source.get('/') || {};
+  const {
+    type: mainType = dataP.type,
+    id: mainId = dataP.id,
+  } = dataMain;
+  const main = state.source[mainType][mainId] || {};
   const contacts = state.options;
-  const { acf: mainAcf } = main;
+  const { acf: mainAcf = {} } = main;
   const { services: servicesList = [] } = mainAcf;
-  const { acf: contactsAcf } = contacts;
+  const { acf: contactsAcf = {} } = contacts;
   const { offices_locations: officesLocations = [] } = contactsAcf;
 
   const replaces = [state.frontity.url, state.frontity.adminUrl];
@@ -99,7 +103,10 @@ const AboutUsTemplate = ({ state, libraries }) => {
   }
 
   const Html2React = libraries.html2react.Component;
-
+  useEffect(() => {
+    actions.source.fetch('/');
+    actions.source.fetch('/contacts');
+  }, []);
   return (
     <GlobalContainer>
       <BigFrameContainer title={post.content.rendered} image={bgImg} />
@@ -195,18 +202,20 @@ const AboutUsTemplate = ({ state, libraries }) => {
             </Container>
           </Values>
       )}
-      <Services title={services.title} services={servicesList}>
-        <OurTeamContainer>
-          {services && services.text && services.text.map((item) => (
-            <OurTeamText>
-              <Html2React html={item.text} />
-            </OurTeamText>
-          ))}
-        </OurTeamContainer>
-        <AwardsSubText>
-          <Html2React html="Today, our expertise covers the following IT niches:" />
-        </AwardsSubText>
-      </Services>
+      {services && servicesList && servicesList.length > 0 && (
+        <Services title={services.title} services={servicesList}>
+          <OurTeamContainer>
+            {services && services.text && services.text.map((item) => (
+              <OurTeamText>
+                <Html2React html={item.text} />
+              </OurTeamText>
+            ))}
+          </OurTeamContainer>
+          <AwardsSubText>
+            <Html2React html="Today, our expertise covers the following IT niches:"/>
+          </AwardsSubText>
+        </Services>
+      )}
       <TestimonialsGlobalContainer>
         <BigTitle title="Testimonials" />
         <OurTeamContainer>
