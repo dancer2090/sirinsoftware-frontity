@@ -1,12 +1,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable quote-props */
-/* eslint-disable no-param-reassign */ 
+/* eslint-disable no-param-reassign */
 import iframe from '@frontity/html2react/processors/iframe';
 import axios from 'axios';
 import Theme from './components';
 import imageUrl from './processors/imageUrl';
 import linkUrls from './processors/linkUrls';
-import { linkReplace, linkImageReplace, popReadyObjectArchive, generateCases } from './utils/func';
+import {
+  linkReplace, linkImageReplace, popReadyObjectArchive, generateCases,
+} from './utils/func';
 
 const newHandler = {
   name: 'categoryOrPostType',
@@ -19,7 +21,7 @@ const newHandler = {
     const newRoute = route.toLowerCase();
     try {
       let hand_name = 'category';
-      if(params.type==="case-studies-cat") hand_name = 'case-studies-cat';
+      if (params.type === 'case-studies-cat') hand_name = 'case-studies-cat';
       const category = libraries.source.handlers.find(
         (handler) => handler.name === hand_name,
       );
@@ -28,8 +30,8 @@ const newHandler = {
       });
     } catch (e) {
       let hand_name = 'post type';
-      if(params.type==="case-studies") hand_name = 'portfolio';
-      if(params.type==="teammembers") hand_name = 'teammembers';
+      if (params.type === 'case-studies') hand_name = 'portfolio';
+      if (params.type === 'teammembers') hand_name = 'teammembers';
       // It's not a category
       const postType = libraries.source.handlers.find(
         (handler) => handler.name === hand_name,
@@ -49,8 +51,8 @@ const caseHandler = {
     route, params, state, libraries,
   }) => {
     const postsResponse = await libraries.source.api.get({
-      endpoint: "portfolio",
-      params: { per_page: "9999", _embed: true }
+      endpoint: 'portfolio',
+      params: { per_page: '9999', _embed: true },
     });
     const items = await libraries.source.populate({
       response: postsResponse,
@@ -68,12 +70,12 @@ const teamHandler = {
     route, params, state, libraries,
   }) => {
     const teammembersResponse = await libraries.source.api.get({
-      endpoint: "teammembers",
-      params: { per_page: "9999", _embed: true }
+      endpoint: 'teammembers',
+      params: { per_page: '9999', _embed: true },
     });
     const teammembersItems = await libraries.source.populate({
       state,
-      response: teammembersResponse
+      response: teammembersResponse,
     });
     state.theme.teammembers = teammembersItems;
   },
@@ -137,10 +139,10 @@ const marsTheme = {
       },
       alternativeUrlForImage: ({ state }) => () => {
         const urls = {
-          urlFrom : state.frontity.adminUrl,
-          urlTo : state.frontity.url,
-          isLocal : state.frontity.isLocal,
-        }
+          urlFrom: state.frontity.adminUrl,
+          urlTo: state.frontity.url,
+          isLocal: state.frontity.isLocal,
+        };
         state.customSettings.urlsWithLocal = urls;
       },
       setRecaptchaToken: ({ state }) => (token) => {
@@ -207,7 +209,7 @@ const marsTheme = {
         await axios.post(
           `${state.source.api}/frontity-api/send-comment`,
           dataForm,
-          {headers: {'content-type': 'application/json'}},
+          { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           if (response.status === 200) {
             state.customSettings.isCommentSend = false;
@@ -222,7 +224,7 @@ const marsTheme = {
         await axios.post(
           `${state.source.api}/frontity-api/send-subscribe`,
           dataForm,
-          {headers: {'content-type': 'application/json'}},
+          { headers: { 'content-type': 'application/json' } },
         ).then((response) => {
           if (response.status === 200) {
             state.customSettings.isSubscribeSend = true;
@@ -231,31 +233,31 @@ const marsTheme = {
       },
       beforeSSR: ({ state, actions, libraries }) => async ({ ctx }) => {
         const url = ctx.href;
-        let newUrl = url;
-        if(url.indexOf('https://fonts.googleapis.') === -1 && url.indexOf('css') === -1 && url.indexOf('.jpg') === -1){
-          const { state : ctxState = {} } = ctx;
+        const newUrl = url;
+        if (url.indexOf('https://fonts.googleapis.') === -1 && url.indexOf('css') === -1 && url.indexOf('.jpg') === -1) {
+          const { state: ctxState = {} } = ctx;
           const {
-            cases : ctxCases = [],
-            options : ctxOptions = {},
-            categories : ctxCategories = [],
-            catPortfolio : ctxCatPortfolio = {}
+            cases: ctxCases = [],
+            options: ctxOptions = {},
+            categories: ctxCategories = [],
+            catPortfolio: ctxCatPortfolio = {},
           } = ctxState;
           const globalOptions = ctxOptions && ctxOptions.options ? ctxOptions : await axios.get(`${state.source.api}/frontity-api/get-options`);
-          const footerData = { items : globalOptions.footer_menu || {} };
-          const optionPage =  { acf : globalOptions.options || {} };
-          const mainMenu = { items : globalOptions.head_menu || {} };
+          const footerData = { items: globalOptions.footer_menu || {} };
+          const optionPage = { acf: globalOptions.options || {} };
+          const mainMenu = { items: globalOptions.head_menu || {} };
           state.theme.menu.footer_menu = footerData;
-  
+
           actions.theme.alternativeUrlForImage();
 
           state.options = optionPage;
 
           state.theme.faq = globalOptions.faq.categories || {};
 
-          const categories = ctxCategories ? ctxCategories : await axios.get(`${state.source.api}/wp/v2/categories`);
+          const categories = ctxCategories || await axios.get(`${state.source.api}/wp/v2/categories`);
           state.customSettings.categories = categories;
           if (state.router.link.includes('/services/')) {
-            if(ctxCases.length > 0) {
+            if (ctxCases.length > 0) {
               generateCases(state, ctxCases);
               state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
@@ -267,7 +269,7 @@ const marsTheme = {
             state.router.link.includes('/case-studies/')
             && state.router.link !== '/case-studies/'
           ) {
-            if(ctxCases.length > 0) {
+            if (ctxCases.length > 0) {
               generateCases(state, ctxCases);
               state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
@@ -278,7 +280,7 @@ const marsTheme = {
           if (
             state.router.link === '/'
           ) {
-            if(ctxCases.length > 0) {
+            if (ctxCases.length > 0) {
               generateCases(state, ctxCases);
               state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
@@ -287,7 +289,7 @@ const marsTheme = {
           }
 
           if (state.router.link === '/case-studies/') {
-            if(ctxCases.length > 0) {
+            if (ctxCases.length > 0) {
               generateCases(state, ctxCases);
               state.source['portfolio-cat'] = ctxCatPortfolio || {};
             } else {
@@ -296,7 +298,12 @@ const marsTheme = {
           }
 
           if (state.router.link === '/teammembers/') {
-            await actions.source.fetch("teamHandler");
+            await actions.source.fetch('teamHandler');
+          }
+
+          if (state.router.link === '/about/') {
+            await actions.source.fetch('/');
+            await actions.source.fetch('/contacts');
           }
 
           if (
@@ -320,7 +327,7 @@ const marsTheme = {
           });
         }
 
-        //console.log(seconds);
+        // console.log(seconds);
       },
     },
   },

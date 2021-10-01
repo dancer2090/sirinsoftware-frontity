@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'frontity';
 import BigFrameContainer from '../../../BigFrameContainer';
 import BigTitle from '../../../BigTitle';
@@ -33,14 +33,44 @@ import {
   GalleryImageContainer,
   GalleryImage,
   Crumbs,
+  OurTeam,
+  OurTeamContainer,
+  OurTeamText,
+  Facts,
+  Fact,
+  FactIcon,
+  FactText,
+  AwardsText,
+  AwardsSubText,
+  Values,
+  Value,
+  ValueTitle,
+  ValueIcon,
+  ContactsContainer,
+  ChoseText,
+  BeforeFormHeader,
+  BeforeFormText,
+  Wrapper,
 } from './styles';
-import Breadcrumbs from '../../../Breadcrumbs';
+import Services from '../MainTemplate/Services';
+import Cards from '../ContactsTemplate/Cards';
 
-const AboutUsTemplate = ({ state, libraries }) => {
+const AboutUsTemplate = ({ actions, state, libraries }) => {
   const dataP = state.source.get(state.router.link);
   const post = state.source[dataP.type][dataP.id];
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
+  const dataMain = state.source.get('/') || {};
+  const {
+    type: mainType = dataP.type,
+    id: mainId = dataP.id,
+  } = dataMain;
+  const main = state.source[mainType][mainId] || {};
+  const contacts = state.options;
+  const { acf: mainAcf = {} } = main;
+  const { services: servicesList = [] } = mainAcf;
+  const { acf: contactsAcf = {} } = contacts;
+  const { offices_locations: officesLocations = [] } = contactsAcf;
 
   const replaces = [state.frontity.url, state.frontity.adminUrl];
 
@@ -53,6 +83,11 @@ const AboutUsTemplate = ({ state, libraries }) => {
     awards = {},
     testimonials = {},
     gallery = {},
+    ourteam = {},
+    factsAndFigures = {},
+    awardsText = '',
+    values = '',
+    services = '',
   } = acf;
 
   const subawards = [];
@@ -68,7 +103,10 @@ const AboutUsTemplate = ({ state, libraries }) => {
   }
 
   const Html2React = libraries.html2react.Component;
-
+  useEffect(() => {
+    actions.source.fetch('/');
+    actions.source.fetch('/contacts');
+  }, []);
   return (
     <GlobalContainer>
       <BigFrameContainer title={post.content.rendered} image={bgImg} />
@@ -79,8 +117,48 @@ const AboutUsTemplate = ({ state, libraries }) => {
         }]}
         />
       </Container>
+      <OurTeam>
+        <Container>
+          <BigTitle size='small' title={ourteam.title} />
+          {ourteam.text && ourteam.text.length > 0 && (
+            <OurTeamContainer>
+              {ourteam.text.map((item) => (
+                <OurTeamText>
+                  <Html2React html={item.text} />
+                </OurTeamText>
+              ))}
+            </OurTeamContainer>
+          )}
+        </Container>
+      </OurTeam>
+      <Facts>
+        <BigTitle title='Facts and Figures' />
+        <Container>
+          {factsAndFigures.map(fact => {
+            const {
+              icon = {},
+              title = ''
+            } = fact;
+            const { url = '' } = icon;
+            return (
+              <Fact>
+                <FactIcon src={url} />
+                <FactText>
+                  <Html2React html={title} />
+                </FactText>
+              </Fact>
+            )
+          })}
+        </Container>
+      </Facts>
       <AwardsGlobalContainer>
         <BigTitle title="Awards" />
+        <AwardsText>
+          <Html2React html={awardsText} />
+        </AwardsText>
+        <AwardsSubText>
+          <Html2React html='Today we have the following awards:' />
+        </AwardsSubText>
         <Container>
           <AwardsContainer>
             <AboutUsSlider>
@@ -102,8 +180,52 @@ const AboutUsTemplate = ({ state, libraries }) => {
           </AwardsContainer>
         </Container>
       </AwardsGlobalContainer>
+      {values && values.length > 0 && (
+          <Values>
+            <BigTitle bigTitle="values" title="Sirin Software Values"/>
+            <Container>
+              {values.map(value => {
+                const {
+                  title = '',
+                  icon = {}
+                } = value;
+                const { url } = icon;
+                return (
+                  <Value>
+                    <ValueIcon src={url} />
+                    <ValueTitle>
+                      <Html2React html={title} />
+                    </ValueTitle>
+                  </Value>
+                )
+              })}
+            </Container>
+          </Values>
+      )}
+      {services && servicesList && servicesList.length > 0 && (
+        <Services title={services.title} services={servicesList}>
+          <OurTeamContainer>
+            {services && services.text && services.text.map((item) => (
+              <OurTeamText>
+                <Html2React html={item.text} />
+              </OurTeamText>
+            ))}
+          </OurTeamContainer>
+          <AwardsSubText>
+            <Html2React html="Today, our expertise covers the following IT niches:"/>
+          </AwardsSubText>
+        </Services>
+      )}
       <TestimonialsGlobalContainer>
         <BigTitle title="Testimonials" />
+        <OurTeamContainer>
+          <OurTeamText>
+            Positive feedback from our clients is an indicator of a well-done job.
+          </OurTeamText>
+        </OurTeamContainer>
+        <AwardsSubText>
+          <Html2React html="Here are some reviews by our clients </br> whose projects have already been launched successfully:" />
+        </AwardsSubText>
         <Container>
           <TestimonialsContainer>
             {testimonials && testimonials.length > 0 && testimonials.map((item, k) => {
@@ -118,7 +240,11 @@ const AboutUsTemplate = ({ state, libraries }) => {
                 <TestimonialsItem key={k + logo.url}>
                   <TestimonialsLeft>
                     { (project !== '')
-                      ? <Link link={urlCheck(project, replaces)}><TestimonialsLogo src={logoUrl} /></Link>
+                      ? (
+                        <Link link={urlCheck(project, replaces)}>
+                          <TestimonialsLogo src={logoUrl} />
+                        </Link>
+                      )
                       : <TestimonialsLogo src={logoUrl} />}
                     <TestimonialsPhoto src={photoUrl} />
                   </TestimonialsLeft>
@@ -156,6 +282,11 @@ const AboutUsTemplate = ({ state, libraries }) => {
       </TestimonialsGlobalContainer>
       <GalleryGlobalContainer>
         <BigTitle title="Gallery" />
+        <OurTeamContainer>
+          <OurTeamText>
+            For each of us, the <Link link="/">Sirin Software</Link> team is a second family where we spend a lot of time both within projects and at informal events. Let’s take a look at some moments from the life of our team:
+          </OurTeamText>
+        </OurTeamContainer>
         <GalleryContainer>
           <AboutUsSlider>
             {subgallery && subgallery.length > 0 && subgallery.map((item, k) => (
@@ -175,6 +306,23 @@ const AboutUsTemplate = ({ state, libraries }) => {
           </AboutUsSlider>
         </GalleryContainer>
       </GalleryGlobalContainer>
+      <ContactsContainer>
+        <BigTitle title="Locations and Offices" size="70" />
+        <Container>
+          <Wrapper>
+            <Cards offices_locations={officesLocations} />
+          </Wrapper>
+          <ChoseText>
+            Thank you for choosing <Link link="/">Sirin Software</Link>!
+          </ChoseText>
+          <BeforeFormHeader>
+            <Html2React html="Fill out the form below <br> and tell us about your project plans!" />
+          </BeforeFormHeader>
+          <BeforeFormText>
+            Our staff will contact you as soon as possible to discuss your business solution in detail.
+          </BeforeFormText>
+        </Container>
+      </ContactsContainer>
     </GlobalContainer>
   );
 };

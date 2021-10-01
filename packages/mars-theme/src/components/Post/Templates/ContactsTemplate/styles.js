@@ -36,14 +36,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Belleza:wght@100;300;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;800&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
   padding-top: 10px;
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  font-family: 'Belleza';
+  font-family: 'Montserrat';
 
   * {
     box-sizing: border-box;

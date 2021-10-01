@@ -1,6 +1,8 @@
 import { styled } from 'frontity';
 import Slider from './AboutUsSlider';
 import Breadcrumbs from '../../../Breadcrumbs';
+import factsBg from '../../../../img/facts-bg.svg';
+import valuesBg from '../../../../img/values.png';
 
 export const Crumbs = styled(Breadcrumbs)`
   @media screen and (max-width: 767px) {
@@ -222,10 +224,83 @@ export const AwardsItem = styled.div`
     }
   }
 `;
-
+export const OurTeam = styled.div`
+  margin-top: 130px;
+  & ${Container}{
+    padding-bottom: 0px;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 40px;
+  }
+`;
+export const OurTeamContainer = styled.div`
+  max-width: 677px;
+  margin: 0 auto;
+  margin-top: 30px;
+`;
+export const OurTeamText = styled.div`
+  margin-top: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #216628;
+  text-align: center;
+  max-width: 430px;
+  a{
+    color: #FF8D23;
+  }
+  &:first-of-type{
+    margin-top: 0px;
+  }
+  &:nth-of-type(2n){
+    margin-right: 0px;
+    margin-left: auto;
+  }
+  &:first-of-type:last-of-type{
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+export const AwardsText = styled.div`
+  max-width: 500px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #216628;
+  margin: 0 auto;
+  margin-top: 10px;
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+export const AwardsSubText = styled.div`
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
 export const TestimonialsGlobalContainer = styled.div`
   display: block;
-
+  margin-top: 90px;
+  & ${AwardsSubText} {
+    max-width: 527px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
   & ${Container}{
     @media screen and (max-width: 767px) {
       padding-left: 0px;
@@ -556,6 +631,300 @@ export const GalleryContainer = styled.div`
 
   @media screen and (max-width: 767px) {
     margin-right: 0px;
+  }
+`;
+export const Facts = styled.div`
+  margin-top: 60px;
+  background: url(${factsBg}) no-repeat 100% 30px;
+  ${Container}{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    max-width: 620px;
+  }
+`;
+export const FactIcon = styled.img`
+  display: block;
+`;
+export const FactText = styled.div`
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+export const Fact = styled.div`
+  &:nth-child(1){
+    width: 258px;
+    height: 208px;
+    background: linear-gradient(100.65deg, #216628 -44.21%, #3FA54A 93.56%);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    & img{
+      margin-bottom: 10px;
+    }
+    & ${FactText} {
+      max-width: 166px;
+      margin: 0 auto;
+    }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+  &:nth-child(2){
+    width: 315px;
+    height: 120px;
+    background: #F2F2F2;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 22px;
+    & ${FactText} {
+      max-width: 135px;
+      color: #F8710F;
+      margin-left: 15px;
+    }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+  &:nth-child(3){
+    width: 275px;
+    height: 134px;
+    margin-left: 15px;
+    background: #F2F2F2;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row-reverse;
+    margin-top: 51px;
+    & ${FactText} {
+      color: #216628;
+      margin-right: 10px;
+    }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      margin-left: 0px;
+      margin-top: 20px;
+    }
+  }
+  &:nth-child(4){
+    width: 216px;
+    height: 205px;
+    background: linear-gradient(96.16deg, #F8710F 3.43%, #FFB03A 97.65%);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    color: #fff;
+    margin-right: 50px;
+    & ${FactText} {
+      max-width: 130px;
+      margin-top: 19px;
+    }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: 20px;
+    }
+  }
+`;
+
+export const ValueTitle = styled.div`
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+export const ValueIcon = styled.img`
+  display: block;
+`;
+export const Value = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #F2F2F2;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  color: #216628;
+  padding: 25px;
+  width: 100%;
+  &:nth-child(2n) {
+    background: linear-gradient(120.98deg, #F8710F 2.63%, #FFB03A 96.67%);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    color: #fff;
+  }
+  &:nth-child(1) {
+    max-width: 307px;
+    position: relative;
+    z-index: 4;
+  }
+  &:nth-child(2) {
+    max-width: 318px;
+    margin-top: 15px;
+    margin-left: -5px;
+    position: relative;
+    z-index: 5;
+    @media(max-width: 1000px){
+      margin-left: 0px;
+      margin-top: 20px;
+      max-width: 320px;
+    }
+  }
+  &:nth-child(3) {
+    max-width: 232px;
+    margin-left: -12px;
+    position: relative;
+    z-index: 6;
+    @media(max-width: 1000px){
+      margin-left: 0px;
+      margin-top: 20px;
+      max-width: 320px;
+    }
+  }
+  &:nth-child(4) {
+    max-width: 311px;
+    margin-top: 15px;
+    margin-left: 15px;
+    position: relative;
+    z-index: 2;
+    @media(max-width: 1000px){
+      margin-left: 0px;
+      margin-top: 20px;
+      max-width: 320px;
+    }
+  }
+  &:nth-child(5) {
+    max-width: 297px;
+    margin-top: 34px;
+    margin-left: -20px;
+    position: relative;
+    z-index: 1;
+    @media(max-width: 1000px){
+      margin-left: 0px;
+      margin-top: 20px;
+      max-width: 320px;
+    }
+  }
+  &:nth-child(6) {
+    max-width: 318px;
+    margin-top: -14px;
+    margin-left: -30px;
+    position: relative;
+    z-index: 3;
+    @media(max-width: 1000px){
+      margin-top: 20px;
+      margin-left: 0px;
+      max-width: 320px;
+    }
+    ${ValueTitle} {
+      max-width: 255px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+  }
+`;
+export const Values = styled.div`
+  background: url(${valuesBg}) no-repeat 100% 0px;
+  margin-top: 20px;
+  ${Container}{
+    max-width: 908px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @media(max-width: 1000px){
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+`;
+export const Wrapper = styled.div`
+  padding: 57px 0 17px 0;
+  
+  @media screen and (max-width: 991px) {
+    max-width: 100%;
+    padding: 69px 20px 17px 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 29px 10px 17px 10px;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    
+    @media screen and (max-width: 767px) {
+      margin: 0 -10px;
+    }
+  }
+`;
+export const ContactsContainer = styled.div`
+
+`;
+export const ChoseText = styled.div`
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 18px;
+  text-align: center;
+  & a{
+    color: #FF8D23;
+  }
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+export const BeforeFormHeader = styled.div`
+  margin-top: 78px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 36px;
+  text-transform: uppercase;
+  color: #216628;
+  @media screen and (max-width: 991px) {
+    font-size: 21px;
+    line-height: 28px;
+  }
+`;
+export const BeforeFormText = styled.div`
+  max-width: 475px;
+  margin: 0 auto;
+  margin-top: 28px;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  @media screen and (max-width: 991px) {
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
 
