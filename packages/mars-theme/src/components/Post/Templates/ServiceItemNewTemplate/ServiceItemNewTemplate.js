@@ -217,14 +217,14 @@ const ServiceItemNewTemplate = ({ state, libraries, scrollRef = null }) => {
               )}
             </CasesContainer>
           </ServicesContainer>
-          {!checkMobile && parent !== 4259 && (
+          {!checkMobile && post.id !== 5097 && parent !== 4259 && (
             <GreenBlock
               greenBlock={greenBlock}
               {...addGreenBlockProps}
             />
           )}
         </Container>
-        {!checkMobile && parent === 4259 && (
+        {!checkMobile && (post.id === 5097 || parent === 4259) && (
         <FooterBg
           {...fBg}
         />

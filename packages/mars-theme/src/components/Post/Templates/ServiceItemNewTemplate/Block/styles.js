@@ -4,6 +4,7 @@ import Image from '../../../../image';
 export const Header = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: ${({ reverse }) => reverse ? css`row-reverse` : css`row`}
   ${({ marginTop }) => (
     marginTop ? css`margin-top: ${marginTop}px` : null
   )}
@@ -219,7 +220,7 @@ export const Wrapper = styled.div`
   )};
   &:nth-of-type(2n){
     & ${Header}{
-      flex-direction: row-reverse;
+      flex-direction: ${({ reverse }) => reverse ? css`row` : css`row-reverse`}
     }
   }
   ${({ textAlignPush }) => (

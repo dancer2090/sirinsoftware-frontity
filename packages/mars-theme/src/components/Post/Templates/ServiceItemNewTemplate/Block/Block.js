@@ -37,6 +37,7 @@ const Block = ({
   dynamiContent = null,
   titleMarginTop = '0 15',
   titleMarginBottom = '0 15',
+  reverse = false,
 }) => {
   const { imageUrlCheck, urlCheck } = libraries.func;
   const { urlsWithLocal = {} } = state.customSettings;
@@ -97,8 +98,8 @@ const Block = ({
     paddingBottom: titleOffsetBottom[1],
   };
   return (
-    <Wrapper blockType={types[type]} textAlignPush={textAlignPush}>
-      <Header titleAlign={resTitleAlign} minHeight={icon.height} {...titleOffset}>
+    <Wrapper blockType={types[type]} textAlignPush={textAlignPush} reverse={reverse}>
+      <Header titleAlign={resTitleAlign} minHeight={icon.height} reverse={reverse} {...titleOffset}>
         <Title marginLeft={titleLeftOffset} marginRight={titleRightOffset}>{title}</Title>
         {icon && (
           <Icon

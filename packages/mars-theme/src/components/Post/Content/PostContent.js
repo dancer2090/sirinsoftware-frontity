@@ -60,6 +60,8 @@ const PostContent = ({ state, scrollRef = null }) => {
               || post.slug === 'iot-development'
               || post.slug === 'firmware_development'
               || post.parent === 4259
+              || post.id === 5097
+              || post.id === 5080
             }
             />
             <ServiceItemTemplate scrollRef={scrollRef} when={template === 'services.php'} />
